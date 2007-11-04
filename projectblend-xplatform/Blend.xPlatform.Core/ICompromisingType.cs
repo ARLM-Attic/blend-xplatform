@@ -20,14 +20,24 @@
 
 using System;
 
-namespace Blend.xPlatform.Win32
+namespace Blend.xPlatform
 {
-    public partial class msvcrt : PlatformInvokeBase
+    /// <summary>
+    /// C/C++의 typedef 문이나 #define 매크로에 의한 형식 정의를
+    /// .NET Framework에서 사용하기 위하여 정의하는 기본 인터페이스입니다.
+    /// </summary>
+    /// <typeparam name="T">호환성을 부여할 형식을 지정합니다.</typeparam>
+    public interface ICompromisingType<T> :
+        IEquatable<T>,
+        IEquatable<ICompromisingType<T>>
     {
         /// <summary>
-        /// 이 형식에서 선언되는 모든 플랫폼 호출 서비스의 대상 모듈 명칭입니다.
+        /// 내부 형식 개체를 가져오거나 설정합니다.
         /// </summary>
-        [NonSerialized]
-        public const string ModuleName = "msvcrt.dll";
+        T InnerVariable
+        {
+            get;
+            set;
+        }
     }
 }

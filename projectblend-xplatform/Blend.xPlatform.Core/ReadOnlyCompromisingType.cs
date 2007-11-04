@@ -19,6 +19,8 @@
  * */
 
 using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Blend.xPlatform
 {
@@ -28,12 +30,12 @@ namespace Blend.xPlatform
     /// </summary>
     /// <typeparam name="T">호환성을 부여할 형식을 지정합니다.</typeparam>
     [Serializable]
-    public class CompromisingType<T> : ICompromisingType<T>
+    public class ReadOnlyCompromisingType<T> : ICompromisingType<T>
     {
         /// <summary>
         /// 기본 생성자입니다.
         /// </summary>
-        protected internal CompromisingType()
+        protected internal ReadOnlyCompromisingType()
             : this(default(T))
         {
         }
@@ -42,24 +44,30 @@ namespace Blend.xPlatform
         /// 기본값을 지정하여 초기화합니다.
         /// </summary>
         /// <param name="innerVariable">기본값 - 또는 - 기본 객체입니다.</param>
-        protected internal CompromisingType(T innerVariable)
+        protected internal ReadOnlyCompromisingType(T innerVariable)
             : base()
         {
             this.innerVariable = innerVariable;
         }
 
         /// <summary>
-        /// 내부 변수입니다.
+        /// 내부 변수이며, 읽기 전용입니다.
         /// </summary>
-        private T innerVariable = default(T);
+        private readonly T innerVariable = default(T);
 
         /// <summary>
-        /// 내부 형식 개체를 가져오거나 설정합니다.
+        /// 내부 형식 개체를 가져옵니다.
         /// </summary>
+        /// <exception cref="System.NotSupportedException">
+        /// Setter 메서드를 호출하면 발생합니다.
+        /// </exception>
+        /// <remarks>
+        /// Setter 메서드는 지원되지 않습니다.
+        /// </remarks>
         public T InnerVariable
         {
             get { return this.innerVariable; }
-            set { this.innerVariable = value; }
+            set { throw new NotSupportedException("Read-only type."); }
         }
 
         /// <summary>
@@ -117,11 +125,11 @@ namespace Blend.xPlatform
 
         /// <summary>
         /// 컨테이너에서 형식 인수 T로의 암묵적인 변환을 중계합니다.
-        /// 형식 인수 T를 필요로 하는 매개 변수나 대입문에서 자동으로 실행됩니다.
+        /// 형식 인수 T를 필요로 하는 매개 변수나 데입문에서 자동으로 실행됩니다.
         /// </summary>
         /// <param name="obj">현재 개체의 참조가 전달됩니다.</param>
         /// <returns>내부 변수 - 또는 - 개체가 반환됩니다.</returns>
-        public static implicit operator T(CompromisingType<T> obj)
+        public static implicit operator T(ReadOnlyCompromisingType<T> obj)
         {
             return obj.InnerVariable;
         }
@@ -132,19 +140,9 @@ namespace Blend.xPlatform
         /// </summary>
         /// <param name="obj">대입할 개체의 참조가 전달됩니다.</param>
         /// <returns>새로운 컨테이너를 생성하여 반환합니다.</returns>
-        public static implicit operator CompromisingType<T>(T obj)
+        public static implicit operator ReadOnlyCompromisingType<T>(T obj)
         {
-            return new CompromisingType<T>(obj);
-        }
-
-        /// <summary>
-        /// 일반 컨테이너에서 읽기 전용 컨테이너로의 암묵적인 변환을 중계합니다.
-        /// </summary>
-        /// <param name="obj">현재 개체의 참조가 전달됩니다.</param>
-        /// <returns>새로운 읽기 전용 컨테이너를 생성하여 반환합니다.</returns>
-        public static implicit operator ReadOnlyCompromisingType<T>(CompromisingType<T> obj)
-        {
-            return new ReadOnlyCompromisingType<T>(obj.innerVariable);
+            return new ReadOnlyCompromisingType<T>(obj);
         }
 
         /// <summary>
@@ -154,7 +152,17 @@ namespace Blend.xPlatform
         /// <returns>새로운 일반 컨테이너를 생성하여 반환합니다.</returns>
         public static implicit operator CompromisingType<T>(ReadOnlyCompromisingType<T> obj)
         {
-            return new CompromisingType<T>(obj.InnerVariable);
+            return new CompromisingType<T>(obj.innerVariable);
+        }
+
+        /// <summary>
+        /// 일반 컨테이너에서 읽기 전용 컨테이너로의 암묵적인 변환을 중계합니다.
+        /// </summary>
+        /// <param name="obj">현재 개체의 참조가 전달됩니다.</param>
+        /// <returns>새로운 읽기 전용 컨테이너를 생성하여 반환합니다.</returns>
+        public static implicit operator ReadOnlyCompromisingType<T>(CompromisingType<T> obj)
+        {
+            return new ReadOnlyCompromisingType<T>(obj.InnerVariable);
         }
     }
 }

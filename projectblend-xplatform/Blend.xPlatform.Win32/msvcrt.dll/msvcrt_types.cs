@@ -27,54 +27,105 @@ namespace Blend.xPlatform.Win32
     {
         #region sys/types.h
 
+        /// <summary>
+        /// __int64 형식에 대한 정의입니다.
+        /// </summary>
         [Serializable]
         public sealed class __int64 : CompromisingType<long> { }
 
+        /// <summary>
+        /// _dev_t 형식에 대한 정의입니다.
+        /// </summary>
         [Serializable]
         public sealed class _dev_t : CompromisingType<uint> { }
 
+        /// <summary>
+        /// _ino_t 형식에 대한 정의입니다.
+        /// </summary>
         [Serializable]
         public sealed class _ino_t : CompromisingType<ushort> { }
 
+        /// <summary>
+        /// _mode_t 형식에 대한 정의입니다.
+        /// </summary>
         [Serializable]
         public sealed class _mode_t : CompromisingType<ushort> { }
 
+        /// <summary>
+        /// _off_t 형식에 대한 정의입니다.
+        /// </summary>
         [Serializable]
         public sealed class _off_t : CompromisingType<int> { }
 
+        /// <summary>
+        /// time_t 형식에 대한 정의입니다.
+        /// </summary>
         [Serializable]
         public sealed class time_t : CompromisingType<int> { }
 
+        /// <summary>
+        /// __time64_t 형식에 대한 정의입니다.
+        /// </summary>
         [Serializable]
         public sealed class __time64_t : CompromisingType<__int64> { }
 
+        /// <summary>
+        /// u_char 형식에 대한 정의입니다.
+        /// </summary>
         [Serializable]
         public sealed class u_char : CompromisingType<byte> { }
 
+        /// <summary>
+        /// u_short 형식에 대한 정의입니다.
+        /// </summary>
         [Serializable]
         public sealed class u_short : CompromisingType<ushort> { }
 
+        /// <summary>
+        /// u_int 형식에 대한 정의입니다.
+        /// </summary>
         [Serializable]
         public sealed class u_int : CompromisingType<uint> { }
 
+        /// <summary>
+        /// u_long 형식에 대한 정의입니다.
+        /// </summary>
         [Serializable]
         public sealed class u_long : CompromisingType<uint> { }
 
+        /// <summary>
+        /// dev_t 형식에 대한 정의입니다.
+        /// </summary>
         [Serializable]
         public sealed class dev_t : CompromisingType<_dev_t> { }
 
+        /// <summary>
+        /// ino_t 형식에 대한 정의입니다.
+        /// </summary>
         [Serializable]
         public sealed class ino_t : CompromisingType<_ino_t> { }
 
+        /// <summary>
+        /// mode_t 형식에 대한 정의입니다.
+        /// </summary>
         [Serializable]
         public sealed class mode_t : CompromisingType<_mode_t> { }
 
+        /// <summary>
+        /// off_t 형식에 대한 정의입니다.
+        /// </summary>
         [Serializable]
         public sealed class off_t : CompromisingType<_off_t> { }
 
+        /// <summary>
+        /// pid_t 형식에 대한 정의입니다.
+        /// </summary>
         [Serializable]
         public sealed class pid_t : CompromisingType<int> { }
 
+        /// <summary>
+        /// ssize_t 형식에 대한 정의입니다.
+        /// </summary>
         [Serializable]
         public sealed class ssize_t : CompromisingType<int> { }
 
