@@ -21,6 +21,7 @@
 using System;
 using System.Text;
 using Blend.xPlatform.Win32;
+using System.Runtime.InteropServices;
 
 namespace Blend.xPlatform.Test
 {
