@@ -19,11 +19,87 @@
  * */
 
 using System;
+using System.Security.Permissions;
 using System.Runtime.InteropServices;
 
 namespace Blend.xPlatform.Win32
 {
     partial class msvcrt
     {
+        public static bool S_ISCHR(int m)
+        {
+            return (m & _S_IFMT).Equals(_S_IFCHR);
+        }
+
+        public static bool S_ISDIR(int m)
+        {
+            return (m & _S_IFMT).Equals(_S_IFDIR);
+        }
+
+        public static bool S_ISFIFO(int m)
+        {
+            return (m & _S_IFMT).Equals(_S_IFIFO);
+        }
+
+        public static bool S_ISREG(int m)
+        {
+            return (m & _S_IFMT).Equals(_S_IFREG);
+        }
+
+        [DllImport(ModuleName)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern void _ftime(ref _timeb timeptr);
+
+        [DllImport(ModuleName)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int _fstat(int fd, ref _stat buffer);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int _stat(string path, ref _stat buffer);
+
+        [DllImport(ModuleName)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int _fstati64(int fd, ref _stati64 buffer);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int _stati64(string path, ref _stati64 buffer);
+
+        [DllImport(ModuleName)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int _fstat64(int fd, ref _stat64 buffer);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int _stat64(string path, ref _stat64 buffer);
+
+        [DllImport(ModuleName)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int _umask(int pmode);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int _wstat(string path, ref _stat buffer);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int _wstati64(string path, ref _stati64 buffer);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int _wstat64(string path, ref _stat64 buffer);
+
+        [DllImport(ModuleName)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int _futime(int fd, ref _utimbuf filetime);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int _utime(string filename, ref _utimbuf times);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int _wutime(string filename, ref _utimbuf times);
     }
 }

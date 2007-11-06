@@ -23,112 +23,143 @@ using System.Runtime.InteropServices;
 
 namespace Blend.xPlatform.Win32
 {
-    partial class msvcrt
-    {
-        #region sys/types.h
+    /// <summary>
+    /// __int64 형식에 대한 정의입니다.
+    /// </summary>
+    [Serializable]
+    [Obsolete(PlatformInvokeBase.ObsoleteTypeCasting, false)]
+    public enum __int64 : long { }
 
-        /// <summary>
-        /// __int64 형식에 대한 정의입니다.
-        /// </summary>
-        [Serializable]
-        public enum __int64 : long { }
+    /// <summary>
+    /// _dev_t 형식에 대한 정의입니다.
+    /// </summary>
+    [Serializable]
+    [Obsolete(PlatformInvokeBase.ObsoleteTypeCasting, false)]
+    public enum _dev_t : uint { }
 
-        /// <summary>
-        /// _dev_t 형식에 대한 정의입니다.
-        /// </summary>
-        [Serializable]
-        public enum _dev_t : uint { }
+    /// <summary>
+    /// _ino_t 형식에 대한 정의입니다.
+    /// </summary>
+    [Serializable]
+    [Obsolete(PlatformInvokeBase.ObsoleteTypeCasting, false)]
+    public enum _ino_t : ushort { }
 
-        /// <summary>
-        /// _ino_t 형식에 대한 정의입니다.
-        /// </summary>
-        [Serializable]
-        public enum _ino_t : ushort { }
+    /// <summary>
+    /// _mode_t 형식에 대한 정의입니다.
+    /// </summary>
+    [Serializable]
+    [Obsolete(PlatformInvokeBase.ObsoleteTypeCasting, false)]
+    public enum _mode_t : ushort { }
 
-        /// <summary>
-        /// _mode_t 형식에 대한 정의입니다.
-        /// </summary>
-        [Serializable]
-        public enum _mode_t : ushort { }
+    /// <summary>
+    /// _off_t 형식에 대한 정의입니다.
+    /// </summary>
+    [Serializable]
+    [Obsolete(PlatformInvokeBase.ObsoleteTypeCasting, false)]
+    public enum _off_t : int { }
 
-        /// <summary>
-        /// _off_t 형식에 대한 정의입니다.
-        /// </summary>
-        [Serializable]
-        public enum _off_t : int { }
+    /// <summary>
+    /// time_t 형식에 대한 정의입니다.
+    /// </summary>
+    [Serializable]
+    [Obsolete(PlatformInvokeBase.ObsoleteTypeCasting, false)]
+    public enum time_t : int { }
 
-        /// <summary>
-        /// time_t 형식에 대한 정의입니다.
-        /// </summary>
-        [Serializable]
-        public enum time_t : int { }
+    /// <summary>
+    /// __time64_t 형식에 대한 정의입니다.
+    /// </summary>
+    [Serializable]
+    [Obsolete(PlatformInvokeBase.ObsoleteTypeCasting, false)]
+    public enum __time64_t : long { }
 
-        /// <summary>
-        /// __time64_t 형식에 대한 정의입니다.
-        /// </summary>
-        [Serializable]
-        public enum __time64_t : long { }
+    /// <summary>
+    /// u_char 형식에 대한 정의입니다.
+    /// </summary>
+    [Serializable]
+    [Obsolete(PlatformInvokeBase.ObsoleteTypeCasting, false)]
+    public enum u_char : byte { }
 
-        /// <summary>
-        /// u_char 형식에 대한 정의입니다.
-        /// </summary>
-        [Serializable]
-        public enum u_char : byte { }
+    /// <summary>
+    /// u_short 형식에 대한 정의입니다.
+    /// </summary>
+    [Serializable]
+    [Obsolete(PlatformInvokeBase.ObsoleteTypeCasting, false)]
+    public enum u_short : ushort { }
 
-        /// <summary>
-        /// u_short 형식에 대한 정의입니다.
-        /// </summary>
-        [Serializable]
-        public enum u_short : ushort { }
+    /// <summary>
+    /// u_int 형식에 대한 정의입니다.
+    /// </summary>
+    [Serializable]
+    [Obsolete(PlatformInvokeBase.ObsoleteTypeCasting, false)]
+    public enum u_int : uint { }
 
-        /// <summary>
-        /// u_int 형식에 대한 정의입니다.
-        /// </summary>
-        [Serializable]
-        public enum u_int : uint { }
+    /// <summary>
+    /// u_long 형식에 대한 정의입니다.
+    /// </summary>
+    [Serializable]
+    [Obsolete(PlatformInvokeBase.ObsoleteTypeCasting, false)]
+    public enum u_long : ulong { }
 
-        /// <summary>
-        /// u_long 형식에 대한 정의입니다.
-        /// </summary>
-        [Serializable]
-        public enum u_long : ulong { }
+    /// <summary>
+    /// dev_t 형식에 대한 정의입니다.
+    /// </summary>
+    [Serializable]
+    [Obsolete(PlatformInvokeBase.ObsoleteTypeCasting, false)]
+    public enum dev_t : ulong { }
 
-        /// <summary>
-        /// dev_t 형식에 대한 정의입니다.
-        /// </summary>
-        [Serializable]
-        public enum dev_t : ulong { }
+    /// <summary>
+    /// ino_t 형식에 대한 정의입니다.
+    /// </summary>
+    [Serializable]
+    [Obsolete(PlatformInvokeBase.ObsoleteTypeCasting, false)]
+    public enum ino_t : ushort { }
 
-        /// <summary>
-        /// ino_t 형식에 대한 정의입니다.
-        /// </summary>
-        [Serializable]
-        public enum ino_t : ushort { }
+    /// <summary>
+    /// mode_t 형식에 대한 정의입니다.
+    /// </summary>
+    [Serializable]
+    [Obsolete(PlatformInvokeBase.ObsoleteTypeCasting, false)]
+    public enum mode_t : ushort { }
 
-        /// <summary>
-        /// mode_t 형식에 대한 정의입니다.
-        /// </summary>
-        [Serializable]
-        public enum mode_t : ushort { }
+    /// <summary>
+    /// off_t 형식에 대한 정의입니다.
+    /// </summary>
+    [Serializable]
+    [Obsolete(PlatformInvokeBase.ObsoleteTypeCasting, false)]
+    public enum off_t : int { }
 
-        /// <summary>
-        /// off_t 형식에 대한 정의입니다.
-        /// </summary>
-        [Serializable]
-        public enum off_t : int { }
+    /// <summary>
+    /// pid_t 형식에 대한 정의입니다.
+    /// </summary>
+    [Serializable]
+    [Obsolete(PlatformInvokeBase.ObsoleteTypeCasting, false)]
+    public enum pid_t : int { }
 
-        /// <summary>
-        /// pid_t 형식에 대한 정의입니다.
-        /// </summary>
-        [Serializable]
-        public enum pid_t : int { }
+    /// <summary>
+    /// ssize_t 형식에 대한 정의입니다.
+    /// </summary>
+    [Serializable]
+    [Obsolete(PlatformInvokeBase.ObsoleteTypeCasting, false)]
+    public enum ssize_t : int { }
 
-        /// <summary>
-        /// ssize_t 형식에 대한 정의입니다.
-        /// </summary>
-        [Serializable]
-        public enum ssize_t : int { }
+    /// <summary>
+    /// wchar_t 형식에 대한 정의입니다.
+    /// </summary>
+    [Serializable]
+    [Obsolete(PlatformInvokeBase.ObsoleteTypeCasting, false)]
+    public enum wchar_t : ushort { }
 
-        #endregion // sys/types.h
-    }
+    /// <summary>
+    /// wint_t 형식에 대한 정의입니다.
+    /// </summary>
+    [Serializable]
+    [Obsolete(PlatformInvokeBase.ObsoleteTypeCasting, false)]
+    public enum wint_t : ushort { }
+
+    /// <summary>
+    /// wctype_t 형식에 대한 정의입니다.
+    /// </summary>
+    [Serializable]
+    [Obsolete(PlatformInvokeBase.ObsoleteTypeCasting, false)]
+    public enum wctype_t : ushort { }
 }

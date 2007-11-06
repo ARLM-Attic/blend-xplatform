@@ -33,6 +33,9 @@ namespace Blend.xPlatform
     /// </summary>
     public abstract class PlatformInvokeBase
     {
+        [NonSerialized]
+        public const string ObsoleteTypeCasting = "TODO: 번역을 위하여 임시로 도입한 형식입니다.";
+
         /// <summary>
         /// 플랫폼 호출 서비스의 기본 사양을 초기화합니다.
         /// </summary>

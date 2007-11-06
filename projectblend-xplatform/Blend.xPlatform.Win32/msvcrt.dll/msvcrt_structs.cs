@@ -21,25 +21,99 @@
 using System;
 using System.Runtime.InteropServices;
 
+#if DEBUG
+#pragma warning disable 618
+#endif // DEBUG
+
 namespace Blend.xPlatform.Win32
 {
-    partial class msvcrt
+    [Serializable]
+    [StructLayout(LayoutKind.Sequential)]
+    public struct _stat
     {
-        [Serializable]
-        [StructLayout(LayoutKind.Sequential)]
-        public struct _stat
-        {
-            public _dev_t st_dev;
-            public _ino_t st_ino;
-            public ushort st_mode;
-            public short st_nlink;
-            public short st_uid;
-            public short st_gid;
-            public _dev_t st_rdev;
-            public _off_t st_size;
-            public time_t st_atime;
-            public time_t st_mtime;
-            public time_t st_ctime;
-        }
+        public _dev_t st_dev;
+        public _ino_t st_ino;
+        public ushort st_mode;
+        public short st_nlink;
+        public short st_uid;
+        public short st_gid;
+        public _dev_t st_rdev;
+        public _off_t st_size;
+        public time_t st_atime;
+        public time_t st_mtime;
+        public time_t st_ctime;
+    }
+
+    [Serializable]
+    [StructLayout(LayoutKind.Sequential)]
+    public struct stat
+    {
+        public _dev_t st_dev;
+        public _ino_t st_ino;
+        public ushort st_mode;
+        public short st_nlink;
+        public short st_uid;
+        public short st_gid;
+        public _dev_t st_rdev;
+        public _off_t st_size;
+        public time_t st_atime;
+        public time_t st_mtime;
+        public time_t st_ctime;
+    }
+
+    [Serializable]
+    [StructLayout(LayoutKind.Sequential)]
+    public struct _stati64
+    {
+        public _dev_t st_dev;
+        public _ino_t st_ino;
+        public ushort st_mode;
+        public short st_nlink;
+        public short st_uid;
+        public short st_gid;
+        public _dev_t st_rdev;
+        public __int64 st_size;
+        public time_t st_atime;
+        public time_t st_mtime;
+        public time_t st_ctime;
+    }
+
+    [Serializable]
+    [StructLayout(LayoutKind.Sequential)]
+    public struct _stat64
+    {
+        public _dev_t st_dev;
+        public _ino_t st_ino;
+        public ushort st_mode;
+        public short st_nlink;
+        public short st_uid;
+        public short st_gid;
+        public _dev_t st_rdev;
+        public __int64 st_size;
+        public __time64_t st_atime;
+        public __time64_t st_mtime;
+        public __time64_t st_ctime;
+    }
+
+    [Serializable]
+    [StructLayout(LayoutKind.Sequential)]
+    public struct _timeb
+    {
+        public time_t time;
+        public ushort millitm;
+        public short timezone;
+        public short dstflag;
+    }
+
+    [Serializable]
+    [StructLayout(LayoutKind.Sequential)]
+    public struct _utimbuf
+    {
+        public time_t actime;
+        public time_t modtime;
     }
 }
+
+#if DEBUG
+#pragma warning restore 618
+#endif // DEBUG
