@@ -69,5 +69,24 @@ namespace Blend.xPlatform.Win32
         public const ushort C1_CNTRL = _CONTROL;
         public const ushort C1_BLANK = _BLANK;
         public const ushort C1_XDIGIT = _HEX;
+
+        public const byte _CRT_WARN = 0;
+        public const byte _CRT_ERROR = 1;
+        public const byte _CRT_ASSERT = 2;
+        public const byte _CRT_ERRCNT = 3;
+
+        public const ushort _FREE_BLOCK = 0;
+        public const ushort _NORMAL_BLOCK = 1;
+        public const ushort _CRT_BLOCK = 2;
+        public const ushort _IGNORE_BLOCK = 3;
+        public const ushort _CLIENT_BLOCK = 4;
+        public const ushort _MAX_BLOCKS = 5;
+
+        public const byte _bNoMansLandFill = 0xFD;
+        public const byte _bDeadLandFill = 0xDD;
+        public const byte _bCleanLandFill = 0xCD;
+        public const byte _bAlignLandFill = 0xBD;
+
+        public const byte nNoMansLandSize = 4;
     }
 }

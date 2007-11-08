@@ -112,6 +112,45 @@ namespace Blend.xPlatform.Win32
         public time_t actime;
         public time_t modtime;
     }
+
+    [Serializable]
+    [StructLayout(LayoutKind.Sequential)]
+    public class _CrtMemBlockHeader
+    {
+        [MarshalAs(UnmanagedType.LPStruct)]
+        public _CrtMemBlockHeader pBlockHeaderNext;
+
+        [MarshalAs(UnmanagedType.LPStruct)]
+        public _CrtMemBlockHeader pBlockHeaderPrev;
+
+        [MarshalAs(UnmanagedType.LPStr)]
+        public string szFileName;
+
+        public int nLine;
+        public size_t nDataSize;
+        public int nBlockUse;
+        public int lRequest;
+
+        [MarshalAs(UnmanagedType.LPArray, SizeConst = msvcrt.nNoMansLandSize)]
+        public byte[] gap = new byte[msvcrt.nNoMansLandSize];
+    }
+
+    [Serializable]
+    [StructLayout(LayoutKind.Sequential)]
+    public class _CrtMemState
+    {
+        [MarshalAs(UnmanagedType.LPStruct)]
+        public _CrtMemBlockHeader pBlockHeader;
+
+        [MarshalAs(UnmanagedType.LPArray, SizeConst = msvcrt._MAX_BLOCKS)]
+        public uint[] lCounts = new uint[msvcrt._MAX_BLOCKS];
+
+        [MarshalAs(UnmanagedType.LPArray, SizeConst = msvcrt.nNoMansLandSize)]
+        public uint[] lSizes = new uint[msvcrt._MAX_BLOCKS];
+
+        public uint lHighWaterCount;
+        public uint lTotalCount;
+    }
 }
 
 #if DEBUG

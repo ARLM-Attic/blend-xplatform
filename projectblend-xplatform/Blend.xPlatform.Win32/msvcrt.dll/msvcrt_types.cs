@@ -162,4 +162,11 @@ namespace Blend.xPlatform.Win32
     [Serializable]
     [Obsolete(PlatformInvokeBase.ObsoleteTypeCasting, false)]
     public enum wctype_t : ushort { }
+
+    /// <summary>
+    /// size_t 형식에 대한 정의입니다.
+    /// </summary>
+    [Serializable]
+    [Obsolete(PlatformInvokeBase.ObsoleteTypeCasting, false)]
+    public enum size_t : uint { }
 }
