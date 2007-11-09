@@ -19,6 +19,7 @@
  * */
 
 using System;
+using System.Text;
 using System.Security.Permissions;
 using System.Runtime.InteropServices;
 
@@ -243,6 +244,234 @@ namespace Blend.xPlatform.Win32
         [DllImport(ModuleName)]
         [SecurityPermission(SecurityAction.LinkDemand)]
         public static extern int _CrtSetReportMode(int reportType, int reportMode);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int __isascii(int c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int __iscsym(int c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int __iscsymf(int c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int __toascii(int c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int _isctype(int c, int desc);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int _tolower(int c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int _toupper(int c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int isalnum(int c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int isalpha(int c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int iscntrl(int c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int isdigit(int c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int isgraph(int c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int islower(int c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int isprint(int c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int ispunct(int c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int isspace(int c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int isupper(int c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int isxdigit(int c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int tolower(int c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int toupper(int c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int is_wctype(wint_t c, wctype_t desc);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int isleadbyte(int c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int iswalnum(wint_t c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int iswalpha(wint_t c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int iswascii(wint_t c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int iswcntrl(wint_t c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int iswctype(wint_t c, wctype_t desc);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int iswdigit(wint_t c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int iswgraph(wint_t c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int iswlower(wint_t c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int iswprint(wint_t c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int iswpunct(wint_t c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int iswspace(wint_t c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int iswupper(wint_t c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int iswxdigit(wint_t c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern wchar_t towlower(wchar_t c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern wchar_t towupper(wchar_t c);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int _chdir(string dirname);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int _wchdir(string dirname);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int _chdrive(int drive);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern string _getcwd(StringBuilder buffer, int maxlen);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern string _wgetcwd(StringBuilder buffer, int maxlen);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern string _getdcwd(int drive, StringBuilder buffer, int maxlen);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern string _wgetdcwd(int drive, StringBuilder buffer, int maxlen);
+
+        [DllImport(ModuleName)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int _getdrive();
+
+        [DllImport(ModuleName)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern uint _getdrives();
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int _mkdir(string dirname);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int _wmkdir(string dirname);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int _rmdir(string dirname);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int _wrmdir(string dirname);
+
+        [DllImport(ModuleName)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern uint _getdiskfree(uint drive, ref _diskfree_t driveinfo);
+
+        [DllImport(ModuleName)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern terminate_function set_terminate(terminate_function func);
+
+        [DllImport(ModuleName)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern unexpected_function set_unexpected(unexpected_function func);
+
+        [DllImport(ModuleName)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern _se_translator_function _set_se_translator(_se_translator_function func);
+
+        [DllImport(ModuleName)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern void terminate();
+
+        [DllImport(ModuleName)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern void unexpected();
+
+        [DllImport(ModuleName)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern IntPtr _errno();
     }
 }
 

@@ -23,6 +23,21 @@ using System.Runtime.InteropServices;
 
 namespace Blend.xPlatform.Win32
 {
+    [Serializable]
+    public delegate void terminate_handler();
+
+    [Serializable]
+    public delegate void terminate_function();
+
+    [Serializable]
+    public delegate void unexpected_handler();
+
+    [Serializable]
+    public delegate void unexpected_function();
+
+    [Serializable]
+    public delegate void _se_translator_function(uint code, IntPtr info);
+
     /// <summary>
     /// __int64 형식에 대한 정의입니다.
     /// </summary>

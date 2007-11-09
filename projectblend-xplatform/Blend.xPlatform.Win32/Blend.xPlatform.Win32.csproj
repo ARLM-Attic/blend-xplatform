@@ -40,7 +40,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="msvcrt.dll\msvcrt_consts.cs" />
-    <Compile Include="msvcrt.dll\msvcrt_define.cs" />
+    <Compile Include="msvcrt.dll\msvcrt_define.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="msvcrt.dll\msvcrt_functions.cs" />
     <Compile Include="msvcrt.dll\msvcrt_structs.cs" />
     <Compile Include="msvcrt.dll\msvcrt_types.cs" />

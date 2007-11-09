@@ -151,6 +151,16 @@ namespace Blend.xPlatform.Win32
         public uint lHighWaterCount;
         public uint lTotalCount;
     }
+
+    [Serializable]
+    [StructLayout(LayoutKind.Sequential)]
+    public struct _diskfree_t
+    {
+        public uint total_clusters;
+        public uint avail_clusters;
+        public uint sectors_per_cluster;
+        public uint bytes_per_sector;
+    }
 }
 
 #if DEBUG
