@@ -184,4 +184,18 @@ namespace Blend.xPlatform.Win32
     [Serializable]
     [Obsolete(PlatformInvokeBase.ObsoleteTypeCasting, false)]
     public enum size_t : uint { }
+
+    /// <summary>
+    /// time_t 형식에 대한 정의입니다.
+    /// </summary>
+    [Serializable]
+    [Obsolete(PlatformInvokeBase.ObsoleteTypeCasting, false)]
+    public enum time_t : int { }
+
+    /// <summary>
+    /// _fsize_t 형식에 대한 정의입니다.
+    /// </summary>
+    [Serializable]
+    [Obsolete(PlatformInvokeBase.ObsoleteTypeCasting, false)]
+    public enum _fsize_t : uint { }
 }

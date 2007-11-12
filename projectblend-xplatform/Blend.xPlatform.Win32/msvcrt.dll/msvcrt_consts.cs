@@ -161,5 +161,115 @@ namespace Blend.xPlatform.Win32
         public const ushort O_TEXT = _O_TEXT;
         public const ushort O_BINARY = _O_BINARY;
         public const ushort O_RAW = _O_RAW;
+
+        public const short DBL_DIG = 15;
+        public const double DBL_EPSILON = 2.2204460492503131e-016;
+        public const short DBL_MANT_DIG = 53;
+        public const double DBL_MAX = 1.7976931348623158e+308;
+        public const short DBL_MAX_10_EXP = 308;
+        public const short DBL_MAX_EXP = 1024;
+        public const double DBL_MIN = 2.2250738585072014e-308;
+        public const short DBL_MIN_10_EXP = (-307);
+        public const short DBL_MIN_EXP = (-1021);
+
+        public const byte _DBL_RADIX = 2;
+        public const byte _DBL_ROUNDS = 1;
+
+        public const byte DBL_RADIX = _DBL_RADIX;
+        public const byte DBL_ROUNDS = _DBL_ROUNDS;
+
+        public const short FLT_DIG = 6;
+        public const float FLT_EPSILON = 1.192092896e-07f;
+        public const short FLT_MANT_DIG = 24;
+        public const float FLT_MAX = 3.402823466e+38f;
+        public const short FLT_MAX_10_EXP = 38;
+        public const short FLT_MAX_EXP = 128;
+        public const float FLT_MIN = 1.175494351e-38F;
+        public const short FLT_MIN_10_EXP = (-37);
+        public const short FLT_MIN_EXP = (-125);
+
+        public const byte FLT_RADIX = 2;
+        public const byte FLT_ROUNDS = 1;
+
+        public const short LDBL_DIG = DBL_DIG;
+        public const double LDBL_EPSILON = DBL_EPSILON;
+        public const short LDBL_MANT_DIG = DBL_MANT_DIG;
+        public const double LDBL_MAX = DBL_MAX;
+        public const short LDBL_MAX_10_EXP = DBL_MAX_10_EXP;
+        public const short LDBL_MAX_EXP = DBL_MAX_EXP;
+        public const double LDBL_MIN = DBL_MIN;
+        public const short LDBL_MIN_10_EXP = DBL_MIN_10_EXP;
+        public const short LDBL_MIN_EXP = DBL_MIN_EXP;
+
+        public const byte _LDBL_RADIX = _DBL_RADIX;
+        public const byte _LDBL_ROUNDS = _DBL_ROUNDS;
+
+        public const byte LDBL_RADIX = _LDBL_RADIX;
+        public const byte LDBL_ROUNDS = _LDBL_ROUNDS;
+
+        public const int _MCW_EM = 0x0008001F;
+        public const int _MCW_IC = 0x00040000;
+        public const int _MCW_RC = 0x00000300;
+        public const int _MCW_PC = 0x00030000;
+
+        public const int _EM_INVALID = 0x00000010;
+        public const int _EM_DENORMAL = 0x00080000;
+        public const int _EM_ZERODIVIDE = 0x00000008;
+        public const int _EM_OVERFLOW = 0x00000004;
+        public const int _EM_UNDERFLOW = 0x00000002;
+        public const int _EM_INEXACT = 0x00000001;
+        public const int _IC_AFFINE = 0x00040000;
+        public const int _IC_PROJECTIVE = 0x00000000;
+        public const int _RC_CHOP = 0x00000300;
+        public const int _RC_UP = 0x00000200;
+        public const int _RC_DOWN = 0x00000100;
+        public const int _RC_NEAR = 0x00000000;
+        public const int _PC_24 = 0x00020000;
+        public const int _PC_53 = 0x00010000;
+        public const int _PC_64 = 0x00000000;
+
+        public const int _SW_INEXACT = 0x00000001;
+        public const int _SW_UNDERFLOW = 0x00000002;
+        public const int _SW_OVERFLOW = 0x00000004;
+        public const int _SW_ZERODIVIDE = 0x00000008;
+        public const int _SW_INVALID = 0x00000010;
+
+        public const int _SW_UNEMULATED = 0x00000040;
+        public const int _SW_SQRTNEG = 0x00000080;
+        public const int _SW_STACKOVERFLOW = 0x00000200;
+        public const int _SW_STACKUNDERFLOW = 0x00000400;
+
+        public const int _SW_DENORMAL = 0x00080000;
+
+        public const int _FPCLASS_SNAN = 0x0001;
+        public const int _FPCLASS_QNAN = 0x0002;
+        public const int _FPCLASS_NINF = 0x0004;
+        public const int _FPCLASS_NN = 0x0008;
+        public const int _FPCLASS_ND = 0x0010;
+        public const int _FPCLASS_NZ = 0x0020;
+        public const int _FPCLASS_PZ = 0x0040;
+        public const int _FPCLASS_PD = 0x0080;
+        public const int _FPCLASS_PN = 0x0100;
+        public const int _FPCLASS_PINF = 0x0200;
+
+        public const int _FPE_INVALID = 0x81;
+        public const int _FPE_DENORMAL = 0x82;
+        public const int _FPE_ZERODIVIDE = 0x83;
+        public const int _FPE_OVERFLOW = 0x84;
+        public const int _FPE_UNDERFLOW = 0x85;
+        public const int _FPE_INEXACT = 0x86;
+        public const int _FPE_UNEMULATED = 0x87;
+        public const int _FPE_SQRTNEG = 0x88;
+        public const int _FPE_STACKOVERFLOW = 0x8a;
+        public const int _FPE_STACKUNDERFLOW = 0x8b;
+        public const int _FPE_EXPLICITGEN = 0x8c;
+
+        public const int _A_NORMAL = 0x00000000;
+        public const int _A_RDONLY = 0x00000001;
+        public const int _A_HIDDEN = 0x00000002;
+        public const int _A_SYSTEM = 0x00000004;
+        public const int _A_VOLID = 0x00000008;
+        public const int _A_SUBDIR = 0x00000010;
+        public const int _A_ARCH = 0x00000020;
     }
 }

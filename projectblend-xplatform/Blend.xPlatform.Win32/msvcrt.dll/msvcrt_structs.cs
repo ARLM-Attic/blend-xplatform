@@ -161,6 +161,62 @@ namespace Blend.xPlatform.Win32
         public uint sectors_per_cluster;
         public uint bytes_per_sector;
     }
+
+    [Serializable]
+    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+    public struct _finddata_t
+    {
+        public uint attrib;
+        public time_t time_create;
+        public time_t time_access;
+        public time_t time_write;
+        public _fsize_t size;
+
+        [MarshalAs(UnmanagedType.LPStr, SizeConst = 260)]
+        public string name;
+    }
+
+    [Serializable]
+    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+    public struct _finddatai64_t
+    {
+        public uint attrib;
+        public time_t time_create;
+        public time_t time_access;
+        public time_t time_write;
+        public long size;
+
+        [MarshalAs(UnmanagedType.LPStr, SizeConst = 260)]
+        public string name;
+    }
+
+    [Serializable]
+    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
+    public struct _wfinddata_t
+    {
+        public uint attrib;
+        public time_t time_create;
+        public time_t time_access;
+        public time_t time_write;
+        public _fsize_t size;
+
+        [MarshalAs(UnmanagedType.LPWStr, SizeConst = 260)]
+        public string name;
+    }
+
+    [Serializable]
+    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
+    public struct _wfinddatai64_t
+    {
+        public uint attrib;
+        public time_t time_create;
+        public time_t time_access;
+        public time_t time_write;
+        public long size;
+
+        [MarshalAs(UnmanagedType.LPWStr, SizeConst = 260)]
+        public string name;
+    }
 }
 
 #if DEBUG

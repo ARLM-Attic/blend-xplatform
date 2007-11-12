@@ -472,6 +472,46 @@ namespace Blend.xPlatform.Win32
         [DllImport(ModuleName)]
         [SecurityPermission(SecurityAction.LinkDemand)]
         public static extern IntPtr _errno();
+
+        [DllImport(ModuleName)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern double _copysign(double x, double y);
+
+        [DllImport(ModuleName)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern double _chgsign(double x);
+
+        [DllImport(ModuleName)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern double _scalb(double x, int exp);
+
+        [DllImport(ModuleName)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern double _logb(double x);
+
+        [DllImport(ModuleName)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern double _nextafter(double x, double y);
+
+        [DllImport(ModuleName)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int _finite(double x);
+
+        [DllImport(ModuleName)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int _isnan(double x);
+
+        [DllImport(ModuleName)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int _fpclass(double x);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int _access(string path, int mode);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static extern int _waccess(string path, int mode);
     }
 }
 
