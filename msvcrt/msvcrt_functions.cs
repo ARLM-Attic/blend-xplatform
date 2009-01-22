@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
+#region Byte Classification
+
 partial class msvcrt
 {
     [DllImport(ModuleName)]
@@ -122,3 +124,5 @@ partial class msvcrt
 
     // http://msdn.microsoft.com/en-us/library/9h6ew5ts.aspx - _ismbbkprint
 }
+
+#endregion // Byte Classification

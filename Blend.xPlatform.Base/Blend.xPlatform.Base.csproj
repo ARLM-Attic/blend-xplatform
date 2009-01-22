@@ -48,6 +48,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestRequiredAttribute.cs" />
     <Compile Include="TodoAttribute.cs" />
+    <Compile Include="TypeCast.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

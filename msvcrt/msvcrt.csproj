@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="msvcrt.cs" />
     <Compile Include="msvcrt_functions.cs" />
+    <Compile Include="msvcrt_types.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
