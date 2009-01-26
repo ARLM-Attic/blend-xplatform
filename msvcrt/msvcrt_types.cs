@@ -44,3 +44,6 @@ public enum _locale_t : uint { }
 
 [Flags, Serializable]
 public enum _ctype_t : uint { }
+
+[Serializable]
+public delegate void _CrtDoForAllClientObjects_pfn(IntPtr ptr1, IntPtr ptr2);

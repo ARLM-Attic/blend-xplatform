@@ -469,13 +469,13 @@ partial class msvcrt
     [DllImport(ModuleName)]
     public static extern void _aligned_free(IntPtr memblock);
 
-    [DllImport(ModuleNameDebug)]
+    [DllImport(ModuleName)]
     public static extern void _aligned_free_dbg(IntPtr memblock);
 
     [DllImport(ModuleName)]
     public static extern IntPtr _aligned_malloc(uint size, uint alignment);
 
-    [DllImport(ModuleNameDebug, CharSet = CharSet.Ansi, ExactSpelling = true)]
+    [DllImport(ModuleName, CharSet = CharSet.Ansi, ExactSpelling = true)]
     public static extern IntPtr _aligned_malloc_dbg(uint size, uint alignment, string filename, int linenumber);
 
     [DllImport(ModuleName)]
@@ -521,6 +521,262 @@ partial class msvcrt
 
 partial class msvcrt
 {
+    [DllImport(ModuleName)]
+    public static extern int abs(int n);
+
+    [DllImport(ModuleName)]
+    public static extern long abs64(long n);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern double atof(string str);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Unicode)]
+    public static extern double _wtof(string str);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern double _atof_l(string str, uint locale);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Unicode)]
+    public static extern double _wtof_l(string str, uint locale);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern int atoi(string str);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Unicode)]
+    public static extern int _wtoi(string str);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern int _atoi_l(string str, uint locale);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Unicode)]
+    public static extern int _wtoi_l(string str, uint locale);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern long _atoi64(string str);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Unicode)]
+    public static extern long _wtoi64(string str);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern long _atoi64_l(string str, uint locale);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Unicode)]
+    public static extern long _wtoi64_l(string str, uint locale);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern int atol(string str);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern int _atol_l(string str, uint locale);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Unicode)]
+    public static extern int _wtol(string str);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Unicode)]
+    public static extern int _wtol_l(string str, uint locale);
+
+    [DllImport(ModuleName)]
+    public static extern IntPtr _ecvt(double value, int count, IntPtr dec, IntPtr sign);
+
+    [DllImport(ModuleName)]
+    public static extern IntPtr _fcvt(double value, int count, IntPtr dec, IntPtr sign);
+
+    [DllImport(ModuleName)]
+    public static extern IntPtr _gcvt(double value, int digits, IntPtr buffer);
+
+    [DllImport(ModuleName)]
+    public static extern IntPtr _itoa(int value, IntPtr str, int radix);
+
+    [DllImport(ModuleName)]
+    public static extern IntPtr _i64toa(long value, IntPtr str, int radix);
+
+    [DllImport(ModuleName)]
+    public static extern IntPtr _ui64toa(ulong value, IntPtr str, int radix);
+
+    [DllImport(ModuleName)]
+    public static extern IntPtr _itow(int value, IntPtr str, int radix);
+
+    [DllImport(ModuleName)]
+    public static extern IntPtr _i64tow(long value, IntPtr str, int radix);
+
+    [DllImport(ModuleName)]
+    public static extern IntPtr _ui64tow(ulong value, IntPtr str, int radix);
+
+    [DllImport(ModuleName)]
+    public static extern int labs(int n);
+
+    [DllImport(ModuleName)]
+    public static extern IntPtr _ltoa(int value, IntPtr str, int radix);
+
+    [DllImport(ModuleName)]
+    public static extern IntPtr _ltow(int value, IntPtr str, int radix);
+
+    [DllImport(ModuleName)]
+    public static extern uint _mbbtombc(uint c);
+
+    [DllImport(ModuleName)]
+    public static extern uint _mbbtombc_l(uint c, uint locale);
+
+    [DllImport(ModuleName)]
+    public static extern uint _mbcjistojms(uint c);
+
+    [DllImport(ModuleName)]
+    public static extern uint _mbcjistojms_l(uint c, uint locale);
+
+    [DllImport(ModuleName)]
+    public static extern uint _mbcjmstojis(uint c);
+
+    [DllImport(ModuleName)]
+    public static extern uint _mbcjmstojis_l(uint c, uint locale);
+
+    [DllImport(ModuleName)]
+    public static extern uint _mbctohira(uint c);
+
+    [DllImport(ModuleName)]
+    public static extern uint _mbctohira_l(uint c, uint locale);
+
+    [DllImport(ModuleName)]
+    public static extern uint _mbctokata(uint c);
+
+    [DllImport(ModuleName)]
+    public static extern uint _mbctokata_l(uint c, uint locale);
+
+    [DllImport(ModuleName)]
+    public static extern uint _mbctombb(uint c);
+
+    [DllImport(ModuleName)]
+    public static extern uint _mbctombb_l(uint c, uint locale);
+
+    [DllImport(ModuleName)]
+    public static extern uint mbstowcs(IntPtr wcstr, IntPtr mbstr, uint count);
+
+    [DllImport(ModuleName)]
+    public static extern uint _mbstowcs_l(IntPtr wcstr, IntPtr mbstr, uint count, uint locale);
+
+    [DllImport(ModuleName)]
+    public static extern int mbtowc(IntPtr wchar, IntPtr mbchar, uint count);
+
+    [DllImport(ModuleName)]
+    public static extern int _mbtowc_l(IntPtr wchar, IntPtr mbchar, uint count, uint locale);
+
+    [DllImport(ModuleName)]
+    public static extern double strtod(IntPtr nptr, IntPtr endptr);
+
+    [DllImport(ModuleName)]
+    public static extern double _strtod_l(IntPtr nptr, IntPtr endptr, uint locale);
+
+    [DllImport(ModuleName)]
+    public static extern double wcstod(IntPtr nptr, IntPtr endptr);
+
+    [DllImport(ModuleName)]
+    public static extern double wcstod_l(IntPtr nptr, IntPtr endptr, uint locale);
+
+    [DllImport(ModuleName)]
+    public static extern int strtol(IntPtr nptr, IntPtr endptr, int @base);
+
+    [DllImport(ModuleName)]
+    public static extern int wcstol(IntPtr nptr, IntPtr endptr, int @base);
+
+    [DllImport(ModuleName)]
+    public static extern int _strtol_l(IntPtr nptr, IntPtr endptr, int @base, uint locale);
+
+    [DllImport(ModuleName)]
+    public static extern int _wcstol_l(IntPtr nptr, IntPtr endptr, int @base, uint locale);
+
+    [DllImport(ModuleName)]
+    public static extern uint strtoul(IntPtr nptr, IntPtr endptr, int @base);
+
+    [DllImport(ModuleName)]
+    public static extern uint _strtoul_l(IntPtr nptr, IntPtr endptr, int @base, uint locale);
+
+    [DllImport(ModuleName)]
+    public static extern uint wcstoul(IntPtr nptr, IntPtr endptr, int @base);
+
+    [DllImport(ModuleName)]
+    public static extern uint _wcstoul_l(IntPtr nptr, IntPtr endptr, int @base, uint locale);
+
+    [DllImport(ModuleName)]
+    public static extern uint strxfrm(IntPtr strDest, IntPtr strSource, uint count);
+
+    [DllImport(ModuleName)]
+    public static extern uint wcsxfrm(IntPtr strDest, IntPtr strSource, uint count);
+
+    [DllImport(ModuleName)]
+    public static extern uint _strxfrm_l(IntPtr strDest, IntPtr strSource, uint count, uint locale);
+
+    [DllImport(ModuleName)]
+    public static extern uint _wcsxfrm_l(IntPtr strDest, IntPtr strSource, uint count, uint locale);
+
+    [DllImport(ModuleName)]
+    public static extern int __toascii(int c);
+
+    [DllImport(ModuleName)]
+    public static extern int tolower(int c);
+
+    [DllImport(ModuleName)]
+    public static extern int _tolower(int c);
+
+    [DllImport(ModuleName)]
+    public static extern int towloer(ushort c);
+
+    [DllImport(ModuleName)]
+    public static extern int _tolower_l(int c, uint locale);
+
+    [DllImport(ModuleName)]
+    public static extern int _towlower_l(ushort c, uint locale);
+
+    [DllImport(ModuleName)]
+    public static extern uint _mbctolower(uint c);
+
+    [DllImport(ModuleName)]
+    public static extern uint _mbctolower_l(uint c, uint locale);
+
+    [DllImport(ModuleName)]
+    public static extern uint _mbctoupper(uint c);
+
+    [DllImport(ModuleName)]
+    public static extern uint _mbctoupper_l(uint c, uint locale);
+
+    [DllImport(ModuleName)]
+    public static extern int toupper(int c);
+
+    [DllImport(ModuleName)]
+    public static extern int _toupper(int c);
+
+    [DllImport(ModuleName)]
+    public static extern int towupper(ushort c);
+    
+    [DllImport(ModuleName)]
+    public static extern int _toupper_l(int c, uint locale);
+
+    [DllImport(ModuleName)]
+    public static extern int _towupper_l(ushort c, uint locale);
+
+    [DllImport(ModuleName)]
+    public static extern IntPtr _ultoa(uint value, IntPtr str, int radix);
+
+    [DllImport(ModuleName)]
+    public static extern IntPtr _ultow(uint value, IntPtr str, int radix);
+
+    [DllImport(ModuleName)]
+    public static extern uint wcstombs(IntPtr mbstr, IntPtr wcstr, uint count);
+
+    [DllImport(ModuleName)]
+    public static extern uint _wcstombs_l(IntPtr mbstr, IntPtr wcstr, uint count, uint locale);
+
+    [DllImport(ModuleName)]
+    public static extern uint wctomb(IntPtr mbstr, IntPtr wcstr);
+
+    [DllImport(ModuleName)]
+    public static extern uint _wctomb_l(IntPtr mbstr, IntPtr wcstr, uint locale);
 }
 
 #endregion // Data Conversion
+
+#region POSIX CRT Functions
+
+partial class msvcrt
+{
+}
+
+#endregion // POSIX CRT Functions
