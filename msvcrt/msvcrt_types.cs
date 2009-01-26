@@ -38,3 +38,9 @@ public enum __time64_t : long { }
 
 [Flags, Serializable]
 public enum time_t : int { }
+
+[Flags, Serializable]
+public enum _locale_t : uint { }
+
+[Flags, Serializable]
+public enum _ctype_t : uint { }
