@@ -7,8 +7,6 @@ namespace msvcrt_test
     {
         static void Main(string[] args)
         {
-            msvcrt.printf("%d %f\r\n", 30, 44.03);
-
             Console.Read();
         }
     }
