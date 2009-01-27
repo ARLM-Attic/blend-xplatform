@@ -137,19 +137,19 @@ partial class msvcrt
 
     [TestRequired]
     [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
-    public static extern int _ismbslead(string str, string current);
+    public static extern int _ismbslead(IntPtr str, IntPtr current);
 
     [TestRequired]
     [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
-    public static extern int _ismbstrail(string str, string current);
+    public static extern int _ismbstrail(IntPtr str, IntPtr current);
 
     [TestRequired]
     [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
-    public static extern int _ismbslead_l(string str, string current, uint locale);
+    public static extern int _ismbslead_l(IntPtr str, IntPtr current, uint locale);
 
     [TestRequired]
     [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
-    public static extern int _ismbstrail_l(string str, string current, uint locale);
+    public static extern int _ismbstrail_l(IntPtr str, IntPtr current, uint locale);
 
     [DllImport(ModuleName)]
     public static extern int _mbbtype(uint c, int type);
@@ -160,11 +160,11 @@ partial class msvcrt
 
     [TestRequired]
     [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
-    public static extern int _mbsbtype(string mbstr, uint count);
+    public static extern int _mbsbtype(IntPtr mbstr, uint count);
 
     [TestRequired]
     [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
-    public static extern int _mbsbtype_l(string mbstr, uint count, uint locale);
+    public static extern int _mbsbtype_l(IntPtr mbstr, uint count, uint locale);
 
     [Todo]
     [TestRequired]
@@ -773,10 +773,317 @@ partial class msvcrt
 
 #endregion // Data Conversion
 
-#region POSIX CRT Functions
+#region POSIX CRT Functions - TODO
 
 partial class msvcrt
 {
 }
 
 #endregion // POSIX CRT Functions
+
+#region Directory Control Functions
+
+partial class msvcrt
+{
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern int _chdir(string dirname);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern int _wchdir(string dirname);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern int _chdrive(int drive);
+
+    [DllImport(ModuleName)]
+    public static extern IntPtr _getcwd(IntPtr buffer, int maxlen);
+
+    [DllImport(ModuleName)]
+    public static extern IntPtr _wgetcwd(IntPtr buffer, int maxlen);
+
+    [DllImport(ModuleName)]
+    public static extern IntPtr _getdcwd(int drive, IntPtr buffer, int maxlen);
+
+    [DllImport(ModuleName)]
+    public static extern IntPtr _wgetdcwd(int drive, IntPtr buffer, int maxlen);
+
+    [DllImport(ModuleName)]
+    public static extern uint _getdiskfree(uint drive, IntPtr driveinfo);
+
+    [DllImport(ModuleName)]
+    public static extern int _getdrive();
+
+    [DllImport(ModuleName)]
+    public static extern uint _getdrives();
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern int _mkdir(string dirname);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Unicode)]
+    public static extern int _wmkdir(string dirname);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern int _rmdir(string dirname);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern int _wrmdir(string dirname);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern void _searchenv(IntPtr filename, IntPtr varname, IntPtr pathname);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Unicode)]
+    public static extern void _wsearchenv(IntPtr filename, IntPtr varname, IntPtr pathname);
+}
+
+#endregion // Directory Control Functions
+
+#region Error Handling
+
+partial class msvcrt
+{
+    [DllImport(ModuleName)]
+    public static extern void clearerr(IntPtr stream);
+
+    [DllImport(ModuleName)]
+    public static extern int _eof(int fd);
+
+    [DllImport(ModuleName)]
+    public static extern int feof(IntPtr stream);
+
+    [DllImport(ModuleName)]
+    public static extern int ferror(IntPtr stream);
+
+    [DllImport(ModuleName)]
+    public static extern int _set_error_mode(int modeval);
+}
+
+#endregion // Error Handling
+
+#region Exception Handling
+
+partial class msvcrt
+{
+    [DllImport(ModuleName)]
+    public static extern _se_translator_function _set_se_translator(_se_translator_function seTransFunction);
+
+    [DllImport(ModuleName)]
+    public static extern terminate_function set_terminate(terminate_function termFunction);
+    
+    [DllImport(ModuleName)]
+    public static extern unexpected_function set_unexpected(unexpected_function unexpFunction);
+
+    [DllImport(ModuleName)]
+    public static extern void terminate();
+
+    [DllImport(ModuleName)]
+    public static extern void unexpected();
+}
+
+#endregion // Exception Handling
+
+#region File Handling - Test Required
+
+partial class msvcrt
+{
+    [DllImport(ModuleName)]
+    public static extern int _chsize(int fd, int size);
+
+    [DllImport(ModuleName)]
+    public static extern int _filelength(int fd);
+
+    [DllImport(ModuleName)]
+    public static extern long _filelengthi64(int fd);
+
+    [DllImport(ModuleName)]
+    public static extern int _fstat(int fd, IntPtr buffer);
+
+    [DllImport(ModuleName)]
+    public static extern int _fstat32(int fd, IntPtr buffer);
+
+    [DllImport(ModuleName)]
+    public static extern int _fstat64(int fd, IntPtr buffer);
+
+    [DllImport(ModuleName)]
+    public static extern int _fstati64(int fd, IntPtr buffer);
+
+    [DllImport(ModuleName)]
+    public static extern int _fstat32i64(int fd, IntPtr buffer);
+
+    [DllImport(ModuleName)]
+    public static extern int _fstat64i32(int fd, IntPtr buffer);
+
+    [DllImport(ModuleName)]
+    public static extern int _get_osfhandle(int fd);
+
+    [DllImport(ModuleName)]
+    public static extern int _isatty(int fd);
+
+    [DllImport(ModuleName)]
+    public static extern int _locking(int fd, int mode, int nbytes);
+
+    [DllImport(ModuleName)]
+    public static extern int _open_osfhandle(int osfhandle, int flags);
+
+    [DllImport(ModuleName)]
+    public static extern int _setmode(int fd, int mode);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern int _access(string path, int mode);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Unicode)]
+    public static extern int _waccess(string path, int mode);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern int _chmod(string filename, int pmode);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Unicode)]
+    public static extern int _wchmod(string filename, int pmode);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern IntPtr _fullpath(IntPtr absPath, IntPtr relPath, uint maxLength);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Unicode)]
+    public static extern IntPtr _wfullpath(IntPtr absPath, IntPtr relPath, uint maxLength);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern void _makepath(IntPtr path, IntPtr drive, IntPtr dir, IntPtr fname, IntPtr ext);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Unicode)]
+    public static extern void _wmakepath(IntPtr path, IntPtr drive, IntPtr dir, IntPtr fname, IntPtr ext);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern IntPtr _mktemp(IntPtr template);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Unicode)]
+    public static extern IntPtr _wmktemp(IntPtr template);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern int remove(string path);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Unicode)]
+    public static extern int _wremove(string path);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern int rename(string oldname, string newname);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Unicode)]
+    public static extern int _wrename(string oldname, string newname);
+
+    [Todo]
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern void _splitpath(string path, ref string drive, ref string dir,
+        ref string fname, ref string ext);
+
+    [Todo]
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Unicode)]
+    public static extern void _wsplitpath(string path, ref string drive, ref string dir,
+        ref string fname, ref string ext);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern int _stat(string path, IntPtr buffer);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern int _stat32(string path, IntPtr buffer);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern int _stat64(string path, IntPtr buffer);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern int _stati64(string path, IntPtr buffer);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern int _stat32i64(string path, IntPtr buffer);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern int _stat64i32(string path, IntPtr buffer);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Unicode)]
+    public static extern int _wstat(string path, IntPtr buffer);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Unicode)]
+    public static extern int _wstat32(string path, IntPtr buffer);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Unicode)]
+    public static extern int _wstat64(string path, IntPtr buffer);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Unicode)]
+    public static extern int _wstati64(string path, IntPtr buffer);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Unicode)]
+    public static extern int _wstat32i64(string path, IntPtr buffer);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Unicode)]
+    public static extern int _wstat64i32(string path, IntPtr buffer);
+
+    [DllImport(ModuleName)]
+    public static extern int _umask(int pmode);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern int _unlink(string filename);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Unicode)]
+    public static extern int _wunlink(string filename);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern IntPtr fopen(string filename, string mode);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Unicode)]
+    public static extern IntPtr _wfopen(string filename, string mode);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern IntPtr _fsopen(string filename, string mode, int shflag);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Unicode)]
+    public static extern IntPtr _wfsopen(string filename, string mode, int shflag);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern int _open(string filename, int oflag);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern int _open(string filename, int oflag, int pmode);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Unicode)]
+    public static extern int _wopen(string filename, int oflag);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Unicode)]
+    public static extern int _wopen(string filename, int oflag, int pmode);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern int _sopen(string filename, int oflag, int shflag);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern int _sopen(string filename, int oflag, int shflag, int pmode);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Unicode)]
+    public static extern int _wsopen(string filename, int oflag, int shflag);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Unicode)]
+    public static extern int _wsopen(string filename, int oflag, int shflag, int pmode);
+
+    [DllImport(ModuleName)]
+    public static extern int _pipe(IntPtr pfds, uint psize, int textmode);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern IntPtr freopen(string path, string mode, IntPtr stream);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Unicode)]
+    public static extern IntPtr _wfreopen(string path, string mode, IntPtr stream);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Ansi)]
+    public static extern IntPtr _fdopen(int fd, string mode);
+
+    [DllImport(ModuleName, ExactSpelling = true, CharSet = CharSet.Unicode)]
+    public static extern IntPtr _wfdopen(int fd, string mode);
+
+    [DllImport(ModuleName)]
+    public static extern int _fileno(IntPtr stream);
+}
+
+#endregion // File Handling
+
+#region Floating-Point Support
+
+partial class msvcrt
+{
+}
+
+#endregion // Floating-Point Support
