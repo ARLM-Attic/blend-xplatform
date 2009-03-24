@@ -11,6 +11,8 @@ namespace xPlatform.x86.msvcrt
         public const string ModuleName = "msvcrt.dll";
     }
 
+    #region Buffer manipulation
+
     partial class msvcrt
     {
         /// <summary>
@@ -121,4 +123,176 @@ namespace xPlatform.x86.msvcrt
         [DllImport(ModuleName), CLSCompliant(false)]
         public static extern void _swab(IntPtr src, IntPtr dest, int n);
     }
+
+    #endregion // Buffer manipulation
+
+    #region Byte classification
+
+    partial class msvcrt
+    {
+        /// <summary>
+        /// Lead byte; test result depends on LC_CTYPE category setting of current locale
+        /// </summary>
+        /// <remarks>
+        /// The isleadbyte macro returns a nonzero value if its argument is the first byte of a multibyte character. isleadbyte produces a meaningful result for any integer argument from –1 (EOF) to UCHAR_MAX (0xFF), inclusive. The result of the test depends upon the LC_CTYPE category setting of the current locale; see setlocale for more information.
+        /// The expected argument type of isleadbyte is int; if a signed character is passed, the compiler may convert it to an integer by sign extension, yielding unpredictable results.
+        /// </remarks>
+        /// <param name="c">Integer to test</param>
+        /// <returns>isleadbyte returns a nonzero value if the argument satisfies the test condition or 0 if it does not. In the “C” locale and in single-byte – character set (SBCS) locales, isleadbyte always returns 0.</returns>
+        [DllImport(ModuleName)]
+        public static extern int isleadbyte(int c);
+
+        /// <summary>
+        /// isalnum || _ismbbkalnum
+        /// </summary>
+        /// <param name="c">Integer to be tested</param>
+        /// <returns>
+        /// _ismbbalnum returns a nonzero value if the expression 
+        /// isalnum || _ismbbkalnum
+        /// is true of c, or 0 if it is not.
+        /// </returns>
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _ismbbalnum(uint c);
+
+        /// <summary>
+        /// isalpha || _ismbbkalnum
+        /// </summary>
+        /// <param name="c">Integer to be tested</param>
+        /// <returns>
+        /// _ismbbalpha returns a nonzero value if the expression 
+        /// isalpha || _ismbbkalnum
+        /// is true of c, or 0 if it is not.
+        /// </returns>
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _ismbbalpha(uint c);
+
+        /// <summary>
+        /// Same as _ismbbprint, but _ismbbgraph does not include the space character (0x20) 
+        /// </summary>
+        /// <param name="c">Integer to be tested</param>
+        /// <returns>
+        /// _ismbbgraph returns a nonzero value if the expression 
+        /// ( _PUNCT | _UPPER | _LOWER | _DIGIT ) || _ismbbkprint
+        /// is true of c, or 0 if it is not.
+        /// </returns>
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _ismbbgraph(uint c);
+
+        /// <summary>
+        /// Non-ASCII text symbol other than punctuation. For example, in code page 932 only, _ismbbkalnum tests for katakana alphanumeric
+        /// </summary>
+        /// <param name="c">Integer to be tested</param>
+        /// <returns>_ismbbkalnum returns a nonzero value if the integer c is a non-ASCII text symbol other than punctuation, or 0 if it is not.</returns>
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _ismbbkalnum(uint c);
+
+        /// <summary>_ismbbkana tests for a katakana symbol and is specific to code page 932.</summary>
+        /// <remarks>Katakana (0xA1 – 0xDF), code page 932 only</remarks>
+        /// <param name="c">Integer to be tested</param>
+        /// <returns>_ismbbkana returns a nonzero value if the integer c is a katakana symbol, or 0 if it is not.</returns>
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _ismbbkana(uint c);
+
+        /// <summary>
+        /// Non-ASCII text or non-ASCII punctuation symbol. For example, in code page 932 only, _ismbbkprint tests for katakana alphanumeric or katakana punctuation (range: 0xA1 – 0xDF).
+        /// </summary>
+        /// <param name="c">Integer to be tested</param>
+        /// <returns>_ismbbkprint returns a nonzero value if the integer c is a non-ASCII text or non-ASCII punctuation symbol, or 0 if it is not. For example, in code page 932 only, _ismbbkprint tests for katakana alphanumeric or katakana punctuation (range: 0xA1 – 0xDF).</returns>
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _ismbbkprint(uint c);
+
+        /// <summary>
+        /// Non-ASCII punctuation. For example, in code page 932 only, _ismbbkpunct tests for katakana punctuation.
+        /// </summary>
+        /// <param name="c">Integer to be tested</param>
+        /// <returns>_ismbbkpunct returns a nonzero value if the integer c is a non-ASCII punctuation symbol, or 0 if it is not. For example, in code page 932 only, _ismbbkpunct tests for katakana punctuation.</returns>
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _ismbbkpunct(uint c);
+
+        /// <summary>
+        /// First byte of multibyte character. For example, in code page 932 only, valid ranges are 0x81 – 0x9F, 0xE0 – 0xFC.
+        /// </summary>
+        /// <param name="c">Integer to be tested</param>
+        /// <returns>_ismbblead returns a nonzero value if the integer c is the first byte of a multibyte character. For example, in code page 932 only, valid ranges are 0x81 – 0x9F and 0xE0 – 0xFC.</returns>
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _ismbblead(uint c);
+
+        /// <summary>
+        /// isprint || _ismbbkprint. ismbbprint includes the space character (0x20)
+        /// </summary>
+        /// <param name="c">Integer to be tested</param>
+        /// <returns>
+        /// _ismbbprint returns a nonzero value if the expression 
+        /// isprint || _ismbbkprint
+        /// is true of c, or 0 if it is not.
+        /// </returns>
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _ismbbprint(uint c);
+
+        /// <summary>
+        /// ispunct || _ismbbkpunct
+        /// </summary>
+        /// <param name="c">_ismbbpunct returns a nonzero value if the integer c is a non-ASCII punctuation symbol.</param>
+        /// <returns>Integer to be tested</returns>
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _ismbbpunct(uint c);
+
+        /// <summary>
+        /// Second byte of multibyte character. For example, in code page 932 only, valid ranges are 0x40 – 0x7E, 0x80 – 0xEC.
+        /// </summary>
+        /// <param name="c">Integer to be tested</param>
+        /// <returns>_ismbbtrail returns a nonzero value if the integer c is the second byte of a multibyte character. For example, in code page 932 only, valid ranges are 0x40 – 0x7E and 0x80 – 0xEC.</returns>
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _ismbbtrail(uint c);
+
+        /// <summary>
+        /// Lead byte (in string context)
+        /// </summary>
+        /// <remarks>The _ismbslead and _ismbstrail routines perform context-sensitive tests for multibyte-character string lead and trail bytes; they determine whether a given substring pointer points to a lead byte or a trail byte. _ismbslead and _ismbstrail are slower than their _ismbblead and _ismbbtrail counterparts because they take the string context into account.</remarks>
+        /// <param name="string">Pointer to start of string or previous known lead byte</param>
+        /// <param name="current">Pointer to position in string to be tested</param>
+        /// <returns>_ismbslead return –1 if the character is a lead byte, respectively. Otherwise they return zero.</returns>
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _ismbslead([Const] IntPtr @string, [Const] IntPtr current);
+
+        /// <summary>
+        /// Trail byte (in string context)
+        /// </summary>
+        /// <remarks>The _ismbslead and _ismbstrail routines perform context-sensitive tests for multibyte-character string lead and trail bytes; they determine whether a given substring pointer points to a lead byte or a trail byte. _ismbslead and _ismbstrail are slower than their _ismbblead and _ismbbtrail counterparts because they take the string context into account.</remarks>
+        /// <param name="string">Pointer to start of string or previous known lead byte</param>
+        /// <param name="current">Pointer to position in string to be tested</param>
+        /// <returns>_ismbstrail return –1 if the character is a trail byte, respectively. Otherwise they return zero.</returns>
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _ismbstrail([Const] IntPtr @string, [Const] IntPtr current);
+
+        /// <summary>
+        /// Return byte type based on previous byte
+        /// </summary>
+        /// <remarks>The _mbbtype function determines the type of a byte in a multibyte character. If the value of type is any value except 1, _mbbtype tests for a valid single-byte or lead byte of a multibyte character. If the value of type is 1, _mbbtype tests for a valid trail byte of a multibyte character. In earlier versions, _mbbtype was called chkctype. For new code, _mbbtype use instead.</remarks>
+        /// <param name="c">Character to test</param>
+        /// <param name="type">Type of byte to test for</param>
+        /// <returns>_mbbtype returns the type of byte within a string. This decision is context-sensitive as specified by the value of type, which provides the control test condition. type is the type of the previous byte in the string.</returns>
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _mbbtype(byte c, int type);
+
+        /// <summary>
+        /// Return type of byte within string
+        /// </summary>
+        /// <remarks>The _mbsbtype function determines the type of a byte in a multibyte character string. The function examines only the byte at offset count in mbstr, ignoring invalid characters before the specified byte. </remarks>
+        /// <param name="mbstr">Address of a sequence of multibyte characters</param>
+        /// <param name="count">Byte offset from head of string</param>
+        /// <returns>_mbsbtype returns an integer value indicating the result of the test on the specified byte.</returns>
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _mbsbtype([Const] IntPtr mbstr, size_t count);
+    }
+
+    #endregion // Byte classification
+
+    #region Character classification
+
+    partial class msvcrt
+    {
+    }
+
+    #endregion // Character classification
 }
