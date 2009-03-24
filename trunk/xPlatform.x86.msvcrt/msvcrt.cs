@@ -292,6 +292,140 @@ namespace xPlatform.x86.msvcrt
 
     partial class msvcrt
     {
+        [DllImport(ModuleName)]
+        public static extern int isalnum(int c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int iswalnum(wint_t c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _ismbcalnum(uint c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _ismbcalpha(uint c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _ismbcdigit(uint c);
+
+        [DllImport(ModuleName)]
+        public static extern int isalpha(int c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int iswalpha(wint_t c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int __isascii(int c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int iswascii(wint_t c);
+
+        [DllImport(ModuleName)]
+        public static extern int iscntrl(int c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int iswcntrl(wint_t c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int __iscsym(int c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int __iscsymf(int c);
+
+        [DllImport(ModuleName)]
+        public static extern int isdigit(int c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int iswdigit(wint_t c);
+
+        [DllImport(ModuleName)]
+        public static extern int isgraph(int c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int iswgraph(wint_t c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _ismbcgraph(uint c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _ismbcprint(uint c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _ismbcpunct(uint c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _ismbcspace(uint c);
+
+        [DllImport(ModuleName)]
+        public static extern int islower(int c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int iswlower(wint_t c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _ismbclower(uint c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _ismbcupper(uint c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _ismbchira(uint c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _ismbckata(uint c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _ismbclegal(uint c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _ismbcsymbol(uint c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _ismbcl0(uint c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _ismbcl1(uint c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _ismbcl2(uint c);
+
+        [DllImport(ModuleName)]
+        public static extern int isprint(int c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int iswprint(wint_t c);
+
+        [DllImport(ModuleName)]
+        public static extern int ispunct(int c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int iswpunct(wint_t c);
+
+        [DllImport(ModuleName)]
+        public static extern int isspace(int c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int iswspace(wint_t c);
+
+        [DllImport(ModuleName)]
+        public static extern int isupper(int c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int iswupper(wint_t c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int iswctype(wint_t c, wctype_t desc);
+
+        [DllImport(ModuleName)]
+        public static extern int isxdigit(int c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int iswxdigit(wint_t c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern size_t _mbclen([Const] IntPtr c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int mblen([Const] IntPtr mbstr, size_t count);
     }
 
     #endregion // Character classification
