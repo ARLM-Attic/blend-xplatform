@@ -11,4 +11,7 @@ namespace xPlatform.x86.msvcrt
 
     [Serializable, Flags, CLSCompliant(false), Todo("Check actual type of wctype_t")]
     public enum wctype_t : ushort { }
+
+    [Serializable, Flags, CLSCompliant(false), Todo("Check actual type of wchar_t")]
+    public enum wchar_t : ushort { }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using xPlatform.Flags;
 using System.Runtime.InteropServices;
 
@@ -429,4 +430,278 @@ namespace xPlatform.x86.msvcrt
     }
 
     #endregion // Character classification
+
+    #region Data conversion
+
+    partial class msvcrt
+    {
+        [DllImport(ModuleName)]
+        public static extern int abs(int n);
+
+        [DllImport(ModuleName)]
+        public static extern double atof([Const] IntPtr @string);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        public static extern double atof(string @string);
+
+        [DllImport(ModuleName)]
+        public static extern int atoi([Const] IntPtr @string);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        public static extern int atoi(string @string);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern long _atoi64([Const] IntPtr @string);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern long _atoi64(string @string);
+
+        [DllImport(ModuleName)]
+        public static extern int atol([Const] IntPtr @string);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        public static extern int atol(string @string);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _ecvt(double value, int count, IntPtr dec, IntPtr sign);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _ecvt(double value, int count, out int dec, out int sign);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _fcvt(double value, int count, IntPtr dec, IntPtr sign);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _fcvt(double value, int count, out int dec, out int sign);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _gcvt(double value, int digits, IntPtr buffer);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr _gcvt(double value, int digits, StringBuilder buffer);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _itoa(int value, IntPtr @string, int radix);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr _itoa(int vlaue, StringBuilder @string, int radix);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _i64toa(long value, IntPtr @string, int radix);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr _i64toa(long value, StringBuilder @string, int radix);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _ui64toa(ulong value, IntPtr @string, int radix);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr _ui64toa(ulong value, StringBuilder @string, int radix);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _itow(int value, IntPtr @string, int radix);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr _itow(int value, StringBuilder @string, int radix);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _i64tow(long value, IntPtr @string, int radix);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr _i64tow(long value, StringBuilder @string, int radix);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _ui64tow(ulong value, IntPtr @string, int radix);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr _ui64tow(ulong value, StringBuilder @string, int radix);
+
+        [DllImport(ModuleName)]
+        public static extern int labs(int n);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _ltoa(int value, IntPtr @string, int radix);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr _ltoa(int value, StringBuilder @string, int radix);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _ltow(int value, IntPtr @string, int radix);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr _ltow(int value, StringBuilder @string, int radix);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern ushort _mbbtombc(ushort c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint _mbcjistojms(uint c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint _mbcjmstojis(uint c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint _mbctohira(uint c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint _mbctokata(uint c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint _mbctombb(uint c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern size_t mbstowcs(IntPtr wcstr, [Const] IntPtr mbstr, size_t count);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int mbtowc(IntPtr wchar, [Const] IntPtr mbchar, size_t count);
+
+        [DllImport(ModuleName)]
+        public static extern double strtod([Const] IntPtr nptr, IntPtr endptr);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern double strtod([Const] IntPtr nptr, out IntPtr endptr);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        public static extern double strtod(string nptr, IntPtr endptr);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern double strtod(string nptr, out IntPtr endptr);
+
+        [DllImport(ModuleName)]
+        public static extern double wcstod([Const] IntPtr nptr, IntPtr endptr);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern double wcstod([Const] IntPtr nptr, out IntPtr endptr);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
+        public static extern double wcstod(string nptr, IntPtr endptr);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern double wcstod(string nptr, out IntPtr endptr);
+
+        [DllImport(ModuleName)]
+        public static extern int strtol([Const] IntPtr nptr, IntPtr endptr, int @base);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int strtol([Const] IntPtr nptr, out IntPtr endptr, int @base);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        public static extern int strtol(string nptr, IntPtr endptr, int @base);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int strtol(string nptr, out IntPtr endptr, int @base);
+
+        [DllImport(ModuleName)]
+        public static extern int wcstol([Const] IntPtr nptr, IntPtr endptr, int @base);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int wcstol([Const] IntPtr nptr, out IntPtr endptr, int @base);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
+        public static extern int wcstol(string nptr, IntPtr endptr, int @base);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int wcstol(string nptr, out IntPtr endptr, int @base);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint strtoul([Const] IntPtr nptr, IntPtr endptr, int @base);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint strtoul([Const] IntPtr nptr, out IntPtr endptr, int @base);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern uint strtoul(string nptr, IntPtr endptr, int @base);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern uint strtoul(string nptr, out IntPtr endptr, int @base);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint wcstoul([Const] IntPtr nptr, IntPtr endptr, int @base);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint wcstoul([Const] IntPtr nptr, out IntPtr endptr, int @base);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern uint wcstoul(string nptr, IntPtr endptr, int @base);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern uint wcstoul(string nptr, out IntPtr endptr, int @base);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern size_t strxfrm(IntPtr strDest, [Const] IntPtr strSource, size_t count);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern size_t strxfrm(StringBuilder strDest, string strSource, size_t count);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern size_t wcsxfrm(IntPtr strDest, [Const] IntPtr strSource, size_t count);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern size_t wcsxfrm(StringBuilder strDest, string strSource, size_t count);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int __toascii(int c);
+
+        [DllImport(ModuleName)]
+        public static extern int tolower(int c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _tolower(int c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int towlower(wint_t c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint _mbctolower(uint c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint _mbctoupper(uint c);
+
+        [DllImport(ModuleName)]
+        public static extern int toupper(int c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _toupper(int c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int towupper(wint_t c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _ultoa(uint value, IntPtr @string, int radix);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr _ultoa(uint value, StringBuilder @string, int radix);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _ultow(uint value, IntPtr @string, int radix);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr _ultow(uint value, StringBuilder @string, int radix);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern size_t wcstombs(IntPtr mbstr, [Const] IntPtr wcstr, size_t count);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int wctomb(IntPtr mbchar, wchar_t wchar);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _wtoi([Const] IntPtr @string);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int _wtoi(string @string);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern long _wtoi64([Const] IntPtr @string);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern long _wtoi64(string @string);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _wtol([Const] IntPtr @string);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int _wtol(string @string);
+    }
+
+    #endregion // Data conversion
 }
