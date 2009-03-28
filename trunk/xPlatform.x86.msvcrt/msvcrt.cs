@@ -704,4 +704,127 @@ namespace xPlatform.x86.msvcrt
     }
 
     #endregion // Data conversion
+
+    #region Directory control
+
+    partial class msvcrt
+    {
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _chdir([Const] IntPtr dirname);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int _chdir(string dirname);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _wchdir([Const] IntPtr dirname);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int _wchdir(string dirname);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _chdrive(int drive);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _getcwd(IntPtr buffer, int maxlen);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr _getcwd(StringBuilder buffer, int maxlen);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _wgetcwd(IntPtr buffer, int maxlen);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr _wgetcwd(StringBuilder buffer, int maxlen);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _getdcwd(int drive, IntPtr buffer, int maxlen);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr _getdcwd(int drive, StringBuilder buffer, int maxlen);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _wgetdcwd(int drive, IntPtr buffer, int maxlen);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr _wgetdcwd(int drive, StringBuilder buffer, int maxlen);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _getdrive();
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _mkdir([Const] IntPtr dirname);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int _mkdir(string dirname);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _wmkdir([Const] IntPtr dirname);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int _wmkdir(string dirname);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _rmdir([Const] IntPtr dirname);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int _rmdir(string dirname);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _wrmdir([Const] IntPtr dirname);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int _wrmdir(string dirname);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void _searchenv([Const] IntPtr filename, [Const] IntPtr varname, IntPtr pathname);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern void _searchenv(string filename, string varname, StringBuilder pathname);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void _wsearchenv([Const] IntPtr filename, [Const] IntPtr varname, IntPtr pathname);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern void _wsearchenv(string filename, string varname, StringBuilder pathname);
+    }
+
+    #endregion // Directory control
+
+    #region Exception handling routines
+
+    partial class msvcrt
+    {
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern _se_translator_function _set_se_translator(_se_translator_function se_trans_func);
+
+        [DllImport(ModuleName)]
+        public static extern terminate_function set_terminate(terminate_function term_func);
+
+        [DllImport(ModuleName)]
+        public static extern unexpected_function set_unexpected(unexpected_function unexp_func);
+
+        [DllImport(ModuleName)]
+        public static extern void terminate();
+
+        [DllImport(ModuleName)]
+        public static extern void unexpected();
+    }
+
+    #endregion // Exception handling routines
+
+    #region File handling routines with file handles
+
+    partial class msvcrt
+    {
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _chsize(int handle, int size);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _filelength(int handle);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern long _filelengthi64(int handle);
+    }
+
+    #endregion // File handling routines with file handles
 }
