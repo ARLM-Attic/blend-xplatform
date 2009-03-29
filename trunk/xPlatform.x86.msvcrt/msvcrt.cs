@@ -1165,4 +1165,682 @@ namespace xPlatform.x86.msvcrt
     }
 
     #endregion // Floating point support
+
+    #region Stream input and output
+
+    partial class msvcrt
+    {
+        [DllImport(ModuleName)]
+        public static extern void clearerr(IntPtr stream);
+
+        [DllImport(ModuleName)]
+        public static extern int fclose(IntPtr stream);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _fcloseall();
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _fdopen(int handle, [Const] IntPtr mode);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr _fdopen(int handle, string mode);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _wfdopen(int handle, [Const] IntPtr mode);
+        
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr _wfdopen(int handle, string mode);
+
+        [DllImport(ModuleName)]
+        public static extern int feof(IntPtr stream);
+
+        [DllImport(ModuleName)]
+        public static extern int ferror(IntPtr stream);
+
+        [DllImport(ModuleName)]
+        public static extern int fflush(IntPtr stream);
+
+        [DllImport(ModuleName)]
+        public static extern int fgetc(IntPtr stream);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern wint_t fgetwc(IntPtr stream);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _fgetchar();
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern wint_t _fgetwchar();
+
+        [DllImport(ModuleName)]
+        public static extern int fgetpos(IntPtr stream, IntPtr pos);
+
+        [DllImport(ModuleName)]
+        public static extern int fgetpos(IntPtr stream, ref fpos_t pos);
+
+        [DllImport(ModuleName)]
+        public static extern IntPtr fgets(IntPtr @string, int n, IntPtr stream);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        public static extern IntPtr fgets(StringBuilder @string, int n, IntPtr stream);
+
+        [DllImport(ModuleName)]
+        public static extern IntPtr fgetws(IntPtr @string, int n, IntPtr stream);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
+        public static extern IntPtr fgetws(StringBuilder @string, int n, IntPtr stream);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _fileno(IntPtr stream);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _flushall();
+
+        [DllImport(ModuleName)]
+        public static extern IntPtr fopen([Const] IntPtr filename, [Const] IntPtr mode);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        public static extern IntPtr fopen(string filename, string mode);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _wfopen([Const] IntPtr filename, [Const] IntPtr mode);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr _wfopen(string filename, string mode);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int fprintf(IntPtr stream, [Const] IntPtr format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2, [MarshalAs(UnmanagedType.AsAny)] object arg3, [MarshalAs(UnmanagedType.AsAny)] object arg4, [MarshalAs(UnmanagedType.AsAny)] object arg5);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int fprintf(IntPtr stream, [Const] IntPtr format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2, [MarshalAs(UnmanagedType.AsAny)] object arg3, [MarshalAs(UnmanagedType.AsAny)] object arg4);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int fprintf(IntPtr stream, [Const] IntPtr format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2, [MarshalAs(UnmanagedType.AsAny)] object arg3);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int fprintf(IntPtr stream, [Const] IntPtr format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int fprintf(IntPtr stream, [Const] IntPtr format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int fprintf(IntPtr stream, [Const] IntPtr format, [MarshalAs(UnmanagedType.AsAny)] object arg0);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int fprintf(IntPtr stream, [Const] IntPtr format, __arglist);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int fprintf(IntPtr stream, string format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2, [MarshalAs(UnmanagedType.AsAny)] object arg3, [MarshalAs(UnmanagedType.AsAny)] object arg4, [MarshalAs(UnmanagedType.AsAny)] object arg5);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int fprintf(IntPtr stream, string format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2, [MarshalAs(UnmanagedType.AsAny)] object arg3, [MarshalAs(UnmanagedType.AsAny)] object arg4);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int fprintf(IntPtr stream, string format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2, [MarshalAs(UnmanagedType.AsAny)] object arg3);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int fprintf(IntPtr stream, string format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int fprintf(IntPtr stream, string format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int fprintf(IntPtr stream, string format, [MarshalAs(UnmanagedType.AsAny)] object arg0);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int fprintf(IntPtr stream, string format, __arglist);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int fwprintf(IntPtr stream, [Const] IntPtr format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2, [MarshalAs(UnmanagedType.AsAny)] object arg3, [MarshalAs(UnmanagedType.AsAny)] object arg4, [MarshalAs(UnmanagedType.AsAny)] object arg5);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int fwprintf(IntPtr stream, [Const] IntPtr format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2, [MarshalAs(UnmanagedType.AsAny)] object arg3, [MarshalAs(UnmanagedType.AsAny)] object arg4);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int fwprintf(IntPtr stream, [Const] IntPtr format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2, [MarshalAs(UnmanagedType.AsAny)] object arg3);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int fwprintf(IntPtr stream, [Const] IntPtr format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int fwprintf(IntPtr stream, [Const] IntPtr format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int fwprintf(IntPtr stream, [Const] IntPtr format, [MarshalAs(UnmanagedType.AsAny)] object arg0);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int fwprintf(IntPtr stream, [Const] IntPtr format, __arglist);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int fwprintf(IntPtr stream, string format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2, [MarshalAs(UnmanagedType.AsAny)] object arg3, [MarshalAs(UnmanagedType.AsAny)] object arg4, [MarshalAs(UnmanagedType.AsAny)] object arg5);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int fwprintf(IntPtr stream, string format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2, [MarshalAs(UnmanagedType.AsAny)] object arg3, [MarshalAs(UnmanagedType.AsAny)] object arg4);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int fwprintf(IntPtr stream, string format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2, [MarshalAs(UnmanagedType.AsAny)] object arg3);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int fwprintf(IntPtr stream, string format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int fwprintf(IntPtr stream, string format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int fwprintf(IntPtr stream, string format, [MarshalAs(UnmanagedType.AsAny)] object arg0);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int fwprintf(IntPtr stream, string format, __arglist);
+
+        [DllImport(ModuleName)]
+        public static extern int fputc(int c, IntPtr stream);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern wint_t fputwc(wint_t c, IntPtr stream);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _fputchar(int c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern wint_t _fputwchar(wint_t c);
+
+        [DllImport(ModuleName)]
+        public static extern int fputs([Const] IntPtr @string, IntPtr stream);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        public static extern int fputs(string @string, IntPtr stream);
+
+        [DllImport(ModuleName)]
+        public static extern int fputws([Const] IntPtr @string, IntPtr stream);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
+        public static extern int fputws(string @string, IntPtr stream);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern size_t fread(IntPtr buffer, size_t size, size_t count, IntPtr stream);
+
+        [DllImport(ModuleName)]
+        public static extern IntPtr freopen([Const] IntPtr filename, [Const] IntPtr mode, IntPtr stream);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        public static extern IntPtr freopen(string filename, string mode, IntPtr stream);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _wfreopen([Const] IntPtr filename, [Const] IntPtr mode, IntPtr stream);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr _wfreopen(string filename, string mode, IntPtr stream);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int fscanf(IntPtr stream, [Const] IntPtr format, ref int arg0, ref int arg1, ref int arg2);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int fscanf(IntPtr stream, [Const] IntPtr format, ref int arg0, ref int arg1);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int fscanf(IntPtr stream, [Const] IntPtr format, ref int arg0);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int fscanf(IntPtr stream, [Const] IntPtr format, ref double arg0, ref double arg1, ref double arg2);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int fscanf(IntPtr stream, [Const] IntPtr format, ref double arg0, ref double arg1);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int fscanf(IntPtr stream, [Const] IntPtr format, ref double arg0);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int fscanf(IntPtr stream, [Const] IntPtr format, StringBuilder arg0, StringBuilder arg1, StringBuilder arg2);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int fscanf(IntPtr stream, [Const] IntPtr format, StringBuilder arg0, StringBuilder arg1);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int fscanf(IntPtr stream, [Const] IntPtr format, StringBuilder arg0);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int fscanf(IntPtr stream, [Const] IntPtr format, __arglist);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int fscanf(IntPtr stream, string format, ref int arg0, ref int arg1, ref int arg2);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int fscanf(IntPtr stream, string format, ref int arg0, ref int arg1);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int fscanf(IntPtr stream, string format, ref int arg0);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int fscanf(IntPtr stream, string format, ref double arg0, ref double arg1, ref double arg2);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int fscanf(IntPtr stream, string format, ref double arg0, ref double arg1);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int fscanf(IntPtr stream, string format, ref double arg0);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int fscanf(IntPtr stream, string format, StringBuilder arg0, StringBuilder arg1, StringBuilder arg2);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int fscanf(IntPtr stream, string format, StringBuilder arg0, StringBuilder arg1);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int fscanf(IntPtr stream, string format, StringBuilder arg0);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int fscanf(IntPtr stream, string format, __arglist);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int fwscanf(IntPtr stream, [Const] IntPtr format, ref int arg0, ref int arg1, ref int arg2);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int fwscanf(IntPtr stream, [Const] IntPtr format, ref int arg0, ref int arg1);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int fwscanf(IntPtr stream, [Const] IntPtr format, ref int arg0);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int fwscanf(IntPtr stream, [Const] IntPtr format, ref double arg0, ref double arg1, ref double arg2);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int fwscanf(IntPtr stream, [Const] IntPtr format, ref double arg0, ref double arg1);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int fwscanf(IntPtr stream, [Const] IntPtr format, ref double arg0);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int fwscanf(IntPtr stream, [Const] IntPtr format, StringBuilder arg0, StringBuilder arg1, StringBuilder arg2);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int fwscanf(IntPtr stream, [Const] IntPtr format, StringBuilder arg0, StringBuilder arg1);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int fwscanf(IntPtr stream, [Const] IntPtr format, StringBuilder arg0);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int fwscanf(IntPtr stream, [Const] IntPtr format, __arglist);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int fwscanf(IntPtr stream, string format, ref int arg0, ref int arg1, ref int arg2);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int fwscanf(IntPtr stream, string format, ref int arg0, ref int arg1);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int fwscanf(IntPtr stream, string format, ref int arg0);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int fwscanf(IntPtr stream, string format, ref double arg0, ref double arg1, ref double arg2);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int fwscanf(IntPtr stream, string format, ref double arg0, ref double arg1);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int fwscanf(IntPtr stream, string format, ref double arg0);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int fwscanf(IntPtr stream, string format, StringBuilder arg0, StringBuilder arg1, StringBuilder arg2);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int fwscanf(IntPtr stream, string format, StringBuilder arg0, StringBuilder arg1);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int fwscanf(IntPtr stream, string format, StringBuilder arg0);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int fwscanf(IntPtr stream, string format, __arglist);
+
+        [DllImport(ModuleName)]
+        public static extern int fseek(IntPtr stream, int offset, int origin);
+
+        [DllImport(ModuleName)]
+        public static extern int fsetpos(IntPtr stream, [Const] IntPtr pos);
+
+        [DllImport(ModuleName)]
+        public static extern int fsetpos(IntPtr stream, [Const] ref fpos_t pos);
+
+        [DllImport(ModuleName)]
+        public static extern IntPtr fsopen([Const] IntPtr filename, [Const] IntPtr mode, int shflag);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        public static extern IntPtr fsopen(string filename, string mode, int shflag);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _wfsopen([Const] IntPtr filename, [Const] IntPtr mode, int shflag);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr _wfsopen(string filename, string mode, int shflag);
+
+        [DllImport(ModuleName)]
+        public static extern int ftell(IntPtr stream);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern size_t fwrite([Const] IntPtr buffer, size_t size, size_t count, IntPtr stream);
+
+        [DllImport(ModuleName)]
+        public static extern int getc(IntPtr stream);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern wint_t getwc(IntPtr stream);
+
+        [DllImport(ModuleName)]
+        public static extern int getchar();
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern wint_t getwchar();
+
+        [DllImport(ModuleName)]
+        public static extern IntPtr gets(IntPtr buffer);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        public static extern IntPtr gets(StringBuilder buffer);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _getws(IntPtr buffer);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr _getws(StringBuilder buffer);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _getw(IntPtr stream);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int printf([Const] IntPtr format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2, [MarshalAs(UnmanagedType.AsAny)] object arg3, [MarshalAs(UnmanagedType.AsAny)] object arg4, [MarshalAs(UnmanagedType.AsAny)] object arg5);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int printf([Const] IntPtr format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2, [MarshalAs(UnmanagedType.AsAny)] object arg3, [MarshalAs(UnmanagedType.AsAny)] object arg4);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int printf([Const] IntPtr format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2, [MarshalAs(UnmanagedType.AsAny)] object arg3);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int printf([Const] IntPtr format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int printf([Const] IntPtr format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int printf([Const] IntPtr format, [MarshalAs(UnmanagedType.AsAny)] object arg0);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int printf([Const] IntPtr format, __arglist);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int printf(string format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2, [MarshalAs(UnmanagedType.AsAny)] object arg3, [MarshalAs(UnmanagedType.AsAny)] object arg4, [MarshalAs(UnmanagedType.AsAny)] object arg5);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int printf(string format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2, [MarshalAs(UnmanagedType.AsAny)] object arg3, [MarshalAs(UnmanagedType.AsAny)] object arg4);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int printf(string format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2, [MarshalAs(UnmanagedType.AsAny)] object arg3);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int printf(string format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int printf(string format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int printf(string format, [MarshalAs(UnmanagedType.AsAny)] object arg0);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int printf(string format, __arglist);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int wprintf([Const] IntPtr format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2, [MarshalAs(UnmanagedType.AsAny)] object arg3, [MarshalAs(UnmanagedType.AsAny)] object arg4, [MarshalAs(UnmanagedType.AsAny)] object arg5);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int wprintf([Const] IntPtr format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2, [MarshalAs(UnmanagedType.AsAny)] object arg3, [MarshalAs(UnmanagedType.AsAny)] object arg4);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int wprintf([Const] IntPtr format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2, [MarshalAs(UnmanagedType.AsAny)] object arg3);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int wprintf([Const] IntPtr format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int wprintf([Const] IntPtr format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int wprintf([Const] IntPtr format, [MarshalAs(UnmanagedType.AsAny)] object arg0);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int wprintf([Const] IntPtr format, __arglist);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int wprintf(string format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2, [MarshalAs(UnmanagedType.AsAny)] object arg3, [MarshalAs(UnmanagedType.AsAny)] object arg4, [MarshalAs(UnmanagedType.AsAny)] object arg5);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int wprintf(string format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2, [MarshalAs(UnmanagedType.AsAny)] object arg3, [MarshalAs(UnmanagedType.AsAny)] object arg4);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int wprintf(string format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2, [MarshalAs(UnmanagedType.AsAny)] object arg3);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int wprintf(string format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int wprintf(string format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int wprintf(string format, [MarshalAs(UnmanagedType.AsAny)] object arg0);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int wprintf(string format, __arglist);
+
+        [DllImport(ModuleName)]
+        public static extern int putc(int c, IntPtr stream);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern wint_t putwc(wint_t c, IntPtr stream);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _putchar(int c);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern wint_t _putwchar(wint_t c);
+
+        [DllImport(ModuleName)]
+        public static extern int puts([Const] IntPtr @string);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        public static extern int puts(string @string);
+
+        [DllImport(ModuleName)]
+        public static extern int putws([Const] IntPtr @string);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
+        public static extern int putws(string @string);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _puw(int binint, IntPtr stream);
+
+        [DllImport(ModuleName)]
+        public static extern void rewind(IntPtr stream);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _rmtmp();
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int scanf([Const] IntPtr format, ref int arg0, ref int arg1, ref int arg2);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int scanf([Const] IntPtr format, ref int arg0, ref int arg1);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int scanf([Const] IntPtr format, ref int arg0);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int scanf([Const] IntPtr format, ref double arg0, ref double arg1, ref double arg2);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int scanf([Const] IntPtr format, ref double arg0, ref double arg1);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int scanf([Const] IntPtr format, ref double arg0);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int scanf([Const] IntPtr format, StringBuilder arg0, StringBuilder arg1, StringBuilder arg2);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int scanf([Const] IntPtr format, StringBuilder arg0, StringBuilder arg1);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int scanf([Const] IntPtr format, StringBuilder arg0);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int scanf([Const] IntPtr format, __arglist);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int scanf(string format, ref int arg0, ref int arg1, ref int arg2);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int scanf(string format, ref int arg0, ref int arg1);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int scanf(string format, ref int arg0);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int scanf(string format, ref double arg0, ref double arg1, ref double arg2);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int scanf(string format, ref double arg0, ref double arg1);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int scanf(string format, ref double arg0);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int scanf(string format, StringBuilder arg0, StringBuilder arg1, StringBuilder arg2);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int scanf(string format, StringBuilder arg0, StringBuilder arg1);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int scanf(string format, StringBuilder arg0);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int scanf(string format, __arglist);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int wscanf([Const] IntPtr format, ref int arg0, ref int arg1, ref int arg2);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int wscanf([Const] IntPtr format, ref int arg0, ref int arg1);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int wscanf([Const] IntPtr format, ref int arg0);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int wscanf([Const] IntPtr format, ref double arg0, ref double arg1, ref double arg2);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int wscanf([Const] IntPtr format, ref double arg0, ref double arg1);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int wscanf([Const] IntPtr format, ref double arg0);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int wscanf([Const] IntPtr format, StringBuilder arg0, StringBuilder arg1, StringBuilder arg2);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int wscanf([Const] IntPtr format, StringBuilder arg0, StringBuilder arg1);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int wscanf([Const] IntPtr format, StringBuilder arg0);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int wscanf([Const] IntPtr format, __arglist);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int wscanf(string format, ref int arg0, ref int arg1, ref int arg2);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int wscanf(string format, ref int arg0, ref int arg1);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int wscanf(string format, ref int arg0);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int wscanf(string format, ref double arg0, ref double arg1, ref double arg2);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int wscanf(string format, ref double arg0, ref double arg1);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int wscanf(string format, ref double arg0);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int wscanf(string format, StringBuilder arg0, StringBuilder arg1, StringBuilder arg2);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int wscanf(string format, StringBuilder arg0, StringBuilder arg1);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public static extern int wscanf(string format, StringBuilder arg0);
+
+        [DllImport(ModuleName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int wscanf(string format, __arglist);
+
+        [DllImport(ModuleName)]
+        public static extern void setbuf(IntPtr stream, IntPtr buffer);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _setmaxstdio(int newmax);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int setvbuf(IntPtr stream, IntPtr buffer, int mode, size_t size);
+
+        // _snprintf & _snwprintf
+    }
+
+    #endregion // Stream input and output
 }
