@@ -436,9 +436,6 @@ namespace xPlatform.x86.msvcrt
     partial class msvcrt
     {
         [DllImport(ModuleName)]
-        public static extern int abs(int n);
-
-        [DllImport(ModuleName)]
         public static extern double atof([Const] IntPtr @string);
 
         [DllImport(ModuleName, CharSet = CharSet.Ansi)]
@@ -824,7 +821,348 @@ namespace xPlatform.x86.msvcrt
 
         [DllImport(ModuleName), CLSCompliant(false)]
         public static extern long _filelengthi64(int handle);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _fstat(int handle, IntPtr buffer);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _fstat(int handle, ref _stat buffer);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern long _fstati64(int handle, IntPtr buffer);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _isatty(int handle);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _locking(int handle, int mode, int nbytes);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _setmode(int handle, int mode);
     }
 
     #endregion // File handling routines with file handles
+
+    #region File handling routines with path or filename
+
+    partial class msvcrt
+    {
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _access([Const] IntPtr path, int mode);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int _access(string path, int mode);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _waccess([Const] IntPtr path, int mode);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int _waccess(string path, int mode);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _chmod([Const] IntPtr path, int pmode);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int _chmod(string path, int pmode);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _wchmod([Const] IntPtr path, int pmode);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int _wchmod(string path, int pmode);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _fullpath(IntPtr absPath, [Const] IntPtr relPath, size_t maxLength);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr _fullpath(StringBuilder absPath, string relPath, size_t maxLength);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _wfullpath(IntPtr absPath, [Const] IntPtr relPath, size_t maxLength);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr _wfullpath(StringBuilder absPath, string relPath, size_t maxLength);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _get_osfhandle(int filehandle);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void _makepath(IntPtr path, [Const] IntPtr drive, [Const] IntPtr dir, [Const] IntPtr fname, [Const] IntPtr ext);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern void _makepath(StringBuilder path, string drive, string dir, string fname, string ext);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void _wmakepath(IntPtr path, [Const] IntPtr drive, [Const] IntPtr dir, [Const] IntPtr fname, [Const] IntPtr ext);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern void _wmakepath(StringBuilder path, string drive, string dir, string fname, string ext);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _mktemp(IntPtr template);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr _mktemp(string template);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _wmktemp(IntPtr template);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr _wmktemp(string template);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _open_osfhandle(int osfhandle, int flags);
+
+        [DllImport(ModuleName)]
+        public static extern int remove([Const] IntPtr path);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        public static extern int remove(string path);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _wremove([Const] IntPtr path);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int _wremove(string path);
+
+        [DllImport(ModuleName)]
+        public static extern int rename([Const] IntPtr oldname, [Const] IntPtr newname);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        public static extern int rename(string oldname, string newname);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _wrename([Const] IntPtr oldname, [Const] IntPtr newname);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int _wrename(string oldname, string newname);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void _splitpath([Const] IntPtr path, IntPtr drive, IntPtr dir, IntPtr fname, IntPtr ext);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern void _splitpath(string path, StringBuilder drive, StringBuilder dir, StringBuilder fname, StringBuilder ext);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void _wsplitpath([Const] IntPtr path, IntPtr drive, IntPtr dir, IntPtr fname, IntPtr ext);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern void _wsplitpath(string path, StringBuilder drive, StringBuilder dir, StringBuilder fname, StringBuilder ext);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _umask(int pmode);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _unlink([Const] IntPtr path);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int _unlink(string path);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _wunlink([Const] IntPtr path);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int _wunlink(string path);
+    }
+
+    #endregion // File handling routines with path or filename
+
+    #region Floating point support
+
+    partial class msvcrt
+    {
+        [DllImport(ModuleName)]
+        public static extern int abs(int n);
+
+        [DllImport(ModuleName)]
+        public static extern double acos(double x);
+
+        [DllImport(ModuleName)]
+        public static extern double asin(double x);
+
+        [DllImport(ModuleName)]
+        public static extern double atan(double x);
+
+        [DllImport(ModuleName)]
+        public static extern double atan2(double y, double x);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern double _j0(double x);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern double _j1(double x);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern double _jn(int n, double x);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern double _y0(double x);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern double _y1(double x);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern double _yn(int n, double x);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern double _cabs(_complex z);
+
+        [DllImport(ModuleName)]
+        public static extern double ceil(double x);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern double _chgsign(double x);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint _clear87();
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint _clearfp();
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint _control87(uint @new, uint mask);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint _controlfp(uint @new, uint mask);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern double _copysign(double x, double y);
+
+        [DllImport(ModuleName)]
+        public static extern double cos(double x);
+
+        [DllImport(ModuleName)]
+        public static extern double cosh(double x);
+
+        [DllImport(ModuleName)]
+        public static extern double difftime(time_t timer1, time_t timer0);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern _div_t div(int numer, int denom);
+
+        [DllImport(ModuleName)]
+        public static extern double exp(double x);
+
+        [DllImport(ModuleName)]
+        public static extern double fabs(double x);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _finite(double x);
+
+        [DllImport(ModuleName)]
+        public static extern double floor(double x);
+
+        [DllImport(ModuleName)]
+        public static extern double fmod(double x, double y);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _fpclass(double x);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _fpieee_flt(uint exc_code, IntPtr exc_info, _fpieee_flt_function handler);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void _fpreset();
+
+        [DllImport(ModuleName)]
+        public static extern double frexp(double x, IntPtr expptr);
+
+        [DllImport(ModuleName)]
+        public static extern double frexp(double x, ref int expptr);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern double _hypot(double x, double y);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _isnan(double x);
+
+        [DllImport(ModuleName)]
+        public static extern double ldexp(double x, int exp);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern _ldiv_t ldiv(int number, int denom);
+
+        [DllImport(ModuleName)]
+        public static extern double log(double x);
+
+        [DllImport(ModuleName)]
+        public static extern double log10(double x);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern double _logb(double x);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint _lrotl(uint value, int shift);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint _lrotr(uint value, int shift);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _matherr(IntPtr except);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _matherr(ref _exception except);
+
+        [CLSCompliant(false)]
+        public static IComparable __max(IComparable a, IComparable b)
+        {
+            return a.CompareTo(b) > 0 ? a : b;
+        }
+
+        [CLSCompliant(false)]
+        public static IComparable __min(IComparable a, IComparable b)
+        {
+            return a.CompareTo(b) < 0 ? a : b;
+        }
+
+        [DllImport(ModuleName)]
+        public static extern double modf(double x, IntPtr intptr);
+
+        [DllImport(ModuleName)]
+        public static extern double modf(double x, ref double intptr);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern double _nextafter(double x, double y);
+
+        [DllImport(ModuleName)]
+        public static extern double pow(double x, double y);
+
+        [DllImport(ModuleName)]
+        public static extern int rand();
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint _rotl(uint value, int shift);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint _rotr(uint value, int shift);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern double _scalb(double x, int exp);
+
+        [DllImport(ModuleName)]
+        public static extern double sin(double x);
+
+        [DllImport(ModuleName)]
+        public static extern double sinh(double x);
+
+        [DllImport(ModuleName)]
+        public static extern double sqrt(double x);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void srand(uint seed);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint _status87();
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint _statusfp();
+
+        [DllImport(ModuleName)]
+        public static extern double tan(double x);
+
+        [DllImport(ModuleName)]
+        public static extern double tanh(double x);
+    }
+
+    #endregion // Floating point support
 }

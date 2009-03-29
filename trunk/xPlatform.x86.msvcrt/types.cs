@@ -79,11 +79,14 @@ namespace xPlatform.x86.msvcrt
     [UnmanagedFunctionPointer(CallingConvention.StdCall), Serializable]
     public delegate void unexpected_function();
 
-    [UnmanagedFunctionPointer(CallingConvention.Cdecl), Serializable]
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl), Serializable, CLSCompliant(false)]
     public delegate int _onexit_t();
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl), Serializable, CLSCompliant(false)]
     public delegate int _PNH(size_t size);
+
+    [UnmanagedFunctionPointer(CallingConvention.StdCall), Serializable, CLSCompliant(false)]
+    public delegate int _fpieee_flt_function(IntPtr fpieeeRecord);
 }
 
 namespace xPlatform.x86.msvcrt
@@ -317,5 +320,128 @@ namespace xPlatform.x86.msvcrt
             n_sep_precedes,
             p_sign_posn,
             n_sign_posn;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct _stat32
+    {
+        public _dev_t st_dev;
+        public _ino_t st_ino;
+        public ushort st_mode;
+        public short st_nlink;
+        public short st_uid;
+        public short st_gid;
+        public _dev_t st_rdev;
+        public _off_t st_size;
+        public __time32_t st_atime;
+        public __time32_t st_mtime;
+        public __time32_t st_ctime;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct _stat32i64
+    {
+        public _dev_t st_dev;
+        public _ino_t st_ino;
+        public ushort st_mode;
+        public short st_nlink;
+        public short st_uid;
+        public short st_gid;
+        public _dev_t st_rdev;
+        public long st_size;
+        public __time32_t st_atime;
+        public __time32_t st_mtime;
+        public __time32_t st_ctime;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct _stat64i32
+    {
+        public _dev_t st_dev;
+        public _ino_t st_ino;
+        public ushort st_mode;
+        public short st_nlink;
+        public short st_uid;
+        public short st_gid;
+        public _dev_t st_rdev;
+        public _off_t st_size;
+        public __time64_t st_atime;
+        public __time64_t st_mtime;
+        public __time64_t st_ctime;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct _stat64
+    {
+        public _dev_t st_dev;
+        public _ino_t st_ino;
+        public ushort st_mode;
+        public short st_nlink;
+        public short st_uid;
+        public short st_gid;
+        public _dev_t st_rdev;
+        public long st_size;
+        public __time64_t st_atime;
+        public __time64_t st_mtime;
+        public __time64_t st_ctime;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct __timeb32
+    {
+        public __time32_t time;
+        public ushort millitm;
+        public short timezone;
+        public short dstflag;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct __timeb64
+    {
+        public __time64_t time;
+        public ushort millitm;
+        public short timezone;
+        public short dstflag;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct _timeb
+    {
+        public __time32_t time;
+        public ushort millitm;
+        public short timezone;
+        public short dstflag;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct _stat
+    {
+        public _dev_t st_dev;
+        public _ino_t st_ino;
+        public ushort st_mode;
+        public short st_nlink;
+        public short st_uid;
+        public short st_gid;
+        public _dev_t st_rdev;
+        public _off_t st_size;
+        public __time32_t st_atime;
+        public __time32_t st_mtime;
+        public __time32_t st_ctime;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct _stati64
+    {
+        public _dev_t st_dev;
+        public _ino_t st_ino;
+        public ushort st_mode;
+        public short st_nlink;
+        public short st_uid;
+        public short st_gid;
+        public _dev_t st_rdev;
+        public long st_size;
+        public __time32_t st_atime;
+        public __time32_t st_mtime;
+        public __time32_t st_ctime;
     }
 }
