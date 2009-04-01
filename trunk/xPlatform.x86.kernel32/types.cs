@@ -1,4 +1,5 @@
 ﻿using System;
+using xPlatform.Flags;
 using System.Runtime.InteropServices;
 
 namespace xPlatform.x86.kernel32
@@ -215,5 +216,76 @@ namespace xPlatform.x86.kernel32
 
         [FieldOffset(12)]
         public RIP_INFO RipInfo;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct Bytes
+    {
+        public byte BaseMid;
+        public byte Flags1;
+        public byte Flags2;
+        public byte BaseHi;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct Bits
+    {
+        public uint Data;
+
+        public uint BaseMid { get { throw new NotImplementedException("Bit-field member not implemented."); } }
+        public uint Type { get { throw new NotImplementedException("Bit-field member not implemented."); } }
+        public uint Dpl { get { throw new NotImplementedException("Bit-field member not implemented."); } }
+        public uint Pres { get { throw new NotImplementedException("Bit-field member not implemented."); } }
+        public uint LimitHi { get { throw new NotImplementedException("Bit-field member not implemented."); } }
+        public uint Sys { get { throw new NotImplementedException("Bit-field member not implemented."); } }
+        public uint Reserved_0 { get { throw new NotImplementedException("Bit-field member not implemented."); } }
+        public uint Default_Big { get { throw new NotImplementedException("Bit-field member not implemented."); } }
+        public uint Granularity { get { throw new NotImplementedException("Bit-field member not implemented."); } }
+        public uint BaseHi { get { throw new NotImplementedException("Bit-field member not implemented."); } }
+    }
+
+    [Serializable, StructLayout(LayoutKind.Explicit), CLSCompliant(false)]
+    public struct HighWord
+    {
+        [FieldOffset(0)]
+        public Bytes Bytes;
+
+        [FieldOffset(0)]
+        public Bits Bits;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Explicit), CLSCompliant(false)]
+    public struct LDT_ENTRY
+    {
+        [FieldOffset(0)]
+        public ushort LimitLow;
+
+        [FieldOffset(2)]
+        public ushort BaseLow;
+
+        [FieldOffset(4)]
+        public HighWord HighWord;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct SECURITY_ATTRIBUTES
+    {
+        public uint nLength;
+        public IntPtr lpSecurityDescriptor;
+        public int bInheritHandle;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct COORD
+    {
+        public short x;
+        public short y;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct CONSOLE_CURSOR_INFO
+    {
+        public uint dwSize;
+        public int bVisible;
     }
 }

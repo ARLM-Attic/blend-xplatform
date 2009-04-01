@@ -115,8 +115,17 @@ namespace xPlatform.x86.kernel32
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern int DebugActiveProcess(uint dwProcessId);
 
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DebugActiveProcessStop(uint dwProcessId);
+
         [DllImport(ModuleName)]
         public static extern void DebugBreak();
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int DebugBreakProcess(IntPtr Process);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int DebugSetProcessKillOnExit(int KillOnExit);
 
         [DllImport(ModuleName)]
         public static extern void FatalExit(int ExitCode);
@@ -130,9 +139,12 @@ namespace xPlatform.x86.kernel32
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern int GetThreadContext(IntPtr hThread, ref CONTEXT lpContext);
 
-        [Todo("LDT_ENTRY implementation missing")]
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern int GetThreadSelectorEntry(IntPtr hThread, uint dwSelector, IntPtr lpSelectorEntry);
+
+        [Todo("Test Required")]
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetThreadSelectorEntry(IntPtr hThread, uint dwSelector, ref LDT_ENTRY lpSelectorEntry);
 
         [DllImport(ModuleName)]
         public static extern int IsDebuggerPresent();
@@ -198,6 +210,18 @@ namespace xPlatform.x86.kernel32
         [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern void FatalAppExitW(uint uAction, string lpMessageText);
 
+        [DllImport(ModuleName, CharSet = CharSet.Ansi, SetLastError = true), CLSCompliant(false)]
+        public static extern uint FormatMessageA(uint dwFlags, [Const] IntPtr lpSource, uint dwMessageId, uint dwLanguageId, IntPtr lpBuffer, uint nSize, IntPtr Arguments);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi, SetLastError = true), CLSCompliant(false)]
+        public static extern uint FormatMessageA(uint dwFlags, [Const] IntPtr lpSource, uint dwMessageId, uint dwLanguageId, StringBuilder lpBuffer, uint nSize, IntPtr Arguments);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode, SetLastError = true), CLSCompliant(false)]
+        public static extern uint FormatMessageW(uint dwFlags, [Const] IntPtr lpSource, uint dwMessageId, uint dwLanguageId, IntPtr lpBuffer, uint nSize, IntPtr Arguments);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode, SetLastError = true), CLSCompliant(false)]
+        public static extern uint FormatMessageW(uint dwFlags, [Const] IntPtr lpSource, uint dwMessageId, uint dwLanguageId, StringBuilder lpBuffer, uint nSize, IntPtr Arguments);
+
         [DllImport(ModuleName), CLSCompliant(false)]
         public static extern uint GetLastError();
 
@@ -206,9 +230,93 @@ namespace xPlatform.x86.kernel32
 
         [DllImport(ModuleName), CLSCompliant(false)]
         public static extern void SetLastError(uint dwErrCode);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern void SetLastErrorEx(uint dwErrCode, uint dwType);
     }
 
     #endregion // Error functions
+
+    #region Console functions
+
+    partial class kernel32
+    {
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int AllocConsole();
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AttachConsole(uint dwProcessId);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr CreateConsoleScreenBuffer(uint dwDesiredAccess, uint dwShareMode, [Const] IntPtr lpSecurityAttributes, uint dwFlags, IntPtr lpScreenBufferData);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr CreateConsoleScreenBuffer(uint dwDesiredAccess, uint dwShareMode, ref SECURITY_ATTRIBUTES lpSecurityAttributes, uint dwFlags, IntPtr lpScreenBufferData);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int FillConsoleOutputAttribute(IntPtr hConsoleOutput, ushort wAttribute, uint nLength, COORD dwWriteCoord, IntPtr lpNumberOfAttrsWritten);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int FillConsoleOutputAttribute(IntPtr hConsoleOutput, ushort wAttribute, uint nLength, COORD dwWriteCoord, ref uint lpNumberOfAttrsWritten);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int FillConsoleOutputCharacterA(IntPtr hConsoleOutput, sbyte cCharacter, uint nLength, COORD dwWriteCoord, IntPtr lpNumberOfCharsWritten);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int FillConsoleOutputCharacterA(IntPtr hConsoleOutput, sbyte cCharacter, uint nLength, COORD dwWriteCoord, ref uint lpNumberOfCharsWritten);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int FillConsoleOutputCharacterW(IntPtr hConsoleOutput, ushort cCharacter, uint nLength, COORD dwWriteCoord, IntPtr lpNumberOfCharsWritten);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int FillConsoleOutputCharacterW(IntPtr hConsoleOutput, ushort cCharacter, uint nLength, COORD dwWriteCoord, ref uint lpNumberOfCharsWritten);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int FlushConsoleInputBuffer(IntPtr hConsoleInput);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int FreeConsole();
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GenerateConsoleCtrlEvent(uint dwCtrlEvent, uint dwProcessGroupId);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint GetConsoleCP();
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetConsoleCursorInfo(IntPtr hConsoleOutput, IntPtr lpConsoleCursorInfo);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetConsoleCursorInfo(IntPtr hConsoleOutput, ref CONSOLE_CURSOR_INFO lpConsoleCursorInfo);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetConsoleDisplayMode(IntPtr lpModeFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetConsoleDisplayMode(ref uint lpModeFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern COORD GetConsoleFontSize(IntPtr hConsoleOutput, uint nFont);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetConsoleMode(IntPtr hConsoleOutput, IntPtr lpMode);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetConsoleMode(IntPtr hConsoleOutput, ref uint lpMode);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint GetConsoleOutputCP();
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetConsoleProcessList(IntPtr lpdwProcessList, uint dwProcessCount);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetConsoleProcessList(uint[] lpdwProcessList, uint dwProcessCount);
+
+        // GetConsoleScreenBufferInfo
+    }
+
+    #endregion // Console functions
 
     // Relocation required...
 
