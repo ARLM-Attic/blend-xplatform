@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Flags\ConstAttribute.cs" />
+    <Compile Include="Flags\ReadonlyAttribute.cs" />
     <Compile Include="Flags\TodoAttribute.cs" />
     <Compile Include="ModuleBase.cs" />
     <Compile Include="VoidPointer.cs" />

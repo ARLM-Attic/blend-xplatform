@@ -7,15 +7,15 @@ using System.Runtime.InteropServices;
 namespace xPlatform.x86.msvcrt
 {
     [Serializable]
-    public partial class msvcrt : ModuleBase<msvcrt>
+    public partial class msvcrtd : ModuleBase<msvcrtd>
     {
         [NonSerialized]
-        public const string ModuleName = "msvcrt.dll";
+        public const string ModuleName = "msvcrtd.dll";
     }
 
     #region Buffer manipulation
 
-    partial class msvcrt
+    partial class msvcrtd
     {
         /// <summary>
         /// Copies characters from a buffer.
@@ -130,7 +130,7 @@ namespace xPlatform.x86.msvcrt
 
     #region Byte classification
 
-    partial class msvcrt
+    partial class msvcrtd
     {
         /// <summary>
         /// Lead byte; test result depends on LC_CTYPE category setting of current locale
@@ -292,7 +292,7 @@ namespace xPlatform.x86.msvcrt
 
     #region Character classification
 
-    partial class msvcrt
+    partial class msvcrtd
     {
         [DllImport(ModuleName)]
         public static extern int isalnum(int c);
@@ -434,7 +434,7 @@ namespace xPlatform.x86.msvcrt
 
     #region Data conversion
 
-    partial class msvcrt
+    partial class msvcrtd
     {
         [DllImport(ModuleName)]
         public static extern double atof([Const] IntPtr @string);
@@ -693,7 +693,7 @@ namespace xPlatform.x86.msvcrt
 
     #region Directory control
 
-    partial class msvcrt
+    partial class msvcrtd
     {
         [DllImport(ModuleName), CLSCompliant(false)]
         public static extern int _chdir([Const] IntPtr dirname);
@@ -778,7 +778,7 @@ namespace xPlatform.x86.msvcrt
 
     #region Exception handling routines
 
-    partial class msvcrt
+    partial class msvcrtd
     {
         [DllImport(ModuleName), CLSCompliant(false)]
         public static extern _se_translator_function _set_se_translator(_se_translator_function se_trans_func);
@@ -809,7 +809,7 @@ namespace xPlatform.x86.msvcrt
 
     #region File handling routines with file handles
 
-    partial class msvcrt
+    partial class msvcrtd
     {
         [DllImport(ModuleName), CLSCompliant(false)]
         public static extern int _chsize(int handle, int size);
@@ -843,7 +843,7 @@ namespace xPlatform.x86.msvcrt
 
     #region File handling routines with path or filename
 
-    partial class msvcrt
+    partial class msvcrtd
     {
         [DllImport(ModuleName), CLSCompliant(false)]
         public static extern int _access([Const] IntPtr path, int mode);
@@ -964,7 +964,7 @@ namespace xPlatform.x86.msvcrt
 
     #region Floating point support
 
-    partial class msvcrt
+    partial class msvcrtd
     {
         [DllImport(ModuleName)]
         public static extern int abs(int n);
@@ -1160,7 +1160,7 @@ namespace xPlatform.x86.msvcrt
 
     #region Stream input and output
 
-    partial class msvcrt
+    partial class msvcrtd
     {
         [DllImport(ModuleName)]
         public static extern void clearerr(IntPtr stream);
@@ -1179,7 +1179,7 @@ namespace xPlatform.x86.msvcrt
 
         [DllImport(ModuleName), CLSCompliant(false)]
         public static extern IntPtr _wfdopen(int handle, [Const] IntPtr mode);
-        
+
         [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern IntPtr _wfdopen(int handle, string mode);
 
@@ -2613,7 +2613,7 @@ namespace xPlatform.x86.msvcrt
 
     #region Low level input and output
 
-    partial class msvcrt
+    partial class msvcrtd
     {
         [DllImport(ModuleName), CLSCompliant(false)]
         public static extern int _close(int handle);
@@ -2716,7 +2716,7 @@ namespace xPlatform.x86.msvcrt
 
     #region Console and port input and output routines
 
-    partial class msvcrt
+    partial class msvcrtd
     {
         [DllImport(ModuleName), CLSCompliant(false)]
         public static extern IntPtr _cgets(IntPtr buffer);
@@ -2882,7 +2882,7 @@ namespace xPlatform.x86.msvcrt
 
     #region Locale dependent routines
 
-    partial class msvcrt
+    partial class msvcrtd
     {
         [DllImport(ModuleName)]
         public static extern IntPtr localeconv();
@@ -2907,7 +2907,7 @@ namespace xPlatform.x86.msvcrt
 
     #region Memory allocation routines
 
-    partial class msvcrt
+    partial class msvcrtd
     {
         [DllImport(ModuleName), CLSCompliant(false)]
         public static extern IntPtr _alloca(size_t size);
@@ -2971,7 +2971,7 @@ namespace xPlatform.x86.msvcrt
 
     #region Process and environment control
 
-    partial class msvcrt
+    partial class msvcrtd
     {
         [DllImport(ModuleName)]
         public static extern void abort();
@@ -3880,7 +3880,7 @@ namespace xPlatform.x86.msvcrt
 
     #region Searching and sorting
 
-    partial class msvcrt
+    partial class msvcrtd
     {
         [DllImport(ModuleName), CLSCompliant(false)]
         public static extern IntPtr bsearch([Const] IntPtr key, [Const] IntPtr @base, size_t num, size_t width, compare_function compare);
@@ -3899,7 +3899,7 @@ namespace xPlatform.x86.msvcrt
 
     #region String manipulation
 
-    partial class msvcrt
+    partial class msvcrtd
     {
         [DllImport(ModuleName)]
         public static extern int strcoll([Const] IntPtr string1, [Const] IntPtr string2);
@@ -4356,7 +4356,7 @@ namespace xPlatform.x86.msvcrt
 
     #region System calls
 
-    partial class msvcrt
+    partial class msvcrtd
     {
         [DllImport(ModuleName), CLSCompliant(false)]
         public static extern int _findclose(int handle);
@@ -4414,7 +4414,7 @@ namespace xPlatform.x86.msvcrt
 
     #region Time management
 
-    partial class msvcrt
+    partial class msvcrtd
     {
         [DllImport(ModuleName)]
         public static extern IntPtr asctime([Const] IntPtr timeptr);
@@ -4529,4 +4529,134 @@ namespace xPlatform.x86.msvcrt
     }
 
     #endregion // Time management
+
+    #region Debug version routines
+
+    partial class msvcrtd
+    {
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _CrtCheckMemory();
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl), CLSCompliant(false)]
+        public static extern int _CrtDbgReport(int reportType, [Const] IntPtr filename, int linenumber, [Const] IntPtr moduleName, [Const] IntPtr format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2, [MarshalAs(UnmanagedType.AsAny)] object arg3, [MarshalAs(UnmanagedType.AsAny)] object arg4, [MarshalAs(UnmanagedType.AsAny)] object arg5);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl), CLSCompliant(false)]
+        public static extern int _CrtDbgReport(int reportType, [Const] IntPtr filename, int linenumber, [Const] IntPtr moduleName, [Const] IntPtr format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2, [MarshalAs(UnmanagedType.AsAny)] object arg3, [MarshalAs(UnmanagedType.AsAny)] object arg4);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl), CLSCompliant(false)]
+        public static extern int _CrtDbgReport(int reportType, [Const] IntPtr filename, int linenumber, [Const] IntPtr moduleName, [Const] IntPtr format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2, [MarshalAs(UnmanagedType.AsAny)] object arg3);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl), CLSCompliant(false)]
+        public static extern int _CrtDbgReport(int reportType, [Const] IntPtr filename, int linenumber, [Const] IntPtr moduleName, [Const] IntPtr format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1, [MarshalAs(UnmanagedType.AsAny)] object arg2);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl), CLSCompliant(false)]
+        public static extern int _CrtDbgReport(int reportType, [Const] IntPtr filename, int linenumber, [Const] IntPtr moduleName, [Const] IntPtr format, [MarshalAs(UnmanagedType.AsAny)] object arg0, [MarshalAs(UnmanagedType.AsAny)] object arg1);
+
+        [Todo("Test needed.")]
+        [DllImport(ModuleName, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl), CLSCompliant(false)]
+        public static extern int _CrtDbgReport(int reportType, [Const] IntPtr filename, int linenumber, [Const] IntPtr moduleName, [Const] IntPtr format, [MarshalAs(UnmanagedType.AsAny)] object arg0);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl), CLSCompliant(false)]
+        public static extern int _CrtDbgReport(int reportType, [Const] IntPtr filename, int linenumber, [Const] IntPtr moduleName, [Const] IntPtr format, __arglist);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl), CLSCompliant(false)]
+        public static extern int _CrtDbgReport(int reportType, [Const] IntPtr filename, int linenumber, [Const] IntPtr moduleName, [Const] IntPtr format);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void _CrtDoForAllClientObjects(_CrtDoForAllClientObjectsCallback pfn, IntPtr context);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _CrtDumpMemoryLeaks();
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _CrtIsValidHeapPointer([Const] IntPtr userData);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _CrtIsMemoryBlock([Const] IntPtr userData, uint size, IntPtr requestNumber, IntPtr filename, IntPtr linenumber);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _CrtIsValidPointer([Const] IntPtr address, uint size, int access);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void _CrtMemCheckpoint(IntPtr state);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void _CrtMemCheckpoint(ref _CrtMemState state);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void _CrtMemDifference(IntPtr stateDiff, [Const] IntPtr oldState, [Const] IntPtr newState);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void _CrtMemDifference(ref _CrtMemState stateDiff, [Const] ref _CrtMemState oldState, [Const] ref _CrtMemState newState);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void _CrtMemDumpAllObjectsSince([Const] IntPtr state);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void _CrtMemDumpAllObjectsSince([Const] ref _CrtMemState state);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void _CrtMemDumpStatistics([Const] IntPtr state);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void _CrtMemDumpStatistics([Const] ref _CrtMemState state);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern _CRT_ALLOC_HOOK _CrtSetAllocHook(_CRT_ALLOC_HOOK allocHook);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _CrtSetBreakAlloc(int lBreakAlloc);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _CrtSetDbgFlag(int newFlag);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern _CRT_DUMP_CLIENT _CrtSetDumpClient(_CRT_DUMP_CLIENT dumpClient);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _CrtSetReportFile(int reportType, IntPtr reportFile);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern _CRT_REPORT_HOOK _CrtSetReportHook(_CRT_REPORT_HOOK reportHook);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int _CrtSetReportMode(int reportType, int reportMode);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _calloc_dbg(size_t num, size_t size, int blockType, [Const] IntPtr filename, int linenumber);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr _calloc_dbg(size_t num, size_t size, int blockType, string filename, int linenumber);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _expand_dbg(IntPtr userData, size_t newSize, int blockType, [Const] IntPtr filename, int linenumber);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr _expand_dbg(IntPtr userData, size_t newSize, int blockType, string filename, int linenumber);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void _free_dbg(IntPtr userData, int blockType);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _malloc_dbg(size_t size, int blockType, [Const] IntPtr filename, int linenumber);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr _malloc_dbg(size_t size, int blockType, string filename, int linenumber);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void _msize_dbg(IntPtr userData, int blockType);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr _realloc_dbg(IntPtr userData, size_t newSize, int blockType, [Const] IntPtr filename, int linenumber);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr _realloc_dbg(IntPtr userData, size_t newSize, int blockType, string filename, int linenumber);
+    }
+
+    #endregion // Debug version routines
 }
