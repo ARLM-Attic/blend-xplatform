@@ -307,4 +307,126 @@ namespace xPlatform.x86.kernel32
         public SMALL_RECT srWindow;
         public COORD dwMaximumWindowSize;
     }
+
+    [Serializable, StructLayout(LayoutKind.Explicit), CLSCompliant(false)]
+    public struct uChar
+    {
+        [FieldOffset(0)]
+        public ushort UnicodeChar;
+
+        [FieldOffset(0)]
+        public byte AsciiChar;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Explicit), CLSCompliant(false)]
+    public struct KEY_EVENT_RECORD
+    {
+        [FieldOffset(0)]
+        public int bKeyDown;
+
+        [FieldOffset(4)]
+        public ushort wRepeatCount;
+
+        [FieldOffset(6)]
+        public ushort wVirtualKeyCode;
+
+        [FieldOffset(8)]
+        public ushort wVirtualScanCode;
+
+        [FieldOffset(10)]
+        public uChar uChar;
+
+        [FieldOffset(12)]
+        public uint dwControlKeyState;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct MOUSE_EVENT_RECORD
+    {
+        public COORD dwMousePosition;
+        public uint dwButtonState;
+        public uint dwControlKeyState;
+        public uint dwEventFlags;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct WINDOW_BUFFER_SIZE_RECORD
+    {
+        public COORD dwSize;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct MENU_EVENT_RECORD
+    {
+        public uint dwCommandId;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct FOCUS_EVENT_RECORD
+    {
+        public int bSetFocus;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Explicit), CLSCompliant(false)]
+    public struct Event
+    {
+        [FieldOffset(0)]
+        public KEY_EVENT_RECORD KeyEvent;
+
+        [FieldOffset(0)]
+        public MOUSE_EVENT_RECORD MouseEvent;
+
+        [FieldOffset(0)]
+        public WINDOW_BUFFER_SIZE_RECORD WindowBufferSizeEvent;
+
+        [FieldOffset(0)]
+        public MOUSE_EVENT_RECORD MenuEvent;
+
+        [FieldOffset(0)]
+        public FOCUS_EVENT_RECORD FocusEvent;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Explicit), CLSCompliant(false)]
+    public struct INPUT_RECORD
+    {
+        [FieldOffset(0)]
+        public ushort EventType;
+
+        [FieldOffset(2)]
+        public Event Event;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Explicit), CLSCompliant(false)]
+    public struct CHAR_INFO
+    {
+        [FieldOffset(0)]
+        public uChar Char;
+
+        [FieldOffset(2)]
+        public ushort Attributes;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct CONSOLE_FONT_INFO
+    {
+        public ushort nFOnt;
+        public COORD dwFontSize;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct CONSOLE_SELECTION_INFO
+    {
+        public uint dwFlags;
+        public COORD dwSelectionAncor;
+        public SMALL_RECT srSelection;
+    }
+}
+
+namespace xPlatform.x86.kernel32
+{
+    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi), CLSCompliant(false)]
+    public delegate int HandlerRoutine(uint dwCtrlType);
+
+    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi), CLSCompliant(false)]
+    public delegate int DllMain(IntPtr hinstDLL, uint fdwReason, IntPtr lpvReserved);
 }
