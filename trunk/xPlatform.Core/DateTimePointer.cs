@@ -150,12 +150,14 @@ namespace xPlatform
 
         public static DateTimePointer operator ++(DateTimePointer pointer)
         {
-            return new DateTimePointer(pointer.internalPointer++);
+            pointer.internalPointer++;
+            return pointer;
         }
 
         public static DateTimePointer operator --(DateTimePointer pointer)
         {
-            return new DateTimePointer(pointer.internalPointer--);
+            pointer.internalPointer--;
+            return pointer;
         }
 
         public static bool operator ==(DateTimePointer left, DateTimePointer right)

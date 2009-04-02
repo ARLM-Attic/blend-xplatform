@@ -150,12 +150,14 @@ namespace xPlatform
 
         public static DecimalPointer operator ++(DecimalPointer pointer)
         {
-            return new DecimalPointer(pointer.internalPointer++);
+            pointer.internalPointer++;
+            return pointer;
         }
 
         public static DecimalPointer operator --(DecimalPointer pointer)
         {
-            return new DecimalPointer(pointer.internalPointer--);
+            pointer.internalPointer--;
+            return pointer;
         }
 
         public static bool operator ==(DecimalPointer left, DecimalPointer right)

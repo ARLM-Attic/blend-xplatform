@@ -150,12 +150,14 @@ namespace xPlatform
 
         public static WideCharPointer operator ++(WideCharPointer pointer)
         {
-            return new WideCharPointer(pointer.internalPointer++);
+            pointer.internalPointer++;
+            return pointer;
         }
 
         public static WideCharPointer operator --(WideCharPointer pointer)
         {
-            return new WideCharPointer(pointer.internalPointer--);
+            pointer.internalPointer--;
+            return pointer;
         }
 
         public static bool operator ==(WideCharPointer left, WideCharPointer right)

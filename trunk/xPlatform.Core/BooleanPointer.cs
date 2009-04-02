@@ -150,12 +150,14 @@ namespace xPlatform
 
         public static BooleanPointer operator ++(BooleanPointer pointer)
         {
-            return new BooleanPointer(pointer.internalPointer++);
+            pointer.internalPointer++;
+            return pointer;
         }
 
         public static BooleanPointer operator --(BooleanPointer pointer)
         {
-            return new BooleanPointer(pointer.internalPointer--);
+            pointer.internalPointer--;
+            return pointer;
         }
 
         public static bool operator ==(BooleanPointer left, BooleanPointer right)

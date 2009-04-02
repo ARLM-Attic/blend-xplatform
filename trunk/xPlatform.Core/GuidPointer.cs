@@ -150,12 +150,14 @@ namespace xPlatform
 
         public static GuidPointer operator ++(GuidPointer pointer)
         {
-            return new GuidPointer(pointer.internalPointer++);
+            pointer.internalPointer++;
+            return pointer;
         }
 
         public static GuidPointer operator --(GuidPointer pointer)
         {
-            return new GuidPointer(pointer.internalPointer--);
+            pointer.internalPointer--;
+            return pointer;
         }
 
         public static bool operator ==(GuidPointer left, GuidPointer right)

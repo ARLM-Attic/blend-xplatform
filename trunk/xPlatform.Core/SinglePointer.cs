@@ -150,12 +150,14 @@ namespace xPlatform
 
         public static SinglePointer operator ++(SinglePointer pointer)
         {
-            return new SinglePointer(pointer.internalPointer++);
+            pointer.internalPointer++;
+            return pointer;
         }
 
         public static SinglePointer operator --(SinglePointer pointer)
         {
-            return new SinglePointer(pointer.internalPointer--);
+            pointer.internalPointer--;
+            return pointer;
         }
 
         public static bool operator ==(SinglePointer left, SinglePointer right)

@@ -288,4 +288,23 @@ namespace xPlatform.x86.kernel32
         public uint dwSize;
         public int bVisible;
     }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct SMALL_RECT
+    {
+        public ushort Left;
+        public ushort Top;
+        public ushort Right;
+        public ushort Bottom;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct CONSOLE_SCREEN_BUFFER_INFO
+    {
+        public COORD dwSize;
+        public COORD dwCursorPosition;
+        public ushort wAttributes;
+        public SMALL_RECT srWindow;
+        public COORD dwMaximumWindowSize;
+    }
 }

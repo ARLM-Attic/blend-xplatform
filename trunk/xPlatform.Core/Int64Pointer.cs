@@ -150,12 +150,14 @@ namespace xPlatform
 
         public static Int64Pointer operator ++(Int64Pointer pointer)
         {
-            return new Int64Pointer(pointer.internalPointer++);
+            pointer.internalPointer++;
+            return pointer;
         }
 
         public static Int64Pointer operator --(Int64Pointer pointer)
         {
-            return new Int64Pointer(pointer.internalPointer--);
+            pointer.internalPointer--;
+            return pointer;
         }
 
         public static bool operator ==(Int64Pointer left, Int64Pointer right)

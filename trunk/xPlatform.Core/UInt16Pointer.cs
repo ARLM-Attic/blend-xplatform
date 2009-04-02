@@ -150,12 +150,14 @@ namespace xPlatform
 
         public static UInt16Pointer operator ++(UInt16Pointer pointer)
         {
-            return new UInt16Pointer(pointer.internalPointer++);
+            pointer.internalPointer++;
+            return pointer;
         }
 
         public static UInt16Pointer operator --(UInt16Pointer pointer)
         {
-            return new UInt16Pointer(pointer.internalPointer--);
+            pointer.internalPointer--;
+            return pointer;
         }
 
         public static bool operator ==(UInt16Pointer left, UInt16Pointer right)

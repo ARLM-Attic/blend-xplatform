@@ -150,12 +150,14 @@ namespace xPlatform
 
         public static SBytePointer operator ++(SBytePointer pointer)
         {
-            return new SBytePointer(pointer.internalPointer++);
+            pointer.internalPointer++;
+            return pointer;
         }
 
         public static SBytePointer operator --(SBytePointer pointer)
         {
-            return new SBytePointer(pointer.internalPointer--);
+            pointer.internalPointer--;
+            return pointer;
         }
 
         public static bool operator ==(SBytePointer left, SBytePointer right)

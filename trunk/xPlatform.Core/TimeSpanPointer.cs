@@ -150,12 +150,14 @@ namespace xPlatform
 
         public static TimeSpanPointer operator ++(TimeSpanPointer pointer)
         {
-            return new TimeSpanPointer(pointer.internalPointer++);
+            pointer.internalPointer++;
+            return pointer;
         }
 
         public static TimeSpanPointer operator --(TimeSpanPointer pointer)
         {
-            return new TimeSpanPointer(pointer.internalPointer--);
+            pointer.internalPointer--;
+            return pointer;
         }
 
         public static bool operator ==(TimeSpanPointer left, TimeSpanPointer right)

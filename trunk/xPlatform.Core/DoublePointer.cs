@@ -150,12 +150,14 @@ namespace xPlatform
 
         public static DoublePointer operator ++(DoublePointer pointer)
         {
-            return new DoublePointer(pointer.internalPointer++);
+            pointer.internalPointer++;
+            return pointer;
         }
 
         public static DoublePointer operator --(DoublePointer pointer)
         {
-            return new DoublePointer(pointer.internalPointer--);
+            pointer.internalPointer--;
+            return pointer;
         }
 
         public static bool operator ==(DoublePointer left, DoublePointer right)

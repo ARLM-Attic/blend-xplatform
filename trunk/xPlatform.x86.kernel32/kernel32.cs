@@ -313,7 +313,26 @@ namespace xPlatform.x86.kernel32
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern uint GetConsoleProcessList(uint[] lpdwProcessList, uint dwProcessCount);
 
-        // GetConsoleScreenBufferInfo
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetConsoleScreenBufferInfo(IntPtr hConsoleOutput, IntPtr lpConsoleScreenBufferInfo);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetConsoleScreenBufferInfo(IntPtr hConsoleOutput, ref CONSOLE_SCREEN_BUFFER_INFO lpConsoleScreenBufferInfo);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetConsoleTitleA(IntPtr lpConsoleTitle, uint nSize);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern uint GetConsoleTitleA(StringBuilder lpConsoleTitle, uint nSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetConsoleTitleW(IntPtr lpConsoleTitle, uint nSize);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern uint GetConsoleTitleW(StringBuilder lpConsoleTitle, uint nSize);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern COORD GetLargestConsoleWindowSize(IntPtr hConsoleOutput);
     }
 
     #endregion // Console functions

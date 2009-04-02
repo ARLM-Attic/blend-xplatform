@@ -150,12 +150,14 @@ namespace xPlatform
 
         public static BytePointer operator ++(BytePointer pointer)
         {
-            return new BytePointer(pointer.internalPointer++);
+            pointer.internalPointer++;
+            return pointer;
         }
 
         public static BytePointer operator --(BytePointer pointer)
         {
-            return new BytePointer(pointer.internalPointer--);
+            pointer.internalPointer--;
+            return pointer;
         }
 
         public static bool operator ==(BytePointer left, BytePointer right)
