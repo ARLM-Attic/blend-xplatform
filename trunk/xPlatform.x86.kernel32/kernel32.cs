@@ -614,6 +614,114 @@ namespace xPlatform.x86.kernel32
 
     #endregion // Dynamic link library functions
 
+    #region Asynchronous functions
+
+    partial class kernel32
+    {
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetOverlappedResult(IntPtr hFile, IntPtr lpOverlapped, IntPtr lpNumberOfBytesTransferred, int bWait);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetOverlappedResult(IntPtr hFile, ref OVERLAPPED lpOverlapped, ref uint lpNumberOfBytesTransferred, int bWait);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint QueueUserAPC(IntPtr pfnAPC, IntPtr hThread, uint dwData);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint QueueUserAPC(APCProc pfnAPC, IntPtr hThread, uint dwData);
+    }
+
+    #endregion // Asynchronous functions
+
+    #region Critical section functions
+
+    partial class kernel32
+    {
+        [DllImport(ModuleName)]
+        public static extern void DeleteCriticalSection(IntPtr lpCriticalSection);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void DeleteCriticalSection(ref RTL_CRITICAL_SECTION lpCriticalSection);
+
+        [DllImport(ModuleName)]
+        public static extern void EnterCriticalSection(IntPtr lpCriticalSection);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void EnterCriticalSection(ref RTL_CRITICAL_SECTION lpCriticalSection);
+
+        [DllImport(ModuleName)]
+        public static extern void InitializeCriticalSection(IntPtr lpCriticalSection);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void InitializeCriticalSection(ref RTL_CRITICAL_SECTION lpCriticalSection);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void InitializeCriticalSectionAndSpinCount(IntPtr lpCriticalSection, uint dwSpinCount);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void InitializeCriticalSectionAndSpinCount(ref RTL_CRITICAL_SECTION lpCriticalSection, uint dwSpinCount);
+
+        [DllImport(ModuleName)]
+        public static extern void LeaveCriticalSection(IntPtr lpCriticalSection);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void LeaveCriticalSection(ref RTL_CRITICAL_SECTION lpCriticalSection);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void SetCriticalSectionAndSpinCount(IntPtr lpCriticalSection, uint dwSpinCount);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void SetCriticalSectionAndSpinCount(ref RTL_CRITICAL_SECTION lpCriticalSection, uint dwSpinCount);
+
+        [DllImport(ModuleName)]
+        public static extern int TryEnterCriticalSection(IntPtr lpCriticalSection);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int TryEnterCriticalSection(ref RTL_CRITICAL_SECTION lpCriticalSection);
+    }
+
+    #endregion // Critical section functions
+
+    #region Event functions
+
+    partial class kernel32
+    {
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreateEventA(IntPtr lpEventAttributes, int bManualReset, int bInitialState, [Const] IntPtr lpName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr CreateEventA(ref SECURITY_ATTRIBUTES lpEventAttributes, int bManualReset, int bInitialState, string lpName);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreateEventW(IntPtr lpEventAttributes, int bManualReset, int bInitialState, [Const] IntPtr lpName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr CreateEventW(ref SECURITY_ATTRIBUTES lpEventAttributes, int bManualReset, int bInitialState, string lpName);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr OpenEventA(uint dwDesiredAccess, int bInheritHandle, [Const] IntPtr lpName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr OpenEventA(uint dwDesiredAccess, int bInheritHandle, string lpName);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr OpenEventW(uint dwDesiredAccess, int bInheritHandle, [Const] IntPtr lpName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr OpenEventW(uint dwDesiredAccess, int bInheritHandle, string lpName);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int PulseEvent(IntPtr hEvent);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ResetEvent(IntPtr hEvent);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetEvent(IntPtr hEvent);
+    }
+
+    #endregion // Event functions
+
     // Relocation required...
 
     partial class kernel32

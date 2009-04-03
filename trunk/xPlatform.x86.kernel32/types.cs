@@ -420,6 +420,48 @@ namespace xPlatform.x86.kernel32
         public COORD dwSelectionAncor;
         public SMALL_RECT srSelection;
     }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct OVERLAPPED
+    {
+        public uint Internal;
+        public uint InternalHigh;
+        public uint Offset;
+        public uint OffsetHigh;
+        public IntPtr hEvent;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct LIST_ENTRY
+    {
+        public IntPtr Flink;
+        public IntPtr Blink;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct RTL_CRITICAL_SECTION_DEBUG
+    {
+        public ushort Type;
+        public ushort CreatorBackTraceIndex;
+        public IntPtr CriticalSection;
+        public LIST_ENTRY ProcessLocksList;
+        public uint EntryCount;
+        public uint ContentionCount;
+        public uint Flags;
+        public ushort CreatorBackTraceIndexHigh;
+        public ushort SpareWORD;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential, Pack = 8), CLSCompliant(false)]
+    public struct RTL_CRITICAL_SECTION
+    {
+        public IntPtr DebugInfo;
+        public int LockCount;
+        public int RecursionCount;
+        public IntPtr OwningThread;
+        public IntPtr LockSemaphore;
+        public uint SpinCount;
+    }
 }
 
 namespace xPlatform.x86.kernel32
@@ -429,4 +471,7 @@ namespace xPlatform.x86.kernel32
 
     [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi), CLSCompliant(false)]
     public delegate int DllMain(IntPtr hinstDLL, uint fdwReason, IntPtr lpvReserved);
+
+    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi), CLSCompliant(false)]
+    public delegate void APCProc(uint dwParam);
 }
