@@ -551,7 +551,65 @@ namespace xPlatform.x86.kernel32
         [DllImport(ModuleName)]
         public static extern void FreeLibraryAndExitThread(IntPtr hModule, int dwExitCode);
 
-        // GetModuleFileName
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint GetModuleFileNameA(IntPtr hModule, IntPtr lpFIleName, uint nSize);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern uint GetModuleFileNameA(IntPtr hModule, StringBuilder lpFIleName, uint nSize);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint GetModuleFileNameW(IntPtr hModule, IntPtr lpFIleName, uint nSize);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern uint GetModuleFileNameW(IntPtr hModule, StringBuilder lpFIleName, uint nSize);
+
+        [DllImport(ModuleName)]
+        public static extern IntPtr GetModuleHandleA([Const] IntPtr lpModuleName);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        public static extern IntPtr GetModuleHandleA(string lpModuleName);
+
+        [DllImport(ModuleName)]
+        public static extern IntPtr GetModuleHandleW([Const] IntPtr lpModuleName);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
+        public static extern IntPtr GetModuleHandleW(string lpModuleName);
+
+        [DllImport(ModuleName)]
+        public static extern IntPtr GetProcAddressA(IntPtr hModule, [Const] IntPtr lpProcName);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        public static extern IntPtr GetProcAddressA(IntPtr hModule, string lpProcName);
+
+        [DllImport(ModuleName)]
+        public static extern IntPtr GetProcAddressW(IntPtr hModule, [Const] IntPtr lpProcName);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
+        public static extern IntPtr GetProcAddressW(IntPtr hModule, string lpProcName);
+
+        [DllImport(ModuleName)]
+        public static extern IntPtr LoadLibraryA([Const] IntPtr lpLibFileName);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
+        public static extern IntPtr LoadLibraryA(string lpLibFileName);
+
+        [DllImport(ModuleName)]
+        public static extern IntPtr LoadLibraryW([Const] IntPtr lpLibFileName);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
+        public static extern IntPtr LoadLibraryW(string lpLibFileName);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr LoadLibraryExA([Const] IntPtr lpLibFileName, IntPtr hFile, uint dwFlags);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr LoadLibraryExA(string lpLibFileName, IntPtr hFile, uint dwFlags);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr LoadLibraryExW([Const] IntPtr lpLibFileName, IntPtr hFile, uint dwFlags);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr LoadLibraryExW(string lpLibFileName, IntPtr hFile, uint dwFlags);
     }
 
     #endregion // Dynamic link library functions
