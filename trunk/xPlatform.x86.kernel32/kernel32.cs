@@ -722,6 +722,406 @@ namespace xPlatform.x86.kernel32
 
     #endregion // Event functions
 
+    #region Interlocked functions
+
+    partial class kernel32
+    {
+        [DllImport(ModuleName)]
+        public static extern int InterlockedCompareExchange(IntPtr Destination, int Exchange, int Comperand);
+
+        [DllImport(ModuleName)]
+        public static extern int InterlockedCompareExchange(ref int Destination, int Exchange, int Comperand);
+
+        [DllImport(ModuleName)]
+        public static extern IntPtr InterlockedCompareExchangePointer(IntPtr Destination, IntPtr Exchange, IntPtr Comperand);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr InterlockedCompareExchangePointer(ref IntPtr Destination, IntPtr Exchange, IntPtr Comperand);
+
+        [DllImport(ModuleName)]
+        public static extern int InterlockedDecrement(IntPtr lpAppend);
+
+        [DllImport(ModuleName)]
+        public static extern int InterlockedDecrement(ref int lpAppend);
+
+        [DllImport(ModuleName)]
+        public static extern int InterlockedExchange(IntPtr Target, int Value);
+
+        [DllImport(ModuleName)]
+        public static extern int InterlockedExchange(ref int Target, int Value);
+
+        [DllImport(ModuleName)]
+        public static extern int InterlockedExchangeAdd(IntPtr Addend, int Value);
+
+        [DllImport(ModuleName)]
+        public static extern int InterlockedExchangeAdd(ref int Addend, int Value);
+
+        [DllImport(ModuleName)]
+        public static extern IntPtr InterlockedExchangePointer(IntPtr Destination, IntPtr Value);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr InterlockedExchangePointer(ref IntPtr Destination, IntPtr Value);
+
+        [DllImport(ModuleName)]
+        public static extern int InterlockedIncrement(IntPtr lpAppend);
+
+        [DllImport(ModuleName)]
+        public static extern int InterlockedIncrement(ref int lpAppend);
+    }
+
+    #endregion // Interlocked functions
+
+    #region Mutex functions
+
+    partial class kernel32
+    {
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreateMutexA(IntPtr lpMutexAttributes, int bInitialOwner, [Const] IntPtr lpName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr CreateMutexA(ref SECURITY_ATTRIBUTES lpMutexAttributes, int bInitialOwner, string lpName);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreateMutexW(IntPtr lpMutexAttributes, int bInitialOwner, [Const] IntPtr lpName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr CreateMutexW(ref SECURITY_ATTRIBUTES lpMutexAttributes, int bInitialOwner, string lpName);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr OpenMutexA(uint dwDesiredAccess, int bInheritHandle, [Const] IntPtr lpName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr OpenMutexA(uint dwDesiredAccess, int bInheritHandle, string lpName);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr OpenMutexW(uint dwDesiredAccess, int bInheritHandle, [Const] IntPtr lpName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr OpenMutexW(uint dwDesiredAccess, int bInheritHandle, string lpName);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ReleaseMutex(IntPtr hMutex);
+    }
+
+    #endregion // Mutex functions
+
+    #region Semaphore functions
+
+    partial class kernel32
+    {
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreateSemaphoreA(IntPtr lpSemaphoreAttributes, int lInitialCount, int lMaximumCount, [Const] IntPtr lpName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr CreateSemaphoreA(ref SECURITY_ATTRIBUTES lpSemaphoreAttributes, int lInitialCount, int lMaximumCount, string lpName);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreateSemaphoreW(IntPtr lpSemaphoreAttributes, int lInitialCount, int lMaximumCount, [Const] IntPtr lpName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr CreateSemaphoreW(ref SECURITY_ATTRIBUTES lpSemaphoreAttributes, int lInitialCount, int lMaximumCount, string lpName);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr OpenSemaphoreA(uint dwDesiredAccess, int bInheritHandle, [Const] IntPtr lpName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr OpenSemaphoreA(uint dwDesiredAccess, int bInheritHandle, string lpName);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr OpenSemaphoreW(uint dwDesiredAccess, int bInheritHandle, [Const] IntPtr lpName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr OpenSemaphoreW(uint dwDesiredAccess, int bInheritHandle, string lpName);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ReleaseSemaphore(IntPtr hSemaphore, int lReleaseCount, IntPtr lpPreviousCount);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ReleaseSemaphore(IntPtr hSemaphore, int lReleaseCount, ref int lpPreviousCount);
+    }
+
+    #endregion // Semaphore functions
+
+    #region Timer-Queue timer functions
+
+    partial class kernel32
+    {
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int ChangeTimerQueueTimer(IntPtr TimerQueue, IntPtr Timer, uint DueTime, uint Period);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreateTimerQueue();
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CreateTimerQueueTimer(IntPtr phNewTimer, IntPtr TimerQueue, IntPtr Callback, IntPtr Parameter, uint DueTime, uint Period, uint Flags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CreateTimerQueueTimer(ref IntPtr phNewTimer, IntPtr TimerQueue, WaitOrTimerCallback Callback, IntPtr Parameter, uint DueTime, uint Period, uint Flags);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int DeleteTimerQueue(IntPtr TimerQueue);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int DeleteTimerQueue(IntPtr TimerQueue, IntPtr CompletionEvent);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int DeleteTimerQueueTimer(IntPtr TimerQueue, IntPtr Timer, IntPtr CompletionEvent);
+    }
+
+    #endregion // Timer-Queue timer functions
+
+    #region Wait functions
+
+    partial class kernel32
+    {
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint MsgWaitForMultipleObjects(uint nCount, [Const] IntPtr pHandles, int bWaitAll, uint dwMilliseconds, uint dwWakeMask);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint MsgWaitForMultipleObjects(uint nCount, IntPtr[] pHandles, int bWaitAll, uint dwMilliseconds, uint dwWakeMask);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint MsgWaitForMultipleObjectsEx(uint nCount, [Const] IntPtr pHandles, uint dwMilliseconds, uint dwWakeMask, uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint MsgWaitForMultipleObjectsEx(uint nCount, IntPtr[] pHandles, uint dwMilliseconds, uint dwWakeMask, uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int RegisterWaitForSingleObject(IntPtr phNewWaitObject, IntPtr hObject, IntPtr Callback, IntPtr Context, uint dwMilliseconds, uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int RegisterWaitForSingleObject(ref IntPtr phNewWaitObject, IntPtr hObject, WaitOrTimerCallback Callback, IntPtr Context, uint dwMilliseconds, uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint SignalObjectAndWait(IntPtr hObjectToSignal, IntPtr hObjectToWaitOn, uint dwMilliseconds, int bAlertable);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int UnregisterWait(IntPtr WaitHandle);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int UnregisterWaitEx(IntPtr WaitHandle, IntPtr CompletionEvent);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint WaitForMultipleObjects(uint nCount, [Const] IntPtr lpHandles, int bWaitAll, uint dwMilliseconds);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint WaitForMultipleObjects(uint nCount, IntPtr[] lpHandles, int bWaitAll, uint dwMilliseconds);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint WaitForMultipleObjectsEx(uint nCount, [Const] IntPtr lpHandles, int bWaitAll, uint dwMilliseconds, int bAlertable);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint WaitForMultipleObjectsEx(uint nCount, IntPtr[] lpHandles, int bWaitAll, uint dwMilliseconds, int bAlertable);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int WaitForSingleObject(IntPtr hHandle, uint dwMilliseconds);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int WaitForSingleObjectEx(IntPtr hHandle, uint dwMilliseconds, int bAlertable);
+    }
+
+    #endregion // Wait functions
+
+    #region Waitable timer functions
+
+    partial class kernel32
+    {
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int CancelWaitableTimer(IntPtr hTimer);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreateWaitableTimerA(IntPtr lpTimerAttributes, int bManualReset, [Const] IntPtr lpTimerName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr CreateWaitableTimerA(ref SECURITY_ATTRIBUTES lpTimerAttributes, int bManualReset, string lpTimerName);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreateWaitableTimerW(IntPtr lpTimerAttributes, int bManualReset, [Const] IntPtr lpTimerName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr CreateWaitableTimerW(ref SECURITY_ATTRIBUTES lpTimerAttributes, int bManualReset, string lpTimerName);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr OpenWaitableTimerA(uint dwDesiredAccess, int bInheritHandle, [Const] IntPtr lpTimerName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr OpenWaitableTimerA(uint dwDesiredAccess, int bInheritHandle, string lpTimerName);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr OpenWaitableTimerW(uint dwDesiredAccess, int bInheritHandle, [Const] IntPtr lpTimerName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr OpenWaitableTimerW(uint dwDesiredAccess, int bInheritHandle, string lpTimerName);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetWaitableTimer(IntPtr hTimer, [Const] IntPtr pDueTime, int lPeriod, IntPtr pfnCompletionRoutine, IntPtr lpArgToCompletionRoutine, int fResume);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetWaitableTimer(IntPtr hTimer, ref LARGE_INTEGER pDueTime, int lPeriod, TimerAPCProc pfnCompletionRoutine, IntPtr lpArgToCompletionRoutine, int fResume);
+    }
+
+    #endregion // Waitable timer functions
+
+    #region File I/O functions
+
+    partial class kernel32
+    {
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int AreFileApisANSI();
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int CancelIo(IntPtr hFile);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int CopyFileA([Const] IntPtr lpExistingFileName, [Const] IntPtr lpNewFileName, int bFailIfExists);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
+        public static extern int CopyFileA(string lpExistingFileName, string lpNewFileName, int bFailIfExists);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int CopyFileW([Const] IntPtr lpExistingFileName, [Const] IntPtr lpNewFileName, int bFailIfExists);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
+        public static extern int CopyFileW(string lpExistingFileName, string lpNewFileName, int bFailIfExists);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CopyFileExA([Const] IntPtr lpExistingFileName, [Const] IntPtr lpNewFileName, IntPtr lpProgressRoutine, IntPtr lpData, IntPtr pbCancel, uint dwCopyFlags);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int CopyFileExA(string lpExistingFileName, string lpNewFileName, CopyProgressRoutine lpProgressRoutine, IntPtr lpData, ref int pbCancel, uint dwCopyFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CopyFileExW([Const] IntPtr lpExistingFileName, [Const] IntPtr lpNewFileName, IntPtr lpProgressRoutine, IntPtr lpData, IntPtr pbCancel, uint dwCopyFlags);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int CopyFileExW(string lpExistingFileName, string lpNewFileName, CopyProgressRoutine lpProgressRoutine, IntPtr lpData, ref int pbCancel, uint dwCopyFlags);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int CreateDirectoryA([Const] IntPtr lpPathName, IntPtr lpSecurityAttributes);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int CreateDirectoryA(string lpPathName, ref SECURITY_ATTRIBUTES lpSecurityAttributes);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int CreateDirectoryW([Const] IntPtr lpPathName, IntPtr lpSecurityAttributes);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int CreateDirectoryW(string lpPathName, ref SECURITY_ATTRIBUTES lpSecurityAttributes);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int CreateDirectoryExA([Const] IntPtr lpTemplateDirectory, [Const] IntPtr lpNewDirectory, IntPtr lpSecurityAttributes);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int CreateDirectoryExA(string lpTemplateDirectory, string lpNewDirectory, ref SECURITY_ATTRIBUTES lpSecurityAttributes);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int CreateDirectoryExW([Const] IntPtr lpTemplateDirectory, [Const] IntPtr lpNewDirectory, IntPtr lpSecurityAttributes);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int CreateDirectoryExW(string lpTemplateDirectory, string lpNewDirectory, ref SECURITY_ATTRIBUTES lpSecurityAttributes);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr CreateFileA([Const] IntPtr lpFileName, uint dwDesiredAccess, uint dwShareMode, IntPtr lpSecurityAttributes, uint dwCreationDisposition, uint dwFlagsAndAttributes, IntPtr hTemplateFile);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr CreateFileA(string lpFileName, uint dwDesiredAccess, uint dwShareMode, ref SECURITY_ATTRIBUTES lpSecurityAttributes, uint dwCreationDisposition, uint dwFlagsAndAttributes, IntPtr hTemplateFile);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr CreateFileW([Const] IntPtr lpFileName, uint dwDesiredAccess, uint dwShareMode, IntPtr lpSecurityAttributes, uint dwCreationDisposition, uint dwFlagsAndAttributes, IntPtr hTemplateFile);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr CreateFileW(string lpFileName, uint dwDesiredAccess, uint dwShareMode, ref SECURITY_ATTRIBUTES lpSecurityAttributes, uint dwCreationDisposition, uint dwFlagsAndAttributes, IntPtr hTemplateFile);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr CreateIoCompletionPort(IntPtr FileHandle, IntPtr ExistingCompletionPort, uint CompletionKey, uint NumberOfConcurrentThreads);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DefineDosDeviceA(uint dwFlags, [Const] IntPtr lpDeviceName, [Const] IntPtr lpTargetPath);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int DefineDosDeviceA(uint dwFlags, string lpDeviceName, string lpTargetPath);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DefineDosDeviceW(uint dwFlags, [Const] IntPtr lpDeviceName, [Const] IntPtr lpTargetPath);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int DefineDosDeviceW(uint dwFlags, string lpDeviceName, string lpTargetPath);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int DeleteFileA([Const] IntPtr lpFileName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
+        public static extern int DeleteFileA(string lpFileName);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int DeleteFileW([Const] IntPtr lpFileName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern int DeleteFileW(string lpFileName);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int FindClose(IntPtr hFindFile);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int FindCloseChangeNotification(IntPtr hChangeHandle);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr FindFirstChangeNotificationA([Const] IntPtr lpPathName, int bWatchSubtree, uint dwNotifyFilter);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr FindFirstChangeNotificationA(string lpPathName, int bWatchSubtree, uint dwNotifyFilter);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr FindFirstChangeNotificationW([Const] IntPtr lpPathName, int bWatchSubtree, uint dwNotifyFilter);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr FindFirstChangeNotificationW(string lpPathName, int bWatchSubtree, uint dwNotifyFilter);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr FindFirstFileA([Const] IntPtr lpFileName, IntPtr lpFindFileData);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
+        public static extern IntPtr FindFirstFileA(string lpFileName, ref WIN32_FIND_DATA lpFindFileData);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr FindFirstFileW([Const] IntPtr lpFileName, IntPtr lpFindFileData);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern IntPtr FindFirstFileW(string lpFileName, ref WIN32_FIND_DATA lpFindFileData);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr FindFirstFileExA([Const] IntPtr lpFileName, FINDEX_INFO_LEVELS fInfoLevelId, IntPtr lpFindFileData, FINDEX_SEARCH_OPS fSearchOp, IntPtr lpSearchFilter, uint dwAdditionalFlag);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr FindFirstFileExA(string lpFileName, FINDEX_INFO_LEVELS fInfoLevelId, IntPtr lpFindFileData, FINDEX_SEARCH_OPS fSearchOp, IntPtr lpSearchFilter, uint dwAdditionalFlag);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr FindFirstFileExW([Const] IntPtr lpFileName, FINDEX_INFO_LEVELS fInfoLevelId, IntPtr lpFindFileData, FINDEX_SEARCH_OPS fSearchOp, IntPtr lpSearchFilter, uint dwAdditionalFlag);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr FindFirstFileExW(string lpFileName, FINDEX_INFO_LEVELS fInfoLevelId, IntPtr lpFindFileData, FINDEX_SEARCH_OPS fSearchOp, IntPtr lpSearchFilter, uint dwAdditionalFlag);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int FindNextChangeNotification(IntPtr hChangeHandle);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int FindNextFileA(IntPtr hFindFile, IntPtr lpFindFileData);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int FindNextFileA(IntPtr hFindFile, ref WIN32_FIND_DATA lpFindFileData);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int FindNextFileW(IntPtr hFindFile, IntPtr lpFindFileData);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int FindNextFileW(IntPtr hFindFile, ref WIN32_FIND_DATA lpFindFileData);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int FlushFileBuffers(IntPtr hFile);
+    }
+
+    #endregion // File I/O functions
+
     // Relocation required...
 
     partial class kernel32

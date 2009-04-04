@@ -10,6 +10,23 @@ namespace xPlatform.x86.kernel32
 
 namespace xPlatform.x86.kernel32
 {
+    [Serializable]
+    public enum FINDEX_INFO_LEVELS : int
+    {
+        FindExInfoStandard
+    }
+
+    [Serializable]
+    public enum FINDEX_SEARCH_OPS : int
+    {
+        FindExSearchNameMatch,
+        FindExSearchLimitToDirectories,
+        FindExSearchLimitToDevices
+    }
+}
+
+namespace xPlatform.x86.kernel32
+{
     [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
     public struct CONTEXT
     {
@@ -462,6 +479,38 @@ namespace xPlatform.x86.kernel32
         public IntPtr LockSemaphore;
         public uint SpinCount;
     }
+
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct LARGE_INTEGER
+    {
+        public long QuadPart;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct FILETIME
+    {
+        public uint dwLowDateTime;
+        public uint dwHighDateTime;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto), CLSCompliant(false)]
+    public struct WIN32_FIND_DATA
+    {
+        public uint dwFileAttributes;
+        public FILETIME ftCreationTime;
+        public FILETIME ftLastAccessTime;
+        public FILETIME ftLastWriteTime;
+        public uint nFileSizeHigh;
+        public uint nFileSizeLow;
+        public uint dwReserved0;
+        public uint dwReserved1;
+
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 260)]
+        public string cFileName;
+
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 14)]
+        public string cAlternateFileName;
+    }
 }
 
 namespace xPlatform.x86.kernel32
@@ -474,4 +523,16 @@ namespace xPlatform.x86.kernel32
 
     [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi), CLSCompliant(false)]
     public delegate void APCProc(uint dwParam);
+
+    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public delegate void WaitOrTimerCallback(IntPtr lpParameter, byte TimerOrWaitFired);
+
+    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi), CLSCompliant(false)]
+    public delegate void TimerAPCProc(IntPtr lpArgToCompletionRoutine, uint dwTimerLowValue, uint dwTimerHighValue);
+
+    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi), CLSCompliant(false)]
+    public delegate uint CopyProgressRoutine(LARGE_INTEGER TotalFileSize, LARGE_INTEGER TotalBytesTransferred, LARGE_INTEGER StreamSize, LARGE_INTEGER StreamBytesTransferred, uint dwStreamNumber, uint dwCallbackReason, IntPtr hSourceFile, IntPtr hDestinationFile, IntPtr lpData);
+
+    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi), CLSCompliant(false)]
+    public delegate void FileIOCompletionRoutine(uint dwErrorCode, uint dwNumberOfBytesTransferred, IntPtr lpOverlapped);
 }
