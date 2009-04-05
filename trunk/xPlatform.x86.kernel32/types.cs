@@ -6,6 +6,12 @@ namespace xPlatform.x86.kernel32
 {
     [Serializable, Flags, CLSCompliant(false)]
     public enum ATOM : ushort { }
+
+    [Serializable, Flags, CLSCompliant(false)]
+    public enum SECURITY_INFORMATION : uint { }
+
+    [Serializable, Flags, CLSCompliant(false)]
+    public enum SECURITY_DESCRIPTOR_CONTROL : ushort { }
 }
 
 namespace xPlatform.x86.kernel32
@@ -541,6 +547,41 @@ namespace xPlatform.x86.kernel32
 
         [FieldOffset(0)]
         public ulong Alignment;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct ACL
+    {
+        public byte AclRevision;
+        public byte Sbz1;
+        public ushort AclSize;
+        public ushort AceCount;
+        public ushort Sbz2;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct SECURITY_DESCRIPTOR
+    {
+        public byte Revision;
+        public byte Sbz1;
+        public SECURITY_DESCRIPTOR_CONTROL Control;
+        public IntPtr Owner;
+        public IntPtr Group;
+        public IntPtr Sacl;
+        public IntPtr Dacl;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi), CLSCompliant(false)]
+    public struct OFSTRUCT
+    {
+        public byte cBytes;
+        public byte fFixedDisk;
+        public ushort nErrCode;
+        public ushort Reserved1;
+        public ushort Reserved2;
+
+        [MarshalAs(UnmanagedType.LPStr, SizeConst = 128)]
+        public string szPathName;
     }
 }
 
