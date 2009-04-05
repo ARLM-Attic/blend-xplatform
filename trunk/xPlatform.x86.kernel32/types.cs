@@ -487,6 +487,12 @@ namespace xPlatform.x86.kernel32
     }
 
     [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct ULARGE_INTEGER
+    {
+        public ulong QuadPart;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
     public struct FILETIME
     {
         public uint dwLowDateTime;
@@ -510,6 +516,31 @@ namespace xPlatform.x86.kernel32
 
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 14)]
         public string cAlternateFileName;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct BY_HANDLE_FILE_INFORMATION
+    {
+        public uint dwFileAttributes;
+        public FILETIME ftCreationTime;
+        public FILETIME ftLastAccessTime;
+        public FILETIME ftLastWriteTime;
+        public uint dwVolumeSerialNumber;
+        public uint nFileSizeHigh;
+        public uint nFileSizeLow;
+        public uint nNumberOfLinks;
+        public uint nFileIndexHigh;
+        public uint nFileIndexLow;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Explicit), CLSCompliant(false)]
+    public struct FILE_SEGMENT_ELEMENT
+    {
+        [FieldOffset(0)]
+        public IntPtr Buffer;
+
+        [FieldOffset(0)]
+        public ulong Alignment;
     }
 }
 
