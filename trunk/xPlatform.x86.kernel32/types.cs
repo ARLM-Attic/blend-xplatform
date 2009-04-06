@@ -12,6 +12,12 @@ namespace xPlatform.x86.kernel32
 
     [Serializable, Flags, CLSCompliant(false)]
     public enum SECURITY_DESCRIPTOR_CONTROL : ushort { }
+
+    [Serializable, Flags, CLSCompliant(false)]
+    public enum REGSAM : uint { }
+
+    [Serializable, Flags, CLSCompliant(false)]
+    public enum LCID : uint { }
 }
 
 namespace xPlatform.x86.kernel32
@@ -652,6 +658,37 @@ namespace xPlatform.x86.kernel32
         public uint State;
         public uint Protect;
         public uint Type;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct SYSTEMTIME
+    {
+        public ushort wYear;
+        public ushort wMonth;
+        public ushort wDayOfWeek;
+        public ushort wDay;
+        public ushort wHour;
+        public ushort wMinute;
+        public ushort wSecond;
+        public ushort wMilliseconds;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode), CLSCompliant(false)]
+    public struct TIME_ZONE_INFORMATION
+    {
+        public int Bias;
+
+        [MarshalAs(UnmanagedType.LPWStr, SizeConst = 32)]
+        public string StandardName;
+
+        public SYSTEMTIME StandardDate;
+        public int StandardBias;
+
+        [MarshalAs(UnmanagedType.LPWStr, SizeConst = 32)]
+        public string DaylightName;
+
+        public SYSTEMTIME DaylightDate;
+        public int DaylightBias;
     }
 }
 

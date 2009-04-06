@@ -2101,13 +2101,295 @@ namespace xPlatform.x86.kernel32
 
     #endregion // Global and local functions
 
-    #region Registry functions
+    #region String manipulation functions
 
     partial class kernel32
     {
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CompareStringA(LCID Locale, uint dwCmpFlags, [Const] IntPtr lpString1, int cchCount1, [Const] IntPtr lpString2, int cchCount2);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int CompareStringA(LCID Locale, uint dwCmpFlags, string lpString1, int cchCount1, string lpString2, int cchCount2);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CompareStringW(LCID Locale, uint dwCmpFlags, [Const] IntPtr lpString1, int cchCount1, [Const] IntPtr lpString2, int cchCount2);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int CompareStringW(LCID Locale, uint dwCmpFlags, string lpString1, int cchCount1, string lpString2, int cchCount2);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int FoldStringA(uint dwMapFlags, [Const] IntPtr lpSrcStr, int cchSrc, IntPtr lpDestStr, int cchDest);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int FoldStringA(uint dwMapFlags, string lpSrcStr, int cchSrc, StringBuilder lpDestStr, int cchDest);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int FoldStringW(uint dwMapFlags, [Const] IntPtr lpSrcStr, int cchSrc, IntPtr lpDestStr, int cchDest);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int FoldStringW(uint dwMapFlags, string lpSrcStr, int cchSrc, StringBuilder lpDestStr, int cchDest);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetStringTypeA(LCID Locale, uint dwInfoType, [Const] IntPtr lpSrcStr, int cchSrc, IntPtr lpCharType);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int GetStringTypeA(LCID Locale, uint dwInfoType, string lpSrcStr, int cchSrc, ref uint lpCharType);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetStringTypeW(LCID Locale, uint dwInfoType, [Const] IntPtr lpSrcStr, int cchSrc, IntPtr lpCharType);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int GetStringTypeW(LCID Locale, uint dwInfoType, string lpSrcStr, int cchSrc, ref uint lpCharType);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetStringTypeExA(LCID Locale, uint dwInfoType, [Const] IntPtr lpSrcStr, int cchSrc, IntPtr lpCharType);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int GetStringTypeExA(LCID Locale, uint dwInfoType, string lpSrcStr, int cchSrc, ref uint lpCharType);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetStringTypeExW(LCID Locale, uint dwInfoType, [Const] IntPtr lpSrcStr, int cchSrc, IntPtr lpCharType);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int GetStringTypeExW(LCID Locale, uint dwInfoType, string lpSrcStr, int cchSrc, ref uint lpCharType);
+
+        [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
+        public static extern IntPtr lstrcat(IntPtr lpString1, [Const] IntPtr lpString2);
+
+        [DllImport(ModuleName, CharSet = CharSet.Auto, ExactSpelling = true, SetLastError = true)]
+        public static extern string lstrcat(StringBuilder lpString1, string lpString2);
+
+        [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
+        public static extern IntPtr lstrcatA(IntPtr lpString1, [Const] IntPtr lpString2);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi, ExactSpelling = true, SetLastError = true)]
+        public static extern string lstrcatA(StringBuilder lpString1, string lpString2);
+
+        [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
+        public static extern IntPtr lstrcatW(IntPtr lpString1, [Const] IntPtr lpString2);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode, ExactSpelling = true, SetLastError = true)]
+        public static extern string lstrcatW(StringBuilder lpString1, string lpString2);
+
+        [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
+        public static extern int lstrcmp([Const] IntPtr lpString1, [Const] IntPtr lpString2);
+
+        [DllImport(ModuleName, CharSet = CharSet.Auto, ExactSpelling = true, SetLastError = true)]
+        public static extern int lstrcmp(string lpString1, string lpString2);
+
+        [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
+        public static extern int lstrcmpA([Const] IntPtr lpString1, [Const] IntPtr lpString2);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi, ExactSpelling = true, SetLastError = true)]
+        public static extern int lstrcmpA(string lpString1, string lpString2);
+
+        [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
+        public static extern int lstrcmpW([Const] IntPtr lpString1, [Const] IntPtr lpString2);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode, ExactSpelling = true, SetLastError = true)]
+        public static extern int lstrcmpW(string lpString1, string lpString2);
+
+        [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
+        public static extern int lstrcmpi([Const] IntPtr lpString1, [Const] IntPtr lpString2);
+
+        [DllImport(ModuleName, CharSet = CharSet.Auto, ExactSpelling = true, SetLastError = true)]
+        public static extern int lstrcmpi(string lpString1, string lpString2);
+
+        [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
+        public static extern int lstrcmpiA([Const] IntPtr lpString1, [Const] IntPtr lpString2);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi, ExactSpelling = true, SetLastError = true)]
+        public static extern int lstrcmpiA(string lpString1, string lpString2);
+
+        [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
+        public static extern int lstrcmpiW([Const] IntPtr lpString1, [Const] IntPtr lpString2);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode, ExactSpelling = true, SetLastError = true)]
+        public static extern int lstrcmpiW(string lpString1, string lpString2);
+
+        [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
+        public static extern IntPtr lstrcpy(IntPtr lpString1, [Const] IntPtr lpString2);
+
+        [DllImport(ModuleName, CharSet = CharSet.Auto, ExactSpelling = true, SetLastError = true)]
+        public static extern string lstrcpy(StringBuilder lpString1, string lpString2);
+
+        [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
+        public static extern IntPtr lstrcpyA(IntPtr lpString1, [Const] IntPtr lpString2);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi, ExactSpelling = true, SetLastError = true)]
+        public static extern string lstrcpyA(StringBuilder lpString1, string lpString2);
+
+        [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
+        public static extern IntPtr lstrcpyW(IntPtr lpString1, [Const] IntPtr lpString2);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode, ExactSpelling = true, SetLastError = true)]
+        public static extern string lstrcpyW(StringBuilder lpString1, string lpString2);
+
+        [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
+        public static extern IntPtr lstrcpyn(IntPtr lpString1, [Const] IntPtr lpString2, int iMaxLength);
+
+        [DllImport(ModuleName, CharSet = CharSet.Auto, ExactSpelling = true, SetLastError = true)]
+        public static extern string lstrcpyn(StringBuilder lpString1, string lpString2, int iMaxLength);
+
+        [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
+        public static extern IntPtr lstrcpynA(IntPtr lpString1, [Const] IntPtr lpString2, int iMaxLength);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi, ExactSpelling = true, SetLastError = true)]
+        public static extern string lstrcpynA(StringBuilder lpString1, string lpString2, int iMaxLength);
+
+        [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
+        public static extern IntPtr lstrcpynW(IntPtr lpString1, [Const] IntPtr lpString2, int iMaxLength);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode, ExactSpelling = true, SetLastError = true)]
+        public static extern string lstrcpynW(StringBuilder lpString1, string lpString2, int iMaxLength);
+
+        [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
+        public static extern int lstrlen([Const] IntPtr lpString);
+
+        [DllImport(ModuleName, CharSet = CharSet.Auto, ExactSpelling = true, SetLastError = true)]
+        public static extern int lstrlen(string lpString);
+
+        [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
+        public static extern int lstrlenA([Const] IntPtr lpString);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi, ExactSpelling = true, SetLastError = true)]
+        public static extern int lstrlenA(string lpString);
+
+        [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
+        public static extern int lstrlenW([Const] IntPtr lpString);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode, ExactSpelling = true, SetLastError = true)]
+        public static extern int lstrlenW(string lpString);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int MultiByteToWideChar(uint CodePage, uint dwFlags, [Const] IntPtr lpMultiByteStr, int cchMultiByte, IntPtr lpWideCharStr, int cchWideChar);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int MultiByteToWideChar(uint CodePage, uint dwFlags, string lpMultiByteStr, int cchMultiByte, IntPtr lpWideCharStr, int cchWideChar);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int WideCharToMultiByte(uint CodePage, uint dwFlags, [Const] IntPtr lpWideCharStr, int cchWideChar, IntPtr lpMultiByteStr, int cchMultiByte, [Const] IntPtr lpDefaultChar, IntPtr lpUsedDefaultChar);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int WideCharToMultiByte(uint CodePage, uint dwFlags, string lpWideCharStr, int cchWideChar, IntPtr lpMultiByteStr, int cchMultiByte, [MarshalAs(UnmanagedType.LPStr)] string lpDefaultChar, ref int lpUsedDefaultChar);
     }
 
-    #endregion // Registry functions
+    #endregion // String manipulation functions
+
+    #region Time functions
+
+    partial class kernel32
+    {
+        [DllImport(ModuleName)]
+        public static extern int CompareFileTime([Const] IntPtr lpFileTime1, [Const] IntPtr lpFileTime2);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int CompareFileTime(ref FILETIME lpFileTime1, ref FILETIME lpFileTime2);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DosDateTimeToFileTime(ushort wFatDate, ushort sFatTime, IntPtr lpFileTime);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DosDateTimeToFileTime(ushort wFatDate, ushort sFatTime, ref FILETIME lpFileTime);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int FileTimeToDosDateTime([Const] IntPtr lpFileTime, IntPtr lpFatDate, IntPtr lpFatTime);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int FileTimeToDosDateTime(ref FILETIME lpFileTime, ref ushort lpFatDate, ref ushort lpFatTime);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int FileTimeToLocalFileTime([Const] IntPtr lpFileTime, IntPtr lpLocalFileTime);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int FileTimeToLocalFileTime(ref FILETIME lpFileTime, ref FILETIME lpLocalFileTime);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int FileTimeToSystemTime([Const] IntPtr lpFileTime, IntPtr lpSystemTime);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int FileTimeToSystemTime(ref FILETIME lpFileTime, ref SYSTEMTIME lpSystemTime);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetFileTime(IntPtr hFile, IntPtr lpCreationTime, IntPtr lpLastAccessTime, IntPtr lpLastWriteTime);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetFileTime(IntPtr hFile, ref FILETIME lpCreationTime, ref FILETIME lpLastAccessTime, ref FILETIME lpLastWriteTime);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern void GetSystemTime(IntPtr lpSystemTime);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern void GetSystemTime(ref SYSTEMTIME lpSystemTime);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetSystemTimeAdjustment(IntPtr lpTimeAdjustment, IntPtr lpTimeIncrement, IntPtr lpTimeAdjustmentDisabled);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetSystemTimeAdjustment(ref uint lpTimeAdjustment, ref uint lpTimeIncrement, ref int lpTimeAdjustmentDisabled);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern void GetSystemTimeAsFileTime(IntPtr lpSystemTimeAsFileTime);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern void GetSystemTimeAsFileTime(ref FILETIME lpSystemTimeAsFileTime);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint GetTickCount();
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetTimeZoneInformation(IntPtr lpTimeZoneInformation);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetTimeZoneInformation(ref TIME_ZONE_INFORMATION lpTimeZoneInformation);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int LocalFileTimeToFileTime([Const] IntPtr lpLocalFileTime, IntPtr lpFileTime);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int LocalFileTimeToFileTime(ref FILETIME lpLocalFileTime, ref FILETIME lpFileTime);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetFileTime(IntPtr hFile, [Const] IntPtr lpCreationTime, [Const] IntPtr lpLastAccessTime, [Const] IntPtr lpLastWriteTime);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetFileTime(IntPtr hFile, ref FILETIME lpCreationTime, ref FILETIME lpLastAccessTime, ref FILETIME lpLastWriteTime);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetLocalTime([Const] IntPtr lpSystemTime);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetLocalTime(ref SYSTEMTIME lpSystemTime);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetSystemTime([Const] IntPtr lpSystemTime);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetSystemTime(ref SYSTEMTIME lpSystemTime);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetSystemTimeAdjustment(uint dwTimeAdjustment, int bTimeAdjustmentDisabled);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetTimeZoneInformation([Const] IntPtr lpTimeZoneInformation);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetTimeZoneInformation(ref TIME_ZONE_INFORMATION lpTimeZoneInformation);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SystemTimeToFileTime([Const] IntPtr lpSystemTime, IntPtr lpFileTime);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SystemTimeToFileTime(ref SYSTEMTIME lpSystemTime, ref FILETIME lpFileTime);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SystemTimeToTzSpecificLocalTime(IntPtr lpTimeZoneInformation, IntPtr lpUniversalTime, IntPtr lpLocalTime);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SystemTimeToTzSpecificLocalTime(ref TIME_ZONE_INFORMATION lpTimeZoneInformation, ref SYSTEMTIME lpUniversalTime, ref SYSTEMTIME lpLocalTime);
+    }
+
+    #endregion // Time functions
 
     // Relocation required...
     partial class kernel32
