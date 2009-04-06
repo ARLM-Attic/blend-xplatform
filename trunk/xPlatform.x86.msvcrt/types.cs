@@ -320,7 +320,7 @@ namespace xPlatform.x86.msvcrt
         public int _useflag;
     }
 
-    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    [Serializable, StructLayout(LayoutKind.Sequential)]
     public struct lconv
     {
         public IntPtr
@@ -335,7 +335,7 @@ namespace xPlatform.x86.msvcrt
             positive_sign,
             negative_sign;
 
-        public sbyte
+        public byte
             int_frac_digits,
             frac_digits,
             p_cs_precedes,

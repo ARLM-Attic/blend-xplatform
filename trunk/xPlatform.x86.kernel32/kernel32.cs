@@ -2391,6 +2391,25 @@ namespace xPlatform.x86.kernel32
 
     #endregion // Time functions
 
+    #region Communication functions
+
+    partial class kernel32
+    {
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int BuildCommDCBA([Const] IntPtr lpDef, IntPtr lpDCB);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int BuildCommDCBA(string lpDef, ref DCB lpDCB);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int BuildCommDCBW([Const] IntPtr lpDef, IntPtr lpDCB);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int BuildCommDCBW(string lpDef, ref DCB lpDCB);
+    }
+
+    #endregion // Communication functions
+
     // Relocation required...
     partial class kernel32
     {

@@ -690,6 +690,41 @@ namespace xPlatform.x86.kernel32
         public SYSTEMTIME DaylightDate;
         public int DaylightBias;
     }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct DCB
+    {
+        public uint DCBlength;
+        public uint BaudRate;
+        public uint Flags;
+        public ushort wReserved;
+        public ushort XonLim;
+        public ushort XoffLim;
+        public byte ByteSize;
+        public byte Parity;
+        public byte StopBits;
+        public byte XonChar;
+        public byte XoffChar;
+        public byte ErrorChar;
+        public byte EofChar;
+        public byte EvtChar;
+        public ushort wReserved1;
+
+        public byte fBinary { get { throw new NotImplementedException(); } }
+        public byte fParity { get { throw new NotImplementedException(); } }
+        public byte fOutxCtsFlow { get { throw new NotImplementedException(); } }
+        public byte fOutxDsrFlow { get { throw new NotImplementedException(); } }
+        public byte fDtrControl { get { throw new NotImplementedException(); } }
+        public byte fDsrSensitivity { get { throw new NotImplementedException(); } }
+        public byte fTXContinueOnXoff { get { throw new NotImplementedException(); } }
+        public byte fOutX { get { throw new NotImplementedException(); } }
+        public byte fInX { get { throw new NotImplementedException(); } }
+        public byte fErrorChar { get { throw new NotImplementedException(); } }
+        public byte fNull { get { throw new NotImplementedException(); } }
+        public byte fRtsControl { get { throw new NotImplementedException(); } }
+        public byte fAbortOnError { get { throw new NotImplementedException(); } }
+        public byte fDummy { get { throw new NotImplementedException(); } }
+    }
 }
 
 namespace xPlatform.x86.kernel32
