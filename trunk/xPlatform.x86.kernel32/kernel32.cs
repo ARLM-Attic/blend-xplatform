@@ -1869,6 +1869,246 @@ namespace xPlatform.x86.kernel32
 
     #endregion // Tape backup functions
 
+    #region Handle and object functions
+
+    partial class kernel32
+    {
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int CloseHandle(IntPtr hObject);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DuplicateHandle(IntPtr hSourceProcessHandle, IntPtr hSourceHandle, IntPtr hTargetProcessHandle, IntPtr lpTargetHandle, uint dwDesiredAccess, int bInheritHandle, uint dwOptions);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DuplicateHandle(IntPtr hSourceProcessHandle, IntPtr hSourceHandle, IntPtr hTargetProcessHandle, ref IntPtr lpTargetHandle, uint dwDesiredAccess, int bInheritHandle, uint dwOptions);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetHandleInformation(IntPtr hObject, IntPtr lpdwFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetHandleInformation(IntPtr hObject, ref uint lpdwFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetHandleInformation(IntPtr hObject, uint dwMask, uint dwFlags);
+    }
+
+    #endregion // Handle and object functions
+
+    #region Large integer operation functions
+
+    partial class kernel32
+    {
+        [DllImport(ModuleName)]
+        public static extern int MulDiv(int nNumber, int nNumerator, int nDenominator);
+    }
+
+    #endregion // Large integer operation functions
+
+    #region Memory management functions
+
+    partial class kernel32
+    {
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void CopyMemory(IntPtr Destination, [Const] IntPtr Source, uint Length);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void FillMemory(IntPtr Destination, uint Length, byte Fill);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr GetProcessHeap();
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetProcessHeaps(uint NumberOfHeaps, IntPtr ProcessHeaps);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetProcessHeaps(uint NumberOfHeaps, ref IntPtr ProcessHeaps);
+
+        [DllImport(ModuleName)]
+        public static extern void GlobalMemoryStatus(IntPtr lpBuffer);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void GlobalMemoryStatus(ref MEMORYSTATUS lpBuffer);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr HeapAlloc(IntPtr hHeap, uint dwFlags, uint dwBytes);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint HeapCompact(IntPtr hHeap, uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr HeapCreate(uint flOptions, uint dwInitialSize, uint dwMaximumSize);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int HeapDestroy(IntPtr hHeap);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int HeapFree(IntPtr hHeap, uint dwFlags, IntPtr lpMem);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int HeapLock(IntPtr hHeap);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr HeapReAlloc(IntPtr hHeap, uint dwFlags, IntPtr lpMem, uint dwBytes);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint HeapSize(IntPtr hHeap, uint dwFlags, [Const] IntPtr lpMem);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int HeapUnlock(IntPtr hHeap);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int HeapValidate(IntPtr hHeap, uint dwFlags, [Const] IntPtr lpMem);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int HeapWalk(IntPtr hHeap, IntPtr lpEntry);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int HeapWalk(IntPtr hHeap, ref PROCESS_HEAP_ENTRY lpEntry);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int IsBadCodePtr(IntPtr lpfn);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int IsBadReadPtr([Const] IntPtr lp, uint ucb);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int IsBadStringPtrA([Const] IntPtr lpsz, uint ucchMax);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int IsBadStringPtrA(string lpsz, uint ucchMax);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int IsBadStringPtrW([Const] IntPtr lpsz, uint ucchMax);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int IsBadStringPtrW(string lpsz, uint ucchMax);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int IsBadWritePtr(IntPtr lp, uint ucb);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void MoveMemory(IntPtr Destination, [Const] IntPtr Source, uint Length);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr VirtualAlloc(IntPtr lpAddress, uint dwSize, uint flAllocationType, uint flProtect);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr VirtualAllocEx(IntPtr hProcess, IntPtr lpAddress, uint dwSize, uint flAllocationType, uint flProtect);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int VirtualFree(IntPtr lpAddress, uint dwSize, uint dwFreeType);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int VirtualFreeEx(IntPtr hProcess, IntPtr lpAddress, uint dwSize, uint dwFreeType);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int VirtualLock(IntPtr lpAddress, uint dwSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int VirtualProtect(IntPtr lpAddress, uint dwSize, uint flNewProtect, IntPtr lpflOldProtect);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int VirtualProtect(IntPtr lpAddress, uint dwSize, uint flNewProtect, ref uint lpflOldProtect);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int VirtualProtectEx(IntPtr hProcess, IntPtr lpAddress, uint dwSize, uint flNewProtect, IntPtr lpflOldProtect);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int VirtualProtectEx(IntPtr hProcess, IntPtr lpAddress, uint dwSize, uint flNewProtect, ref uint lpflOldProtect);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint VirtualQuery([Const] IntPtr lpAddress, IntPtr lpBuffer, uint dwLength);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint VirtualQuery([Const] IntPtr lpAddress, ref MEMORY_BASIC_INFORMATION lpBuffer, uint dwLength);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint VirtualQueryEx(IntPtr hProcess, [Const] IntPtr lpAddress, IntPtr lpBuffer, uint dwLength);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint VirtualQueryEx(IntPtr hProcess, [Const] IntPtr lpAddress, ref MEMORY_BASIC_INFORMATION lpBuffer, uint dwLength);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int VirtualUnlock(IntPtr lpAddress, uint dwSize);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void ZeroMemory(IntPtr Destination, uint Length);
+    }
+
+    #endregion // Memory management functions
+
+    #region Global and local functions
+
+    partial class kernel32
+    {
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr GlobalAlloc(uint uFlags, uint dwBytes);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr GlobalDiscard(IntPtr hglbMem);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GlobalFlags(IntPtr hMem);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr GlobalFree(IntPtr hMem);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr GlobalHandle([Const] IntPtr pMem);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr GlobalLock(IntPtr hMem);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr GlobalReAlloc(IntPtr hMem, uint dwBytes, uint uFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GlobalSize(IntPtr hMem);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GlobalUnlock(IntPtr hMem);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr LocalAlloc(uint uFlags, uint dwBytes);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr LocalDiscard(IntPtr hlocMem);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint LocalFlags(IntPtr hMem);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr LocalFree(IntPtr hMem);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr LocalHandle([Const] IntPtr pMem);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr LocalLock(IntPtr hMem);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr LocalReAlloc(IntPtr hMem, uint uBytes, uint uFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint LocalSize(IntPtr hMem);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int LocalUnlock(IntPtr hMem);
+
+        // Missing obsolete functions:
+        // GlobalCompact, GlobalFix, GlobalUnfix, GlobalUnWire, GlobalWire, IsBadHugeReadPtr, IsBadHugeWritePtr, LocalCompact, LocalShrink
+    }
+
+    #endregion // Global and local functions
+
+    #region Registry functions
+
+    partial class kernel32
+    {
+    }
+
+    #endregion // Registry functions
+
     // Relocation required...
     partial class kernel32
     {

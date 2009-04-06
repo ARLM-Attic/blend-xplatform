@@ -486,15 +486,17 @@ namespace xPlatform.x86.kernel32
         public uint SpinCount;
     }
 
-    [Serializable, StructLayout(LayoutKind.Sequential)]
+    [Serializable, StructLayout(LayoutKind.Explicit)]
     public struct LARGE_INTEGER
     {
+        [FieldOffset(0)]
         public long QuadPart;
     }
 
-    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    [Serializable, StructLayout(LayoutKind.Explicit), CLSCompliant(false)]
     public struct ULARGE_INTEGER
     {
+        [FieldOffset(0)]
         public ulong QuadPart;
     }
 
@@ -582,6 +584,74 @@ namespace xPlatform.x86.kernel32
 
         [MarshalAs(UnmanagedType.LPStr, SizeConst = 128)]
         public string szPathName;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct MEMORYSTATUS
+    {
+        public uint dwLength;
+        public uint dwMemoryLoad;
+        public uint dwTotalPhys;
+        public uint dwAvailPhys;
+        public uint dwTotalPageFile;
+        public uint dwAvailPageFile;
+        public uint dwTotalVirtual;
+        public uint dwAvailVirtual;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct Block
+    {
+        public IntPtr hMem;
+
+        [MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U4, SizeConst = 3)]
+        public uint[] dwReserved;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct Region
+    {
+        public uint dwCommitedSize;
+        public uint dwUnCommitedSize;
+        public IntPtr lpFirstBlock;
+        public IntPtr lpLastBlock;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Explicit), CLSCompliant(false)]
+    public struct PROCESS_HEAP_ENTRY
+    {
+        [FieldOffset(0)]
+        public IntPtr lpData;
+
+        [FieldOffset(4)]
+        public uint cbData;
+
+        [FieldOffset(8)]
+        public byte cbOverhead;
+
+        [FieldOffset(9)]
+        public byte iRegionIndex;
+
+        [FieldOffset(10)]
+        public ushort wFlags;
+
+        [FieldOffset(14)]
+        public Block Block;
+
+        [FieldOffset(14)]
+        public Region Region;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct MEMORY_BASIC_INFORMATION
+    {
+        public IntPtr BaseAddress;
+        public IntPtr AllocationBase;
+        public uint AllocationProtect;
+        public uint RegionSize;
+        public uint State;
+        public uint Protect;
+        public uint Type;
     }
 }
 
