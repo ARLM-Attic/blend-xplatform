@@ -22,6 +22,8 @@ namespace xPlatform.x86.kernel32
 
 namespace xPlatform.x86.kernel32
 {
+    // Todo: Structure validation needed.
+
     [Serializable]
     public enum FINDEX_INFO_LEVELS : int
     {
@@ -34,6 +36,24 @@ namespace xPlatform.x86.kernel32
         FindExSearchNameMatch,
         FindExSearchLimitToDirectories,
         FindExSearchLimitToDevices
+    }
+
+    [Serializable]
+    public enum MEDIA_TYPE : int
+    {
+        Unknown,
+        F5_1Pt2_512,
+        F3_1Pt44_512,
+        F3_2Pt88_512,
+        F3_20Pt8_512,
+        F3_720_512,
+        F5_360_512,
+        F5_320_512,
+        F5_320_1024,
+        F5_180_512,
+        F5_160_512,
+        RemovableMedia,
+        FixedMedia
     }
 }
 
@@ -724,6 +744,205 @@ namespace xPlatform.x86.kernel32
         public byte fRtsControl { get { throw new NotImplementedException(); } }
         public byte fAbortOnError { get { throw new NotImplementedException(); } }
         public byte fDummy { get { throw new NotImplementedException(); } }
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct COMMTIMEOUTS
+    {
+        public uint ReadIntervalTimeout;
+        public uint ReadTotalTimeoutMultiplier;
+        public uint ReadTotalTimeoutConstant;
+        public uint WriteTotalTimeoutMultiplier;
+        public uint WriteTotalTimeoutConstant;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct COMSTAT
+    {
+        public uint Flags;
+        public uint cbInQue;
+        public uint cbOutQue;
+
+        public uint fCtsHold { get { throw new NotImplementedException(); } }
+        public uint fDsrHold { get { throw new NotImplementedException(); } }
+        public uint fRlsdHold { get { throw new NotImplementedException(); } }
+        public uint fXoffHold { get { throw new NotImplementedException(); } }
+        public uint fXoffSent { get { throw new NotImplementedException(); } }
+        public uint fEof { get { throw new NotImplementedException(); } }
+        public uint fTxim { get { throw new NotImplementedException(); } }
+        public uint fReserved { get { throw new NotImplementedException(); } }
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct COMMCONFIG
+    {
+        public uint dwSize;
+        public ushort wVersion;
+        public ushort wReserved;
+        public DCB dcb;
+        public uint dwProviderSubType;
+        public uint dwProviderOffset;
+        public uint dwProviderSize;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public ushort[] wcProviderData;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct COMMPROP
+    {
+        public ushort wPacketLength;
+        public ushort wPacketVersion;
+        public uint dwServiceMask;
+        public uint dwReserved1;
+        public uint dwMaxTxQueue;
+        public uint dwMaxRxQueue;
+        public uint dwMaxBaud;
+        public uint dwProvSubType;
+        public uint dwProvCapabilities;
+        public uint dwSettableParams;
+        public uint dwSettableBaud;
+        public ushort wSettableData;
+        public ushort wSettableStopParity;
+        public uint dwCurrentTxQueue;
+        public uint dwCurrentRxQueue;
+        public uint dwProvSpec1;
+        public uint dwProvSpec2;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public ushort[] wcProvChar;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct MODEMDEVCAPS
+    {
+        public uint dwActualSize;
+        public uint dwRequiredSize;
+        public uint dwDevSpecificOffset;
+        public uint dwDevSpecificSize;
+        public uint dwModemProviderVersion;
+        public uint dwModemManufacturerOffset;
+        public uint dwModemManufacturerSize;
+        public uint dwModemModelOffset;
+        public uint dwModemModelSize;
+        public uint dwModemVersionOffset;
+        public uint dwModemVersionSize;
+        public uint dwDialOptions;
+        public uint dwCallSetupFailTimer;
+        public uint dwInactivityTimeout;
+        public uint dwSpeakerVolume;
+        public uint dwSpeakerMode;
+        public uint dwModemOptions;
+        public uint dwMaxDTERate;
+        public uint dwMaxDCERate;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public byte[] avVariablePortion;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct MODEMSETTINGS
+    {
+        public uint dwActualSize;
+        public uint dwRequiredSize;
+        public uint dwDevSpecificOffset;
+        public uint dwDevSpecificSize;
+
+        public uint dwCallSetupFailTimer;
+        public uint dwInactivityTimeout;
+        public uint dwSpeakerVolume;
+        public uint dwSpeakerMode;
+        public uint dwPreferredModemOptions;
+
+        public uint dwNegotiatedModemOptions;
+        public uint dwNegotiatedDCERate;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public byte[] avVariablePortion;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct DISK_GEOMETRY
+    {
+        public LARGE_INTEGER Cylinders;
+        public MEDIA_TYPE MediaType;
+        public uint TracksPerCylinder;
+        public uint SectorsPerTrack;
+        public uint BytesPerSector;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct DISK_PERFORMANCE
+    {
+        public LARGE_INTEGER BytesRead;
+        public LARGE_INTEGER BytesWritten;
+        public LARGE_INTEGER ReadTime;
+        public LARGE_INTEGER WriteTime;
+        public uint ReadCount;
+        public uint WriteCount;
+        public uint QueueDepth;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct PARTITION_INFORMATION
+    {
+        public LARGE_INTEGER StartingOffset;
+        public LARGE_INTEGER PartitionLength;
+        public uint HiddenSectors;
+        public uint PartitionNumber;
+        public uint PartitionType;
+        public byte BootIndicator;
+        public byte RecognizedPartition;
+        public byte RewritePartition;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct DISK_LAYOUT_INFORMATION
+    {
+        public uint PartitionCount;
+        public uint Signature;
+        
+        [MarshalAs(UnmanagedType.ByValArray)]
+        public PARTITION_INFORMATION[] PartitionEntry;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct FORMAT_PARAMETERS
+    {
+        public MEDIA_TYPE MediaType;
+        public uint StartCylinderNumber;
+        public uint EndCylinderNumber;
+        public uint StartHeadNumber;
+        public uint EndHeadNumber;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct PREVENT_MEDIA_REMOVAL
+    {
+        public byte PreventMediaRemoval;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct REASSIGN_BLOCKS
+    {
+        public ushort Reserved;
+        public ushort Count;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public uint[] BlockNumber;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct SET_PARTITION_INFORMATION
+    {
+        public byte PartitionType;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct VERIFY_INFORMATION
+    {
+        public LARGE_INTEGER StartingOffset;
+        public uint Length;
     }
 }
 

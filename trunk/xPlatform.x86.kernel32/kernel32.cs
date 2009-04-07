@@ -2406,9 +2406,174 @@ namespace xPlatform.x86.kernel32
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int BuildCommDCBW(string lpDef, ref DCB lpDCB);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int BuildCommDCBAndTimeoutsA([Const] IntPtr lpDef, IntPtr lpDCB, IntPtr lpCommTimeouts);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int BuildCommDCBAndTimeoutsA(string lpDef, ref DCB lpDCB, ref COMMTIMEOUTS lpCommTimeouts);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int BuildCommDCBAndTimeoutsW([Const] IntPtr lpDef, IntPtr lpDCB, IntPtr lpCommTimeouts);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int BuildCommDCBAndTimeoutsW(string lpDef, ref DCB lpDCB, ref COMMTIMEOUTS lpCommTimeouts);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ClearCommBreak(IntPtr hFile);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ClearCommError(IntPtr hFile, IntPtr lpErrors, IntPtr lpStat);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int ClearCommError(IntPtr hFile, ref uint lpErrors, ref COMSTAT lpStat);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int CommConfigDialogA(IntPtr lpszName, IntPtr hWnd, IntPtr lpCC);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int CommConfigDialogA(StringBuilder lpszName, IntPtr hWnd, ref COMMCONFIG lpCC);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int CommConfigDialogW(IntPtr lpszName, IntPtr hWnd, IntPtr lpCC);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int CommConfigDialogW(StringBuilder lpszName, IntPtr hWnd, ref COMMCONFIG lpCC);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int EscapeCommFunction(IntPtr hFile, uint dwFunc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetCommConfig(IntPtr hCommDev, IntPtr lpCC, IntPtr lpdwSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetCommConfig(IntPtr hCommDev, ref COMMCONFIG lpCC, ref uint lpdwSize);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetCommMask(IntPtr hFIle, IntPtr lpEvtMask);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetCommMask(IntPtr hFIle, ref uint lpEvtMask);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetCommModemStatus(IntPtr hFile, IntPtr lpModemStat);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetCommModemStatus(IntPtr hFile, ref uint lpModemStat);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetCommProperties(IntPtr hFile, IntPtr lpCommProp);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetCommProperties(IntPtr hFile, ref COMMPROP lpCommProp);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetCommState(IntPtr hFile, IntPtr lpDCB);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetCommState(IntPtr hFile, ref DCB lpDCB);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetCommTimeouts(IntPtr hFile, IntPtr lpCommTimeouts);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetCommTimeouts(IntPtr hFile, ref COMMTIMEOUTS lpCommTimeouts);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetDefaultCommConfig(IntPtr hCommDev, IntPtr lpCC, IntPtr lpdwSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetDefaultCommConfig(IntPtr hCommDev, ref COMMCONFIG lpCC, ref uint lpdwSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int PurgeComm(IntPtr hFile, uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetCommBreak(IntPtr hFile);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetCommConfig(IntPtr hCommDev, IntPtr lpCC, uint dwSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetCommConfig(IntPtr hCommDev, ref COMMCONFIG lpCC, uint dwSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetCommMask(IntPtr hFile, uint dwEvtMask);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetCommState(IntPtr hFile, IntPtr lpDCB);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetCommState(IntPtr hFile, ref DCB lpDCB);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetCommTimeouts(IntPtr hFile, IntPtr lpCommTimeouts);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetCommTimeouts(IntPtr hFile, ref COMMTIMEOUTS lpCommTimeouts);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetDefaultCommConfig(IntPtr hCommDev, IntPtr lpCC, uint dwSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetDefaultCommConfig(IntPtr hCommDev, ref COMMCONFIG lpCC, uint dwSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetupComm(IntPtr hFile, uint dwInQueue, uint dwOutQueue);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int TransmitCommChar(IntPtr hFile, byte cChar);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int WaitCommEvent(IntPtr hFile, IntPtr lpEvtMask, IntPtr lpOverlapped);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int WaitCommEvent(IntPtr hFile, ref uint lpEvtMask, ref OVERLAPPED lpOverlapped);
     }
 
     #endregion // Communication functions
+
+    #region Timer functions
+
+    partial class kernel32
+    {
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int QueryPerformanceCounter(IntPtr lpPerformanceCount);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int QueryPerformanceCounter(ref LARGE_INTEGER lpPerformanceCount);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int QueryPerformanceCounterFrequency(IntPtr lpPerformanceCount);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int QueryPerformanceCounterFrequency(ref LARGE_INTEGER lpPerformanceCount);
+    }
+
+    #endregion // Timer functions
+
+    #region Device input and output functions
+
+    partial class kernel32
+    {
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DeviceIoControl(IntPtr hDevice, uint dwIoControlCode, IntPtr lpInBuffer, uint nInBufferSize, IntPtr lpOutBuffer, uint nOutBufferSize, IntPtr lpBytesReturned, IntPtr lpOverlapped);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DeviceIoControl(IntPtr hDevice, uint dwIoControlCode, IntPtr lpInBuffer, uint nInBufferSize, IntPtr lpOutBuffer, uint nOutBufferSize, ref uint lpBytesReturned, ref OVERLAPPED lpOverlapped);
+    }
+
+    #endregion // Device input and output functions
+
+    #region National language support functions
+
+    partial class kernel32
+    {
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern LCID ConvertDefaultLocale(LCID Locale);
+    }
+
+    #endregion // National language support functions
 
     // Relocation required...
     partial class kernel32
@@ -2584,5 +2749,21 @@ namespace xPlatform.x86.kernel32
         public static extern uint SetUserFileEncryptionKey(ref ENCRYPTION_CERTIFICATE pEncryptionCertificate);
 
         #endregion // advapi32.dll - File system functions (cryptions)
+
+        #region user32.dll - Timer functions
+
+        [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi), CLSCompliant(false)]
+        public delegate void TimerProc(IntPtr hwnd, uint uMsg, uint idEvent, uint dwTime);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int KillTimer(IntPtr hWnd, uint uIDEvent);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint SetTimer(IntPtr hWnd, uint nIDEvent, uint uElpase, IntPtr lpTimerFunc);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint SetTimer(IntPtr hWnd, uint nIDEvent, uint uElpase, TimerProc lpTimerFunc);
+
+        #endregion // user32.dll - Timer functions
     }
 }
