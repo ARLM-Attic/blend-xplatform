@@ -4,6 +4,12 @@ using System.Runtime.InteropServices;
 
 namespace xPlatform.x86.user32
 {
+    [Serializable, Flags, CLSCompliant(false)]
+    public enum COLORREF : uint { }
+}
+
+namespace xPlatform.x86.user32
+{
     [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
     public struct FLASHWINFO
     {

@@ -3200,4 +3200,391 @@ namespace xPlatform.x86.kernel32
     }
 
     #endregion // Fiber functions
+
+    #region Activation context functions
+
+    partial class kernel32
+    {
+        [DllImport(ModuleName)]
+        public static extern int ActivateActCtx(IntPtr hActCtx, IntPtr lpCookie);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int ActivateActCtx(IntPtr hActCtx, ref uint lpCookie);
+
+        [DllImport(ModuleName)]
+        public static extern void AddRefActCtx(IntPtr hActCtx);
+
+        [DllImport(ModuleName)]
+        public static extern IntPtr CreateActCtx(IntPtr pActCtx);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr CreateActCtx(ref ACTCTX pActCtx);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int DeactivateActCtx(uint dwFlags, uint ulCookie);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int FindActCtxSectionGuid(uint dwFlags, [Const] IntPtr lpExtensionGuid, uint ulSectionId, [Const] IntPtr lpGuidToFind, IntPtr ReturnedData);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int FindActCtxSectionGuid(uint dwFlags, ref GUID lpExtensionGuid, uint ulSelectionId, ref GUID lpGuidToFind, ref ACTCTX_SECTION_KEYED_DATA ReturnedData);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int FindActCtxSectionStringA(uint dwFlags, [Const] IntPtr lpExtensionGuid, uint ulSelectionId, [Const] IntPtr lpStringToFind, IntPtr ReturnedData);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int FindActCtxSectionStringA(uint dwFlags, ref GUID lpExtensionGuid, uint ulSelectionId, string lpStringToFind, ref ACTCTX_SECTION_KEYED_DATA ReturnedData);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int FindActCtxSectionStringW(uint dwFlags, [Const] IntPtr lpExtensionGuid, uint ulSelectionId, [Const] IntPtr lpStringToFind, IntPtr ReturnedData);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int FindActCtxSectionStringW(uint dwFlags, ref GUID lpExtensionGuid, uint ulSelectionId, string lpStringToFind, ref ACTCTX_SECTION_KEYED_DATA ReturnedData);
+
+        [DllImport(ModuleName)]
+        public static extern int GetCurrentActCtx(IntPtr lphActCtx);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int GetCurrentActCtx(ref IntPtr lphActCtx);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int QueryActCtxW(uint dwFlags, IntPtr hActCtx, IntPtr pvSubInstance, uint ulInfoClass, IntPtr pvBuffer, uint cbBuffer, IntPtr pcbWrittenOrRequired);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int QueryActCtxW(uint dwFlags, IntPtr hActCtx, IntPtr pvSubInstance, uint ulInfoClass, IntPtr pvBuffer, uint cbBuffer, ref uint pcbWrittenOrRequired);
+
+        [DllImport(ModuleName)]
+        public static extern void ReleaseActCtx(IntPtr hActCtx);
+
+        [DllImport(ModuleName)]
+        public static extern int ZombifyActCtx(IntPtr hActCtx);
+    }
+
+    #endregion // Activation context functions
+
+    #region Address windowing extensions functions
+
+    partial class kernel32
+    {
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int AllocateUserPhysicalPages(IntPtr hProcess, IntPtr NumberOfPages, IntPtr UserPfnArray);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AllocateUserPhysicalPages(IntPtr hProcess, ref uint NumberOfPages, uint[] UserPfnArray);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int MapUserPhysicalPages(IntPtr lpAddress, uint NumberOfPages, IntPtr UserPfnArray);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int MapUserPhysicalPages(IntPtr lpAddress, uint NumberOfPages, uint[] UserPfnArray);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int MapUserPhysicalPagesScatter(IntPtr VirtualAddresses, uint NumberOfPages, IntPtr PageArray);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int MapUserPhysicalPagesScatter(uint[] VirtualAddresses, uint NumberOfPages, uint[] PageArray);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int FreeUserPhysicalPages(IntPtr hProcess, IntPtr NumberOfPages, IntPtr UserPfnArray);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int FreeUserPhysicalPages(IntPtr hProcess, ref uint NumberOfPages, uint[] UserPfnArray);
+    }
+
+    #endregion // Address windowing extensions functions
+
+    #region Job object functions
+
+    partial class kernel32
+    {
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int AssignProcessToJobObject(IntPtr hJob, IntPtr hProcess);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreateJobObjectA(IntPtr lpJobAttributes, [Const] IntPtr lpName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
+        public static extern IntPtr CreateJobObjectA(IntPtr lpJobAttributes, string lpName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr CreateJobObjectA(ref SECURITY_ATTRIBUTES lpJobAttributes, string lpName);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreateJobObjectW(IntPtr lpJobAttributes, [Const] IntPtr lpName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern IntPtr CreateJobObjectW(IntPtr lpJobAttributes, string lpName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr CreateJobObjectW(ref SECURITY_ATTRIBUTES lpJobAttributes, string lpName);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int IsProcessInJob(IntPtr ProcessHandle, IntPtr JobHandle, IntPtr Result);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int IsProcessInJob(IntPtr ProcessHandle, IntPtr JobHandle, ref int Result);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr OpenJobObjectA(uint dwDesiredAccess, int bInheritHandles, [Const] IntPtr lpName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr OpenJobObjectA(uint dwDesiredAccess, int bInheritHandles, string lpName);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr OpenJobObjectW(uint dwDesiredAccess, int bInheritHandles, [Const] IntPtr lpName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr OpenJobObjectW(uint dwDesiredAccess, int bInheritHandles, string lpName);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int QueryInformationJobObject(IntPtr hJob, JOBOBJECTINFOCLASS JobObjectInfoClass, IntPtr lpJobObjectInfo, uint cbJobObjectInfoLength, IntPtr lpReturnLength);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int QueryInformationJobObject(IntPtr hJob, JOBOBJECTINFOCLASS JobObjectInfoClass, IntPtr lpJobObjectInfo, uint cbJobObjectInfoLength, ref uint lpReturnLength);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetInformationJobObject(IntPtr hJob, JOBOBJECTINFOCLASS JobObjectInfoClass, IntPtr lpJobObjectInfo, uint cbJobObjectInfoLength);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int TerminateJobObject(IntPtr hJob, uint uExitCode);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int UserHandleGrantAccess(IntPtr hUserHandle, IntPtr hJob, int bGrant);
+    }
+
+    #endregion // Job object functions
+
+    #region Thread pooling functions
+
+    partial class kernel32
+    {
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int BindIoCompletionCallback(IntPtr FileHandle, IntPtr Function, uint Flags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int BindIoCompletionCallback(IntPtr FileHandle, FileIOCompletionRoutine Function, uint Flags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int QueueUserWorkItem(IntPtr Function, IntPtr Context, uint Flags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int QueueUserWorkItem(ThreadProc Function, IntPtr Context, uint Flags);
+    }
+
+    #endregion // Thread pooling functions
+
+    #region NUMA functions
+
+    partial class kernel32
+    {
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetNumaAvailableMemoryNode(byte Node, IntPtr AvailableBytes);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetNumaAvailableMemoryNode(byte Node, ref ulong AvailableBytes);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetNumaHighestNodeNumber(IntPtr HighestNodeNumber);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetNumaHighestNodeNumber(ref ulong HighestNodeNumber);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetNumaNodeProcessorMask(byte Node, IntPtr ProcessorMask);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetNumaNodeProcessorMask(byte Node, ref ulong ProcessorMask);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetNumaProcessorNode(byte Processor, IntPtr NodeNumber);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetNumaProcessorNode(byte Processor, ref byte NodeNumber);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern ulong NumaVirtualQueryNode(uint NumberOfRangs, IntPtr RangeList, IntPtr VirtualPageAndNode, uint MaximumOutputLength);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern ulong NumaVirtualQueryNode(uint NumberOfRangs, uint[] RangeList, uint[] VirtualPageAndNode, uint MaximumOutputLength);
+    }
+
+    #endregion // NUMA functions
+
+    #region System information functions
+
+    partial class kernel32
+    {
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int DnsHostnameToComputerNameA([Const] IntPtr Hostname, IntPtr ComputerName, IntPtr nSize);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int DnsHostnameToComputerNameA(string Hostname, StringBuilder ComputerName, ref uint nSize);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int DnsHostnameToComputerNameW([Const] IntPtr Hostname, IntPtr ComputerName, IntPtr nSize);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int DnsHostnameToComputerNameW(string Hostname, StringBuilder ComputerName, ref uint nSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint ExpandEnvironmentStringsA([Const] IntPtr lpSrc, IntPtr lpDst, uint nSize);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern uint ExpandEnvironmentStringsA(string lpSrc, StringBuilder lpDst, uint nSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint ExpandEnvironmentStringsW([Const] IntPtr lpSrc, IntPtr lpDst, uint nSize);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern uint ExpandEnvironmentStringsW(string lpSrc, StringBuilder lpDst, uint nSize);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetComputerNameA(IntPtr lpBuffer, IntPtr lpnSize);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int GetComputerNameA(StringBuilder lpBuffer, ref uint lpnSize);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetComputerNameW(IntPtr lpBuffer, IntPtr lpnSize);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int GetComputerNameW(StringBuilder lpBuffer, ref uint lpnSize);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetComputerNameExA(COMPUTER_NAME_FORMAT NameType, IntPtr lpBuffer, IntPtr lpnSize);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int GetComputerNameExA(COMPUTER_NAME_FORMAT NameType, StringBuilder lpBuffer, ref uint lpnSize);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetComputerNameExW(COMPUTER_NAME_FORMAT NameType, IntPtr lpBuffer, IntPtr lpnSize);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int GetComputerNameExW(COMPUTER_NAME_FORMAT NameType, StringBuilder lpBuffer, ref uint lpnSize);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern void GetNativeSystemInfo(IntPtr lpSystemInfo);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern void GetNativeSystemInfo(ref SYSTEM_INFO lpSystemInfo);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetSystemDirectoryA(IntPtr lpBuffer, uint uSize);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern uint GetSystemDirectoryA(StringBuilder lpBuffer, uint uSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetSystemDirectoryW(IntPtr lpBuffer, uint uSize);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern uint GetSystemDirectoryW(StringBuilder lpBuffer, uint uSize);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern void GetSystemInfo(IntPtr lpSystemInfo);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern void GetSystemInfo(ref SYSTEM_INFO lpSystemInfo);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetSystemWindowsDirectoryA(IntPtr lpBuffer, uint uSize);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern uint GetSystemWindowsDirectoryA(StringBuilder lpBuffer, uint uSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetSystemWindowsDirectoryW(IntPtr lpBuffer, uint uSize);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern uint GetSystemWindowsDirectoryW(StringBuilder lpBuffer, uint uSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetSystemWow64DirectoryA(IntPtr lpBuffer, uint uSize);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern uint GetSystemWow64DirectoryA(StringBuilder lpBuffer, uint uSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetSystemWow64DirectoryW(IntPtr lpBuffer, uint uSize);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern uint GetSystemWow64DirectoryW(StringBuilder lpBuffer, uint uSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetVersion();
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetVersionExA(IntPtr lpVersionInfo);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int GetVersionExA(ref OSVERSIONINFO lpVersionInfo);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetVersionExW(IntPtr lpVersionInfo);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int GetVersionExW(ref OSVERSIONINFO lpVersionInfo);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetWindowsDirectoryA(IntPtr lpBuffer, uint uSize);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern uint GetWindowsDirectoryA(StringBuilder lpBuffer, uint uSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetWindowsDirectoryW(IntPtr lpBuffer, uint uSize);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern uint GetWindowsDirectoryW(StringBuilder lpBuffer, uint uSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int IsProcessorFeaturePresent(uint ProcessorFeature);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int IsWow64Process(IntPtr hProcess, IntPtr Wow64Process);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int IsWow64Process(IntPtr hProcess, ref int Wow64Process);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetComputerNameA([Const] IntPtr lpComputerName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
+        public static extern int SetComputerNameA(string lpComputerName);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetComputerNameW([Const] IntPtr lpComputerName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern int SetComputerNameW(string lpComputerName);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetComputerNameExA(COMPUTER_NAME_FORMAT NameType, [Const] IntPtr lpBuffer);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
+        public static extern int SetComputerNameExA(COMPUTER_NAME_FORMAT NameType, string lpBuffer);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetComputerNameExW(COMPUTER_NAME_FORMAT NameType, [Const] IntPtr lpBuffer);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern int SetComputerNameExW(COMPUTER_NAME_FORMAT NameType, string lpBuffer);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int VerifyVersionInfoA(IntPtr lpVersionInfo, uint dwTypeMask, ulong dwlConditionMask);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int VerifyVersionInfoA(ref OSVERSIONINFOEX lpVersionInfo, uint dwTypeMask, ulong dwlConditionMask);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int VerifyVersionInfoW(IntPtr lpVersionInfo, uint dwTypeMask, ulong dwlConditionMask);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int VerifyVersionInfoW(ref OSVERSIONINFOEX lpVersionInfo, uint dwTypeMask, ulong dwlConditionMask);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern ulong VerSetConditionmask(ulong dwlConditionMask, uint dwTypeBitMask, byte dwConditionMask);
+    }
+
+    #endregion // System information functions
 }

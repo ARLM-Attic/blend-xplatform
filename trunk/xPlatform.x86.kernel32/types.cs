@@ -67,6 +67,36 @@ namespace xPlatform.x86.kernel32
         RemovableMedia,
         FixedMedia
     }
+
+    [Serializable]
+    public enum JOBOBJECTINFOCLASS : int
+    {
+        JobObjectBasicAccountingInformation = 1,
+        JobObjectBasicLimitInformation,
+        JobObjectBasicProcessIdList,
+        JobObjectBasicUIRestrictions,
+        JobObjectSecurityLimitInformation,
+        JobObjectEndOfJobTimeInformation,
+        JobObjectAssociateCompletionPortInformation,
+        JobObjectBasicAndIoAccountingInformation,
+        JobObjectExtendedLimitInformation,
+        JobObjectJobSetInformation,
+        MaxJobObjectInfoClass
+    }
+
+    [Serializable]
+    public enum COMPUTER_NAME_FORMAT : int
+    {
+        ComputerNameNetBIOS,
+        ComputerNameDnsHostname,
+        ComputerNameDnsDomain,
+        ComputerNameDnsFullyQualified,
+        ComputerNamePhysicalNetBIOS,
+        ComputerNamePhysicalDnsHostname,
+        ComputerNamePhysicalDnsDomain,
+        ComputerNamePhysicalDnsFullyQualified,
+        ComputerNameMax
+    }
 }
 
 namespace xPlatform.x86.kernel32
@@ -1031,6 +1061,224 @@ namespace xPlatform.x86.kernel32
         public IntPtr hThread;
         public uint dwProcessId;
         public uint dwThreadId;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct ACTCTX
+    {
+        public uint cbSize;
+        public uint dwFlags;
+        public IntPtr lpSource;
+        public ushort wProcessorArchitecture;
+        public LANGID wLangId;
+        public IntPtr lpAssemblyDirectory;
+        public IntPtr lpResourceName;
+        public IntPtr lpApplicationName;
+        public IntPtr hmodule;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct ACTCTX_SECTION_KEYED_DATA
+    {
+        public uint cbSize;
+        public uint ulDataFormatVersion;
+        public IntPtr lpData;
+        public uint ulLength;
+        public IntPtr lpSectionGlobalData;
+        public uint ulSectionGlobalDataLength;
+        public IntPtr lpSectionBase;
+        public uint ulSectionTotalLength;
+        public IntPtr hActCtx;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct GUID
+    {
+        public uint Data1;
+        public ushort Data2;
+        public ushort Data3;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
+        public byte[] Data4;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode), CLSCompliant(false)]
+    public struct ACTIVATION_CONTEXT_ASSEMBLY_DETAILED_INFORMATION
+    {
+        public uint ulFlags;
+        public uint ulEncodedAssemblyIdentityLength;
+        public uint ulManifestPathType;
+        public uint ulManifestPathLength;
+        public LARGE_INTEGER liManifestLastWriteTime;
+        public uint ulPolicyPathType;
+        public uint ulPolicyPathLength;
+        public LARGE_INTEGER liPolicyLastWriteTime;
+        public uint ulMetadataSatelliteRosterIndex;
+        public uint ulManifestVersionMajor;
+        public uint ulManifestVersionMinor;
+        public uint ulPolicyVersionMajor;
+        public uint ulPolicyVersionMinor;
+        public uint ulAssemblyDirectoryNameLength;
+        public IntPtr lpAssemblyEncodedAssemblyIdentity;
+        public IntPtr lpAssemblyManifestPath;
+        public IntPtr lpAssemblyPolicyPath;
+        public IntPtr lpAssemblyDirectoryName;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode), CLSCompliant(false)]
+    public struct ACTIVATION_CONTEXT_DETAILED_INFORMATION
+    {
+        public uint dwFlags;
+        public uint ulFormatVersion;
+        public uint ulAssemblyCount;
+        public uint ulRootManifestPathType;
+        public uint ulRootManifestPathChars;
+        public uint ulRootConfigurationPathType;
+        public uint ulRootConfigurationPathChars;
+        public uint ulAppDirPathType;
+        public uint ulAppDirPathChars;
+        public IntPtr lpRootManifestPath;
+        public IntPtr lpRootConfigurationPath;
+        public IntPtr lpAppDirPath;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode), CLSCompliant(false)]
+    public struct ASSEMBLY_DLL_REDIRECTION_DETAILED_INFORMATION
+    {
+        public uint ulFlags;
+        public uint ulFilenameLength;
+        public uint ulPathLength;
+        public IntPtr lpFileName;
+        public IntPtr lpFileLength;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct JOBOBJECT_BASIC_ACCOUNTING_INFORMATION
+    {
+        public LARGE_INTEGER TotalUserTime;
+        public LARGE_INTEGER TotalKernelTime;
+        public LARGE_INTEGER ThisPeriodTotalUserTime;
+        public LARGE_INTEGER ThisPeriodTotalKernelTime;
+        public uint TotalPageFaultCount;
+        public uint TotalProcesses;
+        public uint ActiveProcesses;
+        public uint TotalTerminatedProcesses;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct IO_COUNTERS
+    {
+        public ulong ReadOperationCount;
+        public ulong WriteOperationCount;
+        public ulong OtherOperationCount;
+        public ulong ReadTransferCount;
+        public ulong WriteTransferCount;
+        public ulong OtherTransferCount;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct JOBOBJECT_BASIC_AND_IO_ACCOUNTING_INFORMATION
+    {
+        public JOBOBJECT_BASIC_ACCOUNTING_INFORMATION BasicInfo;
+        public IO_COUNTERS IoInfo;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct JOBOBJECT_BASIC_LIMIT_INFORMATION
+    {
+        public LARGE_INTEGER PerProcessUserTimeLimit;
+        public LARGE_INTEGER PerJobUserTimeLimit;
+        public uint LimitFlags;
+        public uint MinimumWorkingSetSize;
+        public uint MaximumWorkingSetSize;
+        public uint ActiveProcessLimit;
+        public uint Affinity;
+        public uint PriorityClass;
+        public uint SchedulingClass;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct JOBOBJECT_BASIC_PROCESS_ID_LIST
+    {
+        public uint NumberOfAssignedProcesses;
+        public uint NumberOfProcessIdsInList;
+
+        [MarshalAs(UnmanagedType.ByValArray)]
+        public uint[] ProcessIdList;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct JOBOBJECT_BASIC_UI_RESTRICTIONS
+    {
+        public uint UIRestrictionsClass;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct JOBOBJECT_EXTENDED_LIMIT_INFORMATION
+    {
+        public JOBOBJECT_BASIC_LIMIT_INFORMATION BasicLimitInformation;
+        public IO_COUNTERS IoInfo;
+        public uint ProcessMemoryLimit;
+        public uint JobMemoryLimit;
+        public uint PeakProcessMemoryUsed;
+        public uint PeakJobMemoryUsed;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct JOBOBJECT_SECURITY_LIMIT_INFORMATION
+    {
+        public uint SecurityLimitFlags;
+        public IntPtr JobToken;
+        public IntPtr SidsToDisable;
+        public IntPtr PrevilegesToDelete;
+        public IntPtr RestrictedSids;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct SYSTEM_INFO
+    {
+        public uint dwOemId;
+        public uint dwPageSize;
+        public IntPtr lpMinimumApplicationAddress;
+        public IntPtr lpMaximumApplicationAddress;
+        public uint dwActiveProcessorMask;
+        public uint dwNumberOfProcessors;
+        public uint dwProcessorType;
+        public uint dwAllocationGranularity;
+        public ushort wProcessorLevel;
+        public ushort wProcessorRevision;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto), CLSCompliant(false)]
+    public struct OSVERSIONINFO
+    {
+        public uint dwOSVersionInfoSize;
+        public uint dwMajorVersion;
+        public uint dwMinorVersion;
+        public uint dwBuildNumber;
+        public uint dwPlatformId;
+
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 128)]
+        public string szCSDVersion;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto), CLSCompliant(false)]
+    public struct OSVERSIONINFOEX
+    {
+        public uint dwOSVersionInfoSize;
+        public uint dwMajorVersion;
+        public uint dwMinorVersion;
+        public uint dwBuildNumber;
+        public uint dwPlatformId;
+
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 128)]
+        public string szCSDVersion;
+
+        public ushort wServicePackMajor;
+        public ushort wServicePackMinor;
+        public ushort wSuiteMask;
+        public byte wProductType;
+        public byte wReserved;
     }
 }
 

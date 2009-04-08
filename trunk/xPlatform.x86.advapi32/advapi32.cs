@@ -13,10 +13,10 @@ namespace xPlatform.x86.advapi32
         public const string ModuleName = "advapi32.dll";
     }
 
+    #region File system functions (cryptions)
+
     partial class advapi32
     {
-        #region File system functions (cryptions)
-
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern uint AddUsersToEncryptedFile([Const] IntPtr lpFileName, IntPtr pUsers);
 
@@ -94,7 +94,50 @@ namespace xPlatform.x86.advapi32
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern uint SetUserFileEncryptionKey(ref ENCRYPTION_CERTIFICATE pEncryptionCertificate);
-
-        #endregion // File system functions (cryptions)
     }
+
+    #endregion // File system functions (cryptions)
+
+    #region System information functions
+
+    partial class advapi32
+    {
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetCurrentHwProfileA(IntPtr lpHwProfileInfo);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int GetCurrentHwProfileA(ref HW_PROFILE_INFO lpHwProfileInfo);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetCurrentHwProfileW(IntPtr lpHwProfileInfo);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int GetCurrentHwProfileW(ref HW_PROFILE_INFO lpHwProfileInfo);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetUserNameA(IntPtr lpBuffer, uint uSize);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern uint GetUserNameA(StringBuilder lpBuffer, uint uSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetUserNameW(IntPtr lpBuffer, uint uSize);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern uint GetUserNameW(StringBuilder lpBuffer, uint uSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetUserNameExA(EXTENDED_NAME_FORMAT NameFormat, IntPtr lpBuffer, uint uSize);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern uint GetUserNameExA(EXTENDED_NAME_FORMAT NameFormat, StringBuilder lpBuffer, uint uSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetUserNameExW(EXTENDED_NAME_FORMAT NameFormat, IntPtr lpBuffer, uint uSize);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern uint GetUserNameExW(EXTENDED_NAME_FORMAT NameFormat, StringBuilder lpBuffer, uint uSize);
+    }
+
+    #endregion // System information functions
 }
