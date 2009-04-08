@@ -18,6 +18,18 @@ namespace xPlatform.x86.kernel32
 
     [Serializable, Flags, CLSCompliant(false)]
     public enum LCID : uint { }
+
+    [Serializable, Flags, CLSCompliant(false)]
+    public enum CALID : uint { }
+
+    [Serializable, Flags, CLSCompliant(false)]
+    public enum CALTYPE : uint { }
+
+    [Serializable, Flags, CLSCompliant(false)]
+    public enum LCTYPE : uint { }
+
+    [Serializable, Flags, CLSCompliant(false)]
+    public enum LANGID : ushort { }
 }
 
 namespace xPlatform.x86.kernel32
@@ -944,6 +956,82 @@ namespace xPlatform.x86.kernel32
         public LARGE_INTEGER StartingOffset;
         public uint Length;
     }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct CPINFO
+    {
+        public uint MaxCharSize;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
+        public byte[] DefaultChar;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 12)]
+        public byte[] LeadByte;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct CURRENCYFMT
+    {
+        public uint NumDigits;
+        public uint LeadingZero;
+        public uint Grouping;
+        public IntPtr lpDecimalSep;
+        public IntPtr lpThousnadSep;
+        public uint NegativeOrder;
+        public uint PositiveOrder;
+        public IntPtr lpCurrencySymbol;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct NUMBERFMT
+    {
+        public uint NumDigits;
+        public uint LeadingZero;
+        public uint Grouping;
+        public IntPtr lpDecimalSep;
+        public IntPtr lpThousandSep;
+        public uint NegativeOrder;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct COPYDATASTRUCT
+    {
+        public uint dwData;
+        public uint cbData;
+        public IntPtr lpData;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto), CLSCompliant(false)]
+    public struct STARTUPINFO
+    {
+        public uint cb;
+        public IntPtr lpReserved;
+        public IntPtr lpDesktop;
+        public IntPtr lpTitle;
+        public uint dwX;
+        public uint dwY;
+        public uint dwXSize;
+        public uint dwYSize;
+        public uint dwXCountChars;
+        public uint dwYCountChars;
+        public uint dwFillAttribute;
+        public uint dwFlags;
+        public ushort wShowWindow;
+        public ushort cbReserved2;
+        public IntPtr lpReserved2;
+        public IntPtr hStdInput;
+        public IntPtr hStdOutput;
+        public IntPtr hStdError;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct PROCESS_INFORMATION
+    {
+        public IntPtr hProcess;
+        public IntPtr hThread;
+        public uint dwProcessId;
+        public uint dwThreadId;
+    }
 }
 
 namespace xPlatform.x86.kernel32
@@ -968,4 +1056,28 @@ namespace xPlatform.x86.kernel32
 
     [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi), CLSCompliant(false)]
     public delegate void FileIOCompletionRoutine(uint dwErrorCode, uint dwNumberOfBytesTransferred, IntPtr lpOverlapped);
+
+    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi, CharSet = CharSet.Auto)]
+    public delegate int EnumCalendarInfoProc(string lpCalendarInfoString);
+
+    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi, CharSet = CharSet.Auto), CLSCompliant(false)]
+    public delegate int EnumCalendarInfoProcEx(string lpCalendarInfoString, CALID Calendar);
+
+    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi, CharSet = CharSet.Auto)]
+    public delegate int EnumCodePagesProc(string lpCodePageString);
+
+    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi, CharSet = CharSet.Auto)]
+    public delegate int EnumDateFormatsProc(string lpDateFormatString);
+
+    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi, CharSet = CharSet.Auto)]
+    public delegate int EnumLocalesProc(string lpLocaleString);
+
+    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi, CharSet = CharSet.Auto)]
+    public delegate int EnumTimeFormatsProc(string lpTimeFormatString);
+
+    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi), CLSCompliant(false)]
+    public delegate uint ThreadProc(IntPtr lpParameter);
+
+    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public delegate void FiberProc(IntPtr lpParameter);
 }

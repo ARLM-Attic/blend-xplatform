@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // 어셈블리의 일반 정보는 다음 특성 집합을 통해 제어됩니다.
 // 어셈블리와 관련된 정보를 수정하려면
 // 이 특성 값을 변경하십시오.
-[assembly: AssemblyTitle("xPlatform Core")]
-[assembly: AssemblyDescription("xPlatform Core")]
+[assembly: AssemblyTitle("xPlatform user32 (x86)")]
+[assembly: AssemblyDescription("xPlatform user32 (x86)")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("rkttu.com")]
-[assembly: AssemblyProduct("xPlatform Core")]
+[assembly: AssemblyProduct("Project Blend")]
 [assembly: AssemblyCopyright("Copyright (c) rkttu.com 2009")]
 [assembly: AssemblyTrademark("Project Blend")]
 [assembly: AssemblyCulture("")]
@@ -21,7 +21,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(true)]
 
 // 이 프로젝트가 COM에 노출되는 경우 다음 GUID는 typelib의 ID를 나타냅니다.
-[assembly: Guid("1980ddb1-233b-477b-b389-2d012f2ab0b2")]
+[assembly: Guid("2A33A26A-3D96-4a9f-8573-02744CEC46BA")]
 
 // 어셈블리의 버전 정보는 다음 네 가지 값으로 구성됩니다.
 //
@@ -35,5 +35,4 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-
 [assembly: CLSCompliant(true)]

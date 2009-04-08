@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xPlatform.x86.kernel32", "x
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xPlatform.Core.Test", "xPlatform.Core.Test\xPlatform.Core.Test.csproj", "{4E4984B5-8A0F-4319-AC70-5CE7CEDD7049}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xPlatform.x86.user32", "xPlatform.x86.user32\xPlatform.x86.user32.csproj", "{A2AC4873-FEC0-4B07-A442-D43AD03D72F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xPlatform.x86.advapi32", "xPlatform.x86.advapi32\xPlatform.x86.advapi32.csproj", "{4F5D61F0-3F78-4892-A413-7BC857454BC6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +35,14 @@ Global
 		{4E4984B5-8A0F-4319-AC70-5CE7CEDD7049}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E4984B5-8A0F-4319-AC70-5CE7CEDD7049}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E4984B5-8A0F-4319-AC70-5CE7CEDD7049}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2AC4873-FEC0-4B07-A442-D43AD03D72F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2AC4873-FEC0-4B07-A442-D43AD03D72F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2AC4873-FEC0-4B07-A442-D43AD03D72F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2AC4873-FEC0-4B07-A442-D43AD03D72F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F5D61F0-3F78-4892-A413-7BC857454BC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F5D61F0-3F78-4892-A413-7BC857454BC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F5D61F0-3F78-4892-A413-7BC857454BC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F5D61F0-3F78-4892-A413-7BC857454BC6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

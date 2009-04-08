@@ -2509,7 +2509,7 @@ namespace xPlatform.x86.kernel32
         [DllImport(ModuleName, SetLastError = true)]
         public static extern int SetCommTimeouts(IntPtr hFile, IntPtr lpCommTimeouts);
 
-        [DllImport(ModuleName, SetLastError = true)]
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern int SetCommTimeouts(IntPtr hFile, ref COMMTIMEOUTS lpCommTimeouts);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
@@ -2571,199 +2571,633 @@ namespace xPlatform.x86.kernel32
     {
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern LCID ConvertDefaultLocale(LCID Locale);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int EnumCalendarInfoA(IntPtr lpCalInfoEnumProc, LCID Locale, CALID Calendar, CALTYPE CalType);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int EnumCalendarInfoA(EnumCalendarInfoProc lpCalInfoEnumProc, LCID Locale, CALID Calendar, CALTYPE CalType);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int EnumCalendarInfoW(IntPtr lpCalInfoEnumProc, LCID Locale, CALID Calendar, CALTYPE CalType);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int EnumCalendarInfoW(EnumCalendarInfoProc lpCalInfoEnumProc, LCID Locale, CALID Calendar, CALTYPE CalType);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int EnumCalendarInfoExA(IntPtr lpCalInfoEnumProc, LCID Locale, CALID Calendar, CALTYPE CalType);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int EnumCalendarInfoExA(EnumCalendarInfoProcEx lpCalInfoEnumProc, LCID Locale, CALID Calendar, CALTYPE CalType);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int EnumCalendarInfoExW(IntPtr lpCalInfoEnumProc, LCID Locale, CALID Calendar, CALTYPE CalType);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int EnumCalendarInfoExW(EnumCalendarInfoProcEx lpCalInfoEnumProc, LCID Locale, CALID Calendar, CALTYPE CalType);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int EnumDateFormatsA(IntPtr lpDateFmtEnumProc, LCID Locale, uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int EnumDateFormatsA(EnumDateFormatsProc lpDateFmtEnumProc, LCID Locale, uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int EnumDateFormatsW(IntPtr lpDateFmtEnumProc, LCID Locale, uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int EnumDateFormatsW(EnumDateFormatsProc lpDateFmtEnumProc, LCID Locale, uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int EnumSystemCodePagesA(IntPtr lpCodePageEnumProc, uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int EnumSystemCodePagesA(EnumCodePagesProc lpCodePageEnumProc, uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int EnumSystemCodePagesW(IntPtr lpCodePageEnumProc, uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int EnumSystemCodePagesW(EnumCodePagesProc lpCodePageEnumProc, uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int EnumSystemLocalesA(IntPtr lpCodePageEnumProc, uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int EnumSystemLocalesA(EnumLocalesProc lpCodePageEnumProc, uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int EnumSystemLocalesW(IntPtr lpCodePageEnumProc, uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int EnumSystemLocalesW(EnumLocalesProc lpCodePageEnumProc, uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int EnumTimeFormatsA(IntPtr lpTimeFmtEnumProc, LCID Locale, uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int EnumTimeFormatsA(EnumTimeFormatsProc lpTimeFmtEnumProc, LCID Locale, uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int EnumTimeFormatsW(IntPtr lpTimeFmtEnumProc, LCID Locale, uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int EnumTimeFormatsW(EnumTimeFormatsProc lpTimeFmtEnumProc, LCID Locale, uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetACP();
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetCPInfo(uint CodePage, IntPtr lpCPInfo);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetCPInfo(uint CodePage, ref CPINFO lpCPInfo);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetCurrencyFormatA(LCID Locale, uint dwFlags, [Const] IntPtr lpValue, [Const] IntPtr lpFormat, IntPtr lpCurrencyStr, int cchCurrency);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int GetCurrencyFormatA(LCID Locale, uint dwFlags, string lpValue, ref CURRENCYFMT lpFormat, StringBuilder lpCurrencyStr, int cchCurrency);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetCurrencyFormatW(LCID Locale, uint dwFlags, [Const] IntPtr lpValue, [Const] IntPtr lpFormat, IntPtr lpCurrencyStr, int cchCurrency);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int GetCurrencyFormatW(LCID Locale, uint dwFlags, string lpValue, ref CURRENCYFMT lpFormat, StringBuilder lpCurrencyStr, int cchCurrency);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetDateFormatA(LCID Locale, uint dwFlags, [Const] IntPtr lpDate, [Const] IntPtr lpFormat, IntPtr lpDateStr, int cchDate);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int GetDateFormatA(LCID Locale, uint dwFlags, ref SYSTEMTIME lpDate, string lpFormat, StringBuilder lpDateStr, int cchDate);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetDateFormatW(LCID Locale, uint dwFlags, [Const] IntPtr lpDate, [Const] IntPtr lpFormat, IntPtr lpDateStr, int cchDate);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int GetDateFormatW(LCID Locale, uint dwFlags, ref SYSTEMTIME lpDate, string lpFormat, StringBuilder lpDateStr, int cchDate);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetLocaleInfoA(LCID Locale, LCTYPE LCType, IntPtr lpLCData, int cchData);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int GetLocaleInfoA(LCID Locale, LCTYPE LCType, StringBuilder lpLCData, int cchData);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetLocaleInfoW(LCID Locale, LCTYPE LCType, IntPtr lpLCData, int cchData);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int GetLocaleInfoW(LCID Locale, LCTYPE LCType, StringBuilder lpLCData, int cchData);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetNumberFormatA(LCID Locale, uint dwFlags, [Const] IntPtr lpValue, [Const] IntPtr lpFormat, IntPtr lpNumberStr, int cchNumber);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int GetNumberFormatA(LCID Locale, uint dwFlags, string lpValue, ref NUMBERFMT lpFormat, StringBuilder lpNumberStr, int cchNumber);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetNumberFormatW(LCID Locale, uint dwFlags, [Const] IntPtr lpValue, [Const] IntPtr lpFormat, IntPtr lpNumberStr, int cchNumber);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int GetNumberFormatW(LCID Locale, uint dwFlags, string lpValue, ref NUMBERFMT lpFormat, StringBuilder lpNumberStr, int cchNumber);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetOEMCP();
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern LANGID GetSystemDefaultLangID();
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern LCID GetSystemDefaultLCID();
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern LCID GetThreadLocale();
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetTimeFormatA(LCID Locale, uint dwFlags, [Const] IntPtr lpTime, [Const] IntPtr lpFormat, IntPtr lpTimeStr, int cchTime);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int GetTimeFormatA(LCID Locale, uint dwFlags, ref SYSTEMTIME lpTime, string lpFormat, StringBuilder lpTimeStr, int cchTime);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetTimeFormatW(LCID Locale, uint dwFlags, [Const] IntPtr lpTime, [Const] IntPtr lpFormat, IntPtr lpTimeStr, int cchTime);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int GetTimeFormatW(LCID Locale, uint dwFlags, ref SYSTEMTIME lpTime, string lpFormat, StringBuilder lpTimeStr, int cchTime);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern LANGID GetUserDefaultLangID();
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern LCID GetUserDefaultLCID();
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int IsValidCodePage(uint CodePage);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int IsValidLocale(LCID Locale, uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int LCMapStringA(LCID Locale, uint dwMapFlags, [Const] IntPtr lpSrcStr, int cchSrc, IntPtr lpDestStr, int cchDest);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int LCMapStringA(LCID Locale, uint dwMapFlags, string lpSrcStr, int cchSrc, StringBuilder lpDestStr, int cchDest);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int LCMapStringW(LCID Locale, uint dwMapFlags, [Const] IntPtr lpSrcStr, int cchSrc, IntPtr lpDestStr, int cchDest);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int LCMapStringW(LCID Locale, uint dwMapFlags, string lpSrcStr, int cchSrc, StringBuilder lpDestStr, int cchDest);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetLocaleInfoA(LCID Locale, LCTYPE LCType, [Const] IntPtr lpLCData);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int SetLocaleInfoA(LCID Locale, LCTYPE LCType, string lpLCData);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetLocaleInfoW(LCID Locale, LCTYPE LCType, [Const] IntPtr lpLCData);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int SetLocaleInfoW(LCID Locale, LCTYPE LCType, string lpLCData);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetThreadLocale(LCID Locale);
     }
 
     #endregion // National language support functions
 
-    // Relocation required...
+    #region Mailslot functions
+
     partial class kernel32
     {
-        #region user32.dll - Error functions
-
-        [DllImport(ModuleName)]
-        public static extern int FlashWindow(IntPtr hWnd, int bInvert);
-
-        [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
-        public struct FLASHWINFO
-        {
-            public uint cbSize;
-            public IntPtr hwnd;
-            public uint dwFlags;
-            public uint uCount;
-            public uint dwTimeout;
-        }
-
-        [DllImport(ModuleName)]
-        public static extern int FlashWindowEx(IntPtr pfwi);
-
-        [DllImport(ModuleName), CLSCompliant(false)]
-        public static extern int FlashWindowEx(ref FLASHWINFO pfwi);
-
-        [DllImport(ModuleName), CLSCompliant(false)]
-        public static extern int MessageBeep(uint uType);
-
-        #endregion // user32.dll - Error functions
-
-        #region advapi32.dll - File system functions (cryptions)
-
-        [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
-        public struct EFS_CERTIFICATE_BLOB
-        {
-            public uint dwCertEncodingType;
-            public uint cbData;
-            public IntPtr pbData;
-        }
-
-        [Serializable, StructLayout(LayoutKind.Sequential)]
-        public struct SID_IDENTIFIER_AUTHORITY
-        {
-            [MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeConst = 6)]
-            public byte[] Value;
-        }
-
-        [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
-        public struct SID
-        {
-            public byte Revision;
-            public byte SubAuthorityCount;
-            public SID_IDENTIFIER_AUTHORITY IdentifierAuthority;
-
-            [MarshalAs(UnmanagedType.LPArray, SizeConst = 1)]
-            public uint[] SubAuthority;
-        }
-
-        [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
-        public struct ENCRYPTION_CERTIFICATE
-        {
-            public uint cbTotalLength;
-            public IntPtr pUserSid;
-            public IntPtr pCertBlob;
-        }
-
-        [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
-        public struct ENCRYPTION_CERTIFICATE_LIST
-        {
-            public uint nUsers;
-            public IntPtr pUsers;
-        }
-
-        [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
-        public struct EFS_HASH_BLOB
-        {
-            public uint cbData;
-            public IntPtr pbData;
-        }
-
-        [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
-        public struct ENCRYPTION_CERTIFICATE_HASH
-        {
-            public uint cbTotalLength;
-            public IntPtr pUserSid;
-            public IntPtr pHash;
-            public IntPtr lpDisplayInformation;
-        }
-
-        [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
-        public struct ENCRYPTION_CERTIFICATE_HASH_LIST
-        {
-            public uint nCert_Hash;
-            public IntPtr pUsers;
-        }
-
-        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
-        public static extern uint AddUsersToEncryptedFile([Const] IntPtr lpFileName, IntPtr pUsers);
-
-        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
-        public static extern uint AddUsersToEncryptedFile(string lpFileName, ref ENCRYPTION_CERTIFICATE_LIST pUsers);
-
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int DecryptFileA([Const] IntPtr lpFileName, uint dwReserved);
+        public static extern IntPtr CreateMailslotA([Const] IntPtr lpName, uint nMaxMessageSize, uint lReadTimeOut, IntPtr lpSecurityAttributes);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
-        public static extern int DecryptFileA(string lpFileName, uint dwReserved);
+        public static extern IntPtr CreateMailslotA(string lpName, uint nMaxMessageSize, uint lReadTimeOut, ref SECURITY_ATTRIBUTES lpSecurityAttributes);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int DecryptFileW([Const] IntPtr lpFileName, uint dwReserved);
+        public static extern IntPtr CreateMailslotW([Const] IntPtr lpName, uint nMaxMessageSize, uint lReadTimeOut, IntPtr lpSecurityAttributes);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
-        public static extern int DecryptFileW(string lpFileName, uint dwReserved);
-
-        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint DuplicateEncryptionInfoFile([Const] IntPtr SrcFileName, [Const] IntPtr DstFileName, uint dwCreationDistribution, uint dwAttributes, IntPtr lpSecurityAttributes);
-
-        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
-        public static extern uint DuplicateEncryptionInfoFile(string SrcFileName, string DstFileName, uint dwCreationDistribution, uint dwAttributes, ref SECURITY_ATTRIBUTES lpSecurityAttributes);
-
-        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int EncryptFileA([Const] IntPtr lpFileName);
-
-        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
-        public static extern int EncryptFileA(string lpFileName);
-
-        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int EncryptFileW([Const] IntPtr lpFileName);
-
-        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
-        public static extern int EncryptFileW(string lpFileName);
+        public static extern IntPtr CreateMailslotW(string lpName, uint nMaxMessageSize, uint lReadTimeOut, ref SECURITY_ATTRIBUTES lpSecurityAttributes);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int EncryptionDisable([Const] IntPtr DirPath, int Disable);
+        public static extern int GetMailslotInfo(IntPtr hMailslot, IntPtr lpMaxMessageSize, IntPtr lpNextSize, IntPtr lpMessageCount, IntPtr lpReadTimeout);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetMailslotInfo(IntPtr hMailslot, ref uint lpMaxMessageSize, ref uint lpNextSize, ref uint lpMessageCount, ref uint lpReadTimeout);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetMailslotInfo(IntPtr hMailslot, uint lReadTimeout);
+    }
+
+    #endregion // Mailslot functions
+
+    #region Pipe functions
+
+    partial class kernel32
+    {
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CallNamedPipeA([Const] IntPtr lpNamedPipeName, IntPtr lpInBuffer, uint nInBufferSize, IntPtr lpOutBuffer, uint nOutBufferSize, IntPtr lpBytesRead, uint nTimeOut);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int CallNamedPipeA(string lpNamedPipeName, IntPtr lpInBuffer, uint nInBufferSize, IntPtr lpOutBuffer, uint nOutBufferSize, ref uint lpBytesRead, uint nTimeOut);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CallNamedPipeW([Const] IntPtr lpNamedPipeName, IntPtr lpInBuffer, uint nInBufferSize, IntPtr lpOutBuffer, uint nOutBufferSize, IntPtr lpBytesRead, uint nTimeOut);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int CallNamedPipeW(string lpNamedPipeName, IntPtr lpInBuffer, uint nInBufferSize, IntPtr lpOutBuffer, uint nOutBufferSize, ref uint lpBytesRead, uint nTimeOut);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ConnectNamedPipe(IntPtr hNamedPipe, IntPtr lpOverlapped);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int ConnectNamedPipe(IntPtr hNamedPipe, ref OVERLAPPED lpOverlapped);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr CreateNamedPipeA([Const] IntPtr lpName, uint dwOpenMode, uint dwPipeMode, uint nMaxInstances, uint nOutBufferSize, uint nInBufferSize, uint nDefaultTimeOut, IntPtr lpSecurityAttributes);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr CreateNamedPipeA(string lpName, uint dwOpenMode, uint dwPipeMode, uint nMaxInstances, uint nOutBufferSize, uint nInBufferSize, uint nDefaultTimeOut, IntPtr lpSecurityAttributes);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr CreateNamedPipeW([Const] IntPtr lpName, uint dwOpenMode, uint dwPipeMode, uint nMaxInstances, uint nOutBufferSize, uint nInBufferSize, uint nDefaultTimeOut, IntPtr lpSecurityAttributes);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr CreateNamedPipeW(string lpName, uint dwOpenMode, uint dwPipeMode, uint nMaxInstances, uint nOutBufferSize, uint nInBufferSize, uint nDefaultTimeOut, IntPtr lpSecurityAttributes);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CreatePipe(IntPtr hReadPipe, IntPtr hWritePipe, IntPtr lpPipeAttributes, uint nSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CreatePipe(ref IntPtr hReadPipe, ref IntPtr hWritePipe, ref SECURITY_ATTRIBUTES lpPipeAttributes, uint nSize);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int DisconnectNamedPipe(IntPtr hNamedPipe);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetNamedPipeHandleStateA(IntPtr hNamedPipe, IntPtr lpState, IntPtr lpCurInstances, IntPtr lpMaxCollectionCount, IntPtr lpCollectDataTimeout, IntPtr lpUserName, uint nMaxUserNameSize);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int GetNamedPipeHandleStateA(IntPtr hNamedPipe, ref uint lpState, ref uint lpCurInstances, ref uint lpMaxCollectionCount, ref uint lpCollectDataTimeout, StringBuilder lpUserName, uint nMaxUserNameSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetNamedPipeHandleStateW(IntPtr hNamedPipe, IntPtr lpState, IntPtr lpCurInstances, IntPtr lpMaxCollectionCount, IntPtr lpCollectDataTimeout, IntPtr lpUserName, uint nMaxUserNameSize);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int GetNamedPipeHandleStateW(IntPtr hNamedPipe, ref uint lpState, ref uint lpCurInstances, ref uint lpMaxCollectionCount, ref uint lpCollectDataTimeout, StringBuilder lpUserName, uint nMaxUserNameSize);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetNamedPipeInfo(IntPtr hNamedPipe, IntPtr lpFlags, IntPtr lpOutBufferSize, IntPtr lpInBufferSize, IntPtr lpMaxInstances);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetNamedPipeInfo(IntPtr hNamedPipe, ref uint lpFlags, ref uint lpOutBufferSize, ref uint lpInBufferSize, ref uint lpMaxInstances);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int PeekNamedPipe(IntPtr hNamedPipe, IntPtr lpBuffer, uint nBufferSize, IntPtr lpBytesRead, IntPtr lpTotalBytesAvail, IntPtr lpBytesLeftThisMessage);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int PeekNamedPipe(IntPtr hNamedPipe, IntPtr lpBuffer, uint nBufferSize, ref uint lpBytesRead, ref uint lpTotalBytesAvail, ref uint lpBytesLeftThisMessage);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetNamedPipeHandleState(IntPtr hNamedPipe, IntPtr lpMode, IntPtr lpMaxCollectionCount, IntPtr lpCollectDataTimeout);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetNamedPipeHandleState(IntPtr hNamedPipe, ref uint lpMode, ref uint lpMaxCollectionCount, ref uint lpCollectDataTimeout);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int TransactNamedPipe(IntPtr hNamedPipe, IntPtr lpInBuffer, uint nInBufferSize, IntPtr lpOutBuffer, uint nOutBufferSize, IntPtr lpBytesRead, IntPtr lpOverlapped);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int TransactNamedPipe(IntPtr hNamedPipe, IntPtr lpInBuffer, uint nInBufferSize, IntPtr lpOutBuffer, uint nOutBufferSize, ref uint lpBytesRead, ref OVERLAPPED lpOverlapped);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int WaitNamedPipeA([Const] IntPtr lpNamedPipe, uint nTimeOut);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int WaitNamedPipeA(string lpNamedPipe, uint nTimeOut);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int WaitNamedPipeW([Const] IntPtr lpNamedPipe, uint nTimeOut);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int WaitNamedPipeW(string lpNamedPipe, uint nTimeOut);
+    }
+
+    #endregion // Pipe functions
+
+    #region Process and thread functions
+
+    partial class kernel32
+    {
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int AttachThreadInput(uint idAttach, uint idAttachTo, int fAttach);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CommandLineToArgvW(IntPtr lpCmdLine, IntPtr pNumArgs);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
-        public static extern int EncryptionDisable(string DirPath, int Disable);
+        public static extern IntPtr CommandLineToArgvW(string lpCmdLine, ref int pNumArgs);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CreateProcessA([Const] IntPtr lpApplicationName, IntPtr lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, [Const] IntPtr lpCurrentDirectory, IntPtr lpStartupInfo, IntPtr lpProcessInformation);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int CreateProcessA(string lpApplicationName, string lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, IntPtr lpStartupInfo, IntPtr lpProcessInformation);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int CreateProcessA(string lpApplicationName, string lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, ref STARTUPINFO lpStartupInfo, ref PROCESS_INFORMATION lpProcessInformation);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int CreateProcessA(string lpApplicationName, string lpCommandLine, ref SECURITY_ATTRIBUTES lpProcessAttributes, ref SECURITY_ATTRIBUTES lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, ref STARTUPINFO lpStartupInfo, ref PROCESS_INFORMATION lpProcessInformation);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CreateProcessW([Const] IntPtr lpApplicationName, IntPtr lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, [Const] IntPtr lpCurrentDirectory, IntPtr lpStartupInfo, IntPtr lpProcessInformation);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int CreateProcessW(string lpApplicationName, string lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, IntPtr lpStartupInfo, IntPtr lpProcessInformation);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int CreateProcessW(string lpApplicationName, string lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, ref STARTUPINFO lpStartupInfo, ref PROCESS_INFORMATION lpProcessInformation);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int CreateProcessW(string lpApplicationName, string lpCommandLine, ref SECURITY_ATTRIBUTES lpProcessAttributes, ref SECURITY_ATTRIBUTES lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, ref STARTUPINFO lpStartupInfo, ref PROCESS_INFORMATION lpProcessInformation);
+
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CreateProcessAsUserA(IntPtr hToken, [Const] IntPtr lpApplicationName, IntPtr lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, [Const] IntPtr lpCurrentDirectory, IntPtr lpStartupInfo, IntPtr lpProcessInformation);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int CreateProcessAsUserA(IntPtr hToken, string lpApplicationName, string lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, IntPtr lpStartupInfo, IntPtr lpProcessInformation);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int CreateProcessAsUserA(IntPtr hToken, string lpApplicationName, string lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, ref STARTUPINFO lpStartupInfo, ref PROCESS_INFORMATION lpProcessInformation);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int CreateProcessAsUserA(IntPtr hToken, string lpApplicationName, string lpCommandLine, ref SECURITY_ATTRIBUTES lpProcessAttributes, ref SECURITY_ATTRIBUTES lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, ref STARTUPINFO lpStartupInfo, ref PROCESS_INFORMATION lpProcessInformation);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CreateProcessAsUserW(IntPtr hToken, [Const] IntPtr lpApplicationName, IntPtr lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, [Const] IntPtr lpCurrentDirectory, IntPtr lpStartupInfo, IntPtr lpProcessInformation);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int CreateProcessAsUserW(IntPtr hToken, string lpApplicationName, string lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, IntPtr lpStartupInfo, IntPtr lpProcessInformation);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int CreateProcessAsUserW(IntPtr hToken, string lpApplicationName, string lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, ref STARTUPINFO lpStartupInfo, ref PROCESS_INFORMATION lpProcessInformation);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int CreateProcessAsUserW(IntPtr hToken, string lpApplicationName, string lpCommandLine, ref SECURITY_ATTRIBUTES lpProcessAttributes, ref SECURITY_ATTRIBUTES lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, ref STARTUPINFO lpStartupInfo, ref PROCESS_INFORMATION lpProcessInformation);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr CreateRemoteThread(IntPtr hProcess, IntPtr lpThreadAttributes, uint dwStackSize, IntPtr lpStartAddress, IntPtr lpParameter, uint dwCreationFlags, IntPtr lpThreadId);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr CreateRemoteThread(IntPtr hProcess, IntPtr lpThreadAttributes, uint dwStackSize, ref ThreadProc lpStartAddress, IntPtr lpParameter, uint dwCreationFlags, ref uint lpThreadId);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr CreateRemoteThread(IntPtr hProcess, ref SECURITY_ATTRIBUTES lpThreadAttributes, uint dwStackSize, ref ThreadProc lpStartAddress, IntPtr lpParameter, uint dwCreationFlags, ref uint lpThreadId);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr CreateThread(IntPtr lpThreadAttributes, uint dwStackSize, IntPtr lpStartAddress, IntPtr lpParameter, uint dwCreationFlags, IntPtr lpThreadId);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr CreateThread(IntPtr lpThreadAttributes, uint dwStackSize, ref ThreadProc lpStartAddress, IntPtr lpParameter, uint dwCreationFlags, ref uint lpThreadId);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr CreateThread(ref SECURITY_ATTRIBUTES lpThreadAttributes, uint dwStackSize, ref ThreadProc lpStartAddress, IntPtr lpParameter, uint dwCreationFlags, ref uint lpThreadId);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void ExitProcess(uint uExitCode);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void ExitThread(uint dwExitCode);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int FileEncryptionStatus([Const] IntPtr lpFileName, IntPtr lpStatus);
-
-        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
-        public static extern int FileEncryptionStatus(string lpFileName, ref uint lpStatus);
+        public static extern int FreeEnvironmentStringsA(IntPtr lpszEnvironmentBlock);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern void FreeEncryptionCertificateHashList(IntPtr pHashes);
+        public static extern int FreeEnvironmentStringsW(IntPtr lpszEnvironmentBlock);
+
+        [DllImport(ModuleName)]
+        public static extern IntPtr GetCommandLineA();
+
+        [DllImport(ModuleName)]
+        public static extern IntPtr GetCommandLineW();
+
+        [DllImport(ModuleName)]
+        public static extern IntPtr GetCurrentProcess();
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint GetCurrentProcessId();
+
+        [DllImport(ModuleName)]
+        public static extern IntPtr GetCurrentThread();
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint GetCurrentThreadId();
+
+        [DllImport(ModuleName)]
+        public static extern IntPtr GetEnvironmentStringsA();
+
+        [DllImport(ModuleName)]
+        public static extern IntPtr GetEnvironmentStringsW();
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern void FreeEncryptionCertificateHashList(ref ENCRYPTION_CERTIFICATE_HASH_LIST pHashes);
+        public static extern uint GetEnvironmentVariableA([Const] IntPtr lpName, IntPtr lpBuffer, uint nSize);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern uint GetEnvironmentVariableA(string lpName, StringBuilder lpBuffer, uint nSize);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint QueryRecoveryAgentsOnEcryptedFile([Const] IntPtr lpFileName, IntPtr pRecoveryAgents);
+        public static extern uint GetEnvironmentVariableW([Const] IntPtr lpName, IntPtr lpBuffer, uint nSize);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
-        public static extern uint QueryRecoveryAgentsOnEcryptedFile(string lpFileName, ref ENCRYPTION_CERTIFICATE_HASH_LIST pRecoveryAgents);
+        public static extern uint GetEnvironmentVariableW(string lpName, StringBuilder lpBuffer, uint nSize);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetExitCodeProcess(IntPtr hProcess, IntPtr lpExitCode);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint QueryUsersOnEncryptedFile([Const] IntPtr lpFileName, IntPtr pHasehs);
+        public static extern int GetExitCodeProcess(IntPtr hProcess, ref uint lpExitCode);
 
-        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
-        public static extern uint QueryUsersOnEncryptedFile(string lpFileName, ref ENCRYPTION_CERTIFICATE_HASH_LIST pHashes);
-
-        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint RemoveUsersFromEncryptedFile([Const] IntPtr lpFileName, IntPtr pHasehs);
-
-        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
-        public static extern uint RemoveUsersFromEncryptedFile(string lpFileName, ref ENCRYPTION_CERTIFICATE_HASH_LIST pHashes);
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetExitCodeThread(IntPtr hThread, IntPtr lpExitCode);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint SetUserFileEncryptionKey(IntPtr pEncryptionCertificate);
+        public static extern int GetExitCodeThread(IntPtr hThread, ref uint lpExitCode);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint SetUserFileEncryptionKey(ref ENCRYPTION_CERTIFICATE pEncryptionCertificate);
+        public static extern uint GetPriorityClass(IntPtr hProcess);
 
-        #endregion // advapi32.dll - File system functions (cryptions)
-
-        #region user32.dll - Timer functions
-
-        [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi), CLSCompliant(false)]
-        public delegate void TimerProc(IntPtr hwnd, uint uMsg, uint idEvent, uint dwTime);
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetProcessAffinityMask(IntPtr hProcess, IntPtr lpProcessAffinityMask, IntPtr lpSystemAffinityMask);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int KillTimer(IntPtr hWnd, uint uIDEvent);
+        public static extern int GetProcessAffinityMask(IntPtr hProcess, ref uint lpProcessAffinityMask, ref uint lpSystemAffinityMask);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetProcessPriorityBoost(IntPtr hProcess, IntPtr pDisablePriorityBoost);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetProcessPriorityBoost(IntPtr hProcess, ref int pDisablePriorityBoost);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetProcessShutdownParameters(IntPtr lpdwLevel, IntPtr lpdwFlags);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint SetTimer(IntPtr hWnd, uint nIDEvent, uint uElpase, IntPtr lpTimerFunc);
+        public static extern int GetProcessShutdownParameters(ref uint lpdwLevel, ref uint lpdwFlags);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetProcessTimes(IntPtr hProcess, IntPtr lpCreationTime, IntPtr lpExitTime, IntPtr lpKernelTime, IntPtr lpUserTime);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint SetTimer(IntPtr hWnd, uint nIDEvent, uint uElpase, TimerProc lpTimerFunc);
+        public static extern int GetProcessTimes(IntPtr hProcess, ref FILETIME lpCreationTime, ref FILETIME lpExitTime, ref FILETIME lpKernelTime, ref FILETIME lpUserTime);
 
-        #endregion // user32.dll - Timer functions
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetProcessVersion(uint ProcessId);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetProcessWorkingSetSize(IntPtr hProcess, IntPtr lpMinimumWorkingSetSize, IntPtr lpMaximumWorkingSetSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetProcessWorkingSetSize(IntPtr hProcess, ref uint lpMinimumWorkingSetSize, ref uint lpMaximumWorkingSetSize);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern void GetStartupInfo(IntPtr lpStartupInfo);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern void GetStartupInfo(ref STARTUPINFO lpStartupInfo);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetThreadPriority(IntPtr hThread);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetThreadPriorityBoost(IntPtr hThread, IntPtr pDisablePriorityBoost);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetThreadPriorityBoost(IntPtr hThread, ref int pDisablePriorityBoost);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetThreadTimes(IntPtr hThread, IntPtr lpCreationTime, IntPtr lpExitTime, IntPtr lpKernelTime, IntPtr lpUserTime);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetThreadTimes(IntPtr hThread, ref FILETIME lpCreationTime, ref FILETIME lpExitTime, ref FILETIME lpKernelTime, ref FILETIME lpUserTime);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr OpenProcess(uint dwDesiredAccess, int bInheritHandle, uint dwProcessId);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint ResumeThread(IntPtr hThread);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetEnvironmentVariableA([Const] IntPtr lpName, [Const] IntPtr lpValue);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
+        public static extern int SetEnvironmentVariableA(string lpName, string lpValue);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetEnvironmentVariableW([Const] IntPtr lpName, [Const] IntPtr lpValue);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern int SetEnvironmentVariableW(string lpName, string lpValue);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetPriorityClass(IntPtr hProcess, uint dwPriorityClass);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetProcessAffinityMask(IntPtr hProcess, uint dwProcessAffinityMask);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetProcessPriorityBoost(IntPtr hProcess, int DisablePriorityBoost);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetProcessShutdownParameters(uint dwLevel, uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetProcessWorkingSetSize(IntPtr hProcess, uint dwMinimumWorkingSetSize, uint MaximumWorkingSetSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetThreadAffinityMask(IntPtr hProcess, uint dwThreadAffinityMask);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetThreadIdealProcessor(IntPtr hProcess, uint dwIdealProcessor);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetThreadPriority(IntPtr hProcess, int nPriority);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetThreadPriorityBoost(IntPtr hProcess, int DisablePriorityBoost);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void Sleep(uint dwMilliseconds);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void SleepEx(uint dwMilliseconds, int bAlertable);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint SuspendThread(IntPtr hThread);
+
+        [DllImport(ModuleName)]
+        public static extern int SwitchToThread();
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int TerminateProcess(IntPtr hProcess, uint uExitCode);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int TerminateThread(IntPtr hThread, uint dwExitCode);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint TlsAlloc();
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int TlsFree(uint dwTlsIndex);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr TlsGetValue(uint dwTlsIndex);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int TlsSetValue(uint dwTlsIndex, IntPtr lpTlsValue);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint WaitForInputIdle(IntPtr hProcess, uint dwMilliseconds);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint WinExec([Const] IntPtr lpCmdLine, uint nCmdShow);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern uint WinExec(string lpCmdLine, uint nCmdShow);
     }
+
+    #endregion // Process and thread functions
+
+    #region Fiber functions
+
+    partial class kernel32
+    {
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr ConvertThreadToFiber(IntPtr lpParameter);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr CreateFiber(uint dwStackSize, IntPtr lpStartAddress, IntPtr lpParameter);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr CreateFiber(uint dwStackSize, FiberProc lpStartAddress, IntPtr lpParameter);
+
+        [DllImport(ModuleName)]
+        public static extern void DeleteFiber(IntPtr lpFiber);
+
+        [DllImport(ModuleName)]
+        public static extern IntPtr GetCurrentFiber();
+
+        [DllImport(ModuleName)]
+        public static extern IntPtr GetFiberData();
+
+        [DllImport(ModuleName)]
+        public static extern void SwitchToFiber(IntPtr lpFiber);
+    }
+
+    #endregion // Fiber functions
 }
