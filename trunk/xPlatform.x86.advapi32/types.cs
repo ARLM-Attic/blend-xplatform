@@ -17,6 +17,38 @@ namespace xPlatform.x86.advapi32
         NameCanonicalEx = 9,
         NameServicePrincipal = 10
     }
+
+    [Serializable]
+    public enum SECURITY_IMPERSONATION_LEVEL : int
+    {
+        SecurityAnonymous,
+        SecurityIdentification,
+        SecurityImpersonation,
+        SecurityDelegation 
+    }
+
+    [Serializable]
+    public enum TOKEN_INFORMATION_CLASS : int
+    {
+        TokenUser = 1,
+        TokenGroups,
+        TokenPrivileges,
+        TokenOwner,
+        TokenPrimaryGroup,
+        TokenDefaultDacl,
+        TokenSource,
+        TokenType,
+        TokenImpersonationLevel,
+        TokenStatistics,
+        TokenRestrictedSids 
+    }
+
+    [Serializable]
+    public enum TOKEN_TYPE : int
+    {
+        TokenPrimary = 1,
+        TokenImpersonation 
+    }
 }
 
 namespace xPlatform.x86.advapi32
@@ -95,5 +127,51 @@ namespace xPlatform.x86.advapi32
 
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 80)]
         public string szHwProfileName;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Explicit)]
+    public struct LUID
+    {
+        [FieldOffset(0)]
+        public long QuadPart;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct SID_AND_ATTRIBUTES
+    {
+        public IntPtr Sid;
+        public uint Attributes;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct TOKEN_GROUPS
+    {
+        public uint GroupCount;
+
+        [MarshalAs(UnmanagedType.ByValArray)]
+        public SID_AND_ATTRIBUTES[] Groups;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct LUID_AND_ATTRIBUTES
+    {
+        public LUID Luid;
+        public uint Attributes;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct TOKEN_PRIVILEGES
+    {
+        public uint PrivilegeCount;
+
+        [MarshalAs(UnmanagedType.ByValArray)]
+        public LUID_AND_ATTRIBUTES[] Privileges;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct SID_IDENTIFIER_AUTHORITY
+    {
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
+        public byte[] Value;
     }
 }
