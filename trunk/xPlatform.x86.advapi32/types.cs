@@ -64,7 +64,7 @@ namespace xPlatform.x86.advapi32
     [Serializable, StructLayout(LayoutKind.Sequential)]
     public struct SID_IDENTIFIER_AUTHORITY
     {
-        [MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeConst = 6)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
         public byte[] Value;
     }
 
@@ -166,12 +166,5 @@ namespace xPlatform.x86.advapi32
 
         [MarshalAs(UnmanagedType.ByValArray)]
         public LUID_AND_ATTRIBUTES[] Privileges;
-    }
-
-    [Serializable, StructLayout(LayoutKind.Sequential)]
-    public struct SID_IDENTIFIER_AUTHORITY
-    {
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-        public byte[] Value;
     }
 }
