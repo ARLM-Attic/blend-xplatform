@@ -3583,7 +3583,7 @@ namespace xPlatform.x86.kernel32
         public static extern int VerifyVersionInfoW(ref OSVERSIONINFOEX lpVersionInfo, uint dwTypeMask, ulong dwlConditionMask);
 
         [DllImport(ModuleName), CLSCompliant(false)]
-        public static extern ulong VerSetConditionmask(ulong dwlConditionMask, uint dwTypeBitMask, byte dwConditionMask);
+        public static extern ulong VerSetConditionMask(ulong dwlConditionMask, uint dwTypeBitMask, byte dwConditionMask);
     }
 
     #endregion // System information functions
