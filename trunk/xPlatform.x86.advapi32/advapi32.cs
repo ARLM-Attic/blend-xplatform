@@ -427,8 +427,217 @@ namespace xPlatform.x86.advapi32
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern uint SetSecurityInfo(IntPtr handle, SE_OBJECT_TYPE ObjectType, SECURITY_INFORMATION SecurityInfo, IntPtr psidOwner, IntPtr psidGroup, ref ACL pDacl, ref ACL pSacl);
 
-        // BuildExplicitAccessWithName
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern void BuildExplicitAccessWithNameA(IntPtr pExplicitAccess, IntPtr pTrusteeName, uint AccessPermissions, ACCESS_MODE AccessMode, uint Inheritance);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern void BuildExplicitAccessWithNameA(ref EXPLICIT_ACCESS pExplicitAccess, StringBuilder pTrusteeName, uint AccessPermissions, ACCESS_MODE AccessMode, uint Inheritance);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern void BuildExplicitAccessWithNameW(IntPtr pExplicitAccess, IntPtr pTrusteeName, uint AccessPermissions, ACCESS_MODE AccessMode, uint Inheritance);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern void BuildExplicitAccessWithNameW(ref EXPLICIT_ACCESS pExplicitAccess, StringBuilder pTrusteeName, uint AccessPermissions, ACCESS_MODE AccessMode, uint Inheritance);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern void BuildTrusteeWithNameA(IntPtr pTrustee, IntPtr pName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
+        public static extern void BuildTrusteeWithNameA(ref TRUSTEE pTrustee, StringBuilder pName);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern void BuildTrusteeWithNameW(IntPtr pTrustee, IntPtr pName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern void BuildTrusteeWithNameW(ref TRUSTEE pTrustee, StringBuilder pName);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern void BuildTrusteeWithObjectsAndNameA(IntPtr pTrustee, IntPtr pObjName, SE_OBJECT_TYPE ObjectType, IntPtr ObjectTypeName, IntPtr InheritedObjectTypeName, IntPtr Name);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern void BuildTrusteeWithObjectsAndNameA(ref TRUSTEE pTrustee, ref OBJECTS_AND_NAME pObjName, SE_OBJECT_TYPE ObjectType, StringBuilder ObjectTypeName, StringBuilder InheritedObjectTypeName, StringBuilder Name);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern void BuildTrusteeWithObjectsAndNameW(IntPtr pTrustee, IntPtr pObjName, SE_OBJECT_TYPE ObjectType, IntPtr ObjectTypeName, IntPtr InheritedObjectTypeName, IntPtr Name);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern void BuildTrusteeWithObjectsAndNameW(ref TRUSTEE pTrustee, ref OBJECTS_AND_NAME pObjName, SE_OBJECT_TYPE ObjectType, StringBuilder ObjectTypeName, StringBuilder InheritedObjectTypeName, StringBuilder Name);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern void BuildTrusteeWithObjectsAndSidA(IntPtr pTrustee, IntPtr pObjSid, IntPtr pObjectGuid, IntPtr pInheritedObjectGuid, IntPtr pSid);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern void BuildTrusteeWithObjectsAndSidA(ref TRUSTEE pTrustee, ref OBJECTS_AND_SID pObjSid, ref GUID pObjectGuid, ref GUID pInheritedObjectGuid, IntPtr pSid);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern void BuildTrusteeWithObjectsAndSidW(IntPtr pTrustee, IntPtr pObjSid, IntPtr pObjectGuid, IntPtr pInheritedObjectGuid, IntPtr pSid);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern void BuildTrusteeWithObjectsAndSidW(ref TRUSTEE pTrustee, ref OBJECTS_AND_SID pObjSid, ref GUID pObjectGuid, ref GUID pInheritedObjectGuid, IntPtr pSid);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern void BuildTrusteeWithSidA(IntPtr pTrustee, IntPtr pSid);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
+        public static extern void BuildTrusteeWithSidA(ref TRUSTEE pTrustee, IntPtr pSid);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern void BuildTrusteeWithSidW(IntPtr pTrustee, IntPtr pSid);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern void BuildTrusteeWithSidW(ref TRUSTEE pTrustee, IntPtr pSid);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetAuditedPermissionsFromAclA(IntPtr pacl, IntPtr pTrustee, IntPtr pSuccessfulAuditedRights, IntPtr pFailedAuditRights);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern uint GetAuditedPermissionsFromAclA(ref ACL pacl, ref TRUSTEE pTrustee, ref ACCESS_MASK pSuccessfulAuditedRights, ref ACCESS_MASK pFailedAuditRights);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetAuditedPermissionsFromAclW(IntPtr pacl, IntPtr pTrustee, IntPtr pSuccessfulAuditedRights, IntPtr pFailedAuditRights);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern uint GetAuditedPermissionsFromAclW(ref ACL pacl, ref TRUSTEE pTrustee, ref ACCESS_MASK pSuccessfulAuditedRights, ref ACCESS_MASK pFailedAuditRights);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetEffectiveRightsFromAclA(IntPtr pacl, IntPtr pTrustee, IntPtr pAccessRights);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern uint GetEffectiveRightsFromAclA(ref ACL pacl, ref TRUSTEE pTrustee, ref ACCESS_MASK pAccessRights);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetEffectiveRightsFromAclW(IntPtr pacl, IntPtr pTrustee, IntPtr pAccessRights);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern uint GetEffectiveRightsFromAclW(ref ACL pacl, ref TRUSTEE pTrustee, ref ACCESS_MASK pAccessRights);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetExplicitEntriesFromAclA(IntPtr pacl, IntPtr pcCountOfExplicitEntries, IntPtr pListOFExplicitEntries);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern uint GetExplicitEntriesFromAclA(ref ACL pacl, ref uint pcCountOfExplicitEntries, IntPtr[] pListOFExplicitEntries);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetExplicitEntriesFromAclW(IntPtr pacl, IntPtr pcCountOfExplicitEntries, IntPtr pListOFExplicitEntries);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern uint GetExplicitEntriesFromAclW(ref ACL pacl, ref uint pcCountOfExplicitEntries, IntPtr[] pListOFExplicitEntries);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern TRUSTEE_FORM GetTrusteeFormA(IntPtr pTrustee);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
+        public static extern TRUSTEE_FORM GetTrusteeFormA(ref TRUSTEE pTrustee);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern TRUSTEE_FORM GetTrusteeFormW(IntPtr pTrustee);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern TRUSTEE_FORM GetTrusteeFormW(ref TRUSTEE pTrustee);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr GetTrusteeNameA(IntPtr pTrustee);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
+        public static extern IntPtr GetTrusteeNameA(ref TRUSTEE pTrustee);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr GetTrusteeNameW(IntPtr pTrustee);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern IntPtr GetTrusteeNameW(ref TRUSTEE pTrustee);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern TRUSTEE_TYPE GetTrusteeTypeA(IntPtr pTrustee);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
+        public static extern TRUSTEE_TYPE GetTrusteeTypeA(ref TRUSTEE pTrustee);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern TRUSTEE_TYPE GetTrusteeTypeW(IntPtr pTrustee);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern TRUSTEE_TYPE GetTrusteeTypeW(ref TRUSTEE pTrustee);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint SetEntriesInAclA(uint cCountOfExplicitEntries, IntPtr pListOfExplicitEntries, IntPtr OldAcl, IntPtr NewAcl);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern uint SetEntriesInAclA(uint cCountOfExplicitEntries, EXPLICIT_ACCESS[] pListOfExplicitEntries, ref ACL OldAcl, ref IntPtr NewAcl);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint SetEntriesInAclW(uint cCountOfExplicitEntries, IntPtr pListOfExplicitEntries, IntPtr OldAcl, IntPtr NewAcl);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern uint SetEntriesInAclW(uint cCountOfExplicitEntries, EXPLICIT_ACCESS[] pListOfExplicitEntries, ref ACL OldAcl, ref IntPtr NewAcl);
     }
 
     #endregion // Access control functions
+
+    #region Client and server access control functions
+
+    partial class advapi32
+    {
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CreateProcessAsUserA(IntPtr hToken, [Const] IntPtr lpApplicationName, IntPtr lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, [Const] IntPtr lpCurrentDirectory, IntPtr lpStartupInfo, IntPtr lpProcessInformation);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int CreateProcessAsUserA(IntPtr hToken, string lpApplicationName, StringBuilder lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, ref STARTUPINFO lpStartupInfo, ref PROCESS_INFORMATION lpProcessInformation);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int CreateProcessAsUserA(IntPtr hToken, string lpApplicationName, StringBuilder lpCommandLine, ref SECURITY_ATTRIBUTES lpProcessAttributes, ref SECURITY_ATTRIBUTES lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, ref STARTUPINFO lpStartupInfo, ref PROCESS_INFORMATION lpProcessInformation);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CreateProcessAsUserW(IntPtr hToken, [Const] IntPtr lpApplicationName, IntPtr lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, [Const] IntPtr lpCurrentDirectory, IntPtr lpStartupInfo, IntPtr lpProcessInformation);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int CreateProcessAsUserW(IntPtr hToken, string lpApplicationName, StringBuilder lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, ref STARTUPINFO lpStartupInfo, ref PROCESS_INFORMATION lpProcessInformation);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int CreateProcessAsUserW(IntPtr hToken, string lpApplicationName, StringBuilder lpCommandLine, ref SECURITY_ATTRIBUTES lpProcessAttributes, ref SECURITY_ATTRIBUTES lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, ref STARTUPINFO lpStartupInfo, ref PROCESS_INFORMATION lpProcessInformation);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CreateProcessWithLogonW([Const] IntPtr lpUserName, [Const] IntPtr lpDomain, [Const] IntPtr lpPassword, uint dwLogonFlags, [Const] IntPtr lpApplicationName, IntPtr lpCommandLine, uint dwCreationFlags, IntPtr lpEnvironment, [Const] IntPtr lpCurrentDirectory, IntPtr lpStartupInfo, IntPtr lpProcessInfo);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int CreateProcessWithLogonW(string lpUserName, string lpDomain, string lpPassword, uint dwLogonFlags, string lpApplicationName, StringBuilder lpCommandLine, uint dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, ref STARTUPINFO lpStartupInfo, ref PROCESS_INFORMATION lpProcessInfo);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ImpersonateLoggedOnUser(IntPtr hToken);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ImpersonateNamePipeClient(IntPtr hNamedPipe);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ImpersonateSelf(SECURITY_IMPERSONATION_LEVEL ImpersonationLevel);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int LogonUserA(IntPtr lpszUserName, IntPtr lpszDomain, IntPtr lpszPassword, uint dwLogonType, uint dwLogonProvider, IntPtr phToken);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int LogonUserA(StringBuilder lpszUserName, StringBuilder lpszDomain, StringBuilder lpszPassword, uint dwLogonType, uint dwLogonProvider, ref IntPtr phToken);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int LogonUserW(IntPtr lpszUserName, IntPtr lpszDomain, IntPtr lpszPassword, uint dwLogonType, uint dwLogonProvider, IntPtr phToken);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int LogonUserW(StringBuilder lpszUserName, StringBuilder lpszDomain, StringBuilder lpszPassword, uint dwLogonType, uint dwLogonProvider, ref IntPtr phToken);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int LogonUserExA(IntPtr lpszUserName, IntPtr lpszDomain, IntPtr lpszPassword, uint dwLogonType, uint dwLogonProvider, IntPtr phToken, IntPtr ppLogonSid, IntPtr ppProfileBuffer, IntPtr pdwProfileLength, IntPtr pQuotaLimits);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int LogonUserExA(StringBuilder lpszUserName, StringBuilder lpszDomain, StringBuilder lpszPassword, uint dwLogonType, uint dwLogonProvider, ref IntPtr phToken, ref IntPtr ppLogonSid, ref IntPtr ppProfileBuffer, ref uint pdwProfileLength, ref QUOTA_LIMITS pQuotaLimits);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int LogonUserExW(IntPtr lpszUserName, IntPtr lpszDomain, IntPtr lpszPassword, uint dwLogonType, uint dwLogonProvider, IntPtr phToken, IntPtr ppLogonSid, IntPtr ppProfileBuffer, IntPtr pdwProfileLength, IntPtr pQuotaLimits);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int LogonUserExW(StringBuilder lpszUserName, StringBuilder lpszDomain, StringBuilder lpszPassword, uint dwLogonType, uint dwLogonProvider, ref IntPtr phToken, ref IntPtr ppLogonSid, ref IntPtr ppProfileBuffer, ref uint pdwProfileLength, ref QUOTA_LIMITS pQuotaLimits);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int RevertToSelf();
+    }
+
+    #endregion // Client and server access control functions
 }

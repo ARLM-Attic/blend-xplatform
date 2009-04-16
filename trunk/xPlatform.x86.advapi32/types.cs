@@ -410,4 +410,15 @@ namespace xPlatform.x86.advapi32
         public GUID InheritedObjectTypeGuid;
         public IntPtr pSID;
     }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct QUOTA_LIMITS
+    {
+        public uint PagedPoolLimit;
+        public uint NonPagedPoolLimit;
+        public uint MinimumWorkingSetSize;
+        public uint MaximumWorkignsetSize;
+        public uint PagefileLimit;
+        public LARGE_INTEGER TimeLimit;
+    }
 }
