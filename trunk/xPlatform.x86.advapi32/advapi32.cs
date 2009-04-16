@@ -637,6 +637,98 @@ namespace xPlatform.x86.advapi32
 
         [DllImport(ModuleName, SetLastError = true)]
         public static extern int RevertToSelf();
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AccessCheck(IntPtr pSecurityDescriptor, IntPtr ClientToken, uint DesiredAccess, IntPtr GenericMapping, IntPtr PrivilegeSet, IntPtr PrivilegeSetLength, IntPtr GrantedAccess, IntPtr AccessStatus);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AccessCheck(ref SECURITY_DESCRIPTOR pSecurityDescriptor, IntPtr ClientToken, uint DesiredAccess, ref GENERIC_MAPPING GenericMapping, ref PRIVILEGE_SET PrivilegeSet, ref uint PrivilegeSetLength, ref uint GrantedAccess, ref int AccessStatus);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AccessCheckAndAuditAlarmA([Const] IntPtr SubsystemName, IntPtr HandleId, IntPtr ObjectTypeName, IntPtr ObjectName, IntPtr SecurityDescriptor, uint DesiredAccess, IntPtr GenericMapping, int ObjectCreation, IntPtr GrantedAccess, IntPtr AccessStatus, IntPtr pfGenerateOnClose);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int AccessCheckAndAuditAlarmA(string SubsystemName, IntPtr HandleId, StringBuilder ObjectTypeName, StringBuilder ObjectName, ref SECURITY_DESCRIPTOR SecurityDescriptor, uint DesiredAccess, ref GENERIC_MAPPING GenericMapping, int ObjectCreation, ref uint GrantedAccess, ref int AccessStatus, ref int pfGenerateOnClose);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AccessCheckAndAuditAlarmW([Const] IntPtr SubsystemName, IntPtr HandleId, IntPtr ObjectTypeName, IntPtr ObjectName, IntPtr SecurityDescriptor, uint DesiredAccess, IntPtr GenericMapping, int ObjectCreation, IntPtr GrantedAccess, IntPtr AccessStatus, IntPtr pfGenerateOnClose);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int AccessCheckAndAuditAlarmW(string SubsystemName, IntPtr HandleId, StringBuilder ObjectTypeName, StringBuilder ObjectName, ref SECURITY_DESCRIPTOR SecurityDescriptor, uint DesiredAccess, ref GENERIC_MAPPING GenericMapping, int ObjectCreation, ref uint GrantedAccess, ref int AccessStatus, ref int pfGenerateOnClose);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AccessCheckByType(IntPtr pSecurityDescriptor, IntPtr PrincipalSelfSid, IntPtr ClientToken, uint DesiredAccess, IntPtr ObjectTypeList, uint ObjectTypeListLength, IntPtr GenericMapping, IntPtr PrivilegeSet, IntPtr PrivilegeSetLength, IntPtr GrantedAccess, IntPtr AccessStatus);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AccessCheckByType(ref SECURITY_DESCRIPTOR pSecurityDescriptor, IntPtr PrincipalSelfSid, IntPtr ClientToken, uint DesiredAccess, ref OBJECT_TYPE_LIST ObjectTypeList, uint ObjectTypeListLength, ref GENERIC_MAPPING GenericMapping, ref PRIVILEGE_SET PrivilegeSet, ref uint PrivilegeSetLength, ref uint GrantedAccess, ref int AccessStatus);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AccessCheckByTypeAndAuditAlarmA([Const] IntPtr SubsystemName, IntPtr HandleId, [Const] IntPtr ObjectTypeName, [Const] IntPtr ObjectName, IntPtr pSecurityDescritor, IntPtr PrincipalSelfSid, uint DesiredAccess, AUDIT_EVENT_TYPE AuditType, uint Flags, IntPtr ObjectTypeList, uint ObjectTypeListLength, IntPtr GenericMapping, int ObjectCreation, IntPtr GrantedAccess, IntPtr AccessStatus, IntPtr pfGenerateOnClose);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int AccessCheckByTypeAndAuditAlarmA(string SubsystemName, IntPtr HandleId, string ObjectTypeName, string ObjectName, ref SECURITY_DESCRIPTOR pSecurityDescritor, IntPtr PrincipalSelfSid, uint DesiredAccess, AUDIT_EVENT_TYPE AuditType, uint Flags, ref OBJECT_TYPE_LIST ObjectTypeList, uint ObjectTypeListLength, ref GENERIC_MAPPING GenericMapping, int ObjectCreation, ref uint GrantedAccess, ref int AccessStatus, ref int pfGenerateOnClose);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AccessCheckByTypeAndAuditAlarmW([Const] IntPtr SubsystemName, IntPtr HandleId, [Const] IntPtr ObjectTypeName, [Const] IntPtr ObjectName, IntPtr pSecurityDescritor, IntPtr PrincipalSelfSid, uint DesiredAccess, AUDIT_EVENT_TYPE AuditType, uint Flags, IntPtr ObjectTypeList, uint ObjectTypeListLength, IntPtr GenericMapping, int ObjectCreation, IntPtr GrantedAccess, IntPtr AccessStatus, IntPtr pfGenerateOnClose);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int AccessCheckByTypeAndAuditAlarmW(string SubsystemName, IntPtr HandleId, string ObjectTypeName, string ObjectName, ref SECURITY_DESCRIPTOR pSecurityDescritor, IntPtr PrincipalSelfSid, uint DesiredAccess, AUDIT_EVENT_TYPE AuditType, uint Flags, ref OBJECT_TYPE_LIST ObjectTypeList, uint ObjectTypeListLength, ref GENERIC_MAPPING GenericMapping, int ObjectCreation, ref uint GrantedAccess, ref int AccessStatus, ref int pfGenerateOnClose);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AccessCheckByTypeResultList(IntPtr pSecurityDescriptor, IntPtr PrincipalSelfSid, IntPtr ClientToken, uint DesiredAccess, IntPtr ObjectTypeList, uint ObjectTypeListLength, IntPtr GenericMapping, IntPtr PrivilegeSet, IntPtr PrivilegeSetLength, IntPtr GrantedAccessList, IntPtr AccessStatusList);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AccessCheckByTypeResultList(ref SECURITY_DESCRIPTOR pSecurityDescriptor, IntPtr PrincipalSelfSid, IntPtr ClientToken, uint DesiredAccess, ref OBJECT_TYPE_LIST ObjectTypeList, uint ObjectTypeListLength, ref GENERIC_MAPPING GenericMapping, ref PRIVILEGE_SET PrivilegeSet, ref uint PrivilegeSetLength, uint[] GrantedAccessList, uint[] AccessStatusList);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AccessCheckByTypeResultListAndAuditAlarmA([Const] IntPtr SubsystemName, IntPtr HandleId, [Const] IntPtr ObjectTypeName, [Const] IntPtr ObjectName, IntPtr pSecurityDescriptor, IntPtr PrincipalSelfSid, uint DesiredAccess, AUDIT_EVENT_TYPE AuditType, uint Flags, IntPtr ObjectTypeList, uint ObjectTypeListLength, IntPtr GenericMapping, int ObjectCreation, IntPtr GrantedAccess, IntPtr AccessStatusList, IntPtr pfGenerateOnClose);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int AccessCheckByTypeResultListAndAuditAlarmA(string SubsystemName, IntPtr HandleId, string ObjectTypeName, string ObjectName, ref SECURITY_DESCRIPTOR pSecurityDescriptor, IntPtr PrincipalSelfSid, uint DesiredAccess, AUDIT_EVENT_TYPE AuditType, uint Flags, ref OBJECT_TYPE_LIST ObjectTypeList, uint ObjectTypeListLength, ref GENERIC_MAPPING GenericMapping, int ObjectCreation, ref uint GrantedAccess, uint[] AccessStatusList, ref int pfGenerateOnClose);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AccessCheckByTypeResultListAndAuditAlarmW([Const] IntPtr SubsystemName, IntPtr HandleId, [Const] IntPtr ObjectTypeName, [Const] IntPtr ObjectName, IntPtr pSecurityDescriptor, IntPtr PrincipalSelfSid, uint DesiredAccess, AUDIT_EVENT_TYPE AuditType, uint Flags, IntPtr ObjectTypeList, uint ObjectTypeListLength, IntPtr GenericMapping, int ObjectCreation, IntPtr GrantedAccess, IntPtr AccessStatusList, IntPtr pfGenerateOnClose);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int AccessCheckByTypeResultListAndAuditAlarmW(string SubsystemName, IntPtr HandleId, string ObjectTypeName, string ObjectName, ref SECURITY_DESCRIPTOR pSecurityDescriptor, IntPtr PrincipalSelfSid, uint DesiredAccess, AUDIT_EVENT_TYPE AuditType, uint Flags, ref OBJECT_TYPE_LIST ObjectTypeList, uint ObjectTypeListLength, ref GENERIC_MAPPING GenericMapping, int ObjectCreation, ref uint GrantedAccess, uint[] AccessStatusList, ref int pfGenerateOnClose);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AccessCheckByTypeResultListAndAuditAlarmByHandleA([Const] IntPtr SubsystemName, IntPtr HandleId, IntPtr ClientToken, [Const] IntPtr ObjectTypeName, [Const] IntPtr ObjectName, IntPtr pSecurityDescriptor, IntPtr PrincipalSelfSid, uint DesiredAccess, AUDIT_EVENT_TYPE AuditType, uint Flags, IntPtr ObjectTypeList, uint ObjectTypeListLength, IntPtr GenericMapping, int ObjectCreation, IntPtr GrantedAccess, IntPtr AccessStatusList, IntPtr pfGenerateOnClose);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int AccessCheckByTypeResultListAndAuditAlarmByHandleA(string SubsystemName, IntPtr HandleId, IntPtr ClientToken, string ObjectTypeName, string ObjectName, ref SECURITY_DESCRIPTOR pSecurityDescriptor, IntPtr PrincipalSelfSid, uint DesiredAccess, AUDIT_EVENT_TYPE AuditType, uint Flags, ref OBJECT_TYPE_LIST ObjectTypeList, uint ObjectTypeListLength, ref GENERIC_MAPPING GenericMapping, int ObjectCreation, ref uint GrantedAccess, uint[] AccessStatusList, ref int pfGenerateOnClose);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AccessCheckByTypeResultListAndAuditAlarmByHandleW([Const] IntPtr SubsystemName, IntPtr HandleId, IntPtr ClientToken, [Const] IntPtr ObjectTypeName, [Const] IntPtr ObjectName, IntPtr pSecurityDescriptor, IntPtr PrincipalSelfSid, uint DesiredAccess, AUDIT_EVENT_TYPE AuditType, uint Flags, IntPtr ObjectTypeList, uint ObjectTypeListLength, IntPtr GenericMapping, int ObjectCreation, IntPtr GrantedAccess, IntPtr AccessStatusList, IntPtr pfGenerateOnClose);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int AccessCheckByTypeResultListAndAuditAlarmByHandleW(string SubsystemName, IntPtr HandleId, IntPtr ClientToken, string ObjectTypeName, string ObjectName, ref SECURITY_DESCRIPTOR pSecurityDescriptor, IntPtr PrincipalSelfSid, uint DesiredAccess, AUDIT_EVENT_TYPE AuditType, uint Flags, ref OBJECT_TYPE_LIST ObjectTypeList, uint ObjectTypeListLength, ref GENERIC_MAPPING GenericMapping, int ObjectCreation, ref uint GrantedAccess, uint[] AccessStatusList, ref int pfGenerateOnClose);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AreAllAccessesGranted(uint GrantedAccess, uint DesiredAccess);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AreAnyAccessesGranted(uint GrantedAccess, uint DesiredAccess);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint BuildSecurityDescriptorA(IntPtr pOwner, IntPtr pGroup, uint cCountOfAccessEntries, IntPtr pListOfAccessEntries, uint cCountOfAuditEntries, IntPtr pListOfAuditEntries, IntPtr pOldSD, IntPtr pSizeNewSD, IntPtr pNewSD);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern uint BuildSecurityDescriptorA(ref TRUSTEE pOwner, ref TRUSTEE pGroup, uint cCountOfAccessEntries, EXPLICIT_ACCESS[] pListOfAccessEntries, uint cCountOfAuditEntries, EXPLICIT_ACCESS[] pListOfAuditEntries, ref SECURITY_DESCRIPTOR pOldSD, ref uint pSizeNewSD, ref IntPtr pNewSD);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint BuildSecurityDescriptorW(IntPtr pOwner, IntPtr pGroup, uint cCountOfAccessEntries, IntPtr pListOfAccessEntries, uint cCountOfAuditEntries, IntPtr pListOfAuditEntries, IntPtr pOldSD, IntPtr pSizeNewSD, IntPtr pNewSD);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern uint BuildSecurityDescriptorW(ref TRUSTEE pOwner, ref TRUSTEE pGroup, uint cCountOfAccessEntries, EXPLICIT_ACCESS[] pListOfAccessEntries, uint cCountOfAuditEntries, EXPLICIT_ACCESS[] pListOfAuditEntries, ref SECURITY_DESCRIPTOR pOldSD, ref uint pSizeNewSD, ref IntPtr pNewSD);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int ConvertToAutoInheritPrivateObjectSecurity(IntPtr ParentDescriptor, IntPtr CurrentSecurityDescriptor, IntPtr NewSecurityDescriptor, IntPtr ObjectType, int IsDirectoryObject, IntPtr GenericMapping);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int ConvertToAutoInheritPrivateObjectSecurity(ref SECURITY_DESCRIPTOR ParentDescriptor, ref SECURITY_DESCRIPTOR CurrentSecurityDescriptor, ref IntPtr NewSecurityDescriptor, ref GUID ObjectType, int IsDirectoryObject, ref GENERIC_MAPPING GenericMapping);
+
+        // CreatePrivateObjectSecurity
     }
 
     #endregion // Client and server access control functions

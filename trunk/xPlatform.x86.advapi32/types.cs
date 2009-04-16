@@ -189,6 +189,13 @@ namespace xPlatform.x86.advapi32
         TRUSTEE_IS_INVALID,
         TRUSTEE_IS_COMPUTER
     }
+
+    [Serializable]
+    public enum AUDIT_EVENT_TYPE : int
+    {
+        AuditEventObjectAccess,
+        AuditEventDirectoryServiceAccess
+    }
 }
 
 namespace xPlatform.x86.advapi32
@@ -420,5 +427,30 @@ namespace xPlatform.x86.advapi32
         public uint MaximumWorkignsetSize;
         public uint PagefileLimit;
         public LARGE_INTEGER TimeLimit;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct GENERIC_MAPPING
+    {
+        public ACCESS_MASK GenericRead;
+        public ACCESS_MASK GenericWrite;
+        public ACCESS_MASK GenericExecute;
+        public ACCESS_MASK GenericAll;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct PRIVILEGE_SET
+    {
+        public uint PrivilegeCount;
+        public uint Control;
+        public IntPtr Privilege;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct OBJECT_TYPE_LIST
+    {
+        public ushort Level;
+        public ushort Sbz;
+        public IntPtr ObjectType;
     }
 }
