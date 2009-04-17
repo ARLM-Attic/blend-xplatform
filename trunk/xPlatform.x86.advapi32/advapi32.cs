@@ -728,7 +728,65 @@ namespace xPlatform.x86.advapi32
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern int ConvertToAutoInheritPrivateObjectSecurity(ref SECURITY_DESCRIPTOR ParentDescriptor, ref SECURITY_DESCRIPTOR CurrentSecurityDescriptor, ref IntPtr NewSecurityDescriptor, ref GUID ObjectType, int IsDirectoryObject, ref GENERIC_MAPPING GenericMapping);
 
-        // CreatePrivateObjectSecurity
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int CreatePrivateObjectSecurity(IntPtr ParentDescriptor, IntPtr CreatorDescriptor, IntPtr NewDescriptor, int IsDirectoryObject, IntPtr Token, IntPtr GenericMapping);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CreatePrivateObjectSecurity(ref SECURITY_DESCRIPTOR ParentDescriptor, ref SECURITY_DESCRIPTOR CreatorDescriptor, ref IntPtr NewDescriptor, int IsDirectoryObject, IntPtr Token, ref GENERIC_MAPPING GenericMapping);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CreatePrivateObjectSecurityEx(IntPtr ParentDescriptor, IntPtr CreatorDescriptor, IntPtr NewDescriptor, IntPtr ObejctType, int IsContainerObject, uint AutoInheritFlags, IntPtr Token, IntPtr GenericMapping);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CreatePrivateObjectSecurityEx(ref SECURITY_DESCRIPTOR ParentDescriptor, ref SECURITY_DESCRIPTOR CreatorDescriptor, ref IntPtr NewDescriptor, ref GUID ObejctType, int IsContainerObject, uint AutoInheritFlags, IntPtr Token, ref GENERIC_MAPPING GenericMapping);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CreatePrivateObjectSecurityWithMultipleInheritance(IntPtr ParentDescriptor, IntPtr CreatorDescriptor, IntPtr NewDescriptor, IntPtr ObjectType, uint GuidCount, int IsContainerObject, uint AutoInheritFlags, IntPtr Token, IntPtr GenericMapping);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CreatePrivateObjectSecurityWithMultipleInheritance(ref SECURITY_DESCRIPTOR ParentDescriptor, IntPtr CreatorDescriptor, ref SECURITY_DESCRIPTOR NewDescriptor, ref GUID[] ObjectType, uint GuidCount, int IsContainerObject, uint AutoInheritFlags, IntPtr Token, ref GENERIC_MAPPING GenericMapping);
+        
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int DestroyPrivateObjectSecurity(IntPtr ObjectDescriptor);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DestroyPrivateObjectSecurity(ref IntPtr ObjectDescriptor);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetPrivateObjectSecurity(IntPtr ObjectDescriptor, SECURITY_INFORMATION SecurityInformation, IntPtr ResultantDescriptor, uint DescriptorLength, IntPtr ReturnLength);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetPrivateObjectSecurity(ref SECURITY_DESCRIPTOR ObjectDescriptor, SECURITY_INFORMATION SecurityInformation, ref SECURITY_DESCRIPTOR ResultantDescriptor, uint DescriptorLength, ref uint ReturnLength);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint LookupSecurityDescriptorPartsA(IntPtr pOwner, IntPtr pGroup, IntPtr cCountOfAccessEntries, IntPtr pListOfAccessEntries, IntPtr cCountOfAuditEntries, IntPtr pListOfAuditEntries, IntPtr pSD);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint LookupSecurityDescriptorPartsW(IntPtr pOwner, IntPtr pGroup, IntPtr cCountOfAccessEntries, IntPtr pListOfAccessEntries, IntPtr cCountOfAuditEntries, IntPtr pListOfAuditEntries, IntPtr pSD);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern void MapGenericMask(IntPtr AccessMask, IntPtr GenericMapping);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern void MapGenericMask(ref uint AccessMask, ref GENERIC_MAPPING GenericMapping);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int PrivilegeCheck(IntPtr ClientToken, PRIVILEGE_SET RequiredPrivileges, IntPtr pfResult);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int PrivilegeCheck(IntPtr ClientToken, PRIVILEGE_SET RequiredPrivileges, ref int pfResult);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetPrivateObjectSecurity(SECURITY_INFORMATION SecurityInformation, IntPtr ModificationDescriptor, IntPtr ObjectSecurityDescriptor, IntPtr GenericMapping, IntPtr Token);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetPrivateObjectSecurity(SECURITY_INFORMATION SecurityInformation, ref SECURITY_DESCRIPTOR ModificationDescriptor, ref IntPtr ObjectSecurityDescriptor, ref GENERIC_MAPPING GenericMapping, IntPtr Token);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetPrivateObjectSecurityEx(SECURITY_INFORMATION SecurityInformation, IntPtr ModificationDescriptor, IntPtr SecurityDescriptor, uint AutoInheritFlags, IntPtr GenericMapping, IntPtr Token);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetPrivateObjectSecurityEx(SECURITY_INFORMATION SecurityInformation, ref SECURITY_DESCRIPTOR ModificationDescriptor, ref IntPtr SecurityDescriptor, uint AutoInheritFlags, ref GENERIC_MAPPING GenericMapping, IntPtr Token);
     }
 
     #endregion // Client and server access control functions

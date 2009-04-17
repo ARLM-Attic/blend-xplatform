@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoCharPointer.cs" />
     <Compile Include="Flags\ConstAttribute.cs" />
     <Compile Include="Flags\ReadonlyAttribute.cs" />
     <Compile Include="Flags\TodoAttribute.cs" />
