@@ -787,7 +787,94 @@ namespace xPlatform.x86.advapi32
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern int SetPrivateObjectSecurityEx(SECURITY_INFORMATION SecurityInformation, ref SECURITY_DESCRIPTOR ModificationDescriptor, ref IntPtr SecurityDescriptor, uint AutoInheritFlags, ref GENERIC_MAPPING GenericMapping, IntPtr Token);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ObjectCloseAuditAlarmA([Const] IntPtr lpSubsystemName, IntPtr HandleId, int GenerateOnClose);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
+        public static extern int ObjectCloseAuditAlarmA(string lpSubsystemName, IntPtr HandleId, int GenerateOnClose);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ObjectCloseAuditAlarmW([Const] IntPtr lpSubsystemName, IntPtr HandleId, int GenerateOnClose);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern int ObjectCloseAuditAlarmW(string lpSubsystemName, IntPtr HandleId, int GenerateOnClose);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ObjectDeleteAuditAlarmA([Const] IntPtr lpSubsystemName, IntPtr HandleId, int GenerateOnClose);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
+        public static extern int ObjectDeleteAuditAlarmA(string lpSubsystemName, IntPtr HandleId, int GenerateOnClose);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ObjectDeleteAuditAlarmW([Const] IntPtr lpSubsystemName, IntPtr HandleId, int GenerateOnClose);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern int ObjectDeleteAuditAlarmW(string lpSubsystemName, IntPtr HandleId, int GenerateOnClose);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int ObjectOpenAuditAlarmA([Const] IntPtr SubsystemName, IntPtr HandleId, IntPtr ObjectTypeName, IntPtr ObjectName, IntPtr pSecurityDescriptor, IntPtr ClientToken, uint DesiredAccess, uint GrantedAccess, IntPtr Privileges, int ObjectCreation, int AccessGranted, IntPtr GenerateOnClose);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int ObjectOpenAuditAlarmA(string SubsystemName, IntPtr HandleId, StringBuilder ObjectTypeName, StringBuilder ObjectName, ref SECURITY_DESCRIPTOR pSecurityDescriptor, IntPtr ClientToken, uint DesiredAccess, uint GrantedAccess, ref PRIVILEGE_SET Privileges, int ObjectCreation, int AccessGranted, ref int GenerateOnClose);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int ObjectOpenAuditAlarmW([Const] IntPtr SubsystemName, IntPtr HandleId, IntPtr ObjectTypeName, IntPtr ObjectName, IntPtr pSecurityDescriptor, IntPtr ClientToken, uint DesiredAccess, uint GrantedAccess, IntPtr Privileges, int ObjectCreation, int AccessGranted, IntPtr GenerateOnClose);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int ObjectOpenAuditAlarmW(string SubsystemName, IntPtr HandleId, StringBuilder ObjectTypeName, StringBuilder ObjectName, ref SECURITY_DESCRIPTOR pSecurityDescriptor, IntPtr ClientToken, uint DesiredAccess, uint GrantedAccess, ref PRIVILEGE_SET Privileges, int ObjectCreation, int AccessGranted, ref int GenerateOnClose);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int ObjectPrivilegeAuditAlarmA([Const] IntPtr SubsystemName, IntPtr HandleId, IntPtr ClientToken, uint DesiredAccess, IntPtr Privileges, int AccessGranted);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int ObjectPrivilegeAuditAlarmA(string SubsystemName, IntPtr HandleId, IntPtr ClientToken, uint DesiredAccess, ref PRIVILEGE_SET Privileges, int AccessGranted);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int ObjectPrivilegeAuditAlarmW([Const] IntPtr SubsystemName, IntPtr HandleId, IntPtr ClientToken, uint DesiredAccess, IntPtr Privileges, int AccessGranted);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int ObjectPrivilegeAuditAlarmW(string SubsystemName, IntPtr HandleId, IntPtr ClientToken, uint DesiredAccess, ref PRIVILEGE_SET Privileges, int AccessGranted);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int PrivilegedServiceAuditAlarmA([Const] IntPtr SubsystemName, [Const] IntPtr ServiceName, IntPtr ClientToken, IntPtr Privileges, int AccessGranted);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int PrivilegedServiceAuditAlarmA(string SubsystemName, string ServiceName, IntPtr ClientToken, ref PRIVILEGE_SET Privileges, int AccessGranted);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int PrivilegedServiceAuditAlarmW([Const] IntPtr SubsystemName, [Const] IntPtr ServiceName, IntPtr ClientToken, IntPtr Privileges, int AccessGranted);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int PrivilegedServiceAuditAlarmW(string SubsystemName, string ServiceName, IntPtr ClientToken, ref PRIVILEGE_SET Privileges, int AccessGranted);
     }
 
     #endregion // Client and server access control functions
+
+    #region Low level access control functions
+
+    partial class advapi32
+    {
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetFileSecurityA([Const] IntPtr lpFileName, SECURITY_INFORMATION RequestedInformation, IntPtr pSecurityDescriptor, uint nLength, IntPtr lpnLengthNeeded);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int GetFileSecurityA(string lpFileName, SECURITY_INFORMATION RequestedInformation, ref SECURITY_DESCRIPTOR pSecurityDescriptor, uint nLength, ref uint lpnLengthNeeded);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetFileSecurityW([Const] IntPtr lpFileName, SECURITY_INFORMATION RequestedInformation, IntPtr pSecurityDescriptor, uint nLength, IntPtr lpnLengthNeeded);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int GetFileSecurityW(string lpFileName, SECURITY_INFORMATION RequestedInformation, ref SECURITY_DESCRIPTOR pSecurityDescriptor, uint nLength, ref uint lpnLengthNeeded);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetKernelObjectSecurity(IntPtr Handle, SECURITY_INFORMATION RequestedInformation, IntPtr pSecurityDescriptor, uint nLength, IntPtr lpnLengthNeeded);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetKernelObjectSecurity(IntPtr Handle, SECURITY_INFORMATION RequestedInformation, ref SECURITY_DESCRIPTOR pSecurityDescriptor, uint nLength, ref uint lpnLengthNeeded);
+
+        // GetSecurityDescriptorDacl
+    }
+
+    #endregion // Low level access control functions
 }
