@@ -873,7 +873,25 @@ namespace xPlatform.x86.advapi32
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern int GetKernelObjectSecurity(IntPtr Handle, SECURITY_INFORMATION RequestedInformation, ref SECURITY_DESCRIPTOR pSecurityDescriptor, uint nLength, ref uint lpnLengthNeeded);
 
-        // GetSecurityDescriptorDacl
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetSecurityDescriptorDacl(IntPtr pSecurityDescriptor, IntPtr lpbDaclPresent, IntPtr pDacl, IntPtr lpbDaclDefaulted);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetSecurityDescriptorDacl(ref SECURITY_DESCRIPTOR pSecurityDescriptor, ref int lpbDaclPresent, ref IntPtr pDacl, ref int lpbDaclDefaulted);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetSecurityDescriptorGroup(IntPtr pSecurityDescriptor, IntPtr pGroup, IntPtr lpbGroupDefaulted);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetSecurityDescriptorGroup(ref SECURITY_DESCRIPTOR pSecurityDescriptor, ref IntPtr pGroup, ref int lpbGroupDefaulted);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetSecurityDescriptorLength(IntPtr pSecurityDescriptor);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetSecurityDescriptorLength(ref SECURITY_DESCRIPTOR pSecurityDescriptor);
+
+        // GetSecurityDescriptorOwner
     }
 
     #endregion // Low level access control functions
