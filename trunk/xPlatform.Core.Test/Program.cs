@@ -17,7 +17,7 @@ namespace xPlatform.Core.Test
                 size_t len = msvcrt.strlen(str.Address);
                 Console.WriteLine("String: \"{0}\", ANSI Length: {1}", targetString, len);
 
-                BytePointer ptr = new BytePointer(str.Address);
+                Pointer<byte> ptr = new Pointer<byte>(str.Address);
 
                 for (size_t i = (size_t)0u; i < len; i++, ptr++)
                     Console.Write("{0} ", ptr.GetData().ToString());
@@ -31,7 +31,8 @@ namespace xPlatform.Core.Test
                 size_t len = msvcrt.wcslen(str.Address);
                 Console.WriteLine("String: \"{0}\", Unicode Length: {1}", targetString, len);
 
-                WideCharPointer ptr = new WideCharPointer(str.Address);
+                Pointer<char> ptr = new Pointer<char>(str.Address);
+                //WideCharPointer ptr = new WideCharPointer(str.Address);
 
                 for (size_t i = (size_t)0u; i < len; i++)
                     Console.Write("{0} ", (ptr + (int)i).GetData().ToString());
