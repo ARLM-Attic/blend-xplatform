@@ -5,7 +5,6 @@ using System.Runtime.InteropServices;
 
 namespace xPlatform
 {
-    // Pointer Address Validation and Read/Write Validation Required
     [Serializable]
     [ComVisible(false)]
     [StructLayout(LayoutKind.Sequential)]
@@ -20,7 +19,7 @@ namespace xPlatform
             get
             {
                 if (typeof(T).Equals(typeof(char)))
-                    return Marshal.SizeOf(typeof(ushort)); // Workaround (for Actual Size)
+                    return Marshal.SizeOf(typeof(short));
                 else
                     return Marshal.SizeOf(typeof(T));
             }
@@ -79,6 +78,18 @@ namespace xPlatform
             return (int)((ulong)this.internalPointer);
         }
 
+        public override bool Equals(object obj)
+        {
+            void* pointer = null;
+
+            if (obj is IntPtr)
+                pointer = (void*)(IntPtr)obj;
+            else if (obj is BytePointer)
+                pointer = (void*)(BytePointer)obj;
+
+            return (pointer == this.internalPointer);
+        }
+
         public override string ToString()
         {
             return ((int)this.internalPointer).ToString(CultureInfo.InvariantCulture);
@@ -123,12 +134,18 @@ namespace xPlatform
 
         public static Pointer<T> operator +(Pointer<T> pointer, int offset)
         {
-            return new Pointer<T>((void*)(((byte*)pointer.internalPointer) + (offset * ElementSize)));
+            byte* castedPointer = (byte*)pointer.internalPointer;
+            int movement = offset * ElementSize;
+            castedPointer += movement;
+            return new Pointer<T>((void*)castedPointer);
         }
 
         public static Pointer<T> operator -(Pointer<T> pointer, int offset)
         {
-            return new Pointer<T>((void*)(((byte*)pointer.internalPointer) - (offset * ElementSize)));
+            byte* castedPointer = (byte*)pointer.internalPointer;
+            int movement = offset * ElementSize;
+            castedPointer -= movement;
+            return new Pointer<T>((void*)castedPointer);
         }
 
         public static Pointer<T> operator ++(Pointer<T> pointer)
@@ -163,12 +180,27 @@ namespace xPlatform
 
         public T GetData()
         {
-            return (T)Marshal.PtrToStructure(new IntPtr(this.internalPointer), typeof(T));
+            byte[] buffer = new byte[ElementSize];
+            Marshal.Copy(new IntPtr(this.internalPointer), buffer, 0, buffer.Length);
+
+            GCHandle handle = GCHandle.Alloc(buffer, GCHandleType.Pinned);
+            T result = default(T);
+
+            if (typeof(T).Equals(typeof(char)))
+                result = (T)Convert.ChangeType(Marshal.PtrToStructure(handle.AddrOfPinnedObject(), typeof(ushort)), typeof(T));
+            else
+                result = (T)Marshal.PtrToStructure(handle.AddrOfPinnedObject(), typeof(T));
+
+            handle.Free();
+            return result;
         }
 
         public void SetData(T value)
         {
-            Marshal.StructureToPtr(value, new IntPtr(this.internalPointer), false);
+            if (typeof(T).Equals(typeof(char)))
+                Marshal.StructureToPtr((ushort)Convert.ChangeType(value, typeof(ushort)), new IntPtr(this.internalPointer), false);
+            else
+                Marshal.StructureToPtr(value, new IntPtr(this.internalPointer), false);
         }
     }
 }

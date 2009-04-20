@@ -10,7 +10,7 @@ namespace xPlatform.Core.Test
         [STAThread]
         static void Main(string[] args)
         {
-            const string targetString = "안녕하세요.";
+            const string targetString = @"안녕하십니까?";
 
             using (GlobalHeapAnsiString str = new GlobalHeapAnsiString(targetString))
             {
@@ -32,7 +32,14 @@ namespace xPlatform.Core.Test
                 Console.WriteLine("String: \"{0}\", Unicode Length: {1}", targetString, len);
 
                 Pointer<char> ptr = new Pointer<char>(str.Address);
-                //WideCharPointer ptr = new WideCharPointer(str.Address);
+
+                for (size_t i = (size_t)0u; i < len; i++)
+                {
+                    Console.Write("{0} ", (ptr + (int)i).GetData().ToString());
+                    (ptr + (int)i).SetData(((char)((int)'가' + i)));
+                }
+
+                Console.WriteLine();
 
                 for (size_t i = (size_t)0u; i < len; i++)
                     Console.Write("{0} ", (ptr + (int)i).GetData().ToString());
