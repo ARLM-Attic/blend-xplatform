@@ -8,12 +8,12 @@ namespace xPlatform
     [Serializable]
     [ComVisible(true)]
     [StructLayout(LayoutKind.Sequential)]
-    public unsafe struct VoidPointer : ISerializable, IPointer
+    public unsafe struct VoidPointer : ISerializable, IPointer<byte>, IPointer<short>, IPointer<int>, IPointer<long>
     {
         public static readonly VoidPointer Zero;
         public static int Size { get { return IntPtr.Size; } }
 
-        private unsafe VoidPointer(SerializationInfo info, StreamingContext context)
+        private VoidPointer(SerializationInfo info, StreamingContext context)
         {
             long num = info.GetInt64("value");
 
@@ -59,6 +59,12 @@ namespace xPlatform
         public long ToInt64()
         {
             return (long)((int)this.internalPointer);
+        }
+
+        [CLSCompliant(false)]
+        public void* ToPointer()
+        {
+            return (void*)this.internalPointer;
         }
 
         public override int GetHashCode()
@@ -186,6 +192,50 @@ namespace xPlatform
         public void SetData(IntPtr value)
         {
             *((IntPtr*)this.internalPointer) = value;
+        }
+
+        byte IPointer<byte>.GetData() { return this.GetByte(); }
+        byte IPointer<byte>.GetData(int index) { throw new NotImplementedException(); }
+        void IPointer<byte>.SetData(byte value) { this.SetData(value); }
+        void IPointer<byte>.SetData(byte value, int index) { throw new NotImplementedException(); }
+
+        byte IPointer<byte>.this[int index]
+        {
+            get { throw new NotImplementedException(); }
+            set { throw new NotImplementedException(); }
+        }
+
+        short IPointer<short>.GetData() { return this.GetInt16(); }
+        short IPointer<short>.GetData(int index) { throw new NotImplementedException(); }
+        void IPointer<short>.SetData(short value) { this.SetData(value); }
+        void IPointer<short>.SetData(short value, int index) { throw new NotImplementedException(); }
+
+        short IPointer<short>.this[int index]
+        {
+            get { throw new NotImplementedException(); }
+            set { throw new NotImplementedException(); }
+        }
+
+        int IPointer<int>.GetData() { return this.GetInt32(); }
+        int IPointer<int>.GetData(int index) { throw new NotImplementedException(); }
+        void IPointer<int>.SetData(int value) { this.SetData(value); }
+        void IPointer<int>.SetData(int value, int index) { throw new NotImplementedException(); }
+
+        int IPointer<int>.this[int index]
+        {
+            get { throw new NotImplementedException(); }
+            set { throw new NotImplementedException(); }
+        }
+
+        long IPointer<long>.GetData() { return this.GetInt64(); }
+        long IPointer<long>.GetData(int index) { throw new NotImplementedException(); }
+        void IPointer<long>.SetData(long value) { this.SetData(value); }
+        void IPointer<long>.SetData(long value, int index) { throw new NotImplementedException(); }
+
+        long IPointer<long>.this[int index]
+        {
+            get { throw new NotImplementedException(); }
+            set { throw new NotImplementedException(); }
         }
     }
 }

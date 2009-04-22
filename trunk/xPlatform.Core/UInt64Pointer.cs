@@ -8,12 +8,12 @@ namespace xPlatform
     [Serializable]
     [ComVisible(true)]
     [StructLayout(LayoutKind.Sequential)]
-    public unsafe struct UInt64Pointer : ISerializable, IPointer
+    public unsafe struct UInt64Pointer : ISerializable, IPointer<ulong>
     {
         public static readonly UInt64Pointer Zero;
         public static int Size { get { return IntPtr.Size; } }
 
-        private unsafe UInt64Pointer(SerializationInfo info, StreamingContext context)
+        private UInt64Pointer(SerializationInfo info, StreamingContext context)
         {
             long num = info.GetInt64("value");
 
@@ -65,6 +65,12 @@ namespace xPlatform
         public long ToInt64()
         {
             return (long)((int)this.internalPointer);
+        }
+
+        [CLSCompliant(false)]
+        public void* ToPointer()
+        {
+            return (void*)this.internalPointer;
         }
 
         public override int GetHashCode()
@@ -185,9 +191,28 @@ namespace xPlatform
         }
 
         [CLSCompliant(false)]
+        public ulong GetData(int index)
+        {
+            return *(this.internalPointer + index);
+        }
+
+        [CLSCompliant(false)]
         public void SetData(ulong value)
         {
             *this.internalPointer = value;
+        }
+
+        [CLSCompliant(false)]
+        public void SetData(ulong value, int index)
+        {
+            *(this.internalPointer + index) = value;
+        }
+
+        [CLSCompliant(false)]
+        public ulong this[int index]
+        {
+            get { return this.GetData(index); }
+            set { this.SetData(value, index); }
         }
     }
 }

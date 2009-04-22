@@ -8,12 +8,12 @@ namespace xPlatform
     [Serializable]
     [ComVisible(true)]
     [StructLayout(LayoutKind.Sequential)]
-    public unsafe struct GuidPointer : ISerializable, IPointer
+    public unsafe struct GuidPointer : ISerializable, IPointer<Guid>
     {
         public static readonly GuidPointer Zero;
         public static int Size { get { return IntPtr.Size; } }
 
-        private unsafe GuidPointer(SerializationInfo info, StreamingContext context)
+        private GuidPointer(SerializationInfo info, StreamingContext context)
         {
             long num = info.GetInt64("value");
 
@@ -65,6 +65,12 @@ namespace xPlatform
         public long ToInt64()
         {
             return (long)((int)this.internalPointer);
+        }
+
+        [CLSCompliant(false)]
+        public void* ToPointer()
+        {
+            return (void*)this.internalPointer;
         }
 
         public override int GetHashCode()
@@ -183,9 +189,25 @@ namespace xPlatform
             return *this.internalPointer;
         }
 
+        public Guid GetData(int index)
+        {
+            return *(this.internalPointer + index);
+        }
+
         public void SetData(Guid value)
         {
             *this.internalPointer = value;
+        }
+
+        public void SetData(Guid value, int index)
+        {
+            *(this.internalPointer + index) = value;
+        }
+
+        public Guid this[int index]
+        {
+            get { return this.GetData(index); }
+            set { this.SetData(value, index); }
         }
     }
 }

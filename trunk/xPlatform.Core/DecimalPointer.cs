@@ -8,12 +8,12 @@ namespace xPlatform
     [Serializable]
     [ComVisible(true)]
     [StructLayout(LayoutKind.Sequential)]
-    public unsafe struct DecimalPointer : ISerializable, IPointer
+    public unsafe struct DecimalPointer : ISerializable, IPointer<decimal>
     {
         public static readonly DecimalPointer Zero;
         public static int Size { get { return IntPtr.Size; } }
 
-        private unsafe DecimalPointer(SerializationInfo info, StreamingContext context)
+        private DecimalPointer(SerializationInfo info, StreamingContext context)
         {
             long num = info.GetInt64("value");
 
@@ -65,6 +65,12 @@ namespace xPlatform
         public long ToInt64()
         {
             return (long)((int)this.internalPointer);
+        }
+
+        [CLSCompliant(false)]
+        public void* ToPointer()
+        {
+            return (void*)this.internalPointer;
         }
 
         public override int GetHashCode()
@@ -183,9 +189,25 @@ namespace xPlatform
             return *this.internalPointer;
         }
 
+        public decimal GetData(int index)
+        {
+            return *(this.internalPointer + index);
+        }
+
         public void SetData(decimal value)
         {
             *this.internalPointer = value;
+        }
+
+        public void SetData(decimal value, int index)
+        {
+            *(this.internalPointer + index) = value;
+        }
+
+        public decimal this[int index]
+        {
+            get { return this.GetData(index); }
+            set { this.SetData(value, index); }
         }
     }
 }

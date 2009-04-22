@@ -8,12 +8,12 @@ namespace xPlatform
     [Serializable]
     [ComVisible(true)]
     [StructLayout(LayoutKind.Sequential)]
-    public unsafe struct AutoCharPointer : ISerializable, IPointer
+    public unsafe struct AutoCharPointer : ISerializable, IPointer<int>
     {
         public static readonly AutoCharPointer Zero;
         public static int Size { get { return IntPtr.Size; } }
 
-        private unsafe AutoCharPointer(SerializationInfo info, StreamingContext context)
+        private AutoCharPointer(SerializationInfo info, StreamingContext context)
         {
             long num = info.GetInt64("value");
 
@@ -77,6 +77,12 @@ namespace xPlatform
         public long ToInt64()
         {
             return (long)((int)this.internalPointer);
+        }
+
+        [CLSCompliant(false)]
+        public void* ToPointer()
+        {
+            return (void*)this.internalPointer;
         }
 
         public override int GetHashCode()
@@ -224,6 +230,14 @@ namespace xPlatform
                 return *((char*)this.internalPointer);
         }
 
+        public int GetData(int index)
+        {
+            if (Marshal.SystemDefaultCharSize.Equals(1)) // ANSI
+                return *((byte*)this.internalPointer + index);
+            else // Treat as Unicode
+                return *((char*)this.internalPointer + index);
+        }
+
         public void SetData(int value)
         {
             if (Marshal.SystemDefaultCharSize.Equals(1)) // ANSI
@@ -232,12 +246,18 @@ namespace xPlatform
                 *((char*)this.internalPointer) = (char)value;
         }
 
-        public void SetData(char value)
+        public void SetData(int value, int index)
         {
             if (Marshal.SystemDefaultCharSize.Equals(1)) // ANSI
-                *((byte*)this.internalPointer) = (byte)value;
+                *((byte*)this.internalPointer + index) = (byte)value;
             else // Treat as Unicode
-                *((char*)this.internalPointer) = (char)value;
+                *((char*)this.internalPointer + index) = (char)value;
+        }
+
+        public int this[int index]
+        {
+            get { return this.GetData(index); }
+            set { this.SetData(value, index); }
         }
     }
 }

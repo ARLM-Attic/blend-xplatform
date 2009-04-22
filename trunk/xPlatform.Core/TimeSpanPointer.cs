@@ -8,12 +8,12 @@ namespace xPlatform
     [Serializable]
     [ComVisible(true)]
     [StructLayout(LayoutKind.Sequential)]
-    public unsafe struct TimeSpanPointer : ISerializable, IPointer
+    public unsafe struct TimeSpanPointer : ISerializable, IPointer<TimeSpan>
     {
         public static readonly TimeSpanPointer Zero;
         public static int Size { get { return IntPtr.Size; } }
 
-        private unsafe TimeSpanPointer(SerializationInfo info, StreamingContext context)
+        private TimeSpanPointer(SerializationInfo info, StreamingContext context)
         {
             long num = info.GetInt64("value");
 
@@ -65,6 +65,12 @@ namespace xPlatform
         public long ToInt64()
         {
             return (long)((int)this.internalPointer);
+        }
+
+        [CLSCompliant(false)]
+        public void* ToPointer()
+        {
+            return (void*)this.internalPointer;
         }
 
         public override int GetHashCode()
@@ -183,9 +189,25 @@ namespace xPlatform
             return *this.internalPointer;
         }
 
+        public TimeSpan GetData(int index)
+        {
+            return *(this.internalPointer + index);
+        }
+
         public void SetData(TimeSpan value)
         {
             *this.internalPointer = value;
+        }
+
+        public void SetData(TimeSpan value, int index)
+        {
+            *(this.internalPointer + index) = value;
+        }
+
+        public TimeSpan this[int index]
+        {
+            get { return this.GetData(index); }
+            set { this.SetData(value, index); }
         }
     }
 }

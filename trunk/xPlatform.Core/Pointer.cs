@@ -8,7 +8,7 @@ namespace xPlatform
     [Serializable]
     [ComVisible(false)]
     [StructLayout(LayoutKind.Sequential)]
-    public unsafe struct Pointer<T> : ISerializable, IPointer
+    public unsafe struct Pointer<T> : ISerializable, IPointer<T>
         where T : struct
     {
         public static readonly Pointer<T> Zero;
@@ -25,7 +25,7 @@ namespace xPlatform
             }
         }
 
-        private unsafe Pointer(SerializationInfo info, StreamingContext context)
+        private Pointer(SerializationInfo info, StreamingContext context)
         {
             long num = info.GetInt64("value");
 
@@ -71,6 +71,12 @@ namespace xPlatform
         public long ToInt64()
         {
             return (long)((int)this.internalPointer);
+        }
+
+        [CLSCompliant(false)]
+        public void* ToPointer()
+        {
+            return (void*)this.internalPointer;
         }
 
         public override int GetHashCode()
@@ -180,8 +186,25 @@ namespace xPlatform
 
         public T GetData()
         {
+            return GetData(0);
+        }
+
+        public T GetData(int index)
+        {
+            IntPtr newAddress = IntPtr.Zero;
+
+            if (index > 0)
+            {
+                byte* castedPointer = (byte*)this.internalPointer;
+                int movement = index * ElementSize;
+                castedPointer += movement;
+                newAddress = new IntPtr(castedPointer);
+            }
+            else
+                newAddress = new IntPtr(this.internalPointer);
+
             byte[] buffer = new byte[ElementSize];
-            Marshal.Copy(new IntPtr(this.internalPointer), buffer, 0, buffer.Length);
+            Marshal.Copy(newAddress, buffer, 0, buffer.Length);
 
             GCHandle handle = GCHandle.Alloc(buffer, GCHandleType.Pinned);
             T result = default(T);
@@ -197,10 +220,33 @@ namespace xPlatform
 
         public void SetData(T value)
         {
-            if (typeof(T).Equals(typeof(char)))
-                Marshal.StructureToPtr((ushort)Convert.ChangeType(value, typeof(ushort)), new IntPtr(this.internalPointer), false);
+            this.SetData(value, 0);
+        }
+
+        public void SetData(T value, int index)
+        {
+            IntPtr newAddress = IntPtr.Zero;
+
+            if (index > 0)
+            {
+                byte* castedPointer = (byte*)this.internalPointer;
+                int movement = index * ElementSize;
+                castedPointer += movement;
+                newAddress = new IntPtr(castedPointer);
+            }
             else
-                Marshal.StructureToPtr(value, new IntPtr(this.internalPointer), false);
+                newAddress = new IntPtr(this.internalPointer);
+
+            if (typeof(T).Equals(typeof(char)))
+                Marshal.StructureToPtr((ushort)Convert.ChangeType(value, typeof(ushort)), newAddress, false);
+            else
+                Marshal.StructureToPtr(value, newAddress, false);
+        }
+
+        public T this[int index]
+        {
+            get { return this.GetData(index); }
+            set { this.SetData(value, index); }
         }
     }
 }

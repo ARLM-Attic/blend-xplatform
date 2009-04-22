@@ -8,12 +8,12 @@ namespace xPlatform
     [Serializable]
     [ComVisible(true)]
     [StructLayout(LayoutKind.Sequential)]
-    public unsafe struct SBytePointer : ISerializable, IPointer
+    public unsafe struct SBytePointer : ISerializable, IPointer<sbyte>
     {
         public static readonly SBytePointer Zero;
         public static int Size { get { return IntPtr.Size; } }
 
-        private unsafe SBytePointer(SerializationInfo info, StreamingContext context)
+        private SBytePointer(SerializationInfo info, StreamingContext context)
         {
             long num = info.GetInt64("value");
 
@@ -65,6 +65,12 @@ namespace xPlatform
         public long ToInt64()
         {
             return (long)((int)this.internalPointer);
+        }
+
+        [CLSCompliant(false)]
+        public void* ToPointer()
+        {
+            return (void*)this.internalPointer;
         }
 
         public override int GetHashCode()
@@ -185,9 +191,28 @@ namespace xPlatform
         }
 
         [CLSCompliant(false)]
+        public sbyte GetData(int index)
+        {
+            return *(this.internalPointer + index);
+        }
+
+        [CLSCompliant(false)]
         public void SetData(sbyte value)
         {
             *this.internalPointer = value;
+        }
+
+        [CLSCompliant(false)]
+        public void SetData(sbyte value, int index)
+        {
+            *(this.internalPointer + index) = value;
+        }
+
+        [CLSCompliant(false)]
+        public sbyte this[int index]
+        {
+            get { return this.GetData(index); }
+            set { this.SetData(value, index); }
         }
     }
 }

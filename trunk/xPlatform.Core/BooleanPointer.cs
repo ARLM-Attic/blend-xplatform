@@ -8,12 +8,12 @@ namespace xPlatform
     [Serializable]
     [ComVisible(true)]
     [StructLayout(LayoutKind.Sequential)]
-    public unsafe struct BooleanPointer : ISerializable, IPointer
+    public unsafe struct BooleanPointer : ISerializable, IPointer<bool>
     {
         public static readonly BooleanPointer Zero;
         public static int Size { get { return IntPtr.Size; } }
 
-        private unsafe BooleanPointer(SerializationInfo info, StreamingContext context)
+        private BooleanPointer(SerializationInfo info, StreamingContext context)
         {
             long num = info.GetInt64("value");
 
@@ -65,6 +65,12 @@ namespace xPlatform
         public long ToInt64()
         {
             return (long)((int)this.internalPointer);
+        }
+
+        [CLSCompliant(false)]
+        public void* ToPointer()
+        {
+            return (void*)this.internalPointer;
         }
 
         public override int GetHashCode()
@@ -183,9 +189,25 @@ namespace xPlatform
             return *this.internalPointer;
         }
 
+        public bool GetData(int index)
+        {
+            return *(this.internalPointer + index);
+        }
+
         public void SetData(bool value)
         {
             *this.internalPointer = value;
+        }
+
+        public void SetData(bool value, int index)
+        {
+            *(this.internalPointer + index) = value;
+        }
+
+        public bool this[int index]
+        {
+            get { return this.GetData(index); }
+            set { this.SetData(value, index); }
         }
     }
 }
