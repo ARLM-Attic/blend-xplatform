@@ -1,10 +1,27 @@
 ﻿using System;
+using System.IO;
+using System.Text;
 using System.Runtime.InteropServices;
 
 namespace xPlatform.Strings
 {
     public sealed class GlobalHeapAutoString : IDisposable
     {
+        public GlobalHeapAutoString(StringBuilder originalString)
+            : this(originalString.ToString())
+        {
+        }
+
+        public GlobalHeapAutoString(TextReader reader)
+            : this(reader.ReadToEnd())
+        {
+        }
+
+        public GlobalHeapAutoString(char[] array)
+            : this(new String(array))
+        {
+        }
+
         public GlobalHeapAutoString(string originalString)
             : base()
         {

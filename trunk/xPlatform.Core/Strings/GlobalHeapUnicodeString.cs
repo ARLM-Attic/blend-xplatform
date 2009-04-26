@@ -1,10 +1,27 @@
 ﻿using System;
+using System.IO;
+using System.Text;
 using System.Runtime.InteropServices;
 
 namespace xPlatform.Strings
 {
     public sealed class GlobalHeapUnicodeString : IDisposable
     {
+        public GlobalHeapUnicodeString(StringBuilder originalString)
+            : this(originalString.ToString())
+        {
+        }
+
+        public GlobalHeapUnicodeString(TextReader reader)
+            : this(reader.ReadToEnd())
+        {
+        }
+
+        public GlobalHeapUnicodeString(char[] array)
+            : this(new String(array))
+        {
+        }
+
         public GlobalHeapUnicodeString(string originalString)
             : base()
         {

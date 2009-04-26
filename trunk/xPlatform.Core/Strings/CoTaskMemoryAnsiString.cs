@@ -1,10 +1,27 @@
 ﻿using System;
+using System.IO;
+using System.Text;
 using System.Runtime.InteropServices;
 
 namespace xPlatform.Strings
 {
     public sealed class CoTaskMemoryAnsiString : IDisposable
     {
+        public CoTaskMemoryAnsiString(StringBuilder originalString)
+            : this(originalString.ToString())
+        {
+        }
+
+        public CoTaskMemoryAnsiString(TextReader reader)
+            : this(reader.ReadToEnd())
+        {
+        }
+
+        public CoTaskMemoryAnsiString(char[] array)
+            : this(new String(array))
+        {
+        }
+
         public CoTaskMemoryAnsiString(string originalString)
             : base()
         {

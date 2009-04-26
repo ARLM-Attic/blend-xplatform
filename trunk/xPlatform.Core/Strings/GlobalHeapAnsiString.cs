@@ -1,10 +1,27 @@
 ﻿using System;
+using System.IO;
+using System.Text;
 using System.Runtime.InteropServices;
 
 namespace xPlatform.Strings
 {
     public sealed class GlobalHeapAnsiString : IDisposable
     {
+        public GlobalHeapAnsiString(StringBuilder originalString)
+            : this(originalString.ToString())
+        {
+        }
+
+        public GlobalHeapAnsiString(TextReader reader)
+            : this(reader.ReadToEnd())
+        {
+        }
+
+        public GlobalHeapAnsiString(char[] array)
+            : this(new String(array))
+        {
+        }
+
         public GlobalHeapAnsiString(string originalString)
             : base()
         {

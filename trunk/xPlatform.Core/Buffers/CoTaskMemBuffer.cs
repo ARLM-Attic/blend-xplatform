@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace xPlatform.Buffers
 {
-    public sealed class CoTaskMemBuffer : IDisposable
+    public class CoTaskMemBuffer : IDisposable
     {
         public CoTaskMemBuffer(int size)
             : base()

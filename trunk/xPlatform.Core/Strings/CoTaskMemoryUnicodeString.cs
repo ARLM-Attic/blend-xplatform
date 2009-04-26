@@ -1,10 +1,27 @@
 ﻿using System;
+using System.IO;
+using System.Text;
 using System.Runtime.InteropServices;
 
 namespace xPlatform.Strings
 {
     public sealed class CoTaskMemoryUnicodeString : IDisposable
     {
+        public CoTaskMemoryUnicodeString(StringBuilder originalString)
+            : this(originalString.ToString())
+        {
+        }
+
+        public CoTaskMemoryUnicodeString(TextReader reader)
+            : this(reader.ReadToEnd())
+        {
+        }
+
+        public CoTaskMemoryUnicodeString(char[] array)
+            : this(new String(array))
+        {
+        }
+
         public CoTaskMemoryUnicodeString(string originalString)
             : base()
         {

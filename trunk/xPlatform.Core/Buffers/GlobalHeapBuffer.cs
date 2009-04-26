@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace xPlatform.Buffers
 {
-    public sealed class GlobalHeapBuffer : IDisposable
+    public class GlobalHeapBuffer : IDisposable
     {
         public GlobalHeapBuffer(int size)
             : base()

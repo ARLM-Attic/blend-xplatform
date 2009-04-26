@@ -1,10 +1,27 @@
 ﻿using System;
+using System.IO;
+using System.Text;
 using System.Runtime.InteropServices;
 
 namespace xPlatform.Strings
 {
     public sealed class BasicString : IDisposable
     {
+        public BasicString(StringBuilder originalString)
+            : this(originalString.ToString())
+        {
+        }
+
+        public BasicString(TextReader reader)
+            : this(reader.ReadToEnd())
+        {
+        }
+
+        public BasicString(char[] array)
+            : this(new String(array))
+        {
+        }
+
         public BasicString(string originalString)
             : base()
         {
