@@ -48,6 +48,7 @@
     <Compile Include="Flags\TodoAttribute.cs" />
     <Compile Include="ModuleBase.cs" />
     <Compile Include="Pointer.cs" />
+    <Compile Include="Utilities.cs" />
     <Compile Include="VoidPointer.cs" />
     <Compile Include="BooleanPointer.cs" />
     <Compile Include="Buffers\CoTaskMemBuffer.cs" />

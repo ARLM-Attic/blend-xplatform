@@ -22,6 +22,11 @@ namespace xPlatform.Strings
         {
         }
 
+        public CoTaskMemoryUnicodeString(int length)
+            : this(Utilities.CreateEmptyString(length))
+        {
+        }
+
         public CoTaskMemoryUnicodeString(string originalString)
             : base()
         {

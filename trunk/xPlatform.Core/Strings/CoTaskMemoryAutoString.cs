@@ -22,6 +22,11 @@ namespace xPlatform.Strings
         {
         }
 
+        public CoTaskMemoryAutoString(int length)
+            : this(Utilities.CreateEmptyString(length))
+        {
+        }
+
         public CoTaskMemoryAutoString(string originalString)
             : base()
         {

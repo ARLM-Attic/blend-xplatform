@@ -22,6 +22,11 @@ namespace xPlatform.Strings
         {
         }
 
+        public GlobalHeapAnsiString(int length)
+            : this(Utilities.CreateEmptyString(length))
+        {
+        }
+
         public GlobalHeapAnsiString(string originalString)
             : base()
         {

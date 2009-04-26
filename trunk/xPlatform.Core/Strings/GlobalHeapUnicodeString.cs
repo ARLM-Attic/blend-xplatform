@@ -22,6 +22,11 @@ namespace xPlatform.Strings
         {
         }
 
+        public GlobalHeapUnicodeString(int length)
+            : this(Utilities.CreateEmptyString(length))
+        {
+        }
+
         public GlobalHeapUnicodeString(string originalString)
             : base()
         {

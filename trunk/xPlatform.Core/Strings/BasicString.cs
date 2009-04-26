@@ -22,6 +22,11 @@ namespace xPlatform.Strings
         {
         }
 
+        public BasicString(int length)
+            : this(Utilities.CreateEmptyString(length))
+        {
+        }
+
         public BasicString(string originalString)
             : base()
         {
