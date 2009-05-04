@@ -1280,6 +1280,32 @@ namespace xPlatform.x86.kernel32
         public byte wProductType;
         public byte wReserved;
     }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct TAPE_GET_MEDIA_PARAMETERS
+    {
+        public LARGE_INTEGER Capacity;
+        public LARGE_INTEGER Remaining;
+        public uint BlockSize;
+        public uint PartitionCount;
+        public int WriteProtected;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct TAPE_GET_DRIVE_PARAMETERS
+    {
+        public byte ECC;
+        public byte Compression;
+        public byte DataPadding;
+        public byte ReportSetmarks;
+        public uint DefaultBlockSize;
+        public uint MaximumBlockSize;
+        public uint MinimumBlockSize;
+        public uint MaximumPartitionCount;
+        public uint FeaturesLow;
+        public uint FeaturesHigh;
+        public uint EOTWarningZoneSize;
+    }
 }
 
 namespace xPlatform.x86.kernel32
@@ -1328,4 +1354,7 @@ namespace xPlatform.x86.kernel32
 
     [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi)]
     public delegate void FiberProc(IntPtr lpParameter);
+
+    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi), CLSCompliant(false)]
+    public delegate uint ApplicationRecoveryCallback(IntPtr pvParameter);
 }
