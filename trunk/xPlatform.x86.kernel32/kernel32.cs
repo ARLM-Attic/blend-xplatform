@@ -289,286 +289,832 @@ namespace xPlatform.x86.kernel32
             [In] IntPtr lpScreenBufferData);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int FillConsoleOutputAttribute(IntPtr hConsoleOutput, ushort wAttribute, uint nLength, COORD dwWriteCoord, IntPtr lpNumberOfAttrsWritten);
+        public static extern int FillConsoleOutputAttribute(
+            [In] IntPtr hConsoleOutput,
+            [In] ushort wAttribute,
+            [In] uint nLength,
+            [In] COORD dwWriteCoord,
+            [Out] IntPtr lpNumberOfAttrsWritten);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int FillConsoleOutputAttribute(IntPtr hConsoleOutput, ushort wAttribute, uint nLength, COORD dwWriteCoord, ref uint lpNumberOfAttrsWritten);
+        public static extern int FillConsoleOutputAttribute(
+            [In] IntPtr hConsoleOutput,
+            [In] ushort wAttribute,
+            [In] uint nLength,
+            [In] COORD dwWriteCoord,
+            [Out] out uint lpNumberOfAttrsWritten);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int FillConsoleOutputCharacterA(IntPtr hConsoleOutput, sbyte cCharacter, uint nLength, COORD dwWriteCoord, IntPtr lpNumberOfCharsWritten);
+        public static extern int FillConsoleOutputCharacterA(
+            [In] IntPtr hConsoleOutput,
+            [In] sbyte cCharacter, 
+            [In] uint nLength, 
+            [In] COORD dwWriteCoord, 
+            [Out] IntPtr lpNumberOfCharsWritten);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int FillConsoleOutputCharacterA(IntPtr hConsoleOutput, sbyte cCharacter, uint nLength, COORD dwWriteCoord, ref uint lpNumberOfCharsWritten);
+        public static extern int FillConsoleOutputCharacterA(
+            [In] IntPtr hConsoleOutput, 
+            [In] sbyte cCharacter, 
+            [In] uint nLength, 
+            [In] COORD dwWriteCoord, 
+            [Out] out uint lpNumberOfCharsWritten);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int FillConsoleOutputCharacterW(IntPtr hConsoleOutput, ushort cCharacter, uint nLength, COORD dwWriteCoord, IntPtr lpNumberOfCharsWritten);
+        public static extern int FillConsoleOutputCharacterW(
+            [In] IntPtr hConsoleOutput, 
+            [In] ushort cCharacter, 
+            [In] uint nLength, 
+            [In] COORD dwWriteCoord, 
+            [Out] IntPtr lpNumberOfCharsWritten);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int FillConsoleOutputCharacterW(IntPtr hConsoleOutput, ushort cCharacter, uint nLength, COORD dwWriteCoord, ref uint lpNumberOfCharsWritten);
+        public static extern int FillConsoleOutputCharacterW(
+            [In] IntPtr hConsoleOutput, 
+            [In] ushort cCharacter, 
+            [In] uint nLength, 
+            [In] COORD dwWriteCoord, 
+            [Out] out uint lpNumberOfCharsWritten);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int FlushConsoleInputBuffer(IntPtr hConsoleInput);
+        public static extern int FlushConsoleInputBuffer(
+            [In] IntPtr hConsoleInput);
 
         [DllImport(ModuleName, SetLastError = true)]
         public static extern int FreeConsole();
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int GenerateConsoleCtrlEvent(uint dwCtrlEvent, uint dwProcessGroupId);
+        public static extern int GenerateConsoleCtrlEvent(
+            [In] uint dwCtrlEvent, 
+            [In] uint dwProcessGroupId);
+
+        [DllImport(ModuleName, SetLastError = true, CallingConvention = CallingConvention.Winapi), CLSCompliant(false)]
+        public static extern uint GetConsoleAliasA(
+            [In] IntPtr lpSource,
+            [Out] IntPtr lpTargetBuffer,
+            [In] uint TargetBufferLength,
+            [In] IntPtr lpExeName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Winapi), CLSCompliant(false)]
+        public static extern uint GetConsoleAliasA(
+            [In] string lpSource,
+            [Out] StringBuilder lpTargetBuffer,
+            [In] uint TargetBufferLength,
+            [In] string lpExeName);
+
+        [DllImport(ModuleName, SetLastError = true, CallingConvention = CallingConvention.Winapi), CLSCompliant(false)]
+        public static extern uint GetConsoleAliasW(
+            [In] IntPtr lpSource,
+            [Out] IntPtr lpTargetBuffer,
+            [In] uint TargetBufferLength,
+            [In] IntPtr lpExeName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Winapi), CLSCompliant(false)]
+        public static extern uint GetConsoleAliasW(
+            [In] string lpSource,
+            [Out] StringBuilder lpTargetBuffer,
+            [In] uint TargetBufferLength,
+            [In] string lpExeName);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetConsoleAliasesA(
+            [Out] IntPtr lpAliasBuffer,
+            [In] uint AliasBufferLength,
+            [In] IntPtr lpExeName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern uint GetConsoleAliasesA(
+            [Out] IntPtr lpAliasBuffer,
+            [In] uint AliasBufferLength,
+            [In] string lpExeName);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetConsoleAliasesW(
+            [Out] IntPtr lpAliasBuffer,
+            [In] uint AliasBufferLength,
+            [In] IntPtr lpExeName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern uint GetConsoleAliasesW(
+            [Out] IntPtr lpAliasBuffer,
+            [In] uint AliasBufferLength,
+            [In] string lpExeName);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetConsoleAliasesLengthA(
+            [In] IntPtr lpExeName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern uint GetConsoleAliasesLengthA(
+            [In] string lpExeName);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetConsoleAliasesLengthW(
+            [In] IntPtr lpExeName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern uint GetConsoleAliasesLengthW(
+            [In] string lpExeName);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetConsoleAliasExesA(
+            [Out] IntPtr lpExeNameBuffer,
+            [In] uint ExeNameBufferLength);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern uint GetConsoleAliasExesA(
+            [Out] StringBuilder lpExeNameBuffer,
+            [In] uint ExeNameBufferLength);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetConsoleAliasExesW(
+            [Out] IntPtr lpExeNameBuffer,
+            [In] uint ExeNameBufferLength);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern uint GetConsoleAliasExesW(
+            [Out] StringBuilder lpExeNameBuffer,
+            [In] uint ExeNameBufferLength);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetConsoleAliasExesLength();
 
         [DllImport(ModuleName), CLSCompliant(false)]
         public static extern uint GetConsoleCP();
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int GetConsoleCursorInfo(IntPtr hConsoleOutput, IntPtr lpConsoleCursorInfo);
+        public static extern int GetConsoleCursorInfo(
+            [In] IntPtr hConsoleOutput, 
+            [Out] IntPtr lpConsoleCursorInfo);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int GetConsoleCursorInfo(IntPtr hConsoleOutput, ref CONSOLE_CURSOR_INFO lpConsoleCursorInfo);
+        public static extern int GetConsoleCursorInfo(
+            [In] IntPtr hConsoleOutput,
+            [Out] out CONSOLE_CURSOR_INFO lpConsoleCursorInfo);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int GetConsoleDisplayMode(IntPtr lpModeFlags);
+        public static extern int GetConsoleDisplayMode(
+            [Out] IntPtr lpModeFlags);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int GetConsoleDisplayMode(ref uint lpModeFlags);
+        public static extern int GetConsoleDisplayMode(
+            [Out] out uint lpModeFlags);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern COORD GetConsoleFontSize(IntPtr hConsoleOutput, uint nFont);
+        public static extern COORD GetConsoleFontSize(
+            [In] IntPtr hConsoleOutput,
+            [In] uint nFont);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetConsoleHistoryInfo(
+            IntPtr lpConsoleHistoryInfo);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetConsoleHistoryInfo(
+            [Out] out CONSOLE_HISTORY_INFO lpConsoleHistoryInfo);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int GetConsoleMode(IntPtr hConsoleOutput, IntPtr lpMode);
+        public static extern int GetConsoleMode(
+            [In] IntPtr hConsoleOutput,
+            [Out] IntPtr lpMode);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int GetConsoleMode(IntPtr hConsoleOutput, ref uint lpMode);
+        public static extern int GetConsoleMode(
+            [In] IntPtr hConsoleOutput,
+            [Out] out uint lpMode);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetConsoleOriginalTitleA(
+            [Out] IntPtr lpConsoleTitle,
+            [In] uint nSize);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern uint GetConsoleOriginalTitleA(
+            [Out] StringBuilder lpConsoleTitle,
+            [In] uint nSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetConsoleOriginalTitleW(
+            [Out] IntPtr lpConsoleTitle,
+            [In] uint nSize);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern uint GetConsoleOriginalTitleW(
+            [Out] StringBuilder lpConsoleTitle,
+            [In] uint nSize);
 
         [DllImport(ModuleName), CLSCompliant(false)]
         public static extern uint GetConsoleOutputCP();
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint GetConsoleProcessList(IntPtr lpdwProcessList, uint dwProcessCount);
+        public static extern uint GetConsoleProcessList(
+            [Out] IntPtr lpdwProcessList, 
+            [In] uint dwProcessCount);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint GetConsoleProcessList(uint[] lpdwProcessList, uint dwProcessCount);
+        public static extern uint GetConsoleProcessList(
+            [Out] uint[] lpdwProcessList, 
+            [In] uint dwProcessCount);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int GetConsoleScreenBufferInfo(IntPtr hConsoleOutput, IntPtr lpConsoleScreenBufferInfo);
+        public static extern int GetConsoleScreenBufferInfo(
+            [In] IntPtr hConsoleOutput, 
+            [Out] IntPtr lpConsoleScreenBufferInfo);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int GetConsoleScreenBufferInfo(IntPtr hConsoleOutput, ref CONSOLE_SCREEN_BUFFER_INFO lpConsoleScreenBufferInfo);
-
-        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint GetConsoleTitleA(IntPtr lpConsoleTitle, uint nSize);
-
-        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
-        public static extern uint GetConsoleTitleA(StringBuilder lpConsoleTitle, uint nSize);
-
-        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint GetConsoleTitleW(IntPtr lpConsoleTitle, uint nSize);
-
-        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
-        public static extern uint GetConsoleTitleW(StringBuilder lpConsoleTitle, uint nSize);
+        public static extern int GetConsoleScreenBufferInfo(
+            [In] IntPtr hConsoleOutput,
+            [Out] out CONSOLE_SCREEN_BUFFER_INFO lpConsoleScreenBufferInfo);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern COORD GetLargestConsoleWindowSize(IntPtr hConsoleOutput);
+        public static extern int GetConsoleScreenBufferInfoEx(
+            [In] IntPtr hConsoleOutput,
+            [Out] IntPtr lpConsoleScreenBufferInfoEx);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetConsoleScreenBufferInfoEx(
+            [In] IntPtr hConsoleOutput,
+            [Out] out CONSOLE_SCREEN_BUFFER_INFOEX lpConsoleScreenBufferInfoEx);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetConsoleSelectionInfo(
+            [Out] IntPtr lpConsoleSelectionInfo);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetConsoleSelectionInfo(
+            [Out] out CONSOLE_SELECTION_INFO lpConsoleSelectionInfo);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetConsoleTitleA(
+            [Out] IntPtr lpConsoleTitle, 
+            [In] uint nSize);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern uint GetConsoleTitleA(
+            [Out] StringBuilder lpConsoleTitle, 
+            [In] uint nSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetConsoleTitleW(
+            [Out] IntPtr lpConsoleTitle, 
+            [In] uint nSize);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern uint GetConsoleTitleW(
+            [Out] StringBuilder lpConsoleTitle, 
+            [In] uint nSize);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int GetNumberOfConsoleInputEvents(IntPtr hConsoleInput, IntPtr lpcNumberOfEvents);
-
-        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int GetNumberOfConsoleInputEvents(IntPtr hConsoleInput, ref uint lpcNumberOfEvents);
+        public static extern IntPtr GetConsoleWindow();
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int GetNumberOfConsoleMouseButtons(IntPtr hNumberOfMouseButtons);
+        public static extern int GetCurrentConsoleFont(
+            [In] IntPtr hConsoleOutput,
+            [In] int bMaximumWindow,
+            [Out] IntPtr lpConsoleCurrentFont);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int GetNumberOfConsoleMouseButtons(out uint lpNumberOfMouseButtons);
+        public static extern int GetCurrentConsoleFont(
+            [In] IntPtr hConsoleOutput,
+            [In] int bMaximumWindow,
+            [Out] out CONSOLE_FONT_INFO lpConsoleCurrentFont);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetCurrentConsoleFontEx(
+            [In] IntPtr hConsoleOutput,
+            [In] int bMaximumWindow,
+            [Out] IntPtr lpConsoleCurrentFontEx);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int GetCurrentConsoleFontEx(
+            [In] IntPtr hConsoleOutput,
+            [In] int bMaximumWindow,
+            [Out] out CONSOLE_FONT_INFOEX lpConsoleCurrentFontEx);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern COORD GetLargestConsoleWindowSize(
+            [In] IntPtr hConsoleOutput);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetNumberOfConsoleInputEvents(
+            [In] IntPtr hConsoleInput, 
+            [Out] IntPtr lpcNumberOfEvents);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern IntPtr GetStdHandle(uint nStdHandle);
+        public static extern int GetNumberOfConsoleInputEvents(
+            [In] IntPtr hConsoleInput, 
+            [Out] out uint lpcNumberOfEvents);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetNumberOfConsoleMouseButtons(
+            [In] IntPtr hNumberOfMouseButtons);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetNumberOfConsoleMouseButtons(
+            [Out] out uint lpNumberOfMouseButtons);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr GetStdHandle(
+            [In] uint nStdHandle);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
-        public static extern int PeekConsoleInputA(IntPtr hConsoleInput, IntPtr lpBuffer, uint nLength, IntPtr lpNumberOfEventsRead);
+        public static extern int PeekConsoleInputA(
+            [In] IntPtr hConsoleInput, 
+            [Out] IntPtr lpBuffer, 
+            [In] uint nLength, 
+            [Out] IntPtr lpNumberOfEventsRead);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
-        public static extern int PeekConsoleInputA(IntPtr hConsoleInput, ref INPUT_RECORD lpBuffer, uint nLength, ref uint lpNumberOfEventsRead);
+        public static extern int PeekConsoleInputA(
+            [In] IntPtr hConsoleInput, 
+            [Out] out INPUT_RECORD lpBuffer, 
+            [In] uint nLength, 
+            [Out] out uint lpNumberOfEventsRead);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
-        public static extern int PeekConsoleInputW(IntPtr hConsoleInput, IntPtr lpBuffer, uint nLength, IntPtr lpNumberOfEventsRead);
+        public static extern int PeekConsoleInputW(
+            [In] IntPtr hConsoleInput,
+            [Out] IntPtr lpBuffer,
+            [In] uint nLength,
+            [Out] IntPtr lpNumberOfEventsRead);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
-        public static extern int PeekConsoleInputW(IntPtr hConsoleInput, ref INPUT_RECORD lpBuffer, uint nLength, ref uint lpNumberOfEventsRead);
+        public static extern int PeekConsoleInputW(
+            [In] IntPtr hConsoleInput,
+            [Out] out INPUT_RECORD lpBuffer,
+            [In] uint nLength,
+            [Out] out uint lpNumberOfEventsRead);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
-        public static extern int ReadConsoleA(IntPtr hConsoleInput, IntPtr lpBuffer, uint nNumberOfCharsToRead, IntPtr lpNumberOfCharsRead, IntPtr lpReserved);
+        public static extern int ReadConsoleA(
+            [In] IntPtr hConsoleInput, 
+            [Out] IntPtr lpBuffer, 
+            [In] uint nNumberOfCharsToRead, 
+            [Out] IntPtr lpNumberOfCharsRead, 
+            [In] IntPtr lpReserved);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
-        public static extern int ReadConsoleA(IntPtr hConsoleInput, IntPtr lpBuffer, uint nNumberOfCharsToRead, ref uint lpNumberOfCharsRead, IntPtr lpReserved);
+        public static extern int ReadConsoleA(
+            [In] IntPtr hConsoleInput, 
+            [Out] IntPtr lpBuffer, 
+            [In] uint nNumberOfCharsToRead, 
+            [Out] out uint lpNumberOfCharsRead, 
+            [In] IntPtr lpReserved);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
-        public static extern int ReadConsoleW(IntPtr hConsoleInput, IntPtr lpBuffer, uint nNumberOfCharsToRead, IntPtr lpNumberOfCharsRead, IntPtr lpReserved);
+        public static extern int ReadConsoleA(
+            [In] IntPtr hConsoleInput,
+            [Out] IntPtr lpBuffer,
+            [In] uint nNumberOfCharsToRead,
+            [Out] IntPtr lpNumberOfCharsRead,
+            [In] ref CONSOLE_READCONSOLE_CONTROL lpReserved);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
-        public static extern int ReadConsoleW(IntPtr hConsoleInput, IntPtr lpBuffer, uint nNumberOfCharsToRead, ref uint lpNumberOfCharsRead, IntPtr lpReserved);
-
-        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
-        public static extern int ReadConsoleInputA(IntPtr hConsoleInput, IntPtr lpBuffer, uint nLength, IntPtr lpNumberOfEventsRead);
-
-        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
-        public static extern int ReadConsoleInputA(IntPtr hConsoleInput, ref INPUT_RECORD lpBuffer, uint nLength, ref uint lpNumberOfEventsRead);
+        public static extern int ReadConsoleA(
+            [In] IntPtr hConsoleInput,
+            [Out] IntPtr lpBuffer,
+            [In] uint nNumberOfCharsToRead,
+            [Out] out uint lpNumberOfCharsRead,
+            [In] ref CONSOLE_READCONSOLE_CONTROL lpReserved);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
-        public static extern int ReadConsoleInputW(IntPtr hConsoleInput, IntPtr lpBuffer, uint nLength, IntPtr lpNumberOfEventsRead);
+        public static extern int ReadConsoleW(
+            [In] IntPtr hConsoleInput,
+            [Out] IntPtr lpBuffer,
+            [In] uint nNumberOfCharsToRead,
+            [Out] IntPtr lpNumberOfCharsRead,
+            [In] IntPtr lpReserved);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
-        public static extern int ReadConsoleInputW(IntPtr hConsoleInput, ref INPUT_RECORD lpBuffer, uint nLength, ref uint lpNumberOfEventsRead);
+        public static extern int ReadConsoleW(
+            [In] IntPtr hConsoleInput,
+            [Out] IntPtr lpBuffer,
+            [In] uint nNumberOfCharsToRead,
+            [Out] out uint lpNumberOfCharsRead,
+            [In] IntPtr lpReserved);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int ReadConsoleW(
+            [In] IntPtr hConsoleInput,
+            [Out] IntPtr lpBuffer,
+            [In] uint nNumberOfCharsToRead,
+            [Out] IntPtr lpNumberOfCharsRead,
+            [In] ref CONSOLE_READCONSOLE_CONTROL lpReserved);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int ReadConsoleW(
+            [In] IntPtr hConsoleInput,
+            [Out] IntPtr lpBuffer,
+            [In] uint nNumberOfCharsToRead,
+            [Out] out uint lpNumberOfCharsRead,
+            [In] ref CONSOLE_READCONSOLE_CONTROL lpReserved);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int ReadConsoleInputA(
+            [In] IntPtr hConsoleInput,
+            [Out] IntPtr lpBuffer,
+            [In] uint nLength,
+            [Out] IntPtr lpNumberOfEventsRead);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int ReadConsoleInputA(
+            [In] IntPtr hConsoleInput,
+            [Out] out INPUT_RECORD lpBuffer,
+            [In] uint nLength,
+            [Out] out uint lpNumberOfEventsRead);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int ReadConsoleInputW(
+            [In] IntPtr hConsoleInput,
+            [Out] IntPtr lpBuffer,
+            [In] uint nLength,
+            [Out] IntPtr lpNumberOfEventsRead);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int ReadConsoleInputW(
+            [In] IntPtr hConsoleInput,
+            [Out] out INPUT_RECORD lpBuffer,
+            [In] uint nLength,
+            [Out] out uint lpNumberOfEventsRead);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
-        public static extern int ReadConsoleOutputA(IntPtr hConsoleOutput, IntPtr lpBuffer, COORD dwBufferSize, COORD dwBufferCoord, IntPtr lpReadRegion);
+        public static extern int ReadConsoleOutputA(
+            [In] IntPtr hConsoleOutput,
+            [Out] IntPtr lpBuffer,
+            [In] COORD dwBufferSize,
+            [In] COORD dwBufferCoord,
+            [In, Out] IntPtr lpReadRegion);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
-        public static extern int ReadConsoleOutputA(IntPtr hConsoleOutput, ref CHAR_INFO lpBuffer, COORD dwBufferSize, COORD dwBufferCoord, ref SMALL_RECT lpReadRegion);
+        public static extern int ReadConsoleOutputA(
+            [In] IntPtr hConsoleOutput,
+            [Out] out CHAR_INFO lpBuffer,
+            [In] COORD dwBufferSize,
+            [In] COORD dwBufferCoord,
+            [In, Out] ref SMALL_RECT lpReadRegion);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
-        public static extern int ReadConsoleOutputW(IntPtr hConsoleOutput, IntPtr lpBuffer, COORD dwBufferSize, COORD dwBufferCoord, IntPtr lpReadRegion);
+        public static extern int ReadConsoleOutputW(
+            [In] IntPtr hConsoleOutput,
+            [Out] IntPtr lpBuffer,
+            [In] COORD dwBufferSize,
+            [In] COORD dwBufferCoord,
+            [In, Out] IntPtr lpReadRegion);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
-        public static extern int ReadConsoleOutputW(IntPtr hConsoleOutput, ref CHAR_INFO lpBuffer, COORD dwBufferSize, COORD dwBufferCoord, ref SMALL_RECT lpReadRegion);
+        public static extern int ReadConsoleOutputW(
+            [In] IntPtr hConsoleOutput,
+            [Out] out CHAR_INFO lpBuffer,
+            [In] COORD dwBufferSize,
+            [In] COORD dwBufferCoord,
+            [In, Out] ref SMALL_RECT lpReadRegion);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int ReadConsoleOutputAttribute(IntPtr hConsoleOutput, IntPtr lpAttribute, uint nLength, COORD dwReadCoord, IntPtr lpNumberOfAttrsRead);
+        public static extern int ReadConsoleOutputAttribute(
+            [In] IntPtr hConsoleOutput,
+            [Out] IntPtr lpAttribute,
+            [In] uint nLength,
+            [In] COORD dwReadCoord,
+            [Out] IntPtr lpNumberOfAttrsRead);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int ReadConsoleOutputAttribute(IntPtr hConsoleOutput, ref uint lpAttribute, uint nLength, COORD dwReadCoord, ref uint lpNumberOfAttrsRead);
+        public static extern int ReadConsoleOutputAttribute(
+            [In] IntPtr hConsoleOutput,
+            [Out] out uint lpAttribute,
+            [In] uint nLength,
+            [In] COORD dwReadCoord,
+            [Out] out uint lpNumberOfAttrsRead);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
-        public static extern int ReadConsoleOutputCharacterA(IntPtr hConsoleOutput, IntPtr lpCharacter, uint nLength, COORD dwReadCoord, IntPtr lpNumberOfCharsRead);
+        public static extern int ReadConsoleOutputCharacterA(
+            [In] IntPtr hConsoleOutput,
+            [Out] IntPtr lpCharacter,
+            [In] uint nLength,
+            [In] COORD dwReadCoord,
+            [Out] IntPtr lpNumberOfCharsRead);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
-        public static extern int ReadConsoleOutputCharacterA(IntPtr hConsoleOutput, StringBuilder lpCharacter, uint nLength, COORD dwReadCoord, ref uint lpNumberOfCharsRead);
+        public static extern int ReadConsoleOutputCharacterA(
+            [In] IntPtr hConsoleOutput,
+            [Out] StringBuilder lpCharacter,
+            [In] uint nLength,
+            [In] COORD dwReadCoord,
+            [Out] out uint lpNumberOfCharsRead);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
-        public static extern int ReadConsoleOutputCharacterW(IntPtr hConsoleOutput, IntPtr lpCharacter, uint nLength, COORD dwReadCoord, IntPtr lpNumberOfCharsRead);
+        public static extern int ReadConsoleOutputCharacterW(
+            [In] IntPtr hConsoleOutput,
+            [Out] IntPtr lpCharacter,
+            [In] uint nLength,
+            [In] COORD dwReadCoord,
+            [Out] IntPtr lpNumberOfCharsRead);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
-        public static extern int ReadConsoleOutputCharacterW(IntPtr hConsoleOutput, StringBuilder lpCharacter, uint nLength, COORD dwReadCoord, ref uint lpNumberOfCharsRead);
+        public static extern int ReadConsoleOutputCharacterW(
+            [In] IntPtr hConsoleOutput,
+            [Out] StringBuilder lpCharacter,
+            [In] uint nLength,
+            [In] COORD dwReadCoord,
+            [Out] out uint lpNumberOfCharsRead);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
-        public static extern int ScrollConsoleScreenBufferA(IntPtr hConsoleOutput, [Const] IntPtr lpScrollRectangle, [Const] IntPtr lpClipRectangle, COORD dwDestinationOrigin, [Const] IntPtr lpFill);
+        public static extern int ScrollConsoleScreenBufferA(
+            [In] IntPtr hConsoleOutput,
+            [In, Const] IntPtr lpScrollRectangle,
+            [In, Const] IntPtr lpClipRectangle,
+            [In] COORD dwDestinationOrigin,
+            [In, Const] IntPtr lpFill);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
-        public static extern int ScrollConsoleScreenBufferA(IntPtr hConsoleOutput, [Const] ref SMALL_RECT lpScrollRectangle, ref SMALL_RECT lpClipRectangle, COORD dwDestinationOrigin, ref CHAR_INFO lpFill);
+        public static extern int ScrollConsoleScreenBufferA(
+            [In] IntPtr hConsoleOutput,
+            [In, Const] ref SMALL_RECT lpScrollRectangle,
+            [In] ref SMALL_RECT lpClipRectangle,
+            [In] COORD dwDestinationOrigin,
+            [In] ref CHAR_INFO lpFill);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
-        public static extern int ScrollConsoleScreenBufferW(IntPtr hConsoleOutput, [Const] IntPtr lpScrollRectangle, [Const] IntPtr lpClipRectangle, COORD dwDestinationOrigin, [Const] IntPtr lpFill);
+        public static extern int ScrollConsoleScreenBufferW(
+            [In] IntPtr hConsoleOutput,
+            [In, Const] IntPtr lpScrollRectangle,
+            [In, Const] IntPtr lpClipRectangle,
+            [In] COORD dwDestinationOrigin,
+            [In, Const] IntPtr lpFill);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
-        public static extern int ScrollConsoleScreenBufferW(IntPtr hConsoleOutput, [Const] ref SMALL_RECT lpScrollRectangle, ref SMALL_RECT lpClipRectangle, COORD dwDestinationOrigin, ref CHAR_INFO lpFill);
+        public static extern int ScrollConsoleScreenBufferW(
+            [In] IntPtr hConsoleOutput,
+            [In, Const] ref SMALL_RECT lpScrollRectangle,
+            [In] ref SMALL_RECT lpClipRectangle,
+            [In] COORD dwDestinationOrigin,
+            [In] ref CHAR_INFO lpFill);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int SetConsoleActiveScreenBuffer(IntPtr hConsoleOutput);
+        public static extern int SetConsoleActiveScreenBuffer(
+            [In] IntPtr hConsoleOutput);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int SetConsoleCP(uint wCodePageID);
+        public static extern int SetConsoleCP(
+            [In] uint wCodePageID);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int SetConsoleCtrlHandler(IntPtr HandlerRoutine, int Add);
+        public static extern int SetConsoleCtrlHandler(
+            [In] IntPtr HandlerRoutine,
+            [In] int Add);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int SetConsoleCtrlHandler(HandlerRoutine HandlerRoutine, int Add);
+        public static extern int SetConsoleCtrlHandler(
+            [In] HandlerRoutine HandlerRoutine,
+            [In] int Add);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int SetConsoleCursorInfo(IntPtr hConsoleOutput, [Const] IntPtr lpConsoleCursorInfo);
+        public static extern int SetConsoleCursorInfo(
+            [In] IntPtr hConsoleOutput,
+            [In, Const] IntPtr lpConsoleCursorInfo);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int SetConsoleCursorInfo(IntPtr hConsoleOutput, ref CONSOLE_CURSOR_INFO lpConsoleCursorInfo);
+        public static extern int SetConsoleCursorInfo(
+            [In] IntPtr hConsoleOutput,
+            [In] ref CONSOLE_CURSOR_INFO lpConsoleCursorInfo);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int SetConsoleCursorPosition(IntPtr hConsoleOutput, COORD dwCursorPosition);
+        public static extern int SetConsoleCursorPosition(
+            [In] IntPtr hConsoleOutput,
+            [In] COORD dwCursorPosition);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int SetConsoleMode(IntPtr hConsoleHandle, uint dwMode);
+        public static extern int SetConsoleDisplayMode(
+            [In] IntPtr hConsoleOutput,
+            [In] uint dwFlags,
+            [In] IntPtr lpNewScreenBufferDimensions);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int SetConsoleOutputCP(uint wCodePageId);
+        public static extern int SetConsoleDisplayMode(
+            [In] IntPtr hConsoleOutput,
+            [In] uint dwFlags,
+            [In] ref COORD lpNewScreenBufferDimensions);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int SetConsoleScreenBufferSize(IntPtr hConsoleOutput, COORD dwSize);
+        public static extern int SetConsoleHistoryInfo(
+            [In] IntPtr lpConsoleHistoryInfo);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int SetConsoleTextAttributes(IntPtr hConsoleOutput, ushort wAttributes);
+        public static extern int SetConsoleHistoryInfo(
+            [In] ref CONSOLE_HISTORY_INFO lpConsoleHistoryInfo);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetConsoleMode(
+            [In] IntPtr hConsoleHandle,
+            [In] uint dwMode);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetConsoleOutputCP(
+            [In] uint wCodePageId);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int SetConsoleTitleA([Const] IntPtr lpConsoleTitle);
+        public static extern int SetConsoleScreenBufferInfoEx(
+            [In] IntPtr hConsoleOutput,
+            [In] IntPtr lpConsoleScreenBufferInfoEx);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetConsoleScreenBufferInfoEx(
+            [In] IntPtr hConsoleOutput,
+            [In] ref CONSOLE_SCREEN_BUFFER_INFOEX lpConsoleScreenBufferInfoEx);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetConsoleScreenBufferSize(
+            [In] IntPtr hConsoleOutput,
+            [In] COORD dwSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetConsoleTextAttributes(
+            [In] IntPtr hConsoleOutput,
+            [In] ushort wAttributes);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetConsoleTitleA(
+            [In, Const] IntPtr lpConsoleTitle);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
-        public static extern int SetConsoleTitleA(string lpConsoleTitle);
+        public static extern int SetConsoleTitleA(
+            [In] string lpConsoleTitle);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int SetConsoleTitleW([Const] IntPtr lpConsoleTitle);
+        public static extern int SetConsoleTitleW(
+            [In, Const] IntPtr lpConsoleTitle);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
-        public static extern int SetConsoleTitleW(string lpConsoleTitle);
+        public static extern int SetConsoleTitleW(
+            [In] string lpConsoleTitle);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int SetConsoleWindowInfo(IntPtr hConsoleOutput, int bAbsolute, [Const] IntPtr lpConsoleWindow);
+        public static extern int SetConsoleWindowInfo(
+            [In] IntPtr hConsoleOutput,
+            [In] int bAbsolute,
+            [In, Const] IntPtr lpConsoleWindow);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int SetConsoleWindowInfo(IntPtr hConsoleOutput, int bAbsolute, ref SMALL_RECT lpConsoleWindow);
+        public static extern int SetConsoleWindowInfo(
+            [In] IntPtr hConsoleOutput,
+            [In] int bAbsolute,
+            [In] ref SMALL_RECT lpConsoleWindow);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetCurrentConsoleFontEx(
+            [In] IntPtr hConsoleOutput,
+            [In] int bMaximumWindow,
+            [In] IntPtr lpConsoleCurrentFontEx);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int SetStdHandle(uint nStdHandle, IntPtr nHandle);
+        public static extern int SetCurrentConsoleFontEx(
+            [In] IntPtr hConsoleOutput,
+            [In] int bMaximumWindow,
+            [In] ref CONSOLE_FONT_INFOEX lpConsoleCurrentFontEx);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetStdHandle(
+            [In] uint nStdHandle,
+            [In] IntPtr hHandle);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
-        public static extern int WriteConsoleA(IntPtr hConsoleOutput, [Const] IntPtr lpBuffer, uint nNumberOfCharsToWrite, IntPtr lpNumberOfCharsWritten, IntPtr lpReserved);
+        public static extern int WriteConsoleA(
+            [In] IntPtr hConsoleOutput,
+            [In, Const] IntPtr lpBuffer,
+            [In] uint nNumberOfCharsToWrite,
+            [Out] IntPtr lpNumberOfCharsWritten,
+            IntPtr lpReserved);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
-        public static extern int WriteConsoleA(IntPtr hConsoleOutput, [Const] IntPtr lpBuffer, uint nNumberOfCharsToWrite, ref uint lpNumberOfCharsWritten, IntPtr lpReserved);
+        public static extern int WriteConsoleA(
+            [In] IntPtr hConsoleOutput,
+            [In, Const] IntPtr lpBuffer,
+            [In] uint nNumberOfCharsToWrite,
+            [Out] out uint lpNumberOfCharsWritten,
+            IntPtr lpReserved);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
-        public static extern int WriteConsoleW(IntPtr hConsoleOutput, [Const] IntPtr lpBuffer, uint nNumberOfCharsToWrite, IntPtr lpNumberOfCharsWritten, IntPtr lpReserved);
+        public static extern int WriteConsoleW(
+            [In] IntPtr hConsoleOutput,
+            [In, Const] IntPtr lpBuffer,
+            [In] uint nNumberOfCharsToWrite,
+            [Out] IntPtr lpNumberOfCharsWritten,
+            IntPtr lpReserved);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
-        public static extern int WriteConsoleW(IntPtr hConsoleOutput, [Const] IntPtr lpBuffer, uint nNumberOfCharsToWrite, ref uint lpNumberOfCharsWritten, IntPtr lpReserved);
+        public static extern int WriteConsoleW(
+            [In] IntPtr hConsoleOutput,
+            [In, Const] IntPtr lpBuffer,
+            [In] uint nNumberOfCharsToWrite,
+            [Out] out uint lpNumberOfCharsWritten,
+            IntPtr lpReserved);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
-        public static extern int WriteConsoleInputA(IntPtr hConsoleInput, [Const] IntPtr lpBuffer, uint nLength, IntPtr lpNumberOfEvnetsWritten);
+        public static extern int WriteConsoleInputA(
+            [In] IntPtr hConsoleInput,
+            [In, Const] IntPtr lpBuffer,
+            [In] uint nLength,
+            [Out] IntPtr lpNumberOfEvnetsWritten);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
-        public static extern int WriteConsoleInputA(IntPtr hConsoleInput, [Const] IntPtr lpBuffer, uint nLength, ref uint lpNumberOfEvnetsWritten);
+        public static extern int WriteConsoleInputA(
+            [In] IntPtr hConsoleInput,
+            [In, Const] IntPtr lpBuffer,
+            [In] uint nLength,
+            [Out] out uint lpNumberOfEvnetsWritten);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
-        public static extern int WriteConsoleInputW(IntPtr hConsoleInput, [Const] IntPtr lpBuffer, uint nLength, IntPtr lpNumberOfEvnetsWritten);
+        public static extern int WriteConsoleInputW(
+            [In] IntPtr hConsoleInput,
+            [In, Const] IntPtr lpBuffer,
+            [In] uint nLength,
+            [Out] IntPtr lpNumberOfEvnetsWritten);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
-        public static extern int WriteConsoleInputW(IntPtr hConsoleInput, [Const] IntPtr lpBuffer, uint nLength, ref uint lpNumberOfEvnetsWritten);
+        public static extern int WriteConsoleInputW(
+            [In] IntPtr hConsoleInput,
+            [In, Const] IntPtr lpBuffer,
+            [In] uint nLength,
+            [Out] out uint lpNumberOfEvnetsWritten);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
-        public static extern int WriteConsoleOutputA(IntPtr hConsoleOutput, [Const] IntPtr lpBuffer, COORD dwBufferSize, COORD dwBufferCoord, IntPtr lpWriteRegion);
+        public static extern int WriteConsoleOutputA(
+            [In] IntPtr hConsoleOutput,
+            [In, Const] IntPtr lpBuffer,
+            [In] COORD dwBufferSize,
+            [In] COORD dwBufferCoord,
+            [In, Out] IntPtr lpWriteRegion);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
-        public static extern int WriteConsoleOutputA(IntPtr hConsoleOutput, ref CHAR_INFO lpBuffer, COORD dwBufferSize, COORD dwBufferCoord, ref SMALL_RECT lpWriteRegion);
+        public static extern int WriteConsoleOutputA(
+            [In] IntPtr hConsoleOutput,
+            [In] ref CHAR_INFO lpBuffer,
+            [In] COORD dwBufferSize,
+            [In] COORD dwBufferCoord,
+            [In, Out] ref SMALL_RECT lpWriteRegion);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
-        public static extern int WriteConsoleOutputW(IntPtr hConsoleOutput, [Const] IntPtr lpBuffer, COORD dwBufferSize, COORD dwBufferCoord, IntPtr lpWriteRegion);
+        public static extern int WriteConsoleOutputW(
+            [In] IntPtr hConsoleOutput,
+            [In, Const] IntPtr lpBuffer,
+            [In] COORD dwBufferSize,
+            [In] COORD dwBufferCoord,
+            [In, Out] IntPtr lpWriteRegion);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
-        public static extern int WriteConsoleOutputW(IntPtr hConsoleOutput, ref CHAR_INFO lpBuffer, COORD dwBufferSize, COORD dwBufferCoord, ref SMALL_RECT lpWriteRegion);
+        public static extern int WriteConsoleOutputW(
+            [In] IntPtr hConsoleOutput,
+            [In] ref CHAR_INFO lpBuffer,
+            [In] COORD dwBufferSize,
+            [In] COORD dwBufferCoord,
+            [In, Out] ref SMALL_RECT lpWriteRegion);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int WriteConsoleOutputAttribute(IntPtr hConsoleOutput, [Const] IntPtr lpAttribute, uint nLength, COORD dwWriteCoord, IntPtr lpNumberOfAttrsWritten);
+        public static extern int WriteConsoleOutputAttribute(
+            [In] IntPtr hConsoleOutput,
+            [In, Const] IntPtr lpAttribute,
+            [In] uint nLength,
+            [In] COORD dwWriteCoord,
+            [Out] IntPtr lpNumberOfAttrsWritten);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int WriteConsoleOutputAttribute(IntPtr hConsoleOutput, ref ushort lpAttribute, uint nLength, COORD dwWriteCoord, ref uint lpNumberOfAttrsWritten);
+        public static extern int WriteConsoleOutputAttribute(
+            [In] IntPtr hConsoleOutput,
+            [In] ref ushort lpAttribute,
+            [In] uint nLength,
+            [In] COORD dwWriteCoord,
+            [Out] out uint lpNumberOfAttrsWritten);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
-        public static extern int WriteConsoleOutputCharacterA(IntPtr hConsoleOutput, [Const] IntPtr lpCharacter, uint nLength, COORD dwWriteCoord, IntPtr lpNumberOfCharsWritten);
+        public static extern int WriteConsoleOutputCharacterA(
+            [In] IntPtr hConsoleOutput,
+            [In, Const] IntPtr lpCharacter,
+            [In] uint nLength,
+            [In] COORD dwWriteCoord,
+            [Out] IntPtr lpNumberOfCharsWritten);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
-        public static extern int WriteConsoleOutputCharacterA(IntPtr hConsoleOutput, StringBuilder lpCharacter, uint nLength, COORD dwWriteCoord, ref uint lpNumberOfCharsWritten);
+        public static extern int WriteConsoleOutputCharacterA(
+            [In] IntPtr hConsoleOutput,
+            [In] string lpCharacter,
+            [In] uint nLength,
+            [In] COORD dwWriteCoord,
+            [Out] out uint lpNumberOfCharsWritten);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
-        public static extern int WriteConsoleOutputCharacterW(IntPtr hConsoleOutput, [Const] IntPtr lpCharacter, uint nLength, COORD dwWriteCoord, IntPtr lpNumberOfCharsWritten);
+        public static extern int WriteConsoleOutputCharacterW(
+            [In] IntPtr hConsoleOutput,
+            [In, Const] IntPtr lpCharacter,
+            [In] uint nLength,
+            [In] COORD dwWriteCoord,
+            [Out] IntPtr lpNumberOfCharsWritten);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
-        public static extern int WriteConsoleOutputCharacterW(IntPtr hConsoleOutput, StringBuilder lpCharacter, uint nLength, COORD dwWriteCoord, ref uint lpNumberOfCharsWritten);
+        public static extern int WriteConsoleOutputCharacterW(
+            [In] IntPtr hConsoleOutput,
+            [In] string lpCharacter,
+            [In] uint nLength,
+            [In] COORD dwWriteCoord,
+            [Out] out uint lpNumberOfCharsWritten);
     }
 
     #endregion // Console functions
@@ -577,74 +1123,162 @@ namespace xPlatform.x86.kernel32
 
     partial class kernel32
     {
-        [DllImport(ModuleName)]
-        public static extern int DisableThreadLibraryCalls(IntPtr hModule);
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int DisableThreadLibraryCalls(
+            [In] IntPtr hModule);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int FreeLibrary(
+            [In] IntPtr hModule);
 
         [DllImport(ModuleName)]
-        public static extern int FreeLibrary(IntPtr hModule);
+        public static extern void FreeLibraryAndExitThread(
+            [In] IntPtr hModule,
+            [In] int dwExitCode);
 
-        [DllImport(ModuleName)]
-        public static extern void FreeLibraryAndExitThread(IntPtr hModule, int dwExitCode);
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetDllDirectoryA(
+            [In] uint nBufferLength,
+            [Out] IntPtr lpBuffer);
 
-        [DllImport(ModuleName), CLSCompliant(false)]
-        public static extern uint GetModuleFileNameA(IntPtr hModule, IntPtr lpFIleName, uint nSize);
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern uint GetDllDirectoryA(
+            [In] uint nBufferLength,
+            [Out] StringBuilder lpBuffer);
 
-        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
-        public static extern uint GetModuleFileNameA(IntPtr hModule, StringBuilder lpFIleName, uint nSize);
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetDllDirectoryW(
+            [In] uint nBufferLength,
+            [Out] IntPtr lpBuffer);
 
-        [DllImport(ModuleName), CLSCompliant(false)]
-        public static extern uint GetModuleFileNameW(IntPtr hModule, IntPtr lpFIleName, uint nSize);
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern uint GetDllDirectoryW(
+            [In] uint nBufferLength,
+            [Out] StringBuilder lpBuffer);
 
-        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
-        public static extern uint GetModuleFileNameW(IntPtr hModule, StringBuilder lpFIleName, uint nSize);
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetModuleFileNameA(
+            [In] IntPtr hModule,
+            [Out] IntPtr lpFileName,
+            [In] uint nSize);
 
-        [DllImport(ModuleName)]
-        public static extern IntPtr GetModuleHandleA([Const] IntPtr lpModuleName);
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern uint GetModuleFileNameA(
+            [In] IntPtr hModule,
+            [Out] StringBuilder lpFileName,
+            [In] uint nSize);
 
-        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
-        public static extern IntPtr GetModuleHandleA(string lpModuleName);
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetModuleFileNameW(
+            [In] IntPtr hModule,
+            [Out] IntPtr lpFileName,
+            [In] uint nSize);
 
-        [DllImport(ModuleName)]
-        public static extern IntPtr GetModuleHandleW([Const] IntPtr lpModuleName);
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern uint GetModuleFileNameW(
+            [In] IntPtr hModule,
+            [Out] StringBuilder lpFileName,
+            [In] uint nSize);
 
-        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
-        public static extern IntPtr GetModuleHandleW(string lpModuleName);
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr GetModuleHandleA(
+            [In, Const] IntPtr lpModuleName);
 
-        [DllImport(ModuleName)]
-        public static extern IntPtr GetProcAddressA(IntPtr hModule, [Const] IntPtr lpProcName);
+        [DllImport(ModuleName, CharSet = CharSet.Ansi, SetLastError = true)]
+        public static extern IntPtr GetModuleHandleA(
+            [In] string lpModuleName);
 
-        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
-        public static extern IntPtr GetProcAddressA(IntPtr hModule, string lpProcName);
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr GetModuleHandleW(
+            [In, Const] IntPtr lpModuleName);
 
-        [DllImport(ModuleName)]
-        public static extern IntPtr GetProcAddressW(IntPtr hModule, [Const] IntPtr lpProcName);
+        [DllImport(ModuleName, CharSet = CharSet.Unicode, SetLastError = true)]
+        public static extern IntPtr GetModuleHandleW(
+            [In] string lpModuleName);
 
-        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
-        public static extern IntPtr GetProcAddressW(IntPtr hModule, string lpProcName);
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr GetModuleHandleExA(
+            [In] uint dwFlags,
+            [In, Const] IntPtr lpModuleName,
+            [Out] IntPtr phModule);
 
-        [DllImport(ModuleName)]
-        public static extern IntPtr LoadLibraryA([Const] IntPtr lpLibFileName);
+        [DllImport(ModuleName, CharSet = CharSet.Ansi, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr GetModuleHandleExA(
+            [In] uint dwFlags,
+            [In] string lpModuleName,
+            [Out] out IntPtr phModule);
 
-        [DllImport(ModuleName, CharSet = CharSet.Ansi)]
-        public static extern IntPtr LoadLibraryA(string lpLibFileName);
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr GetModuleHandleExW(
+            [In] uint dwFlags,
+            [In, Const] IntPtr lpModuleName,
+            [Out] IntPtr phModule);
 
-        [DllImport(ModuleName)]
-        public static extern IntPtr LoadLibraryW([Const] IntPtr lpLibFileName);
+        [DllImport(ModuleName, CharSet = CharSet.Unicode, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr GetModuleHandleExW(
+            [In] uint dwFlags,
+            [In] string lpModuleName,
+            [Out] out IntPtr phModule);
 
-        [DllImport(ModuleName, CharSet = CharSet.Unicode)]
-        public static extern IntPtr LoadLibraryW(string lpLibFileName);
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr GetProcAddressA(
+            [In] IntPtr hModule,
+            [In, Const] IntPtr lpProcName);
 
-        [DllImport(ModuleName), CLSCompliant(false)]
-        public static extern IntPtr LoadLibraryExA([Const] IntPtr lpLibFileName, IntPtr hFile, uint dwFlags);
+        [DllImport(ModuleName, CharSet = CharSet.Ansi, SetLastError = true)]
+        public static extern IntPtr GetProcAddressA(
+            [In] IntPtr hModule,
+            [In] string lpProcName);
 
-        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
-        public static extern IntPtr LoadLibraryExA(string lpLibFileName, IntPtr hFile, uint dwFlags);
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr GetProcAddressW(
+            [In] IntPtr hModule,
+            [In, Const] IntPtr lpProcName);
 
-        [DllImport(ModuleName), CLSCompliant(false)]
-        public static extern IntPtr LoadLibraryExW([Const] IntPtr lpLibFileName, IntPtr hFile, uint dwFlags);
+        [DllImport(ModuleName, CharSet = CharSet.Unicode, SetLastError = true)]
+        public static extern IntPtr GetProcAddressW(
+            [In] IntPtr hModule,
+            [In] string lpProcName);
 
-        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
-        public static extern IntPtr LoadLibraryExW(string lpLibFileName, IntPtr hFile, uint dwFlags);
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr LoadLibraryA(
+            [In, Const] IntPtr lpFileName);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi, SetLastError = true)]
+        public static extern IntPtr LoadLibraryA(
+            [In] string lpFileName);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr LoadLibraryW(
+            [In, Const] IntPtr lpFileName);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode, SetLastError = true)]
+        public static extern IntPtr LoadLibraryW(
+            [In] string lpFileName);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr LoadLibraryExA(
+            [In, Const] IntPtr lpFileName,
+            IntPtr hFile,
+            [In] uint dwFlags);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr LoadLibraryExA(
+            [In] string lpFileName,
+            IntPtr hFile,
+            [In] uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr LoadLibraryExW(
+            [In, Const] IntPtr lpFileName,
+            IntPtr hFile,
+            [In] uint dwFlags);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr LoadLibraryExW(
+            [In] string lpFileName,
+            IntPtr hFile,
+            [In] uint dwFlags);
     }
 
     #endregion // Dynamic link library functions

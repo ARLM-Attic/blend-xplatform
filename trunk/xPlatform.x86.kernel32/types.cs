@@ -400,16 +400,6 @@ namespace xPlatform.x86.kernel32
     }
 
     [Serializable, StructLayout(LayoutKind.Explicit), CLSCompliant(false)]
-    public struct uChar
-    {
-        [FieldOffset(0)]
-        public ushort UnicodeChar;
-
-        [FieldOffset(0)]
-        public byte AsciiChar;
-    }
-
-    [Serializable, StructLayout(LayoutKind.Explicit), CLSCompliant(false)]
     public struct KEY_EVENT_RECORD
     {
         [FieldOffset(0)]
@@ -425,18 +415,28 @@ namespace xPlatform.x86.kernel32
         public ushort wVirtualScanCode;
 
         [FieldOffset(10)]
-        public uChar uChar;
+        public ushort UnicodeChar;
+
+        [FieldOffset(10)]
+        public byte AsciiChar;
 
         [FieldOffset(12)]
         public uint dwControlKeyState;
     }
 
-    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    [Serializable, StructLayout(LayoutKind.Explicit), CLSCompliant(false)]
     public struct MOUSE_EVENT_RECORD
     {
+        [FieldOffset(0)]
         public COORD dwMousePosition;
+
+        [FieldOffset(4)]
         public uint dwButtonState;
+
+        [FieldOffset(8)]
         public uint dwControlKeyState;
+
+        [FieldOffset(12)]
         public uint dwEventFlags;
     }
 
@@ -459,39 +459,35 @@ namespace xPlatform.x86.kernel32
     }
 
     [Serializable, StructLayout(LayoutKind.Explicit), CLSCompliant(false)]
-    public struct Event
-    {
-        [FieldOffset(0)]
-        public KEY_EVENT_RECORD KeyEvent;
-
-        [FieldOffset(0)]
-        public MOUSE_EVENT_RECORD MouseEvent;
-
-        [FieldOffset(0)]
-        public WINDOW_BUFFER_SIZE_RECORD WindowBufferSizeEvent;
-
-        [FieldOffset(0)]
-        public MOUSE_EVENT_RECORD MenuEvent;
-
-        [FieldOffset(0)]
-        public FOCUS_EVENT_RECORD FocusEvent;
-    }
-
-    [Serializable, StructLayout(LayoutKind.Explicit), CLSCompliant(false)]
     public struct INPUT_RECORD
     {
         [FieldOffset(0)]
         public ushort EventType;
 
-        [FieldOffset(2)]
-        public Event Event;
+        [FieldOffset(4)]
+        public KEY_EVENT_RECORD KeyEvent;
+
+        [FieldOffset(4)]
+        public MOUSE_EVENT_RECORD MouseEvent;
+
+        [FieldOffset(4)]
+        public WINDOW_BUFFER_SIZE_RECORD WindowBufferSizeEvent;
+
+        [FieldOffset(4)]
+        public MOUSE_EVENT_RECORD MenuEvent;
+
+        [FieldOffset(4)]
+        public FOCUS_EVENT_RECORD FocusEvent;
     }
 
     [Serializable, StructLayout(LayoutKind.Explicit), CLSCompliant(false)]
     public struct CHAR_INFO
     {
         [FieldOffset(0)]
-        public uChar Char;
+        public char UnciodeChar;
+
+        [FieldOffset(0)]
+        public char AsciiChar;
 
         [FieldOffset(2)]
         public ushort Attributes;
@@ -1306,12 +1302,59 @@ namespace xPlatform.x86.kernel32
         public uint FeaturesHigh;
         public uint EOTWarningZoneSize;
     }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct CONSOLE_HISTORY_INFO
+    {
+        public uint cbSize;
+        public uint HistoryBufferSize;
+        public uint NumberOfHistoryBuffers;
+        public uint dwFlags;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct CONSOLE_SCREEN_BUFFER_INFOEX
+    {
+        public uint cbSize;
+        public COORD dwSize;
+        public COORD dwCursorPosition;
+        public ushort wAttributes;
+        public SMALL_RECT srWindow;
+        public COORD dwMaximumWindowSize;
+        public ushort wPopupAttributes;
+        public int bFullscreenSupported;
+
+        [MarshalAs(UnmanagedType.ByValArray, ArraySubType = UnmanagedType.U4, SizeConst = 16)]
+        public uint[] ColorTable; 
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode), CLSCompliant(false)]
+    public struct CONSOLE_FONT_INFOEX
+    {
+        public uint cbSize;
+        public uint nFont;
+        public COORD dwFontSize;
+        public uint FontFamily;
+        public uint FontWeight;
+
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+        public string FaceName;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct CONSOLE_READCONSOLE_CONTROL
+    {
+        public uint nLength;
+        public uint nInitialChars;
+        public uint dwCtrlWakeupMask;
+        public uint dwControlKeyState;
+    }
 }
 
 namespace xPlatform.x86.kernel32
 {
     [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi), CLSCompliant(false)]
-    public delegate int HandlerRoutine(uint dwCtrlType);
+    public delegate int HandlerRoutine([In] uint dwCtrlType);
 
     [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi), CLSCompliant(false)]
     public delegate int DllMain(IntPtr hinstDLL, uint fdwReason, IntPtr lpvReserved);
