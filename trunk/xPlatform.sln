@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xPlatform.x86.advapi32", "x
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xPlatform.x86.secur32", "xPlatform.x86.secur32\xPlatform.x86.secur32.csproj", "{BC10E99B-E08F-432A-A8BF-C5076C60E943}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xPlatform.x86.psapi", "xPlatform.x86.psapi\xPlatform.x86.psapi.csproj", "{C292D865-9CC1-4316-948E-BCE1A4F60F9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xPlatform.x86.gdi32", "xPlatform.x86.gdi32\xPlatform.x86.gdi32.csproj", "{C1FCDA85-F9DC-407D-AE56-469F1427FF45}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +53,14 @@ Global
 		{BC10E99B-E08F-432A-A8BF-C5076C60E943}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC10E99B-E08F-432A-A8BF-C5076C60E943}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC10E99B-E08F-432A-A8BF-C5076C60E943}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C292D865-9CC1-4316-948E-BCE1A4F60F9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C292D865-9CC1-4316-948E-BCE1A4F60F9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C292D865-9CC1-4316-948E-BCE1A4F60F9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C292D865-9CC1-4316-948E-BCE1A4F60F9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1FCDA85-F9DC-407D-AE56-469F1427FF45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1FCDA85-F9DC-407D-AE56-469F1427FF45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1FCDA85-F9DC-407D-AE56-469F1427FF45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1FCDA85-F9DC-407D-AE56-469F1427FF45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
