@@ -4,4 +4,185 @@ using System.Runtime.InteropServices;
 
 namespace xPlatform.x86.gdi32
 {
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct BLENDFUNCTION
+    {
+        public byte BlendOp;
+        public byte BlendFlags;
+        public byte SourceConstantAlpha;
+        public byte AlphaFormat;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMR
+    {
+        public uint iType;
+        public uint nSize;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct BITMAPINFOHEADER
+    {
+        public uint biSize;
+        public int biWidth;
+        public int biHeight;
+        public ushort biPlanes;
+        public ushort biBitCount;
+        public uint biCompression;
+        public uint biSizeImage;
+        public int biXPelsPerMeter;
+        public int biYPelsPerMeter;
+        public uint biClrUsed;
+        public uint biClrImportant;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct CIEXYZ
+    {
+        public int ciexyzX;
+        public int ciexyzY;
+        public int ciexyzZ;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct CIEXYZTRIPLE
+    {
+        public CIEXYZ ciexyzRed;
+        public CIEXYZ ciexyzGreen;
+        public CIEXYZ ciexyzBlue;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct BITMAPV4HEADER
+    {
+        public uint bV4Size;
+        public int bV4Width;
+        public int bV4Height;
+        public ushort bV4Planes;
+        public ushort bV4BitCount;
+        public uint bV4V4Compression;
+        public uint bV4SizeImage;
+        public int bV4XPelsPerMeter;
+        public int bV4YPelsPerMeter;
+        public uint bV4ClrUsed;
+        public uint bV4ClrImportant;
+        public uint bV4RedMask;
+        public uint bV4GreenMask;
+        public uint bV4BlueMask;
+        public uint bv4AlphaMask;
+        public uint bV4CSType;
+        public CIEXYZTRIPLE bV4Endpoints;
+        public uint bV4GammaRed;
+        public uint bV4GammaGreen;
+        public uint bV4GammaBlue;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct BITMAPV5HEADER
+    {
+        public uint bV5Size;
+        public int bV5Width;
+        public int bV5Height;
+        public ushort bV5Planes;
+        public ushort bV5BitCount;
+        public uint bV5Compression;
+        public uint bV5SizeImage;
+        public int bV5XPelsPerMeter;
+        public int bV5YPelsPerMeter;
+        public uint bV5ClrUsed;
+        public uint bV5ClrImportant;
+        public uint bV5RedMask;
+        public uint bV5GreenMask;
+        public uint bV5BlueMask;
+        public uint bV5AlphaMask;
+        public uint bV5CSType;
+        public CIEXYZTRIPLE bV5Endpoints;
+        public uint bV5GammaRed;
+        public uint bV5GammaGreen;
+        public uint bV5GammaBlue;
+        public uint bV5Intent;
+        public uint bV5ProfileData;
+        public uint bV5ProfileSize;
+        public uint bV5Reserved;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct RGBQUAD
+    {
+        public byte rgbBlue;
+        public byte rgbGreen;
+        public byte rgbRed;
+        public byte rgbReserved;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct BITMAPINFO
+    {
+        public BITMAPINFOHEADER bmiHeader;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1024)]
+        public RGBQUAD[] bmiColors;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct RECTL
+    {
+        public int left;
+        public int top;
+        public int right;
+        public int bottom;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct XFORM
+    {
+        public float eM11;
+        public float eM12;
+        public float eM21;
+        public float eM22;
+        public float eDx;
+        public float eDy;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRALPHABLEND
+    {
+        public EMR emr;
+        public RECTL rclBounds;
+        public int xDest;
+        public int yDest;
+        public int cxDest;
+        public int cyDest;
+        public uint dwRop;
+        public int xSrc;
+        public int ySrc;
+        public XFORM xFormSrc;
+        public uint crBkColorSrc;
+        public uint iUsageSrc;
+        public uint offBmiSrc;
+        public uint cbBmiSrc;
+        public uint offBitsSrc;
+        public uint cbBitsSrc;
+        public int cxSrc;
+        public int cySrc;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct BITMAP
+    {
+        public int bmType;
+        public int bmWidth;
+        public int bmHeight;
+        public int bmWidthBytes;
+        public ushort bmPlanes;
+        public ushort bmBitsPixel;
+        public IntPtr bmBits;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct SIZE
+    {
+        public int cx;
+        public int cy;
+    }
 }
