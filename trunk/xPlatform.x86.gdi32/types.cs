@@ -185,4 +185,145 @@ namespace xPlatform.x86.gdi32
         public int cx;
         public int cy;
     }
+
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct POINTL
+    {
+        public int x;
+        public int y;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct TRIVERTEX
+    {
+        public int x;
+        public int y;
+        public ushort Red;
+        public ushort Green;
+        public ushort Blue;
+        public ushort Alpha;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct GRADIENT_TRIANGLE
+    {
+        public uint Vertex1;
+        public uint Vertex2;
+        public uint Vertex3;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct GRADIENT_RECT
+    {
+        public uint UpperLeft;
+        public uint LowerRight;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct POINT
+    {
+        public int x;
+        public int y;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct BITMAPCOREHEADER
+    {
+        public uint bcSize;
+        public ushort bcWidth;
+        public ushort bcHeight;
+        public ushort bcPlanes;
+        public ushort bcBitCount;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct RGBTRIPLE
+    {
+        public byte rgbtBlue;
+        public byte rgbtGreen;
+        public byte rgbtRed;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct BITMAPCOREINFO
+    {
+        public BITMAPCOREHEADER bmciHeader;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1024)]
+        public RGBTRIPLE[] bmciColors;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct BITMAPFILEHEADER
+    {
+        public ushort bfType;
+        public uint bfSize;
+        public ushort bfReserved1;
+        public ushort bfReserved2;
+        public uint bfOffBits;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct COLORADJUSTMENT
+    {
+        public ushort caSize;
+        public ushort caFlags;
+        public ushort caIlluminantIndex;
+        public ushort caRedGamma;
+        public ushort caGreenGamma;
+        public ushort caBlueGamma;
+        public ushort caReferenceBlack;
+        public ushort caReferenceWhite;
+        public short caContrast;
+        public short caBrightness;
+        public short caColorfulness;
+        public short caRedGreenTint;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct DIBSECTION
+    {
+        public BITMAP dsBm;
+        public BITMAPINFOHEADER dsBmih;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
+        public uint[] dsBitfields;
+
+        public IntPtr dshSection;
+        public uint dsOffset;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct LOGBRUSH
+    {
+        public uint lbStyle;
+        public uint lbColor;
+        public int lbHatch;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct LOGBRUSH32
+    {
+        public uint lbStyle;
+        public uint lbColor;
+        public uint lbHatch;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct RECT
+    {
+        public int left;
+        public int top;
+        public int right;
+        public int bottom;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct PALETTEENTRY
+    {
+        public byte peRed;
+        public byte peGreen;
+        public byte peBlue;
+        public byte peFlags;
+    }
 }
