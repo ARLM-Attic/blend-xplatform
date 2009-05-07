@@ -608,7 +608,443 @@ namespace xPlatform.x86.gdi32
 
     partial class gdi32
     {
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AnimatePalette(
+            [In] IntPtr hpal,
+            [In] uint iStartIndex,
+            [In] uint cEntries,
+            [In, Const] IntPtr pps);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AnimatePalette(
+            [In] IntPtr hpal,
+            [In] uint iStartIndex,
+            [In] uint cEntries,
+            [In, Const] ref PALETTEENTRY pps);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreateHalftonePalette(
+            [In] IntPtr hdc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreatePalette(
+            [In, Const] IntPtr lplgpl);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr CreatePalette(
+            [In, Const] ref LOGPALETTE lplgpl);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetColorAdjustment(
+            [In] IntPtr hdc,
+            [Out] IntPtr lpca);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetColorAdjustment(
+            [In] IntPtr hdc,
+            [Out] out COLORADJUSTMENT lpca);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetNearestColor(
+            [In] IntPtr hdc,
+            [In] uint crColor);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetNearestPaletteIndex(
+            [In] IntPtr hpal,
+            [In] uint crColor);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetPaletteEntries(
+            [In] IntPtr hpal,
+            [In] uint iStartIndex,
+            [In] uint nEntries,
+            [Out] IntPtr lpps);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetPaletteEntries(
+            [In] IntPtr hpal,
+            [In] uint iStartIndex,
+            [In] uint nEntries,
+            [Out] PALETTEENTRY[] lpps);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetSystemPaletteEntries(
+            [In] IntPtr hdc,
+            [In] uint iStartIndex,
+            [In] uint nEntries,
+            [Out] IntPtr lpps);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetSystemPaletteEntries(
+            [In] IntPtr hdc,
+            [In] uint iStartIndex,
+            [In] uint nEntries,
+            [Out] PALETTEENTRY[] lpps);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetSystemPaletteUse(
+            [In] IntPtr hdc);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint RealizePalette(
+            [In] IntPtr hdc);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int ResizePalette(
+            [In] IntPtr hpal,
+            [In] uint nEntries);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr SelectPalette(
+            [In] IntPtr hdc,
+            [In] IntPtr hpal,
+            [In] int bForceBackground);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetColorAdjustment(
+            [In] IntPtr hdc,
+            [In, Const] IntPtr lpca);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetColorAdjustment(
+            [In] IntPtr hdc,
+            [In, Const] ref COLORADJUSTMENT lpca);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint SetPaletteEntries(
+            [In] IntPtr hpal,
+            [In] uint iStart,
+            [In] uint cEntries,
+            [In, Const] IntPtr lppe);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint SetPaletteEntries(
+            [In] IntPtr hpal,
+            [In] uint iStart,
+            [In] uint cEntries,
+            [In, Const] PALETTEENTRY[] lppe);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint SetSystemPaletteUse(
+            [In] IntPtr hdc,
+            [In] uint uUsage);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int UnrealizeObject(
+            [In] IntPtr hgdiobj);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int UpdateColors(
+            [In] IntPtr hdc);
     }
 
     #endregion // Color functions
+
+    #region Coordinate space and transformation functions
+
+    partial class gdi32
+    {
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ClientToScreen(
+            [In] IntPtr hWnd,
+            [In, Out] IntPtr lpPoint);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ClientToScreen(
+            [In] IntPtr hWnd,
+            [In, Out] ref POINT lpPoint);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int CombineTransform(
+            [Out] IntPtr lpxformResult,
+            [In, Const] IntPtr lpxform1,
+            [In, Const] IntPtr lpxform2);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int CombineTransform(
+            [Out] out XFORM lpxformResult,
+            [In, Const] ref XFORM lpxform1,
+            [In, Const] ref XFORM lpxform2);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int DPtoLP(
+            [In] IntPtr hdc,
+            [In, Out] IntPtr lpPoints,
+            [In] int nCount);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int DPtoLP(
+            [In] IntPtr hdc,
+            [In, Out] POINT[] lpPoints,
+            [In] int nCount);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetCurrentPositionEx(
+            [In] IntPtr hdc,
+            [Out] IntPtr lpPoint);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetCurrentPositionEx(
+            [In] IntPtr hdc,
+            [Out] out POINT lpPoint);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetGraphicsMode(
+            [In] IntPtr hdc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetMapMode(
+            [In] IntPtr hdc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetViewportExtEx(
+            [In] IntPtr hdc,
+            [Out] IntPtr lpSize);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetViewportExtEx(
+            [In] IntPtr hdc,
+            [Out] out SIZE lpSize);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetViewportOrgEx(
+            [In] IntPtr hdc,
+            [Out] IntPtr lpPoint);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetViewportOrgEx(
+            [In] IntPtr hdc,
+            [Out] out POINT lpPoint);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetWindowExtEx(
+            [In] IntPtr hdc,
+            [Out] IntPtr lpSize);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetWindowExtEx(
+            [In] IntPtr hdc,
+            [Out] out SIZE lpSize);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetWindowOrgEx(
+            [In] IntPtr hdc,
+            [Out] IntPtr lpPoint);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetWindowOrgEx(
+            [In] IntPtr hdc,
+            [Out] out POINT lpPoint);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetWorldTransform(
+            [In] IntPtr hdc,
+            [Out] IntPtr lpXform);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetWorldTransform(
+            [In] IntPtr hdc,
+            [Out] out XFORM lpXform);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int LPtoDP(
+            [In] IntPtr hdc,
+            [In, Out] POINT[] lpPoints,
+            [In] int nCount);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int MapWindowPoints(
+            [In] IntPtr hWndFrom,
+            [In] IntPtr hWndTo,
+            [In, Out] IntPtr lpPoints,
+            [In] uint cPoints);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int MapWindowPoints(
+            [In] IntPtr hWndFrom,
+            [In] IntPtr hWndTo,
+            [In, Out] POINT[] lpPoints,
+            [In] uint cPoints);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int ModifyWorldTransform(
+            [In] IntPtr hdc,
+            [In, Const] IntPtr lpXform,
+            [In] uint iMode);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int ModifyWorldTransform(
+            [In] IntPtr hdc,
+            [In, Const] ref XFORM lpXform,
+            [In] uint iMode);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int OffsetViewportOrgEx(
+            [In] IntPtr hdc,
+            [In] int nXOffset,
+            [In] int nYOffset,
+            [Out] IntPtr lpPoint);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int OffsetViewportOrgEx(
+            [In] IntPtr hdc,
+            [In] int nXOffset,
+            [In] int nYOffset,
+            [Out] out POINT lpPoint);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int OffsetWindowOrgEx(
+            [In] IntPtr hdc,
+            [In] int nXOffset,
+            [In] int nYOffset,
+            [Out] IntPtr lpPoint);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int OffsetWindowOrgEx(
+            [In] IntPtr hdc,
+            [In] int nXOffset,
+            [In] int nYOffset,
+            [Out] out POINT lpPoint);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ScaleViewportExtEx(
+            [In] IntPtr hdc,
+            [In] int Xnum,
+            [In] int Xdenom,
+            [In] int Ynum,
+            [In] int Ydenom,
+            [Out] IntPtr lpSize);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ScaleViewportExtEx(
+            [In] IntPtr hdc,
+            [In] int Xnum,
+            [In] int Xdenom,
+            [In] int Ynum,
+            [In] int Ydenom,
+            [Out] out SIZE lpSize);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ScaleWindowExtEx(
+            [In] IntPtr hdc,
+            [In] int Xnum,
+            [In] int Xdenom,
+            [In] int Ynum,
+            [In] int Ydenom,
+            [Out] IntPtr lpSize);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ScaleWindowExtEx(
+            [In] IntPtr hdc,
+            [In] int Xnum,
+            [In] int Xdenom,
+            [In] int Ynum,
+            [In] int Ydenom,
+            [Out] out SIZE lpSize);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ScreenToClient(
+            [In] IntPtr hWnd,
+            [In] IntPtr lpPoint);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ScreenToClient(
+            [In] IntPtr hWnd,
+            [In] ref POINT lpPoint);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetGraphicsMode(
+            [In] IntPtr hdc,
+            [In] int iMode);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetMapMode(
+            [In] IntPtr hdc,
+            [In] int fnMapMode);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetViewportExtEx(
+            [In] IntPtr hdc,
+            [In] int nXExtent,
+            [In] int nYExtent,
+            [Out] IntPtr lpSize);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetViewportExtEx(
+            [In] IntPtr hdc,
+            [In] int nXExtent,
+            [In] int nYExtent,
+            [Out] out SIZE lpSize);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetWindowExtEx(
+            [In] IntPtr hdc,
+            [In] int nXExtent,
+            [In] int nYExtent,
+            [Out] IntPtr lpSize);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetWindowExtEx(
+            [In] IntPtr hdc,
+            [In] int nXExtent,
+            [In] int nYExtent,
+            [Out] out SIZE lpSize);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetViewportOrgEx(
+            [In] IntPtr hdc,
+            [In] int X,
+            [In] int Y,
+            [Out] IntPtr lpSize);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetViewportOrgEx(
+            [In] IntPtr hdc,
+            [In] int X,
+            [In] int Y,
+            [Out] out SIZE lpSize);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetWindowOrgEx(
+            [In] IntPtr hdc,
+            [In] int X,
+            [In] int Y,
+            [Out] IntPtr lpSize);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetWindowOrgEx(
+            [In] IntPtr hdc,
+            [In] int X,
+            [In] int Y,
+            [Out] out SIZE lpSize);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetWorldTransform(
+            [In] IntPtr hdc,
+            [In, Const] IntPtr lpXform);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetWorldTransform(
+            [In] IntPtr hdc,
+            [In, Const] ref XFORM lpXform);
+    }
+
+    #endregion // Coordinate space and transformation functions
+
+    #region Device context functions
+
+    partial class gdi32
+    {
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int CancelDC(
+            [In] IntPtr hdc);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int ChangeDisplayMode(
+            [In] IntPtr lpDevMode,
+            [In] uint dwflags);
+    }
+
+    #endregion // Device context functions
 }

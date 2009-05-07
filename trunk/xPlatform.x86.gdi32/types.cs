@@ -326,4 +326,14 @@ namespace xPlatform.x86.gdi32
         public byte peBlue;
         public byte peFlags;
     }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct LOGPALETTE
+    {
+        public ushort palVersion;
+        public ushort palNumEntries;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1024)]
+        public PALETTEENTRY[] palPalEntry;
+    }
 }
