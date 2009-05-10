@@ -1044,6 +1044,113 @@ namespace xPlatform.x86.gdi32
         public static extern int ChangeDisplayMode(
             [In] IntPtr lpDevMode,
             [In] uint dwflags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int ChangeDisplaySettingsExA(
+            [Const, In] IntPtr lpszDeviceName,
+            [In] IntPtr lpDevMode,
+            IntPtr hwnd,
+            [In] uint dwflags,
+            [In] IntPtr lParam);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int ChangeDisplaySettingsExA(
+            [In] string lpszDeviceName,
+            [In] ref DEVMODE lpDevMode,
+            IntPtr hwnd,
+            [In] uint dwflags,
+            [In] IntPtr lParam);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int ChangeDisplaySettingsExW(
+            [Const, In] IntPtr lpszDeviceName,
+            [In] IntPtr lpDevMode,
+            IntPtr hwnd,
+            [In] uint dwflags,
+            [In] IntPtr lParam);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int ChangeDisplaySettingsExW(
+            [In] string lpszDeviceName,
+            [In] ref DEVMODE lpDevMode,
+            IntPtr hwnd,
+            [In] uint dwflags,
+            [In] IntPtr lParam);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreateCompatibleDC(
+            [In] IntPtr hdc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreateDCA(
+            [In, Const] IntPtr lpszDriver,
+            [In, Const] IntPtr lpszDevice,
+            IntPtr lpszOutput,
+            [In, Const] IntPtr lpInitData);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr CreateDCA(
+            [In] string lpszDriver,
+            [In] string lpszDevice,
+            IntPtr lpszOutput,
+            [In, Const] ref DEVMODE lpInitData);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreateDCW(
+            [In, Const] IntPtr lpszDriver,
+            [In, Const] IntPtr lpszDevice,
+            IntPtr lpszOutput,
+            [In, Const] IntPtr lpInitData);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr CreateDCW(
+            [In] string lpszDriver,
+            [In] string lpszDevice,
+            IntPtr lpszOutput,
+            [In, Const] ref DEVMODE lpInitData);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreateICA(
+            [In, Const] IntPtr lpszDriver,
+            [In, Const] IntPtr lpszDevice,
+            IntPtr lpszOutput,
+            [In, Const] IntPtr lpdvmInit);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr CreateICA(
+            [In] string lpszDriver,
+            [In] string lpszDevice,
+            IntPtr lpszOutput,
+            [In, Const] ref DEVMODE lpdvmInit);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreateICW(
+            [In, Const] IntPtr lpszDriver,
+            [In, Const] IntPtr lpszDevice,
+            IntPtr lpszOutput,
+            [In, Const] IntPtr lpdvmInit);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr CreateICW(
+            [In] string lpszDriver,
+            [In] string lpszDevice,
+            IntPtr lpszOutput,
+            [In, Const] ref DEVMODE lpdvmInit);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int DeleteDC(
+            [In] IntPtr hdc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int DeleteObject(
+            [In] IntPtr hObject);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int DrawEscape(
+            [In] IntPtr hdc,
+            [In] int nEscape,
+            [In] int cbInput,
+            [In, Const] IntPtr lpszInData);
     }
 
     #endregion // Device context functions
