@@ -1151,6 +1151,133 @@ namespace xPlatform.x86.gdi32
             [In] int nEscape,
             [In] int cbInput,
             [In, Const] IntPtr lpszInData);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int EnumDisplayDeviceA(
+            [In, Const] IntPtr lpDevice,
+            [In] uint iDevNum,
+            [Out] out DISPLAY_DEVICE lpDisplayDevice,
+            [In] uint dwFlags);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi, SetLastError = true), CLSCompliant(false)]
+        public static extern int EnumDisplayDeviceA(
+            [In] string lpDevice,
+            [In] uint iDevNum,
+            [Out] out DISPLAY_DEVICE lpDisplayDevice,
+            [In] uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int EnumDisplayDeviceW(
+            [In, Const] IntPtr lpDevice,
+            [In] uint iDevNum,
+            [Out] out DISPLAY_DEVICE lpDisplayDevice,
+            [In] uint dwFlags);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode, SetLastError = true), CLSCompliant(false)]
+        public static extern int EnumDisplayDeviceW(
+            [In] string lpDevice,
+            [In] uint iDevNum,
+            [Out] out DISPLAY_DEVICE lpDisplayDevice,
+            [In] uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int EnumDisplaySettingsA(
+            [In, Const] IntPtr lpszDeviceName,
+            [In] uint iModeNum,
+            [Out] out DEVMODE lpDevMode);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi, SetLastError = true), CLSCompliant(false)]
+        public static extern int EnumDisplaySettingsA(
+            [In] string lpszDeviceName,
+            [In] uint iModeNum,
+            [Out] out DEVMODE lpDevMode);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int EnumDisplaySettingsW(
+            [In, Const] IntPtr lpszDeviceName,
+            [In] uint iModeNum,
+            [Out] out DEVMODE lpDevMode);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode, SetLastError = true), CLSCompliant(false)]
+        public static extern int EnumDisplaySettingsW(
+            [In] string lpszDeviceName,
+            [In] uint iModeNum,
+            [Out] out DEVMODE lpDevMode);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int EnumDisplaySettingsExA(
+            [In, Const] IntPtr lpszDeviceName,
+            [In] uint iModeNum,
+            [Out] out DEVMODE lpDevMode,
+            [In] uint dwFlags);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi, SetLastError = true), CLSCompliant(false)]
+        public static extern int EnumDisplaySettingsExA(
+            [In] string lpszDeviceName,
+            [In] uint iModeNum,
+            [Out] out DEVMODE lpDevMode,
+            [In] uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int EnumDisplaySettingsExW(
+            [In, Const] IntPtr lpszDeviceName,
+            [In] uint iModeNum,
+            [Out] out DEVMODE lpDevMode,
+            [In] uint dwFlags);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode, SetLastError = true), CLSCompliant(false)]
+        public static extern int EnumDisplaySettingsExW(
+            [In] string lpszDeviceName,
+            [In] uint iModeNum,
+            [Out] out DEVMODE lpDevMode,
+            [In] uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int EnumObjects(
+            [In] IntPtr hdc,
+            [In] int nObjectType,
+            [In] IntPtr lpObjectFunc,
+            [In] IntPtr lParam);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int EnumObjects(
+            [In] IntPtr hdc,
+            [In] int nObjectType,
+            [In] EnumObjectsProc lpObjectFunc,
+            [In] IntPtr lParam);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr GetCurrentObject(
+            [In] IntPtr hdc,
+            [In] uint uObjectType);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr GetDC(
+            [In] IntPtr hWnd);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetDCBrushColor(
+            [In] IntPtr hdc);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr GetDCEx(
+            [In] IntPtr hWnd,
+            [In] IntPtr hrgnClip,
+            [In] uint flags);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetDCOrgEx(
+            [In] IntPtr hdc,
+            [Out] IntPtr lpPoint);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetDCOrgEx(
+            [In] IntPtr hdc,
+            [Out] out POINT lpPoint);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetDCPenColor(
+            [In] IntPtr hdc);
     }
 
     #endregion // Device context functions

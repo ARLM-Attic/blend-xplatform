@@ -4,6 +4,14 @@ using System.Runtime.InteropServices;
 
 namespace xPlatform.x86.gdi32
 {
+    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public delegate int EnumObjectsProc(
+        [In] IntPtr lpLogObject,
+        [In] IntPtr lpData);
+}
+
+namespace xPlatform.x86.gdi32
+{
     [Serializable, StructLayout(LayoutKind.Sequential)]
     public struct BLENDFUNCTION
     {
