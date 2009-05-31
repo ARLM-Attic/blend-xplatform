@@ -1278,7 +1278,596 @@ namespace xPlatform.x86.gdi32
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern uint GetDCPenColor(
             [In] IntPtr hdc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetDeviceCaps(
+            [In] IntPtr hdc,
+            [In] int nIndex);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetLayout(
+            [In] IntPtr hdc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetObject(
+            [In] IntPtr hgdiobj,
+            [In] int cbBuffer,
+            [Out] IntPtr lpvObject);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetObjectType(
+            [In] IntPtr h);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr GetStockObject(
+            [In] int fnObject);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ReleaseDC(
+            [In] IntPtr hWnd,
+            [In] IntPtr hDC);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr ResetDCA(
+            [In] IntPtr hdc,
+            [Const, In] IntPtr lpInitData);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr ResetDCA(
+            [In] IntPtr hdc,
+            [Const, In] ref DEVMODE lpInitData);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr ResetDCW(
+            [In] IntPtr hdc,
+            [Const, In] IntPtr lpInitData);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr ResetDCW(
+            [In] IntPtr hdc,
+            [Const, In] ref DEVMODE lpInitData);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int RestoreDC(
+            [In] IntPtr hdc,
+            [In] int nSavedDC);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SaveDC(
+            [In] IntPtr hdc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr SelectObject(
+            [In] IntPtr hdc,
+            [In] IntPtr hgdiobj);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint SetDCBrushColor(
+            [In] IntPtr hdc,
+            [In] uint crColor);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint SetDCPenColor(
+            [In] IntPtr hdc,
+            [In] uint crColor);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint SetLayout(
+            [In] IntPtr hdc,
+            [In] uint dwLayout);
     }
 
     #endregion // Device context functions
+
+    #region Filled shape functions
+
+    partial class gdi32
+    {
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int Chord(
+            [In] IntPtr hdc,
+            [In] int nLeftRect,
+            [In] int nTopRect,
+            [In] int nRightRect,
+            [In] int nBottomRect,
+            [In] int nXRadia11,
+            [In] int nYRadia11,
+            [In] int nXRadia12,
+            [In] int nYRadia12);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int Ellipse(
+            [In] IntPtr hdc,
+            [In] int nLeftRect,
+            [In] int nTopRect,
+            [In] int nRightRect,
+            [In] int nBottomRect);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int FillRect(
+            [In] IntPtr hDC,
+            [Const, In] IntPtr lprc,
+            [In] IntPtr hbr);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int FillRect(
+            [In] IntPtr hDC,
+            [In] ref RECT lprc,
+            [In] IntPtr hbr);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int FrameRect(
+            [In] IntPtr hDC,
+            [Const, In] IntPtr lprc,
+            [In] IntPtr hbr);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int FrameRect(
+            [In] IntPtr hDC,
+            [In] ref RECT lprc,
+            [In] IntPtr hbr);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int InvertRect(
+            [In] IntPtr hDC,
+            [Const, In] IntPtr lprc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int InvertRect(
+            [In] IntPtr hDC,
+            [In] ref RECT lprc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int Pie(
+            [In] IntPtr hdc,
+            [In] int nLeftRect,
+            [In] int nTopRect,
+            [In] int nRightRect,
+            [In] int nBottomRect,
+            [In] int nXRadia11,
+            [In] int nYRadia11,
+            [In] int nXRadia12,
+            [In] int nYRadia12);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int Polygon(
+            [In] IntPtr hdc,
+            [Const, In] IntPtr lpPoints,
+            [In] int nCount);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int Polygon(
+            [In] IntPtr hdc,
+            [In] POINT[] lpPoints,
+            [In] int nCount);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int PolyPolygon(
+            [In] IntPtr hdc,
+            [Const, In] IntPtr lpPoints,
+            [Const, In] IntPtr lpPolyCounts,
+            [In] int nCount);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int PolyPolygon(
+            [In] IntPtr hdc,
+            [In] POINT[] lpPoints,
+            [In] int[] lpPolyCounts,
+            [In] int nCount);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int Rectangle(
+            [In] IntPtr hdc,
+            [In] int nLeftRect,
+            [In] int nTopRect,
+            [In] int nRightRect,
+            [In] int nBottomRect);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int RoundRect(
+            [In] IntPtr hdc,
+            [In] int nLeftRect,
+            [In] int nTopRect,
+            [In] int nRightRect,
+            [In] int nBottomRect,
+            [In] int nWidth,
+            [In] int nHeight);
+    }
+
+    #endregion // Filled shape functions
+
+    #region Font and text functions
+
+    partial class gdi32
+    {
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr AddFontMemResourcesEx(
+            [In] IntPtr pbFont,
+            [In] uint cbFont,
+            [In] IntPtr pdv,
+            [In] IntPtr pcFonts);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr AddFontMemResourcesEx(
+            [In] IntPtr pbFont,
+            [In] uint cbFont,
+            [In] IntPtr pdv,
+            [In] ref uint pcFonts);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int AddFontResourceA(
+            [In, Const] IntPtr lpszFileName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
+        public static extern int AddFontResourceA(
+            [In] string lpszFileName);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int AddFontResourceW(
+            [In, Const] IntPtr lpszFileName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern int AddFontResourceW(
+            [In] string lpszFileName);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AddFontResourceExA(
+            [In, Const] IntPtr lpszFilename,
+            [In] uint fl,
+            [In] IntPtr pdv);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int AddFontResourceExA(
+            [In] string lpszFilename,
+            [In] uint fl,
+            [In] IntPtr pdv);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AddFontResourceExW(
+            [In, Const] IntPtr lpszFilename,
+            [In] uint fl,
+            [In] IntPtr pdv);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int AddFontResourceExW(
+            [In] string lpszFilename,
+            [In] uint fl,
+            [In] IntPtr pdv);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr CreateFontA(
+            [In] int nHeight,
+            [In] int nWidth,
+            [In] int nEscapement,
+            [In] int nOrientation,
+            [In] int fnWeight,
+            [In] uint fdwItalic,
+            [In] uint fdwUnderline,
+            [In] uint fdwStrikeOut,
+            [In] uint fdwCharSet,
+            [In] uint fdwOutputPrecision,
+            [In] uint fdwClipPrecision,
+            [In] uint fdwQuality,
+            [In] uint fdwPitchAndFamily,
+            [Const, In] IntPtr lpszFace);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr CreateFontA(
+            [In] int nHeight,
+            [In] int nWidth,
+            [In] int nEscapement,
+            [In] int nOrientation,
+            [In] int fnWeight,
+            [In] uint fdwItalic,
+            [In] uint fdwUnderline,
+            [In] uint fdwStrikeOut,
+            [In] uint fdwCharSet,
+            [In] uint fdwOutputPrecision,
+            [In] uint fdwClipPrecision,
+            [In] uint fdwQuality,
+            [In] uint fdwPitchAndFamily,
+            [In] string lpszFace);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr CreateFontW(
+            [In] int nHeight,
+            [In] int nWidth,
+            [In] int nEscapement,
+            [In] int nOrientation,
+            [In] int fnWeight,
+            [In] uint fdwItalic,
+            [In] uint fdwUnderline,
+            [In] uint fdwStrikeOut,
+            [In] uint fdwCharSet,
+            [In] uint fdwOutputPrecision,
+            [In] uint fdwClipPrecision,
+            [In] uint fdwQuality,
+            [In] uint fdwPitchAndFamily,
+            [Const, In] IntPtr lpszFace);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr CreateFontW(
+            [In] int nHeight,
+            [In] int nWidth,
+            [In] int nEscapement,
+            [In] int nOrientation,
+            [In] int fnWeight,
+            [In] uint fdwItalic,
+            [In] uint fdwUnderline,
+            [In] uint fdwStrikeOut,
+            [In] uint fdwCharSet,
+            [In] uint fdwOutputPrecision,
+            [In] uint fdwClipPrecision,
+            [In] uint fdwQuality,
+            [In] uint fdwPitchAndFamily,
+            [In] string lpszFace);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreateFontIndirectA(
+            [In, Const] IntPtr lplf);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
+        public static extern IntPtr CreateFontIndirectA(
+            [In] ref LOGFONT lplf);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreateFontIndirectW(
+            [In, Const] IntPtr lplf);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern IntPtr CreateFontIndirectW(
+            [In] ref LOGFONT lplf);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreateFontIndirectEx(
+            [In] IntPtr penumlfex);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr CreateFontIndirectEx(
+            [In] ref ENUMLOGFONTEX penumlfex);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CreateScalableFontResourceA(
+            [In] uint fdwHidden,
+            [Const, In] IntPtr lpszFontRes,
+            [Const, In] IntPtr lpszFontFile,
+            [Const, In] IntPtr lpszCurrentPath);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int CreateScalableFontResourceA(
+            [In] uint fdwHidden,
+            [In] string lpszFontRes,
+            [In] string lpszFontFile,
+            [In] string lpszCurrentPath);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CreateScalableFontResourceW(
+            [In] uint fdwHidden,
+            [Const, In] IntPtr lpszFontRes,
+            [Const, In] IntPtr lpszFontFile,
+            [Const, In] IntPtr lpszCurrentPath);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int CreateScalableFontResourceW(
+            [In] uint fdwHidden,
+            [In] string lpszFontRes,
+            [In] string lpszFontFile,
+            [In] string lpszCurrentPath);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DrawTextA(
+            [In] IntPtr hDC,
+            [Const, In] IntPtr lpString,
+            [In] int nCount,
+            [In, Out] IntPtr lpRect,
+            [In] uint nFormat);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int DrawTextA(
+            [In] IntPtr hDC,
+            [In] string lpString,
+            [In] int nCount,
+            [In, Out] ref RECT lpRect,
+            [In] uint nFormat);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DrawTextW(
+            [In] IntPtr hDC,
+            [Const, In] IntPtr lpString,
+            [In] int nCount,
+            [In, Out] IntPtr lpRect,
+            [In] uint nFormat);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int DrawTextW(
+            [In] IntPtr hDC,
+            [In] string lpString,
+            [In] int nCount,
+            [In, Out] ref RECT lpRect,
+            [In] uint nFormat);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DrawTextEXA(
+            [In] IntPtr hdc,
+            [In, Out] IntPtr lpchText,
+            [In] int cchText,
+            [In, Out] IntPtr lprc,
+            [In] uint dwDTFormat,
+            [In] IntPtr lpDTParams);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int DrawTextEXA(
+            [In] IntPtr hdc,
+            [In, Out] StringBuilder lpchText,
+            [In] int cchText,
+            [In, Out] ref RECT lprc,
+            [In] uint dwDTFormat,
+            [In] ref DRAWTEXTPARAMS lpDTParams);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DrawTextEXW(
+            [In] IntPtr hdc,
+            [In, Out] IntPtr lpchText,
+            [In] int cchText,
+            [In, Out] IntPtr lprc,
+            [In] uint dwDTFormat,
+            [In] IntPtr lpDTParams);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int DrawTextEXW(
+            [In] IntPtr hdc,
+            [In, Out] StringBuilder lpchText,
+            [In] int cchText,
+            [In, Out] ref RECT lprc,
+            [In] uint dwDTFormat,
+            [In] ref DRAWTEXTPARAMS lpDTParams);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int EnableEUDC(
+            [In] int fEnableEUDC);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int EnumFontFamiliesA(
+            [In] IntPtr hdc,
+            [Const, In] IntPtr lpszFamily,
+            [In] IntPtr lpEnumFontFamProc,
+            [In] IntPtr lParam);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
+        public static extern int EnumFontFamiliesA(
+            [In] IntPtr hdc,
+            [In] string lpszFamily,
+            [In] EnumFontFamProc lpEnumFontFamProc,
+            [In] IntPtr lParam);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int EnumFontFamiliesW(
+            [In] IntPtr hdc,
+            [Const, In] IntPtr lpszFamily,
+            [In] IntPtr lpEnumFontFamProc,
+            [In] IntPtr lParam);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern int EnumFontFamiliesW(
+            [In] IntPtr hdc,
+            [In] string lpszFamily,
+            [In] EnumFontFamProc lpEnumFontFamProc,
+            [In] IntPtr lParam);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int EnumFontFamiliesExA(
+            [In] IntPtr hdc,
+            [In] IntPtr lpLogfont,
+            [In] IntPtr lpEnumFontFamExProc,
+            [In] IntPtr lParam,
+            uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
+        public static extern int EnumFontFamiliesExA(
+            [In] IntPtr hdc,
+            [In] ref LOGFONT lpLogfont,
+            [In] EnumFontFamExProc lpEnumFontFamExProc,
+            [In] IntPtr lParam,
+            uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int EnumFontFamiliesExW(
+            [In] IntPtr hdc,
+            [In] IntPtr lpLogfont,
+            [In] IntPtr lpEnumFontFamExProc,
+            [In] IntPtr lParam,
+            uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern int EnumFontFamiliesExW(
+            [In] IntPtr hdc,
+            [In] ref LOGFONT lpLogfont,
+            [In] EnumFontFamExProc lpEnumFontFamExProc,
+            [In] IntPtr lParam,
+            uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int EnumFontsA(
+            [In] IntPtr hdc,
+            [In, Const] IntPtr lpFaceName,
+            [In] IntPtr lpFontFunc,
+            [In] IntPtr lParam);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
+        public static extern int EnumFontsA(
+            [In] IntPtr hdc,
+            [In] string lpFaceName,
+            [In] EnumFontsProc lpFontFunc,
+            [In] IntPtr lParam);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int EnumFontsW(
+            [In] IntPtr hdc,
+            [In, Const] IntPtr lpFaceName,
+            [In] IntPtr lpFontFunc,
+            [In] IntPtr lParam);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern int EnumFontsW(
+            [In] IntPtr hdc,
+            [In] string lpFaceName,
+            [In] EnumFontsProc lpFontFunc,
+            [In] IntPtr lParam);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int ExtTextOutA(
+            [In] IntPtr hdc,
+            [In] int X,
+            [In] int Y,
+            [In] uint fuOptions,
+            [Const, In] IntPtr lprc,
+            [Const, In] IntPtr lpString,
+            [In] uint cbCount,
+            [Const, In] IntPtr lpDx);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int ExtTextOutA(
+            [In] IntPtr hdc,
+            [In] int X,
+            [In] int Y,
+            [In] uint fuOptions,
+            [In] ref RECT lprc,
+            [In] string lpString,
+            [In] uint cbCount,
+            [In] int[] lpDx);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int ExtTextOutW(
+            [In] IntPtr hdc,
+            [In] int X,
+            [In] int Y,
+            [In] uint fuOptions,
+            [Const, In] IntPtr lprc,
+            [Const, In] IntPtr lpString,
+            [In] uint cbCount,
+            [Const, In] IntPtr lpDx);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int ExtTextOutW(
+            [In] IntPtr hdc,
+            [In] int X,
+            [In] int Y,
+            [In] uint fuOptions,
+            [In] ref RECT lprc,
+            [In] string lpString,
+            [In] uint cbCount,
+            [In] int[] lpDx);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetAspectRatioFilterEx(
+            [In] IntPtr hdc,
+            [Out] IntPtr lpAspectRatio);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetAspectRatioFilterEx(
+            [In] IntPtr hdc,
+            [Out] out SIZE lpAspectRatio);
+    }
+
+    #endregion // Font and text functions
 }

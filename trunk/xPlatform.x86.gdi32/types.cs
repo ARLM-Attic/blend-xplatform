@@ -8,6 +8,27 @@ namespace xPlatform.x86.gdi32
     public delegate int EnumObjectsProc(
         [In] IntPtr lpLogObject,
         [In] IntPtr lpData);
+
+    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public delegate int EnumFontFamProc(
+        [In] IntPtr lpelf,
+        [In] IntPtr lpntm,
+        [In] uint FontType,
+        [In] IntPtr lParam);
+
+    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public delegate int EnumFontFamExProc(
+        [In] IntPtr lpelfe,
+        [In] IntPtr lpntme,
+        [In] uint FontType,
+        [In] IntPtr lParam);
+
+    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public delegate int EnumFontsProc(
+        [Const, In] IntPtr lplf,
+        [Const, In] IntPtr lptm,
+        [In] uint dwType,
+        [In] IntPtr lpData);
 }
 
 namespace xPlatform.x86.gdi32
@@ -483,5 +504,230 @@ namespace xPlatform.x86.gdi32
 
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 128)]
         public string DeviceKey;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct VIDEOPARAMETERS
+    {
+        public Guid guid;
+        public uint dwOffset;
+        public uint dwCommand;
+        public uint dwFlags;
+        public uint dwMode;
+        public uint dwTVStandard;
+        public uint dwAvailableModes;
+        public uint dwAvailableTVStandard;
+        public uint dwFlickerFilter;
+        public uint dwOverScanX;
+        public uint dwOverScanY;
+        public uint dwMaxUnscaledX;
+        public uint dwMaxUnscaledY;
+        public uint dwPositionX;
+        public uint dwPositionY;
+        public uint dwBrightness;
+        public uint dwContrast;
+        public uint dwCPType;
+        public uint dwCPCommand;
+        public uint dwCPStandard;
+        public uint dwCPKey;
+        public uint bCP_APSTriggerBits;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 256)]
+        public byte[] bOEMCopyProtection;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
+    public struct LOGFONT
+    {
+        public int lfHeight;
+        public int lfWidth;
+        public int lfEscapement;
+        public int lfOrientation;
+        public int lfWeight;
+        public byte lfItalic;
+        public byte lfUnderline;
+        public byte lfStrikeOut;
+        public byte lfCharSet;
+        public byte lfOutPrecision;
+        public byte lfClipPrecision;
+        public byte lfQuality;
+        public byte lfPitchAndFamily;
+
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+        public string lfFaceName;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
+    public struct ENUMLOGFONTEX
+    {
+        public LOGFONT elfLogFont;
+
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 64)]
+        public string elfFullName;
+
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+        public string elfStyle;
+
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+        public string elfScript;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct DESIGNVECTOR
+    {
+        public uint dvReserved;
+        public uint dvNumAxes;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 16)]
+        public int[] dvValues;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct ENUMLOGFONTEXDV
+    {
+        public ENUMLOGFONTEX elfEnumLogfontEx;
+        public DESIGNVECTOR elfDesignVector;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct DRAWTEXTPARAMS
+    {
+        public uint cbSize;
+        public int iTabLength;
+        public int iLeftMargin;
+        public int iRightMargin;
+        public uint uiLengthDrawn;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct FONTSIGNATURE
+    {
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
+        public uint[] fsUsb;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
+        public uint[] fsCsb;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct TEXTMETRICA
+    {
+        public int tmHeight;
+        public int tmAscent;
+        public int tmDescent;
+        public int tmInternalLeading;
+        public int tmExternalLeading;
+        public int tmAveCharWidth;
+        public int tmMaxCharWidth;
+        public int tmWeight;
+        public int tmOverhang;
+        public int tmDigitizedAspectX;
+        public int tmDigitizedAspectY;
+        public byte tmFirstChar;
+        public byte tmLastChar;
+        public byte tmDefaultChar;
+        public byte tmBreakChar;
+        public byte tmItalic;
+        public byte tmUnderlined;
+        public byte tmStruckOut;
+        public byte tmPitchAndFamily;
+        public byte tmCharSet;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct TEXTMETRICW
+    {
+        public int tmHeight;
+        public int tmAscent;
+        public int tmDescent;
+        public int tmInternalLeading;
+        public int tmExternalLeading;
+        public int tmAveCharWidth;
+        public int tmMaxCharWidth;
+        public int tmWeight;
+        public int tmOverhang;
+        public int tmDigitizedAspectX;
+        public int tmDigitizedAspectY;
+        public char tmFirstChar;
+        public char tmLastChar;
+        public char tmDefaultChar;
+        public char tmBreakChar;
+        public byte tmItalic;
+        public byte tmUnderlined;
+        public byte tmStruckOut;
+        public byte tmPitchAndFamily;
+        public byte tmCharSet;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct NEWTEXTMETRICA
+    {
+        public int tmHeight;
+        public int tmAscent;
+        public int tmDescent;
+        public int tmInternalLeading;
+        public int tmExternalLeading;
+        public int tmAveCharWidth;
+        public int tmMaxCharWidth;
+        public int tmWeight;
+        public int tmOverhang;
+        public int tmDigitizedAspectX;
+        public int tmDigitizedAspectY;
+        public byte tmFirstChar;
+        public byte tmLastChar;
+        public byte tmDefaultChar;
+        public byte tmBreakChar;
+        public byte tmItalic;
+        public byte tmUnderlined;
+        public byte tmStruckOut;
+        public byte tmPitchAndFamily;
+        public byte tmCharSet;
+        public uint ntmFlags;
+        public uint ntmSizeEM;
+        public uint ntmCellHeight;
+        public uint ntmAvgWidth;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct NEWTEXTMETRICW
+    {
+        public int tmHeight;
+        public int tmAscent;
+        public int tmDescent;
+        public int tmInternalLeading;
+        public int tmExternalLeading;
+        public int tmAveCharWidth;
+        public int tmMaxCharWidth;
+        public int tmWeight;
+        public int tmOverhang;
+        public int tmDigitizedAspectX;
+        public int tmDigitizedAspectY;
+        public char tmFirstChar;
+        public char tmLastChar;
+        public char tmDefaultChar;
+        public char tmBreakChar;
+        public byte tmItalic;
+        public byte tmUnderlined;
+        public byte tmStruckOut;
+        public byte tmPitchAndFamily;
+        public byte tmCharSet;
+        public uint ntmFlags;
+        public uint ntmSizeEM;
+        public uint ntmCellHeight;
+        public uint ntmAvgWidth;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct NEWTEXTMETRICEXA
+    {
+        public NEWTEXTMETRICA ntmTm;
+        public FONTSIGNATURE ntmFontSig;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct NEWTEXTMETRICEXW
+    {
+        public NEWTEXTMETRICW ntmTm;
+        public FONTSIGNATURE ntmFontSig;
     }
 }
