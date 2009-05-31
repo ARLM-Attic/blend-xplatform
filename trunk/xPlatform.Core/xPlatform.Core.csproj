@@ -46,7 +46,10 @@
     <Compile Include="Flags\ConstAttribute.cs" />
     <Compile Include="Flags\ReadonlyAttribute.cs" />
     <Compile Include="Flags\TodoAttribute.cs" />
+    <Compile Include="ITypedPointer.cs" />
     <Compile Include="ModuleBase.cs" />
+    <Compile Include="NonStandard\IUnsafePointer.cs" />
+    <Compile Include="NonStandard\IUnsignedPointer.cs" />
     <Compile Include="Pointer.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="VoidPointer.cs" />

@@ -2,13 +2,14 @@
 using System.Globalization;
 using System.Runtime.Serialization;
 using System.Runtime.InteropServices;
+using xPlatform.NonStandard;
 
 namespace xPlatform
 {
     [Serializable]
     [ComVisible(false)]
     [StructLayout(LayoutKind.Sequential)]
-    public unsafe struct Pointer<T> : ISerializable, IPointer<T>
+    public unsafe struct Pointer<T> : ISerializable, ITypedPointer<T>, IUnsafePointer, IUnsignedPointer, IPointer
         where T : struct
     {
         public static readonly Pointer<T> Zero;
@@ -71,6 +72,29 @@ namespace xPlatform
         public long ToInt64()
         {
             return (long)((int)this.internalPointer);
+        }
+
+        public IntPtr ToIntPtr()
+        {
+            return new IntPtr(this.internalPointer);
+        }
+
+        [CLSCompliant(false)]
+        public uint ToUInt32()
+        {
+            return (uint)this.internalPointer;
+        }
+
+        [CLSCompliant(false)]
+        public ulong ToUInt64()
+        {
+            return (ulong)this.internalPointer;
+        }
+
+        [CLSCompliant(false)]
+        public UIntPtr ToUIntPtr()
+        {
+            return new UIntPtr(this.internalPointer);
         }
 
         [CLSCompliant(false)]
