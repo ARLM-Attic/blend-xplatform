@@ -222,8 +222,10 @@ namespace xPlatform.x86.kernel32
         [DllImport(ModuleName, CharSet = CharSet.Unicode, SetLastError = true), CLSCompliant(false)]
         public static extern uint FormatMessageW(uint dwFlags, [Const] IntPtr lpSource, uint dwMessageId, uint dwLanguageId, StringBuilder lpBuffer, uint nSize, IntPtr Arguments);
 
-        [DllImport(ModuleName), CLSCompliant(false)]
-        public static extern uint GetLastError();
+        public static int GetLastError()
+        {
+            return Marshal.GetLastWin32Error();
+        }
 
         [DllImport(ModuleName), CLSCompliant(false)]
         public static extern uint SetErrorMode(uint uMode);
