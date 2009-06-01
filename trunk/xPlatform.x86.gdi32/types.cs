@@ -9,21 +9,21 @@ namespace xPlatform.x86.gdi32
         [In] IntPtr lpLogObject,
         [In] IntPtr lpData);
 
-    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi), CLSCompliant(false)]
     public delegate int EnumFontFamProc(
         [In] IntPtr lpelf,
         [In] IntPtr lpntm,
         [In] uint FontType,
         [In] IntPtr lParam);
 
-    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi), CLSCompliant(false)]
     public delegate int EnumFontFamExProc(
         [In] IntPtr lpelfe,
         [In] IntPtr lpntme,
         [In] uint FontType,
         [In] IntPtr lParam);
 
-    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi), CLSCompliant(false)]
     public delegate int EnumFontsProc(
         [Const, In] IntPtr lplf,
         [Const, In] IntPtr lptm,
@@ -599,7 +599,7 @@ namespace xPlatform.x86.gdi32
         public uint uiLengthDrawn;
     }
 
-    [Serializable, StructLayout(LayoutKind.Sequential)]
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
     public struct FONTSIGNATURE
     {
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
@@ -730,4 +730,210 @@ namespace xPlatform.x86.gdi32
         public NEWTEXTMETRICW ntmTm;
         public FONTSIGNATURE ntmFontSig;
     }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct ABC
+    {
+        public int abcA;
+        public uint abcB;
+        public int abcC;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct ABCFLOAT
+    {
+        public float abcfA;
+        public float abcfB;
+        public float abcfC;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct GCP_RESULTS
+    {
+        public uint lStructSize;
+        public IntPtr lpOutString;
+        public IntPtr lpOrder;
+        public IntPtr lpDx;
+        public IntPtr lpCaretPos;
+        public IntPtr lpClass;
+        public IntPtr lpGlyphs;
+        public uint nGlyphs;
+        public int nMaxFit;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct WCRANGE
+    {
+        public ushort wcLow;
+        public ushort cGlyphs;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct GLYPHSET
+    {
+        public uint cbThis;
+        public uint flAccel;
+        public uint cGlyphsSupported;
+        public uint cRanges;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public WCRANGE[] ranges;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct GLYPHMETRICS
+    {
+        public uint gmBlackBoxX;
+        public uint gmBlackBoxY;
+        public POINT gmptGlyphOrigin;
+        public short gmCellIncX;
+        public short gmCellIncY;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct FIXED
+    {
+        public ushort fract;
+        public short value;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct MAT2
+    {
+        public FIXED eM11;
+        public FIXED eM12;
+        public FIXED eM21;
+        public FIXED eM22;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct PANOSE
+    {
+        public byte bFamilyType;
+        public byte bSerifStyle;
+        public byte bWeight;
+        public byte bProportion;
+        public byte bContrast;
+        public byte bStrokeVariation;
+        public byte bArmStyle;
+        public byte bLetterform;
+        public byte bMidline;
+        public byte bXHeight;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct OUTLINETEXTMETRICA
+    {
+        public uint otmSize;
+        public TEXTMETRICA otmTextMetrics;
+        public byte otmFiller;
+        public PANOSE otmPanoseNumber;
+        public uint otmfsSelection;
+        public uint otmfsType;
+        public int otmsCharSlopeRise;
+        public int otmsCharSlopeRun;
+        public int otmItalicAngle;
+        public uint otmEMSquare;
+        public int otmAscent;
+        public int otmDescent;
+        public uint otmLineGap;
+        public uint otmsCapEmHeight;
+        public uint otmsXHeight;
+        public RECT otmrcFontBox;
+        public int otmMacAscent;
+        public int otmMacDescent;
+        public uint otmMacLineGap;
+        public uint otmusMinimumPPEM;
+        public POINT otmptSubscriptSize;
+        public POINT otmptSubscriptOffset;
+        public POINT otmptSuperscriptSize;
+        public POINT otmptSuperscriptOffset;
+        public uint otmsStrikeoutSize;
+        public int otmsStrikeoutPosition;
+        public int otmUnderscoreSize;
+        public int otmUnderscorePosition;
+        public IntPtr otmpFamilyName;
+        public IntPtr otmpFaceName;
+        public IntPtr otmpStyleName;
+        public IntPtr otmpFullName;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct OUTLINETEXTMETRICW
+    {
+        public uint otmSize;
+        public TEXTMETRICW otmTextMetrics;
+        public byte otmFiller;
+        public PANOSE otmPanoseNumber;
+        public uint otmfsSelection;
+        public uint otmfsType;
+        public int otmsCharSlopeRise;
+        public int otmsCharSlopeRun;
+        public int otmItalicAngle;
+        public uint otmEMSquare;
+        public int otmAscent;
+        public int otmDescent;
+        public uint otmLineGap;
+        public uint otmsCapEmHeight;
+        public uint otmsXHeight;
+        public RECT otmrcFontBox;
+        public int otmMacAscent;
+        public int otmMacDescent;
+        public uint otmMacLineGap;
+        public uint otmusMinimumPPEM;
+        public POINT otmptSubscriptSize;
+        public POINT otmptSubscriptOffset;
+        public POINT otmptSuperscriptSize;
+        public POINT otmptSuperscriptOffset;
+        public uint otmsStrikeoutSize;
+        public int otmsStrikeoutPosition;
+        public int otmUnderscoreSize;
+        public int otmUnderscorePosition;
+        public IntPtr otmpFamilyName;
+        public IntPtr otmpFaceName;
+        public IntPtr otmpStyleName;
+        public IntPtr otmpFullName;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct KERNINGPAIR
+    {
+        public ushort wFirst;
+        public ushort wSecond;
+        public int iKernAmount;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct RASTERIZER_STATUS
+    {
+        public short nSize;
+        public short wFlags;
+        public short nLanguageID;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct POLYTEXT
+    {
+        public int x;
+        public int y;
+        public uint n;
+        public IntPtr lpstr;
+        public uint uiFlags;
+        public RECT rcl;
+        public IntPtr pdx;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct POINTFX
+    {
+        public FIXED x;
+        public FIXED y;
+    }
+
+    // AXISINFO
+    // AXESLIST
+    // EXTLOGFONT
+    // TTPOLYCURVE
+    // TTPOLYGONHEADER
+    // WCRANGE
 }
