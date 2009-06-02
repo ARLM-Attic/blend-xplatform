@@ -29,6 +29,20 @@ namespace xPlatform.x86.gdi32
         [Const, In] IntPtr lptm,
         [In] uint dwType,
         [In] IntPtr lpData);
+
+    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public delegate void LineDDAProc(
+        [In] int X,
+        [In] int Y,
+        [In] IntPtr lpData);
+
+    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public delegate int EnhMetaFileProc(
+        [In] IntPtr hDC,
+        [In] IntPtr lpHTable,
+        [In, Const] IntPtr lpEMFR,
+        [In] int nObj,
+        [In] IntPtr lpData);
 }
 
 namespace xPlatform.x86.gdi32
@@ -930,10 +944,71 @@ namespace xPlatform.x86.gdi32
         public FIXED y;
     }
 
-    // AXISINFO
-    // AXESLIST
-    // EXTLOGFONT
-    // TTPOLYCURVE
-    // TTPOLYGONHEADER
-    // WCRANGE
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct AXISINFO
+    {
+        public int axMinValue;
+        public int axMaxValue;
+
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 16)]
+        public string axAxisName;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct AXESLIST
+    {
+        public uint axlReserved;
+        public uint axlNumAxes;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 16)]
+        public AXISINFO[] axlAxisInfo;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EXTLOGFONT
+    {
+        public LOGFONT elfLogFont;
+
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 64)]
+        public string elfFullName;
+
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+        public string elfStyle;
+
+        public uint elfVersion;
+        public uint elfStyleSize;
+        public uint elfMatch;
+        public uint elfReserved;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
+        public byte[] elfVendorId;
+
+        public uint elfCulture;
+        public PANOSE elfPanose;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct TTPOLYCURVE
+    {
+        public ushort wType;
+        public ushort cpfx;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public POINTFX[] apfx;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct TTPOLYGONHEADER
+    {
+        public uint cb;
+        public uint dwType;
+        public POINTFX pfxStart;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct HANDLETABLE
+    {
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public IntPtr[] objectHandle;
+    }
 }

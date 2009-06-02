@@ -2614,12 +2614,248 @@ namespace xPlatform.x86.gdi32
 
     #endregion // Font and text functions
 
-    #region Font embedding functions
+    #region Line and curve functions
 
     partial class gdi32
     {
-        // CFP_ALLOCPROC
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AngleArc(
+            [In] IntPtr hdc,
+            [In] int X,
+            [In] int Y,
+            [In] uint dwRadius,
+            [In] float eStartAngle,
+            [In] float eSweepAngle);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int Arc(
+            [In] IntPtr hdc,
+            [In] int nLeftRect,
+            [In] int nTopRect,
+            [In] int nRightRect,
+            [In] int nBottomRect,
+            [In] int nXStartArc,
+            [In] int nYStartArc,
+            [In] int nXEndArc,
+            [In] int nYEndArc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ArcTo(
+            [In] IntPtr hdc,
+            [In] int nLeftRect,
+            [In] int nTopRect,
+            [In] int nRightRect,
+            [In] int nBottomRect,
+            [In] int nXRadia11,
+            [In] int nYRadia11,
+            [In] int nXRadia12,
+            [In] int nYRadia12);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetArcDirection(
+            [In] IntPtr hdc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int LineDDA(
+            [In] int nXStart,
+            [In] int nYStart,
+            [In] int nXEnd,
+            [In] int nYEnd,
+            [In] LineDDAProc lpLineFunc,
+            [In] IntPtr lpData);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int LineTo(
+            [In] IntPtr hdc,
+            [In] int nXEnd,
+            [In] int nYEnd);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int MoveToEx(
+            [In] IntPtr hdc,
+            [In] int X,
+            [In] int Y,
+            [Out] IntPtr lpPoint);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int MoveToEx(
+            [In] IntPtr hdc,
+            [In] int X,
+            [In] int Y,
+            [Out] out POINT lpPoint);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int PolyBezier(
+            [In] IntPtr hdc,
+            [Const, In] IntPtr lppt,
+            [In] uint cPoints);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int PolyBezier(
+            [In] IntPtr hdc,
+            [In] POINT[] lppt,
+            [In] uint cPoints);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int PolyBezierTo(
+            [In] IntPtr hdc,
+            [Const, In] IntPtr lppt,
+            [In] uint cPoints);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int PolyBezierTo(
+            [In] IntPtr hdc,
+            [In] POINT[] lppt,
+            [In] uint cPoints);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int PolyDraw(
+            [In] IntPtr hdc,
+            [Const, In] IntPtr lppt,
+            [Const, In] IntPtr lpbTypes,
+            [In] int cCount);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int PolyDraw(
+            [In] IntPtr hdc,
+            [In] POINT[] lppt,
+            [In] byte[] lpbTypes,
+            [In] int cCount);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int Polyline(
+            [In] IntPtr hdc,
+            [Const, In] IntPtr lppt,
+            [In] uint cPoints);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int Polyline(
+            [In] IntPtr hdc,
+            [In] POINT[] lppt,
+            [In] uint cPoints);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int PolylineTo(
+            [In] IntPtr hdc,
+            [Const, In] IntPtr lppt,
+            [In] uint cPoints);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int PolylineTo(
+            [In] IntPtr hdc,
+            [In] POINT[] lppt,
+            [In] uint cPoints);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int PolyPolyline(
+            [In] IntPtr hdc,
+            [Const, In] IntPtr lppt,
+            [Const, In] IntPtr lpdwPolyPoints,
+            [In] uint cCount);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int PolyPolyline(
+            [In] IntPtr hdc,
+            [In] POINT[] lppt,
+            [In] uint[] lpdwPolyPoints,
+            [In] uint cCount);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetArcDirection(
+            [In] IntPtr hdc,
+            [In] int ArcDirection);
     }
 
-    #endregion // Font embedding functions
+    #endregion // Line and curve functions
+
+    #region Meta file functions
+
+    partial class gdi32
+    {
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CloseEnhMetaFile(
+            [In] IntPtr hdc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CopyEnhMetaFileA(
+            [In] IntPtr hemfSrc,
+            [In, Const] IntPtr lpszFile);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
+        public static extern IntPtr CopyEnhMetaFileA(
+            [In] IntPtr hemfSrc,
+            [In] string lpszFile);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CopyEnhMetaFileW(
+            [In] IntPtr hemfSrc,
+            [In, Const] IntPtr lpszFile);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern IntPtr CopyEnhMetaFileW(
+            [In] IntPtr hemfSrc,
+            [In] string lpszFile);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreateEnhMetaFileA(
+            [In] IntPtr hdcRef,
+            [In, Const] IntPtr lpFilename,
+            [In, Const] IntPtr lpRect,
+            [In, Const] IntPtr lpDescription);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
+        public static extern IntPtr CreateEnhMetaFileA(
+            [In] IntPtr hdcRef,
+            [In] string lpFilename,
+            [In] ref RECT lpRect,
+            [In] string lpDescription);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreateEnhMetaFileW(
+            [In] IntPtr hdcRef,
+            [In, Const] IntPtr lpFilename,
+            [In, Const] IntPtr lpRect,
+            [In, Const] IntPtr lpDescription);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern IntPtr CreateEnhMetaFileW(
+            [In] IntPtr hdcRef,
+            [In] string lpFilename,
+            [In] ref RECT lpRect,
+            [In] string lpDescription);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int DeleteEnhMetaFile(
+            [In] IntPtr hemf);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int EnumEnhMetaFile(
+            [In] IntPtr hdc,
+            [In] IntPtr hemf,
+            [In] IntPtr lpEnhMetaFunc,
+            [In] IntPtr lpdata,
+            [In, Const] IntPtr lpRect);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int EnumEnhMetaFile(
+            [In] IntPtr hdc,
+            [In] IntPtr hemf,
+            [In] EnhMetaFileProc lpEnhMetaFunc,
+            [In] IntPtr lpdata,
+            [In] ref RECT lpRect);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GdiComment(
+            [In] IntPtr hdc,
+            [In] uint cbSize,
+            [Const, In] IntPtr lpData);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GdiComment(
+            [In] IntPtr hdc,
+            [In] uint cbSize,
+            [In] byte[] lpData);
+    }
+
+    #endregion // Meta file functions
 }
