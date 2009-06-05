@@ -2855,6 +2855,241 @@ namespace xPlatform.x86.gdi32
             [In] IntPtr hdc,
             [In] uint cbSize,
             [In] byte[] lpData);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr GetEnhMetaFileA(
+            [In, Const] IntPtr lpszMetaFile);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
+        public static extern IntPtr GetEnhMetaFileA(
+            [In] string lpszMetaFile);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr GetEnhMetaFileW(
+            [In, Const] IntPtr lpszMetaFile);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern IntPtr GetEnhMetaFileW(
+            [In] string lpszMetaFile);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetEnhMetaFileBits(
+            [In] IntPtr hemf,
+            [In] uint cbBuffer,
+            [Out] IntPtr lpbBuffer);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetEnhMetaFileBits(
+            [In] IntPtr hemf,
+            [In] uint cbBuffer,
+            [Out] byte[] lpbBuffer);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetEnhMetaFileDescriptionA(
+            [In] IntPtr hemf,
+            [In] uint cchBuffer,
+            [Out] IntPtr lpszDescription);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern uint GetEnhMetaFileDescriptionA(
+            [In] IntPtr hemf,
+            [In] uint cchBuffer,
+            [Out] StringBuilder lpszDescription);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetEnhMetaFileDescriptionW(
+            [In] IntPtr hemf,
+            [In] uint cchBuffer,
+            [Out] IntPtr lpszDescription);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern uint GetEnhMetaFileDescriptionW(
+            [In] IntPtr hemf,
+            [In] uint cchBuffer,
+            [Out] StringBuilder lpszDescription);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetEnhMetaFileHeader(
+            [In] IntPtr hemf,
+            [In] uint cbBuffer,
+            [Out] IntPtr lpemh);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetEnhMetaFileHeader(
+            [In] IntPtr hemf,
+            [In] uint cbBuffer,
+            [Out] out ENHMETAHEADER lpemh);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetEnhMetaFilePaletteEntries(
+            [In] IntPtr hemf,
+            [In] uint cEntries,
+            [Out] IntPtr lppe);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetEnhMetaFilePaletteEntries(
+            [In] IntPtr hemf,
+            [In] uint cEntries,
+            [Out] PALETTEENTRY[] lppe);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetWinMetaFileBits(
+            [In] IntPtr hemf,
+            [In] uint cbBuffer,
+            [Out] IntPtr lpbBuffer,
+            [In] int fnMapMode,
+            [In] IntPtr hdcRef);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetWinMetaFileBits(
+            [In] IntPtr hemf,
+            [In] uint cbBuffer,
+            [Out] byte[] lpbBuffer,
+            [In] int fnMapMode,
+            [In] IntPtr hdcRef);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int PlayEnhMetaFile(
+            [In] IntPtr hdc,
+            [In] IntPtr hemf,
+            [In, Const] IntPtr lpRect);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int PlayEnhMetaFile(
+            [In] IntPtr hdc,
+            [In] IntPtr hemf,
+            [In, Const] ref RECT lpRect);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int PlayEnhMetaFileRecord(
+            [In] IntPtr hdc,
+            [In] IntPtr lpHandletable,
+            [In, Const] IntPtr lpEnhMetaRecord,
+            [In] uint nHandles);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int PlayEnhMetaFileRecord(
+            [In] IntPtr hdc,
+            [In] ref HANDLETABLE lpHandletable,
+            [In, Const] ref ENHMETARECORD lpEnhMetaRecord,
+            [In] uint nHandles);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr SetEnhMetaFileBits(
+            [In] uint cbBuffer,
+            [In, Const] IntPtr lpData);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr SetEnhMetaFileBits(
+            [In] uint cbBuffer,
+            [In, Const] byte[] lpData);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr SetWinMetaFileBits(
+            [In] uint cbBuffer,
+            [In, Const] IntPtr lpbBuffer,
+            [In] IntPtr hdcRef,
+            [In, Const] IntPtr lpmfp);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr SetWinMetaFileBits(
+            [In] uint cbBuffer,
+            [In, Const] byte[] lpbBuffer,
+            [In] IntPtr hdcRef,
+            [In, Const] ref METAFILEPICT lpmfp);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CloseMetaFile(
+            [In] IntPtr hdc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CopyMetaFileA(
+            [In] IntPtr hmfSrc,
+            [In, Const] IntPtr lpszFile);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
+        public static extern IntPtr CopyMetaFileA(
+            [In] IntPtr hmfSrc,
+            [In] string lpszFile);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CopyMetaFileW(
+            [In] IntPtr hmfSrc,
+            [In, Const] IntPtr lpszFile);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern IntPtr CopyMetaFileW(
+            [In] IntPtr hmfSrc,
+            [In] string lpszFile);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreateMetaFileA(
+            [In, Const] IntPtr lpszFile);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
+        public static extern IntPtr CreateMetaFileA(
+            [In] string lpszFile);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreateMetaFileW(
+            [In, Const] IntPtr lpszFile);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern IntPtr CreateMetaFileW(
+            [In] string lpszFile);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int DeleteMetaFile(
+            [In] IntPtr hmf);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int EnumMetaFile(
+            [In] IntPtr hdc,
+            [In] IntPtr hmf,
+            [In] IntPtr lpMetaFunc,
+            [In] IntPtr lParam);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int EnumMetaFile(
+            [In] IntPtr hdc,
+            [In] IntPtr hmf,
+            [In] EnumMetaFileProc lpMetaFunc,
+            [In] IntPtr lParam);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetMetaFileBitsEx(
+            [In] IntPtr hmf,
+            [In] uint nSize,
+            [Out] IntPtr lpvData);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int PlayMetaFile(
+            [In] IntPtr hdc,
+            [In] IntPtr hmf);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int PlayMetaFileRecord(
+            [In] IntPtr hdc,
+            [In] IntPtr lpHandletable,
+            [In] IntPtr lpMetaRecord,
+            [In] uint nHandles);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int PlayMetaFileRecord(
+            [In] IntPtr hdc,
+            [In] ref HANDLETABLE lpHandletable,
+            [In] ref METARECORD lpMetaRecord,
+            [In] uint nHandles);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr SetMetaFileBitsEx(
+            [In] uint nSize,
+            [In, Const] IntPtr lpData);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr SetMetaFileBitsEx(
+            [In] uint nSize,
+            [In, Const] byte[] lpData);
     }
 
     #endregion // Meta file functions

@@ -43,6 +43,14 @@ namespace xPlatform.x86.gdi32
         [In, Const] IntPtr lpEMFR,
         [In] int nObj,
         [In] IntPtr lpData);
+
+    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public delegate int EnumMetaFileProc(
+        [In] IntPtr hDC,
+        [In] IntPtr lpHTable,
+        [In] IntPtr lpMFR,
+        [In] int nObj,
+        [In] IntPtr lpClientData);
 }
 
 namespace xPlatform.x86.gdi32
@@ -224,6 +232,13 @@ namespace xPlatform.x86.gdi32
 
     [Serializable, StructLayout(LayoutKind.Sequential)]
     public struct SIZE
+    {
+        public int cx;
+        public int cy;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct SIZEL
     {
         public int cx;
         public int cy;
@@ -964,8 +979,31 @@ namespace xPlatform.x86.gdi32
         public AXISINFO[] axlAxisInfo;
     }
 
-    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    [Serializable, StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi), CLSCompliant(false)]
     public struct EXTLOGFONT
+    {
+        public LOGFONT elfLogFont;
+
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 64)]
+        public string elfFullName;
+
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+        public string elfStyle;
+
+        public uint elfVersion;
+        public uint elfStyleSize;
+        public uint elfMatch;
+        public uint elfReserved;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
+        public byte[] elfVendorId;
+
+        public uint elfCulture;
+        public PANOSE elfPanose;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode), CLSCompliant(false)]
+    public struct EXTLOGFONTW
     {
         public LOGFONT elfLogFont;
 
@@ -1011,4 +1049,912 @@ namespace xPlatform.x86.gdi32
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
         public IntPtr[] objectHandle;
     }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct ENHMETAHEADER
+    {
+        public uint iType;
+        public uint nSize;
+        public RECTL rclBounds;
+        public RECTL rclFrame;
+        public uint dSignature;
+        public uint nVersion;
+        public uint nBytes;
+        public uint nRecords;
+        public ushort nHandles;
+        public ushort sReserved;
+        public uint nDescription;
+        public uint offDescription;
+        public uint nPalEntries;
+        public SIZEL szlDevice;
+        public SIZEL szlMillimeters;
+        public uint cbPixelFormat;
+        public uint offPixelFormat;
+        public uint bOpenGL;
+        public SIZEL szlMicrometers;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct ENHMETARECORD
+    {
+        public uint iType;
+        public uint nSize;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public uint[] dParm;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct METAFILEPICT
+    {
+        public int mm;
+        public int xExt;
+        public int yExt;
+        public IntPtr hMF;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct METARECORD
+    {
+        public uint rdSize;
+        public ushort rdFunction;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public ushort[] rdParm;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRTEXT
+    {
+        public POINTL ptlReference;
+        public uint nChars;
+        public uint offString;
+        public uint fOptions;
+        public RECTL rcl;
+        public uint offDx;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRTRANSPARENTBLT
+    {
+        public EMR emr;
+        public RECTL rclBounds;
+        public int xDest;
+        public int yDest;
+        public int cxDest;
+        public int cyDest;
+        public uint dwRop;
+        public int xSrc;
+        public int ySrc;
+        public XFORM xformSrc;
+        public uint crBkColorSrc;
+        public uint iUsageSrc;
+        public uint offBmiSrc;
+        public uint cbBmiSrc;
+        public uint offBitsSrc;
+        public uint cbBitsSrc;
+        public int cxSrc;
+        public int cySrc;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRABORTPATH
+    {
+        public EMR emr;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRBEGINPATH
+    {
+        public EMR emr;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRENDPATH
+    {
+        public EMR emr;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRCLOSEFIGURE
+    {
+        public EMR emr;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRFLATTENPATH
+    {
+        public EMR emr;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRWIDENPATH
+    {
+        public EMR emr;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRSETMETARGN
+    {
+        public EMR emr;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRSAVEDC
+    {
+        public EMR emr;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRREALIZEPALETTE
+    {
+        public EMR emr;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRARC
+    {
+        public EMR emr;
+        public RECTL rclBox;
+        public POINTL ptlStart;
+        public POINTL ptlEnd;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRARCTO
+    {
+        public EMR emr;
+        public RECTL rclBox;
+        public POINTL ptlStart;
+        public POINTL ptlEnd;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRCHORD
+    {
+        public EMR emr;
+        public RECTL rclBox;
+        public POINTL ptlStart;
+        public POINTL ptlEnd;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRPIE
+    {
+        public EMR emr;
+        public RECTL rclBox;
+        public POINTL ptlStart;
+        public POINTL ptlEnd;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRBITBLT
+    {
+        public EMR emr;
+        public RECTL rclBounds;
+        public int xDest;
+        public int yDest;
+        public int cxDest;
+        public int cyDest;
+        public uint dwRop;
+        public int xSrc;
+        public int ySrc;
+        public XFORM xformSrc;
+        public uint crBkColorSrc;
+        public uint iUsageSrc;
+        public uint offBmiSrc;
+        public uint cbBmiSrc;
+        public uint offBitsSrc;
+        public uint cbBitsSrc;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRCOLORCORRECTPALETTE
+    {
+        public EMR emr;
+        public uint ihPalette;
+        public uint nFirstEntry;
+        public uint nPalEntries;
+        public uint nReserved;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRCOLORMATCHTOTARGET
+    {
+        public EMR emr;
+        public uint dwAction;
+        public uint dwFlags;
+        public uint cbName;
+        public uint cbData;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public byte[] Data;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRCREATEBRUSHINDIRECT
+    {
+        public EMR emr;
+        public uint ihBrush;
+        public LOGBRUSH32 lb;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi), CLSCompliant(false)]
+    public struct LOGCOLORSPACE
+    {
+        public uint lcsSignature;
+        public uint lcsVersion;
+        public uint lcsSize;
+        public uint lcsCSType;
+        public uint lcsIntent;
+        public CIEXYZTRIPLE lcsEndpoints;
+        public uint lcsGammaRed;
+        public uint lcsGammaGreen;
+        public uint lcsGammaBlue;
+
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 260)]
+        public string lcsFilename;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode), CLSCompliant(false)]
+    public struct LOGCOLORSPACEW
+    {
+        public uint lcsSignature;
+        public uint lcsVersion;
+        public uint lcsSize;
+        public uint lcsCSType;
+        public uint lcsIntent;
+        public CIEXYZTRIPLE lcsEndpoints;
+        public uint lcsGammaRed;
+        public uint lcsGammaGreen;
+        public uint lcsGammaBlue;
+
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 260)]
+        public string lcsFilename;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi), CLSCompliant(false)]
+    public struct EMRCREATECOLORSPACE
+    {
+        public EMR emr;
+        public uint ihCS;
+        public LOGCOLORSPACE lcs;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode), CLSCompliant(false)]
+    public struct EMRCREATECOLORSPACEW
+    {
+        public EMR emr;
+        public uint ihCS;
+        public LOGCOLORSPACE lcs;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRCREATEDIBPATTERNBRUSHPT
+    {
+        public EMR emr;
+        public uint ihBrush;
+        public uint iUsage;
+        public uint offBmi;
+        public uint cbBmi;
+        public uint offBits;
+        public uint cbBits;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRCREATEMONOBRUSH
+    {
+        public EMR emr;
+        public uint ihBrush;
+        public uint iUsage;
+        public uint offBmi;
+        public uint cbBmi;
+        public uint offBits;
+        public uint cbBits;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRCREATEPALETTE
+    {
+        public EMR emr;
+        public uint ihPal;
+        public LOGPALETTE lgpl;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct LOGPEN
+    {
+        public uint lopnStyle;
+        public POINT lopnWidth;
+        public uint lopnColor;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRCREATEPEN
+    {
+        public EMR emr;
+        public uint ihPen;
+        public LOGPEN lopn;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRSETCOLORSPACE
+    {
+        public EMR emr;
+        public uint ihCS;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRSELECTCOLORSPACE
+    {
+        public EMR emr;
+        public uint ihCS;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRDELETECOLORSPACE
+    {
+        public EMR emr;
+        public uint ihCS;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRSELECTOBJECT
+    {
+        public EMR emr;
+        public uint ihObject;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRDELETEOBJECT
+    {
+        public EMR emr;
+        public uint ihObject;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRELLIPSE
+    {
+        public EMR emr;
+        public RECTL rclBox;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRRECTANGLE
+    {
+        public EMR emr;
+        public RECTL rclBox;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMREOF
+    {
+        public EMR emr;
+        public uint nPalEntries;
+        public uint offPalEntries;
+        public uint nSizeLast;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMREXCLUDECLIPRECT
+    {
+        public EMR emr;
+        public RECTL rclClip;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRINTERSECTCLIPRECT
+    {
+        public EMR emr;
+        public RECTL rclClip;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi), CLSCompliant(false)]
+    public struct EMREXTCREATEFONTINDIRECT
+    {
+        public EMR emr;
+        public uint ihFont;
+        public EXTLOGFONT elfw;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode), CLSCompliant(false)]
+    public struct EMREXTCREATEFONTINDIRECTW
+    {
+        public EMR emr;
+        public uint ihFont;
+        public EXTLOGFONTW elfw;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EXTLOGPEN
+    {
+        public uint elpPenStyle;
+        public uint elpWidth;
+        public uint elpBrushStyle;
+        public uint elpColor;
+        public uint elpHatch;
+        public uint elpNumEntries;
+        public uint elpStyleEntry;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMREXTCREATEPEN
+    {
+        public EMR emr;
+        public uint ihPen;
+        public uint offBmi;
+        public uint cbBmi;
+        public uint offBits;
+        public uint cbBits;
+        public EXTLOGPEN elp;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMREXTFLOODFILL
+    {
+        public EMR emr;
+        public POINTL ptlStart;
+        public uint crColor;
+        public uint iMode;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMREXTSELECTCLIPRGN
+    {
+        public EMR emr;
+        public uint cbRgnData;
+        public uint iMode;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public byte[] RgnData;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi), CLSCompliant(false)]
+    public struct EMREXTTEXTOUTA
+    {
+        public EMR emr;
+        public RECTL rclBounds;
+        public uint iGraphicsMode;
+        public float exScale;
+        public float eyScale;
+        public EMRTEXT emrtext;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode), CLSCompliant(false)]
+    public struct EMREXTTEXTOUTW
+    {
+        public EMR emr;
+        public RECTL rclBounds;
+        public uint iGraphicsMode;
+        public float exScale;
+        public float eyScale;
+        public EMRTEXT emrtext;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRFILLPATH
+    {
+        public EMR emr;
+        public RECTL rclBounds;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRSTROKEANDFILLPATH
+    {
+        public EMR emr;
+        public RECTL rclBounds;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRSTROKEPATH
+    {
+        public EMR emr;
+        public RECTL rclBounds;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRFILLRGN
+    {
+        public EMR emr;
+        public RECTL rclBounds;
+        public uint cbRgnData;
+        public uint ihBrush;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public byte[] RgnData;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRFORMAT
+    {
+        public uint dSignature;
+        public uint nVersion;
+        public uint cbData;
+        public uint offData;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRFRAMERGN
+    {
+        public EMR emr;
+        public RECTL rclBounds;
+        public uint cbRgnData;
+        public uint ihBrush;
+        public SIZEL szlStroke;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public byte[] RgnData;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRGDICOMMENT
+    {
+        public EMR emr;
+        public uint cbData;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public byte[] Data;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRGLSBOUNDEDRECORD
+    {
+        public EMR emr;
+        public RECTL rclBounds;
+        public uint cbData;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public byte[] Data;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRGLSRECORD
+    {
+        public EMR emr;
+        public uint cbData;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public byte[] Data;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRGRADIENTFILL
+    {
+        public EMR emr;
+        public RECTL rclBounds;
+        public uint nVer;
+        public uint nTri;
+        public uint ulMode;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public TRIVERTEX[] Ver;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRINVERTRGN
+    {
+        public EMR emr;
+        public RECTL rclBounds;
+        public uint cbRgnData;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public byte[] RgnData;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRPAINTRGN
+    {
+        public EMR emr;
+        public RECTL rclBounds;
+        public uint cbRgnData;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public byte[] RgnData;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct RGNDATAHEADER
+    {
+        public uint dwSize;
+        public uint iType;
+        public uint nCount;
+        public uint nRgnSize;
+        public RECT rcBound;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct RGNDATA
+    {
+        public RGNDATAHEADER rdh;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public byte[] Buffer;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRLINETO
+    {
+        public EMR emr;
+        public POINTL ptl;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRMOVETOEX
+    {
+        public EMR emr;
+        public POINTL ptl;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRMASKBLT
+    {
+        public EMR emr;
+        public RECTL rclBounds;
+        public int xDest;
+        public int yDest;
+        public int cxDest;
+        public int cyDest;
+        public uint dwRop;
+        public int xSrc;
+        public int ySrc;
+        public XFORM xformSrc;
+        public uint crBkColorSrc;
+        public uint iUsageSrc;
+        public uint offBmiSrc;
+        public uint cbBmiSrc;
+        public uint offBitsSrc;
+        public uint cbBitsSrc;
+        public int xMask;
+        public int yMask;
+        public uint iUsageMask;
+        public uint offBmiMask;
+        public uint cbBmiMask;
+        public uint offBitsMask;
+        public uint cbBitsMask;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRMODIFYWORLDTRANSFORM
+    {
+        public EMR emr;
+        public XFORM xform;
+        public uint iMode;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMROFFSETCLIPRGN
+    {
+        public EMR emr;
+        public POINTL ptlOffset;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct PIXELFORMATDESCRIPTOR
+    {
+        public ushort nSize;
+        public ushort nVersion;
+        public uint dwFlags;
+        public byte iPixelType;
+        public byte cColorBits;
+        public byte cRedBits;
+        public byte cRedShift;
+        public byte cGreenBits;
+        public byte cGreenShift;
+        public byte cBlueBits;
+        public byte cBlueShift;
+        public byte cAlphaBits;
+        public byte cAlphaShift;
+        public byte cAccumBits;
+        public byte cAccumRedBits;
+        public byte cAccumGreenBits;
+        public byte cAccumBlueBuits;
+        public byte cAccumAlphaBits;
+        public byte cDepthBits;
+        public byte cStencilBits;
+        public byte cAuxBuffers;
+        public byte iLayerType;
+        public byte bReserved;
+        public uint dwLayerMask;
+        public uint dwVisibleMask;
+        public uint dwDamageMask;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRPIXELFORMAT
+    {
+        public EMR emr;
+        public PIXELFORMATDESCRIPTOR pfd;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRPLGBLT
+    {
+        public EMR emr;
+        public RECTL rclBounds;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
+        public POINTL[] aptlDest;
+
+        public int xSrc;
+        public int ySrc;
+        public int cxSrc;
+        public int cySrc;
+        public XFORM xformSrc;
+        public uint crBkColorSrc;
+        public uint iUsageSrc;
+        public uint offBmiSrc;
+        public uint cbBmiSrc;
+        public uint offBitsSrc;
+        public uint cbBitsSrc;
+        public int xMask;
+        public int yMask;
+        public uint iUsageMask;
+        public uint offBmiMask;
+        public uint cbBmiMask;
+        public uint offBitsMask;
+        public uint cbBitsMask;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRPOLYLINE
+    {
+        public EMR emr;
+        public RECTL rclBounds;
+        public uint cptl;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public POINTL[] aptl;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRPOLYBEZIER
+    {
+        public EMR emr;
+        public RECTL rclBounds;
+        public uint cptl;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public POINTL[] aptl;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRPOLYGON
+    {
+        public EMR emr;
+        public RECTL rclBounds;
+        public uint cptl;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public POINTL[] aptl;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRPOLYBEZIERTO
+    {
+        public EMR emr;
+        public RECTL rclBounds;
+        public uint cptl;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public POINTL[] aptl;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRPOLYLINETO
+    {
+        public EMR emr;
+        public RECTL rclBounds;
+        public uint cptl;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public POINTL[] aptl;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRPOLYLINE16
+    {
+        public EMR emr;
+        public RECTL rclBounds;
+        public uint cpts;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public POINTL[] apts;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRPOLYBEZIER16
+    {
+        public EMR emr;
+        public RECTL rclBounds;
+        public uint cpts;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public POINTL[] apts;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRPOLYGON16
+    {
+        public EMR emr;
+        public RECTL rclBounds;
+        public uint cpts;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public POINTL[] apts;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRPOLYBEZIERTO16
+    {
+        public EMR emr;
+        public RECTL rclBounds;
+        public uint cpts;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public POINTL[] apts;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRPOLYLINETO16
+    {
+        public EMR emr;
+        public RECTL rclBounds;
+        public uint cpts;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public POINTL[] apts;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRPOLYDRAW
+    {
+        public EMR emr;
+        public RECTL rclBounds;
+        public uint cptl;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public POINTL[] aptl;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public byte[] abTypes;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRPOLYDRAW16
+    {
+        public EMR emr;
+        public RECTL rclBounds;
+        public uint cpts;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public POINTL[] apts;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public byte[] abTypes;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRRESIZEPALETTE
+    {
+        public EMR emr;
+        public uint ihPal;
+        public uint cEntries;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRRESTOREDC
+    {
+        public EMR emr;
+        public int iRelative;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRROUNDRECT
+    {
+        public EMR emr;
+        public RECTL rclBox;
+        public SIZEL szlCorner;
+    }
+
+    // EMRSCALEVIEWPORTEX
 }
