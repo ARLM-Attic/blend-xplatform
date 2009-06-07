@@ -3783,6 +3783,43 @@ namespace xPlatform.x86.gdi32
             [In] int nTopRect,
             [In] int nRightRect,
             [In] int nBottomRect);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreateEllipticRgnIndirect(
+            [In, Const] IntPtr lprc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreateEllipticRgnIndirect(
+            [In] ref RECT lprc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreatePolygonRgn(
+            [In, Const] IntPtr lppt,
+            [In] int cPoints,
+            [In] int fnPolyFillMode);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreatePolygonRgn(
+            [In] RECT[] lppt,
+            [In] int cPoints,
+            [In] int fnPolyFillMode);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreateRectRgn(
+            [In] int nLeftRect,
+            [In] int nTopRect,
+            [In] int nRightRect,
+            [In] int nBottomRect);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreateRectRgnIndirect(
+            [In, Const] IntPtr lprc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreateRectRgnIndirect(
+            [In] ref RECT lprc);
+
+        // CreatePolygonRgn
     }
 
     #endregion // Region functions
