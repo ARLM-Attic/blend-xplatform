@@ -43,6 +43,7 @@
     <Compile Include="types.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="xPlatform_x86_secur32.snk" />
   </ItemGroup>
   <ItemGroup>

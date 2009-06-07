@@ -3649,11 +3649,141 @@ namespace xPlatform.x86.gdi32
 
     #endregion // Pen functions
 
-    #region Printing and print spooler functions
+    #region Rectangle functions
 
     partial class gdi32
     {
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int CopyRect(
+            [Out] IntPtr lprcDst,
+            [In, Const] IntPtr lprcSrc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int CopyRect(
+            [Out] out RECT lprcDst,
+            [In, Const] ref RECT lprcSrc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int EqualRect(
+            [In, Const] IntPtr lprc1,
+            [In, Const] IntPtr lprc2);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int EqualRect(
+            [In] ref RECT lprc1,
+            [In] ref RECT lprc2);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int InflateRect(
+            [In, Out] IntPtr lprc,
+            [In] int dx,
+            [In] int dy);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int InflateRect(
+            [In, Out] ref RECT lprc,
+            [In] int dx,
+            [In] int dy);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int IsRectEmpty(
+            [In, Const] IntPtr lprc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int IsRectEmpty(
+            [In] ref RECT lprc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int OffsetRect(
+            [In, Out] IntPtr lprc,
+            [In] int dx,
+            [In] int dy);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int OffsetRect(
+            [In, Out] ref RECT lprc,
+            [In] int dx,
+            [In] int dy);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int PtInRect(
+            [In, Const] IntPtr lprc,
+            [In] POINT pt);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int PtInRect(
+            [In] ref RECT lprc,
+            [In] POINT pt);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetRect(
+            [In] IntPtr lprc,
+            [In] int xLeft,
+            [In] int yTop,
+            [In] int xRight,
+            [In] int yBottom);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetRect(
+            [In] ref RECT lprc,
+            [In] int xLeft,
+            [In] int yTop,
+            [In] int xRight,
+            [In] int yBottom);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetRectEmpty(
+            [In] IntPtr lprc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetRectEmpty(
+            [In] ref RECT lprc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SubtractRect(
+            [Out] IntPtr lprcDst,
+            [In, Const] IntPtr lprcSrc1,
+            [In, Const] IntPtr lprcSrc2);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SubtractRect(
+            [Out] out RECT lprcDst,
+            [In, Const] ref RECT lprcSrc1,
+            [In, Const] ref RECT lprcSrc2);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int UnionRect(
+            [Out] IntPtr lprcDst,
+            [In, Const] IntPtr lprcSrc1,
+            [In, Const] IntPtr lprcSrc2);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int UnionRect(
+            [Out] out RECT lprcDst,
+            [In, Const] ref RECT lprcSrc1,
+            [In, Const] ref RECT lprcSrc2);
     }
 
-    #endregion // Printing and print spooler functions
+    #endregion // Rectangle functions
+
+    #region Region functions
+
+    partial class gdi32
+    {
+        [DllImport(ModuleName)]
+        public static extern int CombineRgn(
+            [In] IntPtr hrgnDest,
+            [In] IntPtr hrgnSrc1,
+            [In] IntPtr hrgnSrc2,
+            [In] int fnCombineMode);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreateEllipticRgn(
+            [In] int nLeftRect,
+            [In] int nTopRect,
+            [In] int nRightRect,
+            [In] int nBottomRect);
+    }
+
+    #endregion // Region functions
 }

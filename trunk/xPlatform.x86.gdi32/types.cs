@@ -72,6 +72,11 @@ namespace xPlatform.x86.gdi32
         [In] IntPtr hdc,
         [In] IntPtr lpData,
         [In] int cchData);
+
+    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public delegate int AbortProc(
+        [In] IntPtr hdc,
+        [In] int iError);
 }
 
 namespace xPlatform.x86.gdi32
@@ -2282,5 +2287,12 @@ namespace xPlatform.x86.gdi32
 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 32)]
         public byte[] rgbReserved;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct POINTS
+    {
+        public short x;
+        public short y;
     }
 }

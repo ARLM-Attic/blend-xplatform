@@ -5,15 +5,15 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{7ED6B19A-9120-4C31-82AB-9BB9ADB56622}</ProjectGuid>
+    <ProjectGuid>{77214AC6-9381-4784-A838-982A401D130E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>xPlatform.x86.msvcrt</RootNamespace>
-    <AssemblyName>xPlatform_x86_msvcrt</AssemblyName>
+    <RootNamespace>xPlatform.x86.winspool</RootNamespace>
+    <AssemblyName>xPlatform.x86.winspool</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>xPlatform_x86_msvcrt.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>xPlatform_x86_winspool.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,6 +32,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -38,19 +40,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="msvcrt.cs" />
-    <Compile Include="msvcrtd.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="types.cs" />
+    <Compile Include="winspool.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="xPlatform_x86_msvcrt.snk" />
+    <None Include="xPlatform_x86_winspool.snk" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\xPlatform.Core\xPlatform.Core.csproj">
       <Project>{65EBCC88-5D43-49BF-9851-70DE3D22A878}</Project>
       <Name>xPlatform.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\xPlatform.x86.gdi32\xPlatform.x86.gdi32.csproj">
+      <Project>{C1FCDA85-F9DC-407D-AE56-469F1427FF45}</Project>
+      <Name>xPlatform.x86.gdi32</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

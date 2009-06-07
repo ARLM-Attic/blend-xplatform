@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xPlatform.x86.psapi", "xPla
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xPlatform.x86.gdi32", "xPlatform.x86.gdi32\xPlatform.x86.gdi32.csproj", "{C1FCDA85-F9DC-407D-AE56-469F1427FF45}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xPlatform.x86.winspool", "xPlatform.x86.winspool\xPlatform.x86.winspool.csproj", "{77214AC6-9381-4784-A838-982A401D130E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{C1FCDA85-F9DC-407D-AE56-469F1427FF45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1FCDA85-F9DC-407D-AE56-469F1427FF45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1FCDA85-F9DC-407D-AE56-469F1427FF45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77214AC6-9381-4784-A838-982A401D130E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77214AC6-9381-4784-A838-982A401D130E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77214AC6-9381-4784-A838-982A401D130E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77214AC6-9381-4784-A838-982A401D130E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
