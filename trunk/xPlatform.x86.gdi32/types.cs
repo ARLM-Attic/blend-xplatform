@@ -77,6 +77,11 @@ namespace xPlatform.x86.gdi32
     public delegate int AbortProc(
         [In] IntPtr hdc,
         [In] int iError);
+
+    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public delegate int EnumICMProfilesProcCallback(
+        [In] IntPtr lpszFilename,
+        [In] IntPtr lParam);
 }
 
 namespace xPlatform.x86.gdi32

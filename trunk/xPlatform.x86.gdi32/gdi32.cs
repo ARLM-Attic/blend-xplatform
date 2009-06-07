@@ -3800,8 +3800,22 @@ namespace xPlatform.x86.gdi32
 
         [DllImport(ModuleName, SetLastError = true)]
         public static extern IntPtr CreatePolygonRgn(
-            [In] RECT[] lppt,
+            [In] POINT[] lppt,
             [In] int cPoints,
+            [In] int fnPolyFillMode);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreatePolyPolygonRgn(
+            [In, Const] IntPtr lppt,
+            [In, Const] IntPtr lpPolyCounts,
+            [In] int nCount,
+            [In] int fnPolyFillMode);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreatePolyPolygonRgn(
+            [In] POINT[] lppt,
+            [In] int[] lpPolyCounts,
+            [In] int nCount,
             [In] int fnPolyFillMode);
 
         [DllImport(ModuleName, SetLastError = true)]
@@ -3819,8 +3833,258 @@ namespace xPlatform.x86.gdi32
         public static extern IntPtr CreateRectRgnIndirect(
             [In] ref RECT lprc);
 
-        // CreatePolygonRgn
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreateRoundRectRgn(
+            [In] int nLeftRect,
+            [In] int nTopRect,
+            [In] int nRightRect,
+            [In] int nBottomRect,
+            [In] int nWidthEllipse,
+            [In] int nHeightEllipse);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int EqualRgn(
+            [In] IntPtr hSrcRgn1,
+            [In] IntPtr hSrcRgn2);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr ExtCreateRegion(
+            [In, Const] IntPtr lpXform,
+            [In] uint nCount,
+            [In, Const] IntPtr lpRgnData);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr ExtCreateRegion(
+            [In, Const] ref XFORM lpXform,
+            [In] uint nCount,
+            [In, Const] ref RGNDATA lpRgnData);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int FillRgn(
+            [In] IntPtr hdc,
+            [In] IntPtr hrgn,
+            [In] IntPtr hbr);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int FrameRgn(
+            [In] IntPtr hdc,
+            [In] IntPtr hrgn,
+            [In] IntPtr hbr,
+            [In] int nWidth,
+            [In] int nHeight);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetPolyFillMode(
+            [In] IntPtr hdc);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetRegionData(
+            [In] IntPtr hRgn,
+            [In] uint dwCount,
+            [Out] IntPtr lpRgnData);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetRegionData(
+            [In] IntPtr hRgn,
+            [In] uint dwCount,
+            [Out] out RGNDATA lpRgnData);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetRgnBox(
+            [In] IntPtr hrgn,
+            [Out] IntPtr lprc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetRgnBox(
+            [In] IntPtr hrgn,
+            [Out] out RECT lprc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int InvertRgn(
+            [In] IntPtr hdc,
+            [In] IntPtr hrgn);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int OffsetRgn(
+            [In] IntPtr hrgn,
+            [In] int nXOffset,
+            [In] int nYOffset);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int PaintRgn(
+            [In] IntPtr hdc,
+            [In] IntPtr hrgn);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int PtInRegion(
+            [In] IntPtr hrgn,
+            [In] int x,
+            [In] int y);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int RectInRegion(
+            [In] IntPtr hrgn,
+            [In, Const] IntPtr lprc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int RectInRegion(
+            [In] IntPtr hrgn,
+            [In] ref RECT lprc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetPolyFillMode(
+            [In] IntPtr hdc,
+            [In] int iPolyFillMode);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetRectRgn(
+            [In] IntPtr hrgn,
+            [In] int nLeftRect,
+            [In] int nTopRect,
+            [In] int nRightRect,
+            [In] int nBottomRect);
     }
 
     #endregion // Region functions
+
+    #region Windows color system basic functions
+
+    partial class gdi32
+    {
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int CheckColorsInGamut(
+            [In] IntPtr hDC,
+            [In] IntPtr lpRGBTriples,
+            [In] IntPtr lpBuffer,
+            [In] uint nCount);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int ColorCorrectPalette(
+            [In] IntPtr hDC,
+            [In] IntPtr hPalette,
+            [In] uint dwFirstEntry,
+            [In] uint dwNumOfEntries);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern int ColorMatchToTarget(
+            [In] IntPtr hDC,
+            [In] IntPtr hdcTarget,
+            [In] uint uiAction);
+
+        [DllImport(ModuleName)]
+        public static extern IntPtr CreateColorSpaceA(
+            [In] IntPtr lpLogColorSpace);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr CreateColorSpaceA(
+            [In] ref LOGCOLORSPACE lpLogColorSpace);
+
+        [DllImport(ModuleName)]
+        public static extern IntPtr CreateColorSpaceW(
+            [In] IntPtr lpLogColorSpace);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern IntPtr CreateColorSpaceW(
+            [In] ref LOGCOLORSPACEW lpLogColorSpace);
+
+        [DllImport(ModuleName)]
+        public static extern int DeleteColorSpace(
+            [In] IntPtr hColorSpace);
+
+        [DllImport(ModuleName)]
+        public static extern int EnumICMProfiles(
+            [In] IntPtr hDC,
+            [In] IntPtr lpEnumICMProfilesFunc,
+            [In] IntPtr lParam);
+
+        [DllImport(ModuleName)]
+        public static extern int EnumICMProfiles(
+            [In] IntPtr hDC,
+            [In] EnumICMProfilesProcCallback lpEnumICMProfilesFunc,
+            [In] IntPtr lParam);
+
+        [DllImport(ModuleName)]
+        public static extern IntPtr GetColorSpace(
+            [In] IntPtr hDC);
+
+        [DllImport(ModuleName)]
+        public static extern int GetICMProfileA(
+            [In] IntPtr hDC,
+            [In] IntPtr lpcbName,
+            [In] IntPtr lpszFilename);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int GetICMProfileA(
+            [In] IntPtr hDC,
+            [In] ref uint lpcbName,
+            [In] StringBuilder lpszFilename);
+
+        [DllImport(ModuleName)]
+        public static extern int GetICMProfileW(
+            [In] IntPtr hDC,
+            [In] IntPtr lpcbName,
+            [In] IntPtr lpszFilename);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int GetICMProfileW(
+            [In] IntPtr hDC,
+            [In] ref uint lpcbName,
+            [In] StringBuilder lpszFilename);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetLogColorSpaceA(
+            [In] IntPtr hColorSpace,
+            [In] IntPtr lpBuffer,
+            [In] uint nSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetLogColorSpaceA(
+            [In] IntPtr hColorSpace,
+            [Out] out LOGCOLORSPACE lpBuffer,
+            [In] uint nSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetLogColorSpaceW(
+            [In] IntPtr hColorSpace,
+            [In] IntPtr lpBuffer,
+            [In] uint nSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetLogColorSpaceW(
+            [In] IntPtr hColorSpace,
+            [Out] out LOGCOLORSPACEW lpBuffer,
+            [In] uint nSize);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetColorSpace(
+            [In] IntPtr hDC,
+            [In] IntPtr hColorSpace);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetICMMode(
+            [In] IntPtr hDC,
+            [In] int iEnableICM);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetICMProfileA(
+            [In] IntPtr hDC,
+            [In] IntPtr lpFileName);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi, SetLastError = true)]
+        public static extern int SetICMProfileA(
+            [In] IntPtr hDC,
+            [In] string lpFileName);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetICMProfileW(
+            [In] IntPtr hDC,
+            [In] IntPtr lpFileName);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode, SetLastError = true)]
+        public static extern int SetICMProfileW(
+            [In] IntPtr hDC,
+            [In] string lpFileName);
+    }
+
+    #endregion // Windows color system basic functions
 }
