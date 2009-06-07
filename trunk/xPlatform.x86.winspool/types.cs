@@ -1,10 +1,13 @@
 ﻿using System;
 using xPlatform.Flags;
 using xPlatform.x86.gdi32;
+using xPlatform.x86.kernel32;
 using System.Runtime.InteropServices;
 
 namespace xPlatform.x86.winspool
 {
+    using FILETIME = xPlatform.x86.kernel32.FILETIME;
+
     [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
     public struct FORM_INFO_1
     {
@@ -106,7 +109,28 @@ namespace xPlatform.x86.winspool
         public IntPtr pszDriverName;
     }
 
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
     public struct CORE_PRINTER_DRIVER
     {
+        public Guid CoreDriverGuid;
+        public FILETIME ftDriverDate;
+        public ulong dwlDriverVersion;
+
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 260)]
+        public string szPackageID;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct DATATYPES_INFO_1
+    {
+        public IntPtr pName;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct DOC_INFO_1
+    {
+        public IntPtr pDocName;
+        public IntPtr pOutputFile;
+        public IntPtr pDatatype;
     }
 }

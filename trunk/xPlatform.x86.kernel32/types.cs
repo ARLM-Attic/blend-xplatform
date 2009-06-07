@@ -178,7 +178,7 @@ namespace xPlatform.x86.kernel32
 
         public uint ContextFlags;
 
-        [MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U4, SizeConst = 4)]
+        [MarshalAs(UnmanagedType.ByValArray, ArraySubType = UnmanagedType.U4, SizeConst = 4)]
         public uint[] Fill;
     }
 
@@ -191,7 +191,7 @@ namespace xPlatform.x86.kernel32
         public IntPtr ExceptionAddress;
         public uint NumberParameters;
 
-        [MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U4, SizeConst = 15)]
+        [MarshalAs(UnmanagedType.ByValArray, ArraySubType = UnmanagedType.U4, SizeConst = 15)]
         public uint[] ExceptionInformation;
     }
 
@@ -254,10 +254,12 @@ namespace xPlatform.x86.kernel32
         public IntPtr lpBaseOfDll;
     }
 
-    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    [Serializable, StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto), CLSCompliant(false)]
     public struct OUTPUT_DEBUG_STRING_INFO
     {
-        public IntPtr lpDebugStringData;
+        [MarshalAs(UnmanagedType.LPTStr)]
+        public string lpDebugStringData;
+
         public ushort fUnicode;
         public ushort nDebugStringLength;
     }
@@ -646,7 +648,7 @@ namespace xPlatform.x86.kernel32
         public ushort Reserved1;
         public ushort Reserved2;
 
-        [MarshalAs(UnmanagedType.LPStr, SizeConst = 128)]
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 128)]
         public string szPathName;
     }
 
@@ -668,7 +670,7 @@ namespace xPlatform.x86.kernel32
     {
         public IntPtr hMem;
 
-        [MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U4, SizeConst = 3)]
+        [MarshalAs(UnmanagedType.ByValArray, ArraySubType = UnmanagedType.U4, SizeConst = 3)]
         public uint[] dwReserved;
     }
 
@@ -736,13 +738,13 @@ namespace xPlatform.x86.kernel32
     {
         public int Bias;
 
-        [MarshalAs(UnmanagedType.LPWStr, SizeConst = 32)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 32)]
         public string StandardName;
 
         public SYSTEMTIME StandardDate;
         public int StandardBias;
 
-        [MarshalAs(UnmanagedType.LPWStr, SizeConst = 32)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 32)]
         public string DaylightName;
 
         public SYSTEMTIME DaylightDate;
@@ -1064,12 +1066,23 @@ namespace xPlatform.x86.kernel32
     {
         public uint cbSize;
         public uint dwFlags;
-        public IntPtr lpSource;
+
+        [MarshalAs(UnmanagedType.LPWStr)]
+        public string lpSource;
+
         public ushort wProcessorArchitecture;
+
         public LANGID wLangId;
-        public IntPtr lpAssemblyDirectory;
-        public IntPtr lpResourceName;
-        public IntPtr lpApplicationName;
+
+        [MarshalAs(UnmanagedType.LPTStr)]
+        public string lpAssemblyDirectory;
+
+        [MarshalAs(UnmanagedType.LPTStr)]
+        public string lpResourceName;
+
+        [MarshalAs(UnmanagedType.LPTStr)]
+        public string lpApplicationName;
+
         public IntPtr hmodule;
     }
 

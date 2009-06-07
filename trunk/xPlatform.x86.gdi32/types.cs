@@ -811,12 +811,25 @@ namespace xPlatform.x86.gdi32
     public struct GCP_RESULTS
     {
         public uint lStructSize;
-        public IntPtr lpOutString;
-        public IntPtr lpOrder;
-        public IntPtr lpDx;
-        public IntPtr lpCaretPos;
-        public IntPtr lpClass;
-        public IntPtr lpGlyphs;
+
+        [MarshalAs(UnmanagedType.LPTStr)]
+        public string lpOutString;
+
+        [MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U4)]
+        public uint[] lpOrder;
+
+        [MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.I4)]
+        public int[] lpDx;
+
+        [MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.I4)]
+        public int[] lpCaretPos;
+
+        [MarshalAs(UnmanagedType.LPStr)]
+        public string lpClass;
+
+        [MarshalAs(UnmanagedType.LPWStr)]
+        public string lpGlyphs;
+
         public uint nGlyphs;
         public int nMaxFit;
     }

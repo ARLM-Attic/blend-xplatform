@@ -57,6 +57,10 @@
       <Project>{C1FCDA85-F9DC-407D-AE56-469F1427FF45}</Project>
       <Name>xPlatform.x86.gdi32</Name>
     </ProjectReference>
+    <ProjectReference Include="..\xPlatform.x86.kernel32\xPlatform.x86.kernel32.csproj">
+      <Project>{FD6C08CE-66E7-40C6-8A5F-F8B969609631}</Project>
+      <Name>xPlatform.x86.kernel32</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
