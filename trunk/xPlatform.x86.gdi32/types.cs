@@ -51,6 +51,27 @@ namespace xPlatform.x86.gdi32
         [In] IntPtr lpMFR,
         [In] int nObj,
         [In] IntPtr lpClientData);
+
+    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public delegate int MonitorEnumProc(
+        [In] IntPtr hMonitor,
+        [In] IntPtr hdcMonitor,
+        [In] IntPtr lprcMonitor,
+        [In] IntPtr dwData);
+
+    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public delegate int DrawStateProc(
+        [In] IntPtr hdc,
+        [In] IntPtr lData,
+        [In] IntPtr wData,
+        [In] int cx,
+        [In] int cy);
+
+    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public delegate int OutputProc(
+        [In] IntPtr hdc,
+        [In] IntPtr lpData,
+        [In] int cchData);
 }
 
 namespace xPlatform.x86.gdi32
@@ -1956,5 +1977,310 @@ namespace xPlatform.x86.gdi32
         public SIZEL szlCorner;
     }
 
-    // EMRSCALEVIEWPORTEX
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRSCALEVIEWPORTEXTEX
+    {
+        public EMR emr;
+        public int xNum;
+        public int xDenom;
+        public int yNum;
+        public int yDenom;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRSCALEWINDOWEXTEX
+    {
+        public EMR emr;
+        public int xNum;
+        public int xDenom;
+        public int yNum;
+        public int yDenom;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRSELECTPALETTE
+    {
+        public EMR emr;
+        public uint ihPal;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRSETARCDIRECTION
+    {
+        public EMR emr;
+        public uint iArcDirection;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRSETBKCOLOR
+    {
+        public EMR emr;
+        public uint crColor;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRSETTEXTCOLOR
+    {
+        public EMR emr;
+        public uint crColor;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRSETCOLORADJUSTMENT
+    {
+        public EMR emr;
+        public COLORADJUSTMENT ColorAdjustment;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRSETDIBITSTODEVICE
+    {
+        public EMR emr;
+        public RECTL rclBounds;
+        public int xDest;
+        public int yDest;
+        public int xSrc;
+        public int ySrc;
+        public int cxSrc;
+        public int cySrc;
+        public uint offBmiSrc;
+        public uint cbBmiSrc;
+        public uint offBitsSrc;
+        public uint cbBitsSrc;
+        public uint iUsageSrc;
+        public uint iStartScan;
+        public uint cScan;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRSETICMPROFILE
+    {
+        public EMR emr;
+        public uint dwFlags;
+        public uint cbName;
+        public uint cbData;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public byte[] Data;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi), CLSCompliant(false)]
+    public struct EMRSETICMPROFILEA
+    {
+        public EMR emr;
+        public uint dwFlags;
+        public uint cbName;
+        public uint cbData;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public byte[] Data;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode), CLSCompliant(false)]
+    public struct EMRSETICMPROFILEW
+    {
+        public EMR emr;
+        public uint dwFlags;
+        public uint cbName;
+        public uint cbData;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public byte[] Data;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRSETMAPPERFLAGS
+    {
+        public EMR emr;
+        public uint dwFlags;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct SETMITERLIMIT
+    {
+        public EMR emr;
+        public float eMiterLimit;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRSETPALETTEENTRIES
+    {
+        public EMR emr;
+        public uint ihPal;
+        public uint iStart;
+        public uint cEntries;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public PALETTEENTRY[] aPalEntries;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRSETPIXELV
+    {
+        public EMR emr;
+        public POINTL ptlPixel;
+        public uint crColor;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRSETVIEWPORTORGEX
+    {
+        public EMR emr;
+        public POINTL ptlOrigin;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRSETWINDOWORGEX
+    {
+        public EMR emr;
+        public POINTL ptlOrigin;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRSETBRUSHORGEX
+    {
+        public EMR emr;
+        public POINTL ptlOrigin;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRSETWORLDTRANSFORM
+    {
+        public EMR emr;
+        public XFORM xform;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRSTRETCHBLT
+    {
+        public EMR emr;
+        public RECTL rclBounds;
+        public int xDest;
+        public int yDest;
+        public int cxDest;
+        public int cyDest;
+        public uint dwRop;
+        public int xSrc;
+        public int ySrc;
+        public XFORM xformSrc;
+        public uint crBkColorSrc;
+        public uint iUsageSrc;
+        public uint offBmiSrc;
+        public uint cbBmiSrc;
+        public uint offBitsSrc;
+        public uint cbBitsSrc;
+        public int cxSrc;
+        public int cySrc;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRSTRETCHDIBITS
+    {
+        public EMR emr;
+        public RECTL rclBounds;
+        public int xDest;
+        public int yDest;
+        public int xSrc;
+        public int ySrc;
+        public int cxSrc;
+        public int cySrc;
+        public uint offBmiSrc;
+        public uint cbBmiSrc;
+        public uint offBitsSrc;
+        public uint cbBitsSrc;
+        public uint iUsageSrc;
+        public uint dwRop;
+        public int cxDest;
+        public int cyDest;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRSELECTCLIPPATH
+    {
+        public EMR emr;
+        public uint iMode;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRSETBKMODE
+    {
+        public EMR emr;
+        public uint iMode;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRSETMAPMODE
+    {
+        public EMR emr;
+        public uint iMode;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRSETPOLYFILLMODE
+    {
+        public EMR emr;
+        public uint iMode;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRSETROP2
+    {
+        public EMR emr;
+        public uint iMode;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRSETSTRETCHBLTMODE
+    {
+        public EMR emr;
+        public uint iMode;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRSETTEXTALIGN
+    {
+        public EMR emr;
+        public uint iMode;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct EMRSETICMMODE
+    {
+        public EMR emr;
+        public uint iMode;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct MONITORINFO
+    {
+        public uint cbSize;
+        public RECT rcMonitor;
+        public RECT rcWork;
+        public uint dwFlags;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct MONITORINFOEX
+    {
+        public uint cbSize;
+        public RECT rcMonitor;
+        public RECT rcWork;
+        public uint dwFlags;
+
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+        public string szDevice;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    public struct PAINTSTRUCT
+    {
+        public IntPtr hdc;
+        public int fErase;
+        public RECT rcPaint;
+        public int fRestore;
+        public int fIncUpdate;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 32)]
+        public byte[] rgbReserved;
+    }
 }

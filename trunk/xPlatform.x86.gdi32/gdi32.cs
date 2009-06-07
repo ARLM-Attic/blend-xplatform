@@ -3093,4 +3093,567 @@ namespace xPlatform.x86.gdi32
     }
 
     #endregion // Meta file functions
+
+    #region Multiple display monitor functions
+
+    partial class gdi32
+    {
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int EnumDisplayMonitors(
+            [In] IntPtr hdc,
+            [In, Const] IntPtr lprcClip,
+            [In] IntPtr lpfnEnum,
+            [In] IntPtr dwData);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int EnumDisplayMonitors(
+            [In] IntPtr hdc,
+            [In] ref RECT lprcClip,
+            [In] MonitorEnumProc lpfnEnum,
+            [In] IntPtr dwData);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetMonitorInfoA(
+            [In] IntPtr hMonitor,
+            [Out] IntPtr lpmi);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int GetMonitorInfoA(
+            [In] IntPtr hMonitor,
+            [Out] out MONITORINFO lpmi);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int GetMonitorInfoA(
+            [In] IntPtr hMonitor,
+            [Out] out MONITORINFOEX lpmi);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetMonitorInfoW(
+            [In] IntPtr hMonitor,
+            [Out] IntPtr lpmi);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int GetMonitorInfoW(
+            [In] IntPtr hMonitor,
+            [Out] out MONITORINFO lpmi);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int GetMonitorInfoW(
+            [In] IntPtr hMonitor,
+            [Out] out MONITORINFOEX lpmi);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr MonitorFromPoint(
+            [In] POINT pt,
+            [In] uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr MonitorFromRect(
+            [In, Const] IntPtr lprc,
+            [In] uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr MonitorFromRect(
+            [In] ref RECT lprc,
+            [In] uint dwFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr MonitorFromWindow(
+            [In] IntPtr hwnd,
+            [In] uint dwFlags);
+    }
+
+    #endregion // Multiple display monitor functions
+
+    #region Painting and drawing functions
+
+    partial class gdi32
+    {
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr BeginPaint(
+            [In] IntPtr hwnd,
+            [Out] IntPtr lpPaint);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr BeginPaint(
+            [In] IntPtr hwnd,
+            [Out] out PAINTSTRUCT lpPaint);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int DrawAnimatedRects(
+            [In] IntPtr hwnd,
+            [In] int idAni,
+            [In, Const] IntPtr lprcFrom,
+            [In, Const] IntPtr lprcTo);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int DrawAnimatedRects(
+            [In] IntPtr hwnd,
+            [In] int idAni,
+            [In] ref RECT lprcFrom,
+            [In] ref RECT lprcTo);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DrawCaption(
+            [In] IntPtr hwnd,
+            [In] IntPtr hdc,
+            [In, Const] IntPtr lprc,
+            [In] uint uFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DrawCaption(
+            [In] IntPtr hwnd,
+            [In] IntPtr hdc,
+            [In] ref RECT lprc,
+            [In] uint uFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DrawEdge(
+            [In] IntPtr hdc,
+            [In, Out] IntPtr qrc,
+            [In] uint edge,
+            [In] uint grfFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DrawEdge(
+            [In] IntPtr hdc,
+            [In, Out] ref RECT qrc,
+            [In] uint edge,
+            [In] uint grfFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DrawFocusRect(
+            [In] IntPtr hDC,
+            [In, Const] IntPtr lprc);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DrawFocusRect(
+            [In] IntPtr hDC,
+            [In] ref RECT lprc);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DrawFrameControl(
+            [In] IntPtr hdc,
+            [In] IntPtr lprc,
+            [In] uint uType,
+            [In] uint uState);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DrawFrameControl(
+            [In] IntPtr hdc,
+            [In] ref RECT lprc,
+            [In] uint uType,
+            [In] uint uState);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DrawStateA(
+            [In] IntPtr hdc,
+            [In] IntPtr hbr,
+            [In] IntPtr lpOutputFunc,
+            [In] IntPtr lData,
+            [In] IntPtr wData,
+            [In] int x,
+            [In] int y,
+            [In] int cx,
+            [In] int cy,
+            [In] uint fuFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DrawStateA(
+            [In] IntPtr hdc,
+            [In] IntPtr hbr,
+            [In] DrawStateProc lpOutputFunc,
+            [In] IntPtr lData,
+            [In] IntPtr wData,
+            [In] int x,
+            [In] int y,
+            [In] int cx,
+            [In] int cy,
+            [In] uint fuFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DrawStateW(
+            [In] IntPtr hdc,
+            [In] IntPtr hbr,
+            [In] IntPtr lpOutputFunc,
+            [In] IntPtr lData,
+            [In] IntPtr wData,
+            [In] int x,
+            [In] int y,
+            [In] int cx,
+            [In] int cy,
+            [In] uint fuFlags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DrawStateW(
+            [In] IntPtr hdc,
+            [In] IntPtr hbr,
+            [In] DrawStateProc lpOutputFunc,
+            [In] IntPtr lData,
+            [In] IntPtr wData,
+            [In] int x,
+            [In] int y,
+            [In] int cx,
+            [In] int cy,
+            [In] uint fuFlags);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int EndPaint(
+            [In] IntPtr hWnd,
+            [In, Const] IntPtr lpPaint);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int EndPaint(
+            [In] IntPtr hWnd,
+            [In] ref PAINTSTRUCT lpPaint);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ExcludeUpdateRgn(
+            [In] IntPtr hDC,
+            [In] IntPtr hWnd);
+
+        [DllImport(ModuleName)]
+        public static extern int GdiFlush();
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GdiGetBatchLimit();
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GdiSetBatchLimit(uint dwLimit);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint GetBkColor(
+            [In] IntPtr hdc);
+
+        [DllImport(ModuleName)]
+        public static extern int GetBkMode(
+            [In] IntPtr hdc);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint GetBoundsRect(
+            [In] IntPtr hdc,
+            [In] IntPtr lprcBounds,
+            [In] uint flags);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint GetBoundsRect(
+            [In] IntPtr hdc,
+            [In] ref RECT lprcBounds,
+            [In] uint flags);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetROP2(
+            [In] IntPtr hdc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetUpdateRect(
+            [In] IntPtr hwnd,
+            [Out] IntPtr lpRect,
+            [In] int bErase);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetUpdateRect(
+            [In] IntPtr hwnd,
+            [Out] out RECT lpRect,
+            [In] int bErase);
+
+        [DllImport(ModuleName)]
+        public static extern int GetUpdateRgn(
+            [In] IntPtr hWnd,
+            [In] IntPtr hRgn,
+            [In] int bErase);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr GetWindowDC(
+            [In] IntPtr hWnd);
+
+        [DllImport(ModuleName)]
+        public static extern int GetWindowRgn(
+            [In] IntPtr hWnd,
+            [In] IntPtr hRgn);
+
+        [DllImport(ModuleName)]
+        public static extern int GetWindowRgnBox(
+            [In] IntPtr hWnd,
+            [Out] IntPtr lprc);
+
+        [DllImport(ModuleName)]
+        public static extern int GetWindowRgnBox(
+            [In] IntPtr hWnd,
+            [Out] out RECT lprc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GrayStringA(
+            [In] IntPtr hDC,
+            [In] IntPtr hBrush,
+            [In] IntPtr lpOutputFunc,
+            [In] IntPtr lpData,
+            [In] int nCount,
+            [In] int X,
+            [In] int Y,
+            [In] int nWidth,
+            [In] int nHeight);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GrayStringA(
+            [In] IntPtr hDC,
+            [In] IntPtr hBrush,
+            [In] OutputProc lpOutputFunc,
+            [In] IntPtr lpData,
+            [In] int nCount,
+            [In] int X,
+            [In] int Y,
+            [In] int nWidth,
+            [In] int nHeight);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GrayStringW(
+            [In] IntPtr hDC,
+            [In] IntPtr hBrush,
+            [In] IntPtr lpOutputFunc,
+            [In] IntPtr lpData,
+            [In] int nCount,
+            [In] int X,
+            [In] int Y,
+            [In] int nWidth,
+            [In] int nHeight);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GrayStringW(
+            [In] IntPtr hDC,
+            [In] IntPtr hBrush,
+            [In] OutputProc lpOutputFunc,
+            [In] IntPtr lpData,
+            [In] int nCount,
+            [In] int X,
+            [In] int Y,
+            [In] int nWidth,
+            [In] int nHeight);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int InvalidateRect(
+            [In] IntPtr hWnd,
+            [In, Const] IntPtr lpRect,
+            [In] int bErase);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int InvalidateRect(
+            [In] IntPtr hWnd,
+            [In] ref RECT lpRect,
+            [In] int bErase);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int InvalidateRgn(
+            [In] IntPtr hWnd,
+            [In] IntPtr hRgn,
+            [In] int bErase);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int LockWindowUpdate(
+            [In] IntPtr hWndLock);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int PaintDesktop(
+            [In] IntPtr hdc);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int RedrawWindow(
+            [In] IntPtr hWnd,
+            [In, Const] IntPtr lprcUpdate,
+            [In] IntPtr hrgnUpdate,
+            [In] uint flags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int RedrawWindow(
+            [In] IntPtr hWnd,
+            [In] ref RECT lprcUpdate,
+            [In] IntPtr hrgnUpdate,
+            [In] uint flags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint SetBkColor(
+            [In] IntPtr hdc,
+            [In] uint crColor);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetBkMode(
+            [In] IntPtr hdc,
+            [In] int iBkMode);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint SetBoundsRect(
+            [In] IntPtr hdc,
+            [In, Const] IntPtr lprcBounds,
+            [In] uint flags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint SetBoundsRect(
+            [In] IntPtr hdc,
+            [In] ref RECT lprcBounds,
+            [In] uint flags);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetROP2(
+            [In] IntPtr hdc,
+            [In] int fnDrawMode);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetWindowRgn(
+            [In] IntPtr hWnd,
+            [In] IntPtr hRgn,
+            [In] int bRedraw);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int UpdateWindow(
+            [In] IntPtr hWnd);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ValidateRect(
+            [In] IntPtr hWnd,
+            [In, Const] IntPtr lpRect);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ValidateRect(
+            [In] IntPtr hWnd,
+            [In] ref RECT lpRect);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ValidateRgn(
+            [In] IntPtr hWnd,
+            [In] IntPtr hRgn);
+
+        [DllImport(ModuleName)]
+        public static extern IntPtr WindowFromDC(
+            [In] IntPtr hDC);
+    }
+
+    #endregion // Painting and drawing functions
+
+    #region Path functions
+
+    partial class gdi32
+    {
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int AbortPath(
+            [In] IntPtr hdc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int BeginPath(
+            [In] IntPtr hdc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int CloseFigure(
+            [In] IntPtr hdc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int EndPath(
+            [In] IntPtr hdc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int FillPath(
+            [In] IntPtr hdc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int FlattenPath(
+            [In] IntPtr hdc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetMiterLimit(
+            [In] IntPtr hdc,
+            [Out] IntPtr peLimit);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetMiterLimit(
+            [In] IntPtr hdc,
+            [Out] out float peLimit);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetPath(
+            [In] IntPtr hdc,
+            [Out] IntPtr lpPoints,
+            [Out] IntPtr lpTypes,
+            [In] int nSize);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetPath(
+            [In] IntPtr hdc,
+            [Out] POINT[] lpPoints,
+            [Out] byte[] lpTypes,
+            [In] int nSize);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr PathToRegion(
+            [In] IntPtr hdc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetMiterLimit(
+            [In] IntPtr hdc,
+            [In] float eNewLimit,
+            [Out] IntPtr peOldLimit);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetMiterLimit(
+            [In] IntPtr hdc,
+            [In] float eNewLimit,
+            [Out] out float peOldLimit);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int StrokeAndFillPath(
+            [In] IntPtr hdc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int StrokePath(
+            [In] IntPtr hdc);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int WidenPath(
+            [In] IntPtr hdc);
+    }
+
+    #endregion // Path functions
+
+    #region Pen functions
+
+    partial class gdi32
+    {
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr CreatePen(
+            [In] int fnPenStyle,
+            [In] int nWidth,
+            [In] uint crColor);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreatePenDirect(
+            [In, Const] IntPtr lplgpn);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr CreatePenDirect(
+            [In] ref LOGPEN lplgpn);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr ExtCreatePen(
+            [In] uint dwPenStyle,
+            [In] uint dwWidth,
+            [In, Const] IntPtr lplb,
+            [In] uint dwStyleCount,
+            [In, Const] IntPtr lpStyle);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr ExtCreatePen(
+            [In] uint dwPenStyle,
+            [In] uint dwWidth,
+            [In] ref LOGBRUSH lplb,
+            [In] uint dwStyleCount,
+            [In] ref uint[] lpStyle);
+    }
+
+    #endregion // Pen functions
+
+    #region Printing and print spooler functions
+
+    partial class gdi32
+    {
+    }
+
+    #endregion // Printing and print spooler functions
 }
