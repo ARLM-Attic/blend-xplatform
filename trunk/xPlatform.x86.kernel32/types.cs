@@ -1061,7 +1061,7 @@ namespace xPlatform.x86.kernel32
         public uint dwThreadId;
     }
 
-    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    [Serializable, StructLayout(LayoutKind.Sequential, Pack = 4), CLSCompliant(false)]
     public struct ACTCTX
     {
         public uint cbSize;

@@ -5,17 +5,15 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A2AC4873-FEC0-4B07-A442-D43AD03D72F7}</ProjectGuid>
+    <ProjectGuid>{D3B08FBD-0C96-45B1-BAA4-04667685C7EC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>xPlatform.x86.user32</RootNamespace>
-    <AssemblyName>xPlatform.x86.user32</AssemblyName>
+    <RootNamespace>xPlatform.x86.comctl32</RootNamespace>
+    <AssemblyName>xPlatform.x86.comctl32</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkSubset>
-    </TargetFrameworkSubset>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>xPlatform_x86_user32.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>xPlatform_x86_comctl32.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -25,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -33,6 +32,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -40,22 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="types.cs" />
-    <Compile Include="user32.cs" />
+    <Compile Include="comctl32.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="xPlatform_x86_user32.snk" />
+    <Compile Include="types.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\xPlatform.Core\xPlatform.Core.csproj">
       <Project>{65EBCC88-5D43-49BF-9851-70DE3D22A878}</Project>
       <Name>xPlatform.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\xPlatform.x86.advapi32\xPlatform.x86.advapi32.csproj">
-      <Project>{4F5D61F0-3F78-4892-A413-7BC857454BC6}</Project>
-      <Name>xPlatform.x86.advapi32</Name>
     </ProjectReference>
     <ProjectReference Include="..\xPlatform.x86.gdi32\xPlatform.x86.gdi32.csproj">
       <Project>{C1FCDA85-F9DC-407D-AE56-469F1427FF45}</Project>
@@ -65,6 +57,14 @@
       <Project>{FD6C08CE-66E7-40C6-8A5F-F8B969609631}</Project>
       <Name>xPlatform.x86.kernel32</Name>
     </ProjectReference>
+    <ProjectReference Include="..\xPlatform.x86.user32\xPlatform.x86.user32.csproj">
+      <Project>{A2AC4873-FEC0-4B07-A442-D43AD03D72F7}</Project>
+      <Name>xPlatform.x86.user32</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="xPlatform_x86_comctl32.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
