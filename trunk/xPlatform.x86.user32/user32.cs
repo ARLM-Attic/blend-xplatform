@@ -199,6 +199,70 @@ namespace xPlatform.x86.user32
         [DllImport(ModuleName, SetLastError = true)]
         public static extern int MakeDragList(
             [In] IntPtr hLB);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DlgDirListA(
+            [In] IntPtr hDlg,
+            [In, Out] IntPtr lpPathSpec,
+            [In] int nIDListBox,
+            [In] int nIDStaticPath,
+            [In] uint uFileType);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int DlgDirListA(
+            [In] IntPtr hDlg,
+            [In, Out] StringBuilder lpPathSpec,
+            [In] int nIDListBox,
+            [In] int nIDStaticPath,
+            [In] uint uFileType);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DlgDirListW(
+            [In] IntPtr hDlg,
+            [In, Out] IntPtr lpPathSpec,
+            [In] int nIDListBox,
+            [In] int nIDStaticPath,
+            [In] uint uFileType);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int DlgDirListW(
+            [In] IntPtr hDlg,
+            [In, Out] StringBuilder lpPathSpec,
+            [In] int nIDListBox,
+            [In] int nIDStaticPath,
+            [In] uint uFileType);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int DlgDirSelectExA(
+            [In] IntPtr hDlg,
+            [Out] IntPtr lpString,
+            [In] int nCount,
+            [In] int nIDListBox);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
+        public static extern int DlgDirSelectExA(
+            [In] IntPtr hDlg,
+            [Out] StringBuilder lpString,
+            [In] int nCount,
+            [In] int nIDListBox);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int DlgDirSelectExW(
+            [In] IntPtr hDlg,
+            [Out] IntPtr lpString,
+            [In] int nCount,
+            [In] int nIDListBox);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern int DlgDirSelectExW(
+            [In] IntPtr hDlg,
+            [Out] StringBuilder lpString,
+            [In] int nCount,
+            [In] int nIDListBox);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetListBoxInfo(
+            [In] IntPtr hwnd);
     }
 
     #endregion // Common control functions
