@@ -17,6 +17,18 @@ namespace xPlatform.x86.comctl32
     public delegate int AddPropSheetPageProc(
         [In] IntPtr hpage,
         [In] IntPtr lParam);
+
+    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi), CLSCompliant(false)]
+    public delegate uint PropSheetPageProc(
+        [In] IntPtr hwnd,
+        [In] uint uMsg,
+        [In] IntPtr ppsp);
+
+    [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi), CLSCompliant(false)]
+    public delegate int PropSheepProc(
+        [In] IntPtr hwndDlg,
+        [In] uint uMsg,
+        [In] IntPtr lParam);
 }
 
 namespace xPlatform.x86.comctl32
@@ -592,5 +604,271 @@ namespace xPlatform.x86.comctl32
     {
         public int iLow;
         public int iHigh;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Explicit), CLSCompliant(false)]
+    public struct PROPSHEETPAGE
+    {
+        [FieldOffset(0)]
+        public uint dwSize;
+
+        [FieldOffset(4)]
+        public uint dwFlags;
+
+        [FieldOffset(8)]
+        public IntPtr hInstance;
+
+        [FieldOffset(12)]
+        public IntPtr pszTemplate;
+
+        [FieldOffset(12)]
+        public IntPtr pResource;
+
+        [FieldOffset(16)]
+        public IntPtr hIcon;
+
+        [FieldOffset(16)]
+        public IntPtr pszIcon;
+
+        [FieldOffset(20)]
+        public IntPtr pszTitle;
+
+        [FieldOffset(24)]
+        public IntPtr pfnDlgProc;
+
+        [FieldOffset(28)]
+        public IntPtr lParam;
+
+        [FieldOffset(32)]
+        public IntPtr pfnCallback;
+
+        [FieldOffset(36)]
+        public IntPtr pcRefParent;
+
+        [FieldOffset(40)]
+        public IntPtr pszHeaderTitle;
+
+        [FieldOffset(44)]
+        public IntPtr pszHeaderSubtitle;
+
+        [FieldOffset(48)]
+        public IntPtr hActCtx;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Explicit), CLSCompliant(false)]
+    public struct PROPSHEETHEADER
+    {
+        [FieldOffset(0)]
+        public uint dwSize;
+
+        [FieldOffset(4)]
+        public uint dwFlags;
+
+        [FieldOffset(8)]
+        public IntPtr hwndParent;
+
+        [FieldOffset(12)]
+        public IntPtr hInstance;
+
+        [FieldOffset(16)]
+        public IntPtr hIcon;
+
+        [FieldOffset(16)]
+        public IntPtr pszIcon;
+
+        [FieldOffset(20)]
+        public IntPtr pszCaption;
+
+        [FieldOffset(24)]
+        public uint nPages;
+
+        [FieldOffset(28)]
+        public uint nStartPage;
+
+        [FieldOffset(28)]
+        public IntPtr pStartPage;
+
+        [FieldOffset(32)]
+        public IntPtr ppsp;
+
+        [FieldOffset(32)]
+        public IntPtr phpage;
+
+        [FieldOffset(36)]
+        public IntPtr pfnCallback;
+        
+        [FieldOffset(40)]
+        public IntPtr hbmWatermark;
+
+        [FieldOffset(40)]
+        public IntPtr pszbmWatermark;
+
+        [FieldOffset(44)]
+        public IntPtr hplWatermark;
+
+        [FieldOffset(48)]
+        public IntPtr hbmHeader;
+
+        [FieldOffset(48)]
+        public IntPtr pszbmHeader;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct PSHNOTIFY
+    {
+        public NMHDR hdr;
+        public IntPtr lParam;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct NMBRAUTOSIZE
+    {
+        public NMHDR hdr;
+        public int fChanged;
+        public RECT rcTarget;
+        public RECT rcActual;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct NMREBAR
+    {
+        public NMHDR hdr;
+        public uint dwMask;
+        public uint uBand;
+        public uint fStyle;
+        public uint wID;
+        public IntPtr lParam;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct NMREBARAUTOBREAK
+    {
+        public NMHDR hdr;
+        public uint uBand;
+        public uint wID;
+        public IntPtr lParam;
+        public uint uMsg;
+        public uint fStyleCurrent;
+        public int fAutoBreak;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct NMREBARCHEVRON
+    {
+        public NMHDR hdr;
+        public uint uBand;
+        public uint wID;
+        public IntPtr lParam;
+        public RECT rc;
+        public IntPtr lParamNM;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct NMREBARCHILDSIZE
+    {
+        public NMHDR hdr;
+        public uint uBand;
+        public uint wID;
+        public RECT rcChild;
+        public RECT rcBand;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct NMREBARSPLITTER
+    {
+        public NMHDR hdr;
+        public RECT rcSizing;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct RBHITTESTINFO
+    {
+        public POINT pt;
+        public uint flags;
+        public int iBand;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct REBARBANDINFO
+    {
+        public uint cbSize;
+        public uint fMask;
+        public uint fStyle;
+        public uint clrFore;
+        public uint clrBack;
+        public IntPtr lpText;
+        public uint cch;
+        public int iImage;
+        public IntPtr hwndChild;
+        public uint cxMinChild;
+        public uint cyMinChild;
+        public uint cx;
+        public IntPtr hbmBack;
+        public uint wID;
+        public uint cyChild;
+        public uint cyMaxChild;
+        public uint cxIdeal;
+        public IntPtr lParam;
+        public uint cxHeader;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct REBARINFO
+    {
+        public uint cbSize;
+        public uint fMask;
+        public IntPtr himl;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct LHITTESTINFO
+    {
+        public POINT pt;
+        public LITEM item;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct NMLINK
+    {
+        public NMHDR hdr;
+        public LITEM item;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct NMTCKEYDOWN
+    {
+        public NMHDR hdr;
+        public ushort wVKey;
+        public uint flags;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct TCHITTESTINFO
+    {
+        public POINT pt;
+        public uint flags;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct TCITEM
+    {
+        public uint mask;
+        public uint dwState;
+        public uint dwStateMask;
+        public IntPtr pszText;
+        public int cchTextMax;
+        public int iImage;
+        public IntPtr lParam;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct TCITEMHEADER
+    {
+        public uint mask;
+        public uint lpReserved1;
+        public uint lpReserved2;
+        public IntPtr pszText;
+        public int cchTextMax;
+        public int iImage;
     }
 }

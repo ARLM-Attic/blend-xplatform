@@ -263,6 +263,148 @@ namespace xPlatform.x86.user32
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern uint GetListBoxInfo(
             [In] IntPtr hwnd);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int EnableScrollBar(
+            [In] IntPtr hWnd,
+            [In] uint wSBflags,
+            [In] uint wArrows);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetScrollBarInfo(
+            [In] IntPtr hwnd,
+            [In] int idObject,
+            [Out] IntPtr psbi);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetScrollBarInfo(
+            [In] IntPtr hwnd,
+            [In] int idObject,
+            [Out] out SCROLLBARINFO psbi);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetScrollInfo(
+            [In] IntPtr hwnd,
+            [In] int fnBar,
+            [Out] IntPtr lpsi);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetScrollInfo(
+            [In] IntPtr hwnd,
+            [In] int fnBar,
+            [Out] out SCROLLINFO lpsi);
+
+        [DllImport(ModuleName, SetLastError = true), Obsolete]
+        public static extern int GetScrollPos(
+            [In] IntPtr hwnd,
+            [In] int nBar);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetScrollRange(
+            [In] IntPtr hWnd,
+            [In] int nBar,
+            [Out] IntPtr lpMinPos,
+            [Out] IntPtr lpMaxPos);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetScrollRange(
+            [In] IntPtr hWnd,
+            [In] int nBar,
+            [Out] out int lpMinPos,
+            [Out] out int lpMaxPos);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ScrollDC(
+            [In] IntPtr hDC,
+            [In] int dx,
+            [In] int dy,
+            [Const, In] IntPtr lprcScroll,
+            [Const, In] IntPtr lprcClip,
+            [In] IntPtr hrgnUpdate,
+            [Out] IntPtr lprcUpdate);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ScrollDC(
+            [In] IntPtr hDC,
+            [In] int dx,
+            [In] int dy,
+            [In] ref RECT lprcScroll,
+            [In] ref RECT lprcClip,
+            [In] IntPtr hrgnUpdate,
+            [Out] out RECT lprcUpdate);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ScrollWindow(
+            [In] IntPtr hWnd,
+            [In] int XAmount,
+            [In] int YAmount,
+            [Const, In] IntPtr lpRect,
+            [Const, In] IntPtr lpClipRect);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ScrollWindow(
+            [In] IntPtr hWnd,
+            [In] int XAmount,
+            [In] int YAmount,
+            [In] ref RECT lpRect,
+            [In] ref RECT lpClipRect);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int ScrollWindowEx(
+            [In] IntPtr hWnd,
+            [In] int dx,
+            [In] int dy,
+            [In, Const] IntPtr prcScroll,
+            [In, Const] IntPtr prcClip,
+            [In] IntPtr hrgnUpdate,
+            [Out] IntPtr prcUpdate,
+            [In] uint flags);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int ScrollWindowEx(
+            [In] IntPtr hWnd,
+            [In] int dx,
+            [In] int dy,
+            [In] ref RECT prcScroll,
+            [In] ref RECT prcClip,
+            [In] IntPtr hrgnUpdate,
+            [Out] out RECT prcUpdate,
+            [In] uint flags);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetScrollInfo(
+            [In] IntPtr hwnd,
+            [In] int fnBar,
+            [In, Const] IntPtr lpsi,
+            [In] int fRedraw);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int SetScrollInfo(
+            [In] IntPtr hwnd,
+            [In] int fnBar,
+            [In] ref SCROLLINFO lpsi,
+            [In] int fRedraw);
+
+        [DllImport(ModuleName, SetLastError = true), Obsolete]
+        public static extern int SetScrollPos(
+            [In] IntPtr hWnd,
+            [In] int nBar,
+            [In] int nPos,
+            [In] int bRedraw);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int SetScrollRange(
+            [In] IntPtr hWnd,
+            [In] int nBar,
+            [In] int nMinPos,
+            [In] int nMaxPos,
+            [In] int bRedraw);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ShowScrollBar(
+            [In] IntPtr hWnd,
+            [In] int wBar,
+            [In] int bShow);
     }
 
     #endregion // Common control functions

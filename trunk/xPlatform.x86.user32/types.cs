@@ -265,4 +265,18 @@ namespace xPlatform.x86.user32
         public IntPtr hwndItem;
         public uint itemData;
     }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct SCROLLBARINFO
+    {
+        public uint cbSize;
+        public RECT rcScrollBar;
+        public int dxyLineButton;
+        public int xyThumbTop;
+        public int xyThumbBottom;
+        public int reserved;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
+        public uint[] rgState;
+    }
 }

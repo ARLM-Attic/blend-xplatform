@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xPlatform.x86.winspool", "x
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xPlatform.x86.comctl32", "xPlatform.x86.comctl32\xPlatform.x86.comctl32.csproj", "{D3B08FBD-0C96-45B1-BAA4-04667685C7EC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xPlatform.x86.msftedit", "xPlatform.x86.msftedit\xPlatform.x86.msftedit.csproj", "{B964D091-257E-4F77-BEA9-4A9B9D9C2AD4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,10 @@ Global
 		{D3B08FBD-0C96-45B1-BAA4-04667685C7EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3B08FBD-0C96-45B1-BAA4-04667685C7EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3B08FBD-0C96-45B1-BAA4-04667685C7EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B964D091-257E-4F77-BEA9-4A9B9D9C2AD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B964D091-257E-4F77-BEA9-4A9B9D9C2AD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B964D091-257E-4F77-BEA9-4A9B9D9C2AD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B964D091-257E-4F77-BEA9-4A9B9D9C2AD4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

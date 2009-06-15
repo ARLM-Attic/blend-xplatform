@@ -432,6 +432,120 @@ namespace xPlatform.x86.comctl32
             [In] IntPtr himl,
             [In] uint dwFlags,
             [In] IntPtr pstm);
+
+        [DllImport(ModuleName)]
+        public static extern IntPtr CreatePropertySheetPageA(
+            [In] IntPtr lppsp);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern IntPtr CreatePropertySheetPageA(
+            [In] ref PROPSHEETPAGE lppsp);
+
+        [DllImport(ModuleName)]
+        public static extern IntPtr CreatePropertySheetPageW(
+            [In] IntPtr lppsp);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern IntPtr CreatePropertySheetPageW(
+            [In] ref PROPSHEETPAGE lppsp);
+
+        [DllImport(ModuleName)]
+        public static extern int DestroyPropertySheetPage(
+            [In] IntPtr hPSPage);
+
+        [DllImport(ModuleName)]
+        public static extern int PropertySheetA(
+            [In] IntPtr lppsph);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int PropertySheetA(
+            [In] ref PROPSHEETHEADER lppsph);
+
+        [DllImport(ModuleName)]
+        public static extern int PropertySheetW(
+            [In] IntPtr lppsph);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int PropertySheetW(
+            [In] ref PROPSHEETHEADER lppsph);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false), Obsolete]
+        public static extern IntPtr CreateStatusWindowA(
+            [In] int style,
+            [In, Const] IntPtr lpszText,
+            [In] IntPtr hWndParent,
+            [In] uint wID);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false), Obsolete]
+        public static extern IntPtr CreateStatusWindowA(
+            [In] int style,
+            [In, Const] string lpszText,
+            [In] IntPtr hWndParent,
+            [In] uint wID);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false), Obsolete]
+        public static extern IntPtr CreateStatusWindowW(
+            [In] int style,
+            [In, Const] IntPtr lpszText,
+            [In] IntPtr hWndParent,
+            [In] uint wID);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false), Obsolete]
+        public static extern IntPtr CreateStatusWindowW(
+            [In] int style,
+            [In, Const] string lpszText,
+            [In] IntPtr hWndParent,
+            [In] uint wID);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void DrawStatusTextA(
+            [In] IntPtr hdc,
+            [In, Const] IntPtr lprc,
+            [In, Const] IntPtr pszText,
+            [In] uint uFlags);
+
+        [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern void DrawStatusTextA(
+            [In] IntPtr hdc,
+            [In] ref RECT lprc,
+            [In] string pszText,
+            [In] uint uFlags);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void DrawStatusTextW(
+            [In] IntPtr hdc,
+            [In, Const] IntPtr lprc,
+            [In, Const] IntPtr pszText,
+            [In] uint uFlags);
+
+        [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern void DrawStatusTextW(
+            [In] IntPtr hdc,
+            [In] ref RECT lprc,
+            [In] string pszText,
+            [In] uint uFlags);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void MenuHelp(
+            [In] uint uMsg,
+            [In] IntPtr wParam,
+            [In] IntPtr lParam,
+            [In] IntPtr hMainMenu,
+            [In] IntPtr hInst,
+            [In] IntPtr hwndStatus,
+            [In] IntPtr lpwIDs);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void MenuHelp(
+            [In] uint uMsg,
+            [In] IntPtr wParam,
+            [In] IntPtr lParam,
+            [In] IntPtr hMainMenu,
+            [In] IntPtr hInst,
+            [In] IntPtr hwndStatus,
+            [In] uint[] lpwIDs);
+
+        // Task Dialog
     }
 
     #endregion // Common control functions
