@@ -426,123 +426,51 @@ namespace xPlatform.x86.gdi32
         public PALETTEENTRY[] palPalEntry;
     }
 
-    [Serializable, StructLayout(LayoutKind.Explicit), CLSCompliant(false)]
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
     public struct DEVMODE
     {
-        [FieldOffset(0)]
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
         public string dmDeviceName;
 
-        [FieldOffset(4)]
         public ushort dmSpecVersion;
-
-        [FieldOffset(6)]
         public ushort dmDriverVersion;
-
-        [FieldOffset(8)]
         public ushort dmSize;
-
-        [FieldOffset(10)]
         public ushort dmDriverExtra;
-
-        [FieldOffset(12)]
         public uint dmFields;
-
-        [FieldOffset(16)]
         public short dmOrientation;
-
-        [FieldOffset(18)]
         public short dmPaperSize;
-
-        [FieldOffset(20)]
         public short dmPaperLength;
-
-        [FieldOffset(22)]
         public short dmPaperWidth;
-
-        [FieldOffset(24)]
         public short dmScale;
-
-        [FieldOffset(26)]
         public short dmCopies;
-
-        [FieldOffset(28)]
         public short dmDefaultSource;
-
-        [FieldOffset(30)]
         public short dmPrintQuality;
-
-        [FieldOffset(16)]
-        public POINTL dmPosition;
-
-        [FieldOffset(16)]
+        public uint dmPosition;
         public uint dmDisplayOrientation;
-
-        [FieldOffset(16)]
         public uint dmDisplayFixedOutput;
-
-        [FieldOffset(32)]
         public short dmColor;
-
-        [FieldOffset(34)]
         public short dmDuplex;
-
-        [FieldOffset(36)]
         public short dmYResolution;
-
-        [FieldOffset(38)]
         public short dmTTOption;
-
-        [FieldOffset(40)]
         public short dmCollate;
-
-        [FieldOffset(42)]
+        
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
         public string dmFormName;
-
-        [FieldOffset(46)]
+        
         public short dmLogPixels;
-
-        [FieldOffset(48)]
         public uint dmBitsPerPel;
-
-        [FieldOffset(52)]
         public uint dmPelsWidth;
-
-        [FieldOffset(56)]
         public uint dmPelsHeight;
-
-        [FieldOffset(60)]
         public uint dmDisplayFlags;
-
-        [FieldOffset(60)]
         public uint dmNup;
-
-        [FieldOffset(64)]
         public uint dmDisplayFrequency;
-
-        [FieldOffset(68)]
         public uint dmICMMethod;
-
-        [FieldOffset(72)]
         public uint dmICMIntent;
-
-        [FieldOffset(76)]
         public uint dmMediaType;
-
-        [FieldOffset(80)]
         public uint dmDitherType;
-
-        [FieldOffset(84)]
         public uint dmReserved1;
-
-        [FieldOffset(88)]
         public uint dmReserved2;
-
-        [FieldOffset(92)]
         public uint dmPanningWidth;
-
-        [FieldOffset(96)]
         public uint dmPanningHeight;
     }
 

@@ -182,31 +182,49 @@ namespace xPlatform.x86.kernel32
         public uint[] Fill;
     }
 
-    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    [Serializable, StructLayout(LayoutKind.Explicit), CLSCompliant(false)]
     public struct EXCEPTION_RECORD
     {
+        [FieldOffset(0)]
         public uint ExceptionCode;
+
+        [FieldOffset(4)]
         public uint ExceptionFlags;
+
+        [FieldOffset(8)]
         public IntPtr ExceptionRecord;
+
+        [FieldOffset(12)]
         public IntPtr ExceptionAddress;
+
+        [FieldOffset(16)]
         public uint NumberParameters;
 
+        [FieldOffset(20)]
         [MarshalAs(UnmanagedType.ByValArray, ArraySubType = UnmanagedType.U4, SizeConst = 15)]
         public uint[] ExceptionInformation;
     }
 
-    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    [Serializable, StructLayout(LayoutKind.Explicit), CLSCompliant(false)]
     public struct EXCEPTION_DEBUG_INFO
     {
+        [FieldOffset(0)]
         public EXCEPTION_RECORD ExceptionRecord;
+
+        [FieldOffset(80)]
         public uint dwFirstChance;
     }
 
-    [Serializable, StructLayout(LayoutKind.Sequential)]
+    [Serializable, StructLayout(LayoutKind.Explicit)]
     public struct CREATE_THREAD_DEBUG_INFO
     {
+        [FieldOffset(0)]
         public IntPtr hThread;
+
+        [FieldOffset(4)]
         public IntPtr lpThreadLocalBase;
+
+        [FieldOffset(8)]
         public IntPtr lpStartAddress;
     }
 
@@ -225,49 +243,69 @@ namespace xPlatform.x86.kernel32
         public ushort fUnicode;
     }
 
-    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    [Serializable, StructLayout(LayoutKind.Explicit), CLSCompliant(false)]
     public struct EXIT_THREAD_DEBUG_INFO
     {
+        [FieldOffset(0)]
         public uint dwExitCode;
     }
 
-    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    [Serializable, StructLayout(LayoutKind.Explicit), CLSCompliant(false)]
     public struct EXIT_PROCESS_DEBUG_INFO
     {
+        [FieldOffset(0)]
         public uint dwExitCode;
     }
 
-    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    [Serializable, StructLayout(LayoutKind.Explicit), CLSCompliant(false)]
     public struct LOAD_DLL_DEBUG_INFO
     {
+        [FieldOffset(0)]
         public IntPtr hFile;
+
+        [FieldOffset(4)]
         public IntPtr lpBaseOfDll;
+
+        [FieldOffset(8)]
         public uint dwDebugInfoFileOffset;
+
+        [FieldOffset(12)]
         public uint nDebugInfoSize;
+
+        [FieldOffset(16)]
         public IntPtr lpImageName;
+
+        [FieldOffset(18)]
         public ushort fUnicode;
     }
 
-    [Serializable, StructLayout(LayoutKind.Sequential)]
+    [Serializable, StructLayout(LayoutKind.Explicit)]
     public struct UNLOAD_DLL_DEBUG_INFO
     {
+        [FieldOffset(0)]
         public IntPtr lpBaseOfDll;
     }
 
-    [Serializable, StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto), CLSCompliant(false)]
+    [Serializable, StructLayout(LayoutKind.Explicit), CLSCompliant(false)]
     public struct OUTPUT_DEBUG_STRING_INFO
     {
-        [MarshalAs(UnmanagedType.LPTStr)]
-        public string lpDebugStringData;
+        [FieldOffset(0)]
+        public IntPtr lpDebugStringData;
 
+        [FieldOffset(4)]
         public ushort fUnicode;
+
+        [FieldOffset(6)]
         public ushort nDebugStringLength;
     }
 
-    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    [Serializable, StructLayout(LayoutKind.Explicit), CLSCompliant(false)]
     public struct RIP_INFO
     {
+        [FieldOffset(0)]
         public uint dwError;
+
+        [FieldOffset(4)]
         public uint dwType;
     }
 
@@ -288,22 +326,22 @@ namespace xPlatform.x86.kernel32
 
         [FieldOffset(12)]
         public CREATE_THREAD_DEBUG_INFO CreateThread;
-
-        [FieldOffset(12)]
-        public CREATE_PROCESS_DEBUG_INFO CreateProcessInfo;
-
+        
+        //[FieldOffset(12)]
+        //public CREATE_PROCESS_DEBUG_INFO CreateProcessInfo;
+        
         [FieldOffset(12)]
         public EXIT_THREAD_DEBUG_INFO ExitThread;
-
+        
         [FieldOffset(12)]
         public EXIT_PROCESS_DEBUG_INFO ExitProcess;
-
+        
         [FieldOffset(12)]
         public LOAD_DLL_DEBUG_INFO LoadDll;
-
+        
         [FieldOffset(12)]
         public UNLOAD_DLL_DEBUG_INFO UnloadDll;
-
+        
         [FieldOffset(12)]
         public OUTPUT_DEBUG_STRING_INFO OutputString;
 
@@ -665,21 +703,30 @@ namespace xPlatform.x86.kernel32
         public uint dwAvailVirtual;
     }
 
-    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    [Serializable, StructLayout(LayoutKind.Explicit), CLSCompliant(false)]
     public struct Block
     {
+        [FieldOffset(0)]
         public IntPtr hMem;
 
+        [FieldOffset(4)]
         [MarshalAs(UnmanagedType.ByValArray, ArraySubType = UnmanagedType.U4, SizeConst = 3)]
         public uint[] dwReserved;
     }
 
-    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    [Serializable, StructLayout(LayoutKind.Explicit), CLSCompliant(false)]
     public struct Region
     {
+        [FieldOffset(0)]
         public uint dwCommitedSize;
+
+        [FieldOffset(4)]
         public uint dwUnCommitedSize;
+
+        [FieldOffset(8)]
         public IntPtr lpFirstBlock;
+
+        [FieldOffset(12)]
         public IntPtr lpLastBlock;
     }
 
@@ -701,11 +748,11 @@ namespace xPlatform.x86.kernel32
         [FieldOffset(10)]
         public ushort wFlags;
 
-        [FieldOffset(14)]
-        public Block Block;
+        //[FieldOffset(14)]
+        //public Block Block;
 
-        [FieldOffset(14)]
-        public Region Region;
+        //[FieldOffset(14)]
+        //public Region Region;
     }
 
     [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
