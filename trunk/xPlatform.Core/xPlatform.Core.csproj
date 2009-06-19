@@ -46,6 +46,7 @@
     <Compile Include="Flags\ConstAttribute.cs" />
     <Compile Include="Flags\ReadonlyAttribute.cs" />
     <Compile Include="Flags\TodoAttribute.cs" />
+    <Compile Include="IModuleBase.cs" />
     <Compile Include="ITypedPointer.cs" />
     <Compile Include="ModuleBase.cs" />
     <Compile Include="NonStandard\IUnsafePointer.cs" />
