@@ -10,6 +10,9 @@ namespace xPlatform.Core.Test
         [STAThread]
         static void Main(string[] args)
         {
+            msvcrt d = new msvcrt();
+            System.Data.DataTable t = d.MethodList;
+
             const string targetString = @"안녕하십니까?";
 
             using (GlobalHeapAnsiString str = new GlobalHeapAnsiString(targetString))
