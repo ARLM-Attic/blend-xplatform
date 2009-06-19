@@ -50,6 +50,7 @@ namespace xPlatform
                 new DataColumn("MethodArgsCount", typeof(int)),
                 new DataColumn("MethodCallingConvention", typeof(string)),
                 new DataColumn("MethodIsCLSCompliant", typeof(bool)),
+                new DataColumn("MethodInfo", typeof(MethodInfo)),
             });
             table.PrimaryKey = new DataColumn[] { table.Columns[0] };
 
@@ -81,10 +82,16 @@ namespace xPlatform
 
                         return attribute.IsCompliant;
                     })(eachMethod),
+                    eachMethod,
                 });
             }
 
             return table;
+        }
+
+        protected virtual DataTable GatherArgumentList(DataTable methodListTable)
+        {
+            return null;
         }
     }
 
