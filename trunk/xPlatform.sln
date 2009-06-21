@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xPlatform.x86.comctl32", "x
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xPlatform.x86.msftedit", "xPlatform.x86.msftedit\xPlatform.x86.msftedit.csproj", "{B964D091-257E-4F77-BEA9-4A9B9D9C2AD4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xPlatform.Web", "xPlatform.Web\xPlatform.Web.csproj", "{42081832-2722-4621-A574-D2D259E63D32}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +81,10 @@ Global
 		{B964D091-257E-4F77-BEA9-4A9B9D9C2AD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B964D091-257E-4F77-BEA9-4A9B9D9C2AD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B964D091-257E-4F77-BEA9-4A9B9D9C2AD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42081832-2722-4621-A574-D2D259E63D32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42081832-2722-4621-A574-D2D259E63D32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42081832-2722-4621-A574-D2D259E63D32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42081832-2722-4621-A574-D2D259E63D32}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
