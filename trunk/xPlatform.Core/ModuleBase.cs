@@ -40,7 +40,7 @@ namespace xPlatform
             get { return this.argumentList; }
         }
 
-        protected virtual MethodInfo[] GatherMethodInfoList()
+        public virtual MethodInfo[] GatherMethodInfoList()
         {
             List<MethodInfo> list = new List<MethodInfo>();
 
@@ -57,8 +57,11 @@ namespace xPlatform
             return list.ToArray();
         }
 
-        protected virtual DataTable GatherMethodList(MethodInfo[] methods)
+        public virtual DataTable GatherMethodList(MethodInfo[] methods)
         {
+            if (methods == null)
+                methods = this.GatherMethodInfoList();
+
             DataTable table = new DataTable(String.Concat(this.CurrentType.Name, "_methods"));
 
             // Table Setup
@@ -108,8 +111,11 @@ namespace xPlatform
             return table;
         }
 
-        protected virtual DataTable GatherArgumentList(MethodInfo[] methods)
+        public virtual DataTable GatherArgumentList(MethodInfo[] methods)
         {
+            if (methods == null)
+                methods = this.GatherMethodInfoList();
+
             DataTable table = new DataTable(String.Concat(this.CurrentType.Name, "_arguments"));
 
             // Table setup
