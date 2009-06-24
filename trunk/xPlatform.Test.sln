@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+# Visual C# Express 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xPlatform.Core.Test", "xPlatform.Core.Test\xPlatform.Core.Test.csproj", "{4E4984B5-8A0F-4319-AC70-5CE7CEDD7049}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xPlatform.Core", "xPlatform.Core\xPlatform.Core.csproj", "{65EBCC88-5D43-49BF-9851-70DE3D22A878}"

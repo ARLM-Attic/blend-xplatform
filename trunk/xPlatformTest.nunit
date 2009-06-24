@@ -1,0 +1,7 @@
+﻿<NUnitProject>
+  <Settings activeconfig="Debug" />
+  <Config name="Debug" binpathtype="Auto">
+    <assembly path="xPlatform.Core.Test\bin\Debug\xPlatform.Core.Test.dll" />
+  </Config>
+  <Config name="Release" binpathtype="Auto" />
+</NUnitProject>
