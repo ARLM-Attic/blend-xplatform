@@ -55,6 +55,10 @@
       <Project>{65EBCC88-5D43-49BF-9851-70DE3D22A878}</Project>
       <Name>xPlatform.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\xPlatform.Math.MT\xPlatform.Math.MT.csproj">
+      <Project>{465DB9C4-1B01-4F5A-934A-53420AFA962F}</Project>
+      <Name>xPlatform.Math.MT</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
+using xPlatform.Math.MT;
 using System.Runtime.InteropServices;
 
 namespace xPlatform.Test.TypedPointerTest
@@ -7,12 +8,11 @@ namespace xPlatform.Test.TypedPointerTest
     [TestFixture]
     public class DateTimePointerTest
     {
-        private Random random = new Random();
+        private MersenneTwister64 random = new MersenneTwister64();
 
         public DateTime GenerateRandomDateTime()
         {
-            // http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt.html
-            return DateTime.Now;
+            return new DateTime(random.NextInt64());
         }
 
         [Test]
