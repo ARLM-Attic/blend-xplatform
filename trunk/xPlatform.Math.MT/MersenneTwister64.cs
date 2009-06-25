@@ -2,6 +2,11 @@
 
 namespace xPlatform.Math.MT
 {
+    // MersenneTwister 64bit version
+    // Author: Takuji Nishimura, Makoto Matsumoto
+    // (c) 1997 ~ 2002, Makoto Matsumoto and Takuji Nishimura
+    // http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt.html
+    // C# version (c) 2009, rkttu.com
     public class MersenneTwister64
     {
         protected const int NN = 312;
@@ -16,10 +21,10 @@ namespace xPlatform.Math.MT
 
         private void InternalInitialize(ulong seed)
         {
-            mt[0] = seed;
+            this.mt[0] = seed;
 
-            for (mti = 1; mti < NN; mti++)
-                mt[mti] = (6364136223846793005uL * (mt[mti - 1] ^ (mt[mti - 1] >> 62)) + (ulong)mti);
+            for (this.mti = 1; this.mti < NN; this.mti++)
+                this.mt[this.mti] = (6364136223846793005uL * (this.mt[this.mti - 1] ^ (this.mt[this.mti - 1] >> 62)) + (ulong)this.mti);
         }
 
         public MersenneTwister64()
@@ -43,12 +48,12 @@ namespace xPlatform.Math.MT
             for (; k != 0; k--)
             {
                 // non-linear
-                mt[i] = (mt[i] ^ ((mt[i - 1] ^ (mt[i - 1] >> 62)) * 3935559000370003845uL)) + init_key[j] + j;
+                this.mt[i] = (this.mt[i] ^ ((this.mt[i - 1] ^ (this.mt[i - 1] >> 62)) * 3935559000370003845uL)) + init_key[j] + j;
                 i++; j++;
                 
                 if (i >= NN)
                 {
-                    mt[0] = mt[NN - 1];
+                    this.mt[0] = this.mt[NN - 1];
                     i = 1uL;
                 }
 
@@ -59,17 +64,17 @@ namespace xPlatform.Math.MT
             for (k = unchecked(NN - (1uL)); k != 0; k--)
             {
                 // non-linear
-                mt[i] = (mt[i] ^ ((mt[i - 1] ^ (mt[i - 1] >> 62)) * 2862933555777941757uL)) - i;
+                this.mt[i] = (this.mt[i] ^ ((this.mt[i - 1] ^ (this.mt[i - 1] >> 62)) * 2862933555777941757uL)) - i;
                 i++;
 
                 if (i >= NN)
                 {
-                    mt[0] = mt[NN - 1];
+                    this.mt[0] = this.mt[NN - 1];
                     i = 1;
                 }
             }
 
-            mt[0] = 1uL << 63;
+            this.mt[0] = 1uL << 63;
         }
 
         public ulong NextUInt64()
@@ -77,29 +82,29 @@ namespace xPlatform.Math.MT
             int i = 0;
             ulong x = 0uL;
 
-            if (mti >= NN)
+            if (this.mti >= NN)
             {
-                if (mti == NN + 1)
+                if (this.mti == NN + 1)
                     this.InternalInitialize(5489uL);
 
                 for (i = 0; i < NN - MM; i++)
                 {
-                    x = (mt[i] & UM) | (mt[i + 1] & LM);
-                    mt[i] = mt[i + MM] ^ (x >> 1) ^ mag01[(int)(x & 1uL)];
+                    x = (this.mt[i] & UM) | (this.mt[i + 1] & LM);
+                    this.mt[i] = this.mt[i + MM] ^ (x >> 1) ^ this.mag01[(int)(x & 1uL)];
                 }
 
                 for (; i < NN - 1; i++)
                 {
-                    x = (mt[i] & UM) | (mt[i + 1] & LM);
-                    mt[i] = mt[i + (MM - NN)] ^ (x >> 1) ^ mag01[(int)(x & 1uL)];
+                    x = (this.mt[i] & UM) | (this.mt[i + 1] & LM);
+                    this.mt[i] = this.mt[i + (MM - NN)] ^ (x >> 1) ^ this.mag01[(int)(x & 1uL)];
                 }
 
-                x = (mt[NN - 1] & UM) | (mt[0] & LM);
-                mt[NN - 1] = mt[MM - 1] ^ (x >> 1) ^ mag01[(int)(x & 1uL)];
-                mti = 0;
+                x = (this.mt[NN - 1] & UM) | (this.mt[0] & LM);
+                this.mt[NN - 1] = this.mt[MM - 1] ^ (x >> 1) ^ this.mag01[(int)(x & 1uL)];
+                this.mti = 0;
             }
 
-            x = mt[mti++];
+            x = this.mt[this.mti++];
             x ^= (x >> 29) & 0x5555555555555555uL;
             x ^= (x << 17) & 0x71D67FFFEDA60000uL;
             x ^= (x << 37) & 0xFFF7EEE000000000uL;
@@ -110,6 +115,11 @@ namespace xPlatform.Math.MT
         public long NextInt64()
         {
             return (long)(NextUInt64() >> 11);
+        }
+
+        public DateTime NextDateTime()
+        {
+            return new DateTime(this.NextInt64());
         }
 
         public double NextDoubleClosedRealInterval()
