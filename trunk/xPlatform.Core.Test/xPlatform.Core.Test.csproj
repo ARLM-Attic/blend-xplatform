@@ -49,6 +49,8 @@
     <Compile Include="TypedPointerTest\BooleanPointerTest.cs" />
     <Compile Include="TypedPointerTest\BytePointerTest.cs" />
     <Compile Include="TypedPointerTest\DateTimePointerTest.cs" />
+    <Compile Include="TypedPointerTest\DecimalPointerTest.cs" />
+    <Compile Include="TypedPointerTest\DoublePointerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\xPlatform.Core\xPlatform.Core.csproj">

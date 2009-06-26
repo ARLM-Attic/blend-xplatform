@@ -1,30 +1,29 @@
 ﻿using System;
 using NUnit.Framework;
-using xPlatform.Math.MT;
 using System.Runtime.InteropServices;
 
 namespace xPlatform.Test.TypedPointerTest
 {
     [TestFixture]
-    public class DateTimePointerTest
+    public class DoublePointerTest : AssertionHelper
     {
-        private MersenneTwister64 random = new MersenneTwister64();
+        private Random random = new Random();
 
-        public DateTime GenerateRandomDateTime()
+        public double GenerateRandomNumber()
         {
-            return random.NextDateTime().AddYears(2000);
+            return random.NextDouble();
         }
 
         [Test]
         public unsafe void StackallocTest1()
         {
             const int bufferSize = 4;
-            DateTime* sample = stackalloc DateTime[bufferSize];
-            DateTimePointer pointer = new DateTimePointer(sample);
-            DateTime[] results = new DateTime[bufferSize];
+            double* sample = stackalloc double[bufferSize];
+            DoublePointer pointer = new DoublePointer(sample);
+            double[] results = new double[bufferSize];
 
             for (int i = 0; i < bufferSize; i++)
-                results[i] = *(sample + i) = GenerateRandomDateTime();
+                results[i] = *(sample + i) = GenerateRandomNumber();
 
             // GetData method
             for (int i = 0; i < bufferSize; i++)
@@ -40,12 +39,12 @@ namespace xPlatform.Test.TypedPointerTest
         public unsafe void StackallocTest2()
         {
             const int bufferSize = 4;
-            DateTime* sample = stackalloc DateTime[bufferSize];
-            DateTimePointer pointer = new DateTimePointer(sample);
-            DateTime[] results = new DateTime[bufferSize];
+            double* sample = stackalloc double[bufferSize];
+            DoublePointer pointer = new DoublePointer(sample);
+            double[] results = new double[bufferSize];
 
             for (int i = 0; i < bufferSize; i++)
-                results[i] = *(sample + i) = GenerateRandomDateTime();
+                results[i] = *(sample + i) = GenerateRandomNumber();
 
             // Indexer based memory navigation
             for (int i = 0; i < bufferSize; i++)
@@ -61,18 +60,18 @@ namespace xPlatform.Test.TypedPointerTest
         public unsafe void StackallocTest3()
         {
             const int bufferSize = 4;
-            DateTime* sample = stackalloc DateTime[bufferSize];
-            DateTimePointer pointer = new DateTimePointer(sample);
-            DateTime[] results = new DateTime[bufferSize];
+            double* sample = stackalloc double[bufferSize];
+            DoublePointer pointer = new DoublePointer(sample);
+            double[] results = new double[bufferSize];
 
             for (int i = 0; i < bufferSize; i++)
-                results[i] = *(sample + i) = GenerateRandomDateTime();
+                results[i] = *(sample + i) = GenerateRandomNumber();
 
             // Pointer conversion test
             for (int i = 0; i < bufferSize; i++)
             {
                 object x = results[i];
-                object y = *(DateTime*)(pointer + i);
+                object y = *(double*)(pointer + i);
                 Console.WriteLine("[{0}] <Left: {1}> {2} <Right: {3}>", i, x, x.Equals(y) ? "==" : "<>", y);
                 Assert.AreEqual(x, y);
             }
@@ -82,13 +81,13 @@ namespace xPlatform.Test.TypedPointerTest
         public unsafe void StackallocTest4()
         {
             const int bufferSize = 4;
-            DateTime* sample = stackalloc DateTime[bufferSize];
-            DateTimePointer pointer = new DateTimePointer(sample);
-            DateTime[] results = new DateTime[bufferSize];
+            double* sample = stackalloc double[bufferSize];
+            DoublePointer pointer = new DoublePointer(sample);
+            double[] results = new double[bufferSize];
 
             // SetData method
             for (int i = 0; i < bufferSize; i++)
-                pointer.SetData(results[i] = GenerateRandomDateTime(), i);
+                pointer.SetData(results[i] = GenerateRandomNumber(), i);
 
             // GetData method
             for (int i = 0; i < bufferSize; i++)
@@ -104,13 +103,13 @@ namespace xPlatform.Test.TypedPointerTest
         public unsafe void StackallocTest5()
         {
             const int bufferSize = 4;
-            DateTime* sample = stackalloc DateTime[bufferSize];
-            DateTimePointer pointer = new DateTimePointer(sample);
-            DateTime[] results = new DateTime[bufferSize];
+            double* sample = stackalloc double[bufferSize];
+            DoublePointer pointer = new DoublePointer(sample);
+            double[] results = new double[bufferSize];
 
             // Indexer based memory writing
             for (int i = 0; i < bufferSize; i++)
-                results[i] = pointer[i] = GenerateRandomDateTime();
+                results[i] = pointer[i] = GenerateRandomNumber();
 
             // Indexer based memory navigation
             for (int i = 0; i < bufferSize; i++)
@@ -126,19 +125,19 @@ namespace xPlatform.Test.TypedPointerTest
         public unsafe void StackallocTest6()
         {
             const int bufferSize = 5;
-            DateTime* sample = stackalloc DateTime[bufferSize];
-            DateTimePointer pointer = new DateTimePointer(sample);
-            DateTime[] results = new DateTime[bufferSize];
+            double* sample = stackalloc double[bufferSize];
+            DoublePointer pointer = new DoublePointer(sample);
+            double[] results = new double[bufferSize];
 
             // Pointer conversion test
             for (int i = 0; i < bufferSize; i++)
-                results[i] = *(DateTime*)(pointer + i) = GenerateRandomDateTime();
+                results[i] = *(double*)(pointer + i) = GenerateRandomNumber();
 
             // Pointer conversion test
             for (int i = 0; i < bufferSize; i++)
             {
                 object x = results[i];
-                object y = *(DateTime*)(pointer + i);
+                object y = *(double*)(pointer + i);
                 Console.WriteLine("[{0}] <Left: {1}> {2} <Right: {3}>", i, x, x.Equals(y) ? "==" : "<>", y);
                 Assert.AreEqual(x, y);
             }
@@ -147,16 +146,16 @@ namespace xPlatform.Test.TypedPointerTest
         [Test]
         public unsafe void SizeOfTest1()
         {
-            DateTime* sample = stackalloc DateTime[4];
+            double* sample = stackalloc double[4];
 
             int totalSize = 0;
 
-            int ptrSize1 = Marshal.SizeOf(new DateTimePointer(sample));
-            Console.WriteLine("Marshal.SizeOf(new DateTimePointer(...)): {0}", ptrSize1);
+            int ptrSize1 = Marshal.SizeOf(new DoublePointer(sample));
+            Console.WriteLine("Marshal.SizeOf(new DoublePointer(...)): {0}", ptrSize1);
             totalSize += ptrSize1;
 
-            int ptrSize2 = Marshal.SizeOf(typeof(DateTimePointer));
-            Console.WriteLine("Marshal.SizeOf(typeof(DateTimePointer)): {0}", ptrSize2);
+            int ptrSize2 = Marshal.SizeOf(typeof(DoublePointer));
+            Console.WriteLine("Marshal.SizeOf(typeof(DoublePointer)): {0}", ptrSize2);
             totalSize += ptrSize2;
 
             int ptrSize3 = Marshal.SizeOf(IntPtr.Zero);
@@ -167,17 +166,17 @@ namespace xPlatform.Test.TypedPointerTest
             Console.WriteLine("Marshal.SizeOf(typeof(IntPtr)): {0}", ptrSize4);
             totalSize += ptrSize4;
 
-            int ptrSize5 = Marshal.SizeOf(typeof(DateTime*));
-            Console.WriteLine("Marshal.SizeOf(typeof(DateTime*)): {0}", ptrSize5);
+            int ptrSize5 = Marshal.SizeOf(typeof(double*));
+            Console.WriteLine("Marshal.SizeOf(typeof(double*)): {0}", ptrSize5);
             totalSize += ptrSize5;
 
-            Assert.AreEqual(totalSize, DateTimePointer.Size * 5);
+            Assert.AreEqual(totalSize, DoublePointer.Size * 5);
         }
 
         [Test]
         public unsafe void EqualityTest1()
         {
-            DateTime* sample = stackalloc DateTime[4];
+            double* sample = stackalloc double[4];
             int checksum = 0;
 
             int address1 = (int)sample;
@@ -188,12 +187,12 @@ namespace xPlatform.Test.TypedPointerTest
             Console.WriteLine("IntPtr Address: {0:X}", address2.ToInt32());
             checksum += address2.ToInt32();
 
-            DateTimePointer address3 = new DateTimePointer(address2);
-            Console.WriteLine("DateTimePointer Address (from IntPtr): {0:X}", address3.ToInt32());
+            DoublePointer address3 = new DoublePointer(address2);
+            Console.WriteLine("DoublePointer Address (from IntPtr): {0:X}", address3.ToInt32());
             checksum += address3.ToInt32();
 
-            DateTimePointer address4 = new DateTimePointer(address1);
-            Console.WriteLine("DateTimePointer Address (from Int32): {0:X}", address4.ToInt32());
+            DoublePointer address4 = new DoublePointer(address1);
+            Console.WriteLine("DoublePointer Address (from Int32): {0:X}", address4.ToInt32());
             checksum += address4.ToInt32();
 
             int checksumDigest = checksum / 4;
@@ -206,17 +205,17 @@ namespace xPlatform.Test.TypedPointerTest
         [Test]
         public unsafe void AddressTest1()
         {
-            DateTime* sample = stackalloc DateTime[4];
-            DateTimePointer a = new DateTimePointer(sample);
-            DateTimePointer b = (a + 1);
+            double* sample = stackalloc double[4];
+            DoublePointer a = new DoublePointer(sample);
+            DoublePointer b = (a + 1);
             Console.WriteLine("Address offset: {0}", b.ToInt32() - a.ToInt32());
 
-            Assert.AreEqual(sizeof(DateTime), b.ToInt32() - a.ToInt32());
+            Assert.AreEqual(sizeof(double), b.ToInt32() - a.ToInt32());
             Assert.False(Object.ReferenceEquals(a, b));
 
             // xPlatform's typed pointers are value type.
-            DateTimePointer c = new DateTimePointer(sample + 1);
-            DateTimePointer d = (++c);
+            DoublePointer c = new DoublePointer(sample + 1);
+            DoublePointer d = (++c);
             Console.WriteLine("Address offset: {0}", d.ToInt32() - c.ToInt32());
 
             Assert.AreEqual(0, d.ToInt32() - c.ToInt32());

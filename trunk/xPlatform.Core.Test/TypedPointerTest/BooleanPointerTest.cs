@@ -210,7 +210,7 @@ namespace xPlatform.Test.TypedPointerTest
             Console.WriteLine("Address offset: {0}", b.ToInt32() - a.ToInt32());
             
             // note: low-level memory size is 1 byte. (Marshal.SizeOf(bool) returns 4 bytes)
-            Assert.AreEqual(1, b.ToInt32() - a.ToInt32());
+            Assert.AreEqual(sizeof(bool), b.ToInt32() - a.ToInt32());
             Assert.False(Object.ReferenceEquals(a, b));
 
             // xPlatform's typed pointers are value type.

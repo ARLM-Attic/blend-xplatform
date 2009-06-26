@@ -1,26 +1,27 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // 어셈블리의 일반 정보는 다음 특성 집합을 통해 제어됩니다.
 // 어셈블리와 관련된 정보를 수정하려면
 // 이 특성 값을 변경하십시오.
-[assembly: AssemblyTitle("xPlatform.Math.MT")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("xPlatform Mersenne Twister Algorithm Assembly")]
+[assembly: AssemblyDescription("xPlatform Mersenne Twister Algorithm Assembly")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("COREB@NK")]
-[assembly: AssemblyProduct("xPlatform.Math.MT")]
-[assembly: AssemblyCopyright("Copyright © COREB@NK 2009")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCompany("rkttu.com")]
+[assembly: AssemblyProduct("xPlatform")]
+[assembly: AssemblyCopyright("Copyright (c) rkttu.com 2009")]
+[assembly: AssemblyTrademark("Project Blend")]
 [assembly: AssemblyCulture("")]
 
 // ComVisible을 false로 설정하면 이 어셈블리의 형식이 COM 구성 요소에 
 // 표시되지 않습니다. COM에서 이 어셈블리의 형식에 액세스하려면 
 // 해당 형식에 대해 ComVisible 특성을 true로 설정하십시오.
-[assembly: ComVisible(false)]
+[assembly: ComVisible(true)]
 
 // 이 프로젝트가 COM에 노출되는 경우 다음 GUID는 typelib의 ID를 나타냅니다.
-[assembly: Guid("33861e3d-197a-482f-9b17-151496912cac")]
+[assembly: Guid("E183AD9E-82F2-4ca7-B7DB-E7BB9C50578A")]
 
 // 어셈블리의 버전 정보는 다음 네 가지 값으로 구성됩니다.
 //
@@ -34,3 +35,5 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+
+[assembly: CLSCompliant(true)]

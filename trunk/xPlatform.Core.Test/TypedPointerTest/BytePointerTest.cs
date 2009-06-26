@@ -210,7 +210,7 @@ namespace xPlatform.Test.TypedPointerTest
             BytePointer b = (a + 1);
             Console.WriteLine("Address offset: {0}", b.ToInt32() - a.ToInt32());
 
-            Assert.AreEqual(Marshal.SizeOf(typeof(byte)), b.ToInt32() - a.ToInt32());
+            Assert.AreEqual(sizeof(byte), b.ToInt32() - a.ToInt32());
             Assert.False(Object.ReferenceEquals(a, b));
 
             // xPlatform's typed pointers are value type.

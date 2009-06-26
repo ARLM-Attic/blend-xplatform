@@ -11,8 +11,14 @@ namespace xPlatform.Math.MT
     {
         protected const int NN = 312;
         protected const int MM = 156;
+
+        [CLSCompliant(false)]
         protected const ulong MATRIX_A = 0xB5026F5AA96619E9uL;
+
+        [CLSCompliant(false)]
         protected const ulong UM = 0xFFFFFFFF80000000uL;
+
+        [CLSCompliant(false)]
         protected const ulong LM = 0x7FFFFFFFuL;
 
         private ulong[] mag01 = new ulong[] { 0uL, MATRIX_A };
@@ -32,12 +38,14 @@ namespace xPlatform.Math.MT
         {
         }
 
+        [CLSCompliant(false)]
         public MersenneTwister64(ulong seed)
             : base()
         {
             this.InternalInitialize(seed);
         }
 
+        [CLSCompliant(false)]
         public MersenneTwister64(ulong[] init_key, ulong key_length)
             : this(19650218uL)
         {
@@ -77,6 +85,7 @@ namespace xPlatform.Math.MT
             this.mt[0] = 1uL << 63;
         }
 
+        [CLSCompliant(false)]
         public ulong NextUInt64()
         {
             int i = 0;
