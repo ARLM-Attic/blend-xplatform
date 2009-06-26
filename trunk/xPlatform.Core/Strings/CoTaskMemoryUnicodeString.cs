@@ -23,7 +23,7 @@ namespace xPlatform.Strings
         }
 
         public CoTaskMemoryUnicodeString(int length)
-            : this(Utilities.CreateEmptyString(length))
+            : this(Utilities.CreateWhitespaceString(length))
         {
         }
 
