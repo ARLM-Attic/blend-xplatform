@@ -175,6 +175,28 @@ namespace xPlatform.Test.TypedPointerTest
         }
 
         [Test]
+        public unsafe void SizeOfTest2()
+        {
+            DateTime* sample = stackalloc DateTime[4];
+
+            int totalSize = 0;
+
+            int ptrSize1 = sizeof(DateTimePointer);
+            Console.WriteLine("sizeof(DateTimePointer): {0}", ptrSize1);
+            totalSize += ptrSize1;
+
+            int ptrSize2 = sizeof(IntPtr);
+            Console.WriteLine("sizeof(IntPtr): {0}", ptrSize2);
+            totalSize += ptrSize2;
+
+            int ptrSize3 = sizeof(DateTime*);
+            Console.WriteLine("sizeof(DateTime*): {0}", ptrSize3);
+            totalSize += ptrSize3;
+
+            Assert.AreEqual(totalSize, DateTimePointer.Size * 3);
+        }
+
+        [Test]
         public unsafe void EqualityTest1()
         {
             DateTime* sample = stackalloc DateTime[4];

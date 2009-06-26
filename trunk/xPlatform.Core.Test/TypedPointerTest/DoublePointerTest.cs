@@ -174,6 +174,28 @@ namespace xPlatform.Test.TypedPointerTest
         }
 
         [Test]
+        public unsafe void SizeOfTest2()
+        {
+            double* sample = stackalloc double[4];
+
+            int totalSize = 0;
+
+            int ptrSize1 = sizeof(DoublePointer);
+            Console.WriteLine("sizeof(DoublePointer): {0}", ptrSize1);
+            totalSize += ptrSize1;
+
+            int ptrSize2 = sizeof(IntPtr);
+            Console.WriteLine("sizeof(IntPtr): {0}", ptrSize2);
+            totalSize += ptrSize2;
+
+            int ptrSize3 = sizeof(double*);
+            Console.WriteLine("sizeof(double*): {0}", ptrSize3);
+            totalSize += ptrSize3;
+
+            Assert.AreEqual(totalSize, DoublePointer.Size * 3);
+        }
+
+        [Test]
         public unsafe void EqualityTest1()
         {
             double* sample = stackalloc double[4];

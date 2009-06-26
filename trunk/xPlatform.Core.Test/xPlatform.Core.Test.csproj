@@ -51,6 +51,7 @@
     <Compile Include="TypedPointerTest\DateTimePointerTest.cs" />
     <Compile Include="TypedPointerTest\DecimalPointerTest.cs" />
     <Compile Include="TypedPointerTest\DoublePointerTest.cs" />
+    <Compile Include="TypedPointerTest\GuidPointerTest.cs" />
     <Compile Include="UtilityTest\UtilityTest.cs" />
   </ItemGroup>
   <ItemGroup>
