@@ -52,6 +52,18 @@
     <Compile Include="TypedPointerTest\DecimalPointerTest.cs" />
     <Compile Include="TypedPointerTest\DoublePointerTest.cs" />
     <Compile Include="TypedPointerTest\GuidPointerTest.cs" />
+    <Compile Include="TypedPointerTest\Int16PointerTest.cs" />
+    <Compile Include="TypedPointerTest\Int32PointerTest.cs" />
+    <Compile Include="TypedPointerTest\Int64PointerTest.cs" />
+    <Compile Include="TypedPointerTest\IntPtrPointerTest.cs" />
+    <Compile Include="TypedPointerTest\SBytePointerTest.cs" />
+    <Compile Include="TypedPointerTest\SinglePointerTest.cs" />
+    <Compile Include="TypedPointerTest\TimeSpanPointerTest.cs" />
+    <Compile Include="TypedPointerTest\UInt16PointerTest.cs" />
+    <Compile Include="TypedPointerTest\UInt32Pointer.cs" />
+    <Compile Include="TypedPointerTest\UInt64Pointer.cs" />
+    <Compile Include="TypedPointerTest\UIntPtrPointer.cs" />
+    <Compile Include="TypedPointerTest\WideCharPointerTest.cs" />
     <Compile Include="UtilityTest\UtilityTest.cs" />
   </ItemGroup>
   <ItemGroup>
