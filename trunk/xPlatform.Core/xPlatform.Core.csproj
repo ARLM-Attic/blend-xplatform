@@ -74,7 +74,7 @@
     <Compile Include="SecureStrings\GlobalHeapAnsiSecureString.cs" />
     <Compile Include="SecureStrings\GlobalHeapUnicodeSecureString.cs" />
     <Compile Include="SinglePointer.cs" />
-    <Compile Include="Strings\BasicString.cs" />
+    <Compile Include="Strings\OleBasicString.cs" />
     <Compile Include="Strings\CoTaskMemoryAnsiString.cs" />
     <Compile Include="Strings\CoTaskMemoryAutoString.cs" />
     <Compile Include="Strings\CoTaskMemoryUnicodeString.cs" />

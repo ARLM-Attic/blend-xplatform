@@ -5,29 +5,29 @@ using System.Runtime.InteropServices;
 
 namespace xPlatform.Strings
 {
-    public sealed class BasicString : IDisposable
+    public sealed class OleBasicString : IDisposable
     {
-        public BasicString(StringBuilder originalString)
+        public OleBasicString(StringBuilder originalString)
             : this(originalString.ToString())
         {
         }
 
-        public BasicString(TextReader reader)
+        public OleBasicString(TextReader reader)
             : this(reader.ReadToEnd())
         {
         }
 
-        public BasicString(char[] array)
+        public OleBasicString(char[] array)
             : this(new String(array))
         {
         }
 
-        public BasicString(int length)
+        public OleBasicString(int length)
             : this(Utilities.CreateWhitespaceString(length))
         {
         }
 
-        public BasicString(string originalString)
+        public OleBasicString(string originalString)
             : base()
         {
             if (originalString == null)
@@ -39,13 +39,13 @@ namespace xPlatform.Strings
                 throw new Exception("Cannot allocate memory.");
         }
 
-        public BasicString(BasicString previous)
+        public OleBasicString(OleBasicString previous)
             : base()
         {
             this.internalPointer = previous.internalPointer;
         }
 
-        ~BasicString()
+        ~OleBasicString()
         {
             this.Dispose(false);
         }
@@ -86,17 +86,17 @@ namespace xPlatform.Strings
                 return Marshal.PtrToStringBSTR(this.Address);
         }
 
-        public static implicit operator IntPtr(BasicString target)
+        public static implicit operator IntPtr(OleBasicString target)
         {
             return target.Address;
         }
 
-        public static implicit operator BasicString(string source)
+        public static implicit operator OleBasicString(string source)
         {
-            return new BasicString(source);
+            return new OleBasicString(source);
         }
 
-        public static implicit operator string(BasicString source)
+        public static implicit operator string(OleBasicString source)
         {
             return source.ToString();
         }

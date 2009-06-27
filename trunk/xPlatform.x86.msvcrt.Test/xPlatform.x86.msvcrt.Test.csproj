@@ -5,19 +5,15 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{4E4984B5-8A0F-4319-AC70-5CE7CEDD7049}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{7BAC667B-374D-49C0-9A29-AF27DDACA0C3}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>xPlatform.Test</RootNamespace>
-    <AssemblyName>xPlatform.Core.Test</AssemblyName>
+    <RootNamespace>xPlatform.x86.msvcrt.Test</RootNamespace>
+    <AssemblyName>xPlatform.x86.msvcrt.Test</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkSubset>
-    </TargetFrameworkSubset>
     <StartupObject>
     </StartupObject>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>xPlatform_Core_Test.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,6 +24,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,6 +34,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="nunit.framework, Version=2.5.0.9122, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
@@ -45,42 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="msvcrtTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TypedPointerTest\AutoCharPointerTest.cs" />
-    <Compile Include="TypedPointerTest\BooleanPointerTest.cs" />
-    <Compile Include="TypedPointerTest\BytePointerTest.cs" />
-    <Compile Include="TypedPointerTest\DateTimePointerTest.cs" />
-    <Compile Include="TypedPointerTest\DecimalPointerTest.cs" />
-    <Compile Include="TypedPointerTest\DoublePointerTest.cs" />
-    <Compile Include="TypedPointerTest\GuidPointerTest.cs" />
-    <Compile Include="TypedPointerTest\Int16PointerTest.cs" />
-    <Compile Include="TypedPointerTest\Int32PointerTest.cs" />
-    <Compile Include="TypedPointerTest\Int64PointerTest.cs" />
-    <Compile Include="TypedPointerTest\IntPtrPointerTest.cs" />
-    <Compile Include="TypedPointerTest\PointerTest.cs" />
-    <Compile Include="TypedPointerTest\SBytePointerTest.cs" />
-    <Compile Include="TypedPointerTest\SinglePointerTest.cs" />
-    <Compile Include="TypedPointerTest\TimeSpanPointerTest.cs" />
-    <Compile Include="TypedPointerTest\UInt16PointerTest.cs" />
-    <Compile Include="TypedPointerTest\UInt32Pointer.cs" />
-    <Compile Include="TypedPointerTest\UInt64Pointer.cs" />
-    <Compile Include="TypedPointerTest\UIntPtrPointer.cs" />
-    <Compile Include="TypedPointerTest\WideCharPointerTest.cs" />
-    <Compile Include="UtilityTest\UtilityTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\xPlatform.Core\xPlatform.Core.csproj">
       <Project>{65EBCC88-5D43-49BF-9851-70DE3D22A878}</Project>
       <Name>xPlatform.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\xPlatform.Math.MT\xPlatform.Math.MT.csproj">
-      <Project>{465DB9C4-1B01-4F5A-934A-53420AFA962F}</Project>
-      <Name>xPlatform.Math.MT</Name>
+    <ProjectReference Include="..\xPlatform.x86.msvcrt\xPlatform.x86.msvcrt.csproj">
+      <Project>{7ED6B19A-9120-4C31-82AB-9BB9ADB56622}</Project>
+      <Name>xPlatform.x86.msvcrt</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="xPlatform_Core_Test.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
