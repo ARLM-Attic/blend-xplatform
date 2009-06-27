@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 namespace xPlatform.Test.TypedPointerTest
 {
     [TestFixture]
-    public class WideCharPointerTest : AssertionHelper
+    public class AutoCharPointerTest : AssertionHelper
     {
         private Random random = new Random();
 
@@ -19,7 +19,7 @@ namespace xPlatform.Test.TypedPointerTest
         {
             const int bufferSize = 4;
             char* sample = stackalloc char[bufferSize];
-            WideCharPointer pointer = new WideCharPointer(sample);
+            AutoCharPointer pointer = new AutoCharPointer(sample);
             char[] results = new char[bufferSize];
 
             for (int i = 0; i < bufferSize; i++)
@@ -29,7 +29,7 @@ namespace xPlatform.Test.TypedPointerTest
             for (int i = 0; i < bufferSize; i++)
             {
                 object x = results[i];
-                object y = pointer.GetData(i);
+                object y = (char)pointer.GetData(i);
                 Console.WriteLine("[{0}] <Left: {1}> {2} <Right: {3}>", i, x, x.Equals(y) ? "==" : "<>", y);
                 Assert.AreEqual(x, y);
             }
@@ -40,7 +40,7 @@ namespace xPlatform.Test.TypedPointerTest
         {
             const int bufferSize = 4;
             char* sample = stackalloc char[bufferSize];
-            WideCharPointer pointer = new WideCharPointer(sample);
+            AutoCharPointer pointer = new AutoCharPointer(sample);
             char[] results = new char[bufferSize];
 
             for (int i = 0; i < bufferSize; i++)
@@ -50,7 +50,7 @@ namespace xPlatform.Test.TypedPointerTest
             for (int i = 0; i < bufferSize; i++)
             {
                 object x = results[i];
-                object y = pointer[i];
+                object y = (char)pointer[i];
                 Console.WriteLine("[{0}] <Left: {1}> {2} <Right: {3}>", i, x, x.Equals(y) ? "==" : "<>", y);
                 Assert.AreEqual(x, y);
             }
@@ -61,7 +61,7 @@ namespace xPlatform.Test.TypedPointerTest
         {
             const int bufferSize = 4;
             char* sample = stackalloc char[bufferSize];
-            WideCharPointer pointer = new WideCharPointer(sample);
+            AutoCharPointer pointer = new AutoCharPointer(sample);
             char[] results = new char[bufferSize];
 
             for (int i = 0; i < bufferSize; i++)
@@ -82,7 +82,7 @@ namespace xPlatform.Test.TypedPointerTest
         {
             const int bufferSize = 4;
             char* sample = stackalloc char[bufferSize];
-            WideCharPointer pointer = new WideCharPointer(sample);
+            AutoCharPointer pointer = new AutoCharPointer(sample);
             char[] results = new char[bufferSize];
 
             // SetData method
@@ -93,7 +93,7 @@ namespace xPlatform.Test.TypedPointerTest
             for (int i = 0; i < bufferSize; i++)
             {
                 object x = results[i];
-                object y = pointer.GetData(i);
+                object y = (char)pointer.GetData(i);
                 Console.WriteLine("[{0}] <Left: {1}> {2} <Right: {3}>", i, x, x.Equals(y) ? "==" : "<>", y);
                 Assert.AreEqual(x, y);
             }
@@ -104,18 +104,18 @@ namespace xPlatform.Test.TypedPointerTest
         {
             const int bufferSize = 4;
             char* sample = stackalloc char[bufferSize];
-            WideCharPointer pointer = new WideCharPointer(sample);
+            AutoCharPointer pointer = new AutoCharPointer(sample);
             char[] results = new char[bufferSize];
 
             // Indexer based memory writing
             for (int i = 0; i < bufferSize; i++)
-                results[i] = pointer[i] = GenerateRandomNumber();
+                results[i] = (char)(pointer[i] = (int)GenerateRandomNumber());
 
             // Indexer based memory navigation
             for (int i = 0; i < bufferSize; i++)
             {
                 object x = results[i];
-                object y = pointer[i];
+                object y = (char)pointer[i];
                 Console.WriteLine("[{0}] <Left: {1}> {2} <Right: {3}>", i, x, x.Equals(y) ? "==" : "<>", y);
                 Assert.AreEqual(x, y);
             }
@@ -126,7 +126,7 @@ namespace xPlatform.Test.TypedPointerTest
         {
             const int bufferSize = 5;
             char* sample = stackalloc char[bufferSize];
-            WideCharPointer pointer = new WideCharPointer(sample);
+            AutoCharPointer pointer = new AutoCharPointer(sample);
             char[] results = new char[bufferSize];
 
             // Pointer conversion test
@@ -150,12 +150,12 @@ namespace xPlatform.Test.TypedPointerTest
 
             int totalSize = 0;
 
-            int ptrSize1 = Marshal.SizeOf(new WideCharPointer(sample));
-            Console.WriteLine("Marshal.SizeOf(new WideCharPointer(...)): {0}", ptrSize1);
+            int ptrSize1 = Marshal.SizeOf(new AutoCharPointer(sample));
+            Console.WriteLine("Marshal.SizeOf(new AutoCharPointer(...)): {0}", ptrSize1);
             totalSize += ptrSize1;
 
-            int ptrSize2 = Marshal.SizeOf(typeof(WideCharPointer));
-            Console.WriteLine("Marshal.SizeOf(typeof(WideCharPointer)): {0}", ptrSize2);
+            int ptrSize2 = Marshal.SizeOf(typeof(AutoCharPointer));
+            Console.WriteLine("Marshal.SizeOf(typeof(AutoCharPointer)): {0}", ptrSize2);
             totalSize += ptrSize2;
 
             int ptrSize3 = Marshal.SizeOf(IntPtr.Zero);
@@ -170,7 +170,7 @@ namespace xPlatform.Test.TypedPointerTest
             Console.WriteLine("Marshal.SizeOf(typeof(char*)): {0}", ptrSize5);
             totalSize += ptrSize5;
 
-            Assert.AreEqual(totalSize, WideCharPointer.Size * 5);
+            Assert.AreEqual(totalSize, AutoCharPointer.Size * 5);
         }
 
         [Test]
@@ -180,8 +180,8 @@ namespace xPlatform.Test.TypedPointerTest
 
             int totalSize = 0;
 
-            int ptrSize1 = sizeof(WideCharPointer);
-            Console.WriteLine("sizeof(WideCharPointer): {0}", ptrSize1);
+            int ptrSize1 = sizeof(AutoCharPointer);
+            Console.WriteLine("sizeof(AutoCharPointer): {0}", ptrSize1);
             totalSize += ptrSize1;
 
             int ptrSize2 = sizeof(IntPtr);
@@ -192,7 +192,7 @@ namespace xPlatform.Test.TypedPointerTest
             Console.WriteLine("sizeof(char*): {0}", ptrSize3);
             totalSize += ptrSize3;
 
-            Assert.AreEqual(totalSize, WideCharPointer.Size * 3);
+            Assert.AreEqual(totalSize, AutoCharPointer.Size * 3);
         }
 
         [Test]
@@ -209,12 +209,12 @@ namespace xPlatform.Test.TypedPointerTest
             Console.WriteLine("IntPtr Address: {0:X}", address2.ToInt32());
             checksum += address2.ToInt32();
 
-            WideCharPointer address3 = new WideCharPointer(address2);
-            Console.WriteLine("WideCharPointer Address (from IntPtr): {0:X}", address3.ToInt32());
+            AutoCharPointer address3 = new AutoCharPointer(address2);
+            Console.WriteLine("AutoCharPointer Address (from IntPtr): {0:X}", address3.ToInt32());
             checksum += address3.ToInt32();
 
-            WideCharPointer address4 = new WideCharPointer(address1);
-            Console.WriteLine("WideCharPointer Address (from Int32): {0:X}", address4.ToInt32());
+            AutoCharPointer address4 = new AutoCharPointer(address1);
+            Console.WriteLine("AutoCharPointer Address (from Int32): {0:X}", address4.ToInt32());
             checksum += address4.ToInt32();
 
             int checksumDigest = checksum / 4;
@@ -228,16 +228,16 @@ namespace xPlatform.Test.TypedPointerTest
         public unsafe void AddressTest1()
         {
             char* sample = stackalloc char[4];
-            WideCharPointer a = new WideCharPointer(sample);
-            WideCharPointer b = (a + 1);
+            AutoCharPointer a = new AutoCharPointer(sample);
+            AutoCharPointer b = (a + 1);
             Console.WriteLine("Address offset: {0}", b.ToInt32() - a.ToInt32());
 
             Assert.AreEqual(sizeof(char), b.ToInt32() - a.ToInt32());
             Assert.False(Object.ReferenceEquals(a, b));
 
             // xPlatform's typed pointers are value type.
-            WideCharPointer c = new WideCharPointer(sample + 1);
-            WideCharPointer d = (++c);
+            AutoCharPointer c = new AutoCharPointer(sample + 1);
+            AutoCharPointer d = (++c);
             Console.WriteLine("Address offset: {0}", d.ToInt32() - c.ToInt32());
 
             Assert.AreEqual(0, d.ToInt32() - c.ToInt32());

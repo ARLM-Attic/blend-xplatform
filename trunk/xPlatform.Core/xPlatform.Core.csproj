@@ -53,7 +53,6 @@
     <Compile Include="NonStandard\IUnsignedPointer.cs" />
     <Compile Include="Pointer.cs" />
     <Compile Include="Utilities.cs" />
-    <Compile Include="VoidPointer.cs" />
     <Compile Include="BooleanPointer.cs" />
     <Compile Include="Buffers\CoTaskMemBuffer.cs" />
     <Compile Include="Buffers\GlobalHeapBuffer.cs" />
