@@ -23,10 +23,12 @@ namespace xPlatform.x86.msvcrt.Test
 
             msvcrt.printf("Function: _memccpy 60 characters or to character 's'\n");
             msvcrt.printf("Source: %s\n", __arglist(string1.Address));
+
             pdest = msvcrt._memccpy(buffer, string1, 's', 60u);
-            *(sbyte*)pdest = 0;
+            pdest.SetData(0);
+
             msvcrt.printf("Result: %s\n", __arglist(buffer.Address));
-            msvcrt.printf("Length: %d characters\n", __arglist((uint)msvcrt.strlen(buffer.Address)));
+            msvcrt.printf("Length: %d characters\n", __arglist(msvcrt.strlen(buffer.Address)));
 
             string1.Dispose();
             buffer.Dispose();
