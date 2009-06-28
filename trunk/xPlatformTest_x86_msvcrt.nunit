@@ -1,0 +1,6 @@
+﻿<NUnitProject>
+  <Settings activeconfig="Default" />
+  <Config name="Default" binpathtype="Auto">
+    <assembly path="xPlatform.x86.msvcrt.Test\bin\Debug\xPlatform.x86.msvcrt.Test.dll" />
+  </Config>
+</NUnitProject>
