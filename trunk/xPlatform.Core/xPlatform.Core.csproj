@@ -68,7 +68,7 @@
     <Compile Include="IPointer.cs" />
     <Compile Include="SBytePointer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SecureStrings\BasicSecureString.cs" />
+    <Compile Include="SecureStrings\OleBasicSecureString.cs" />
     <Compile Include="SecureStrings\CoTaskMemoryAnsiSecureString.cs" />
     <Compile Include="SecureStrings\CoTaskMemoryUnicodeSecureString.cs" />
     <Compile Include="SecureStrings\GlobalHeapAnsiSecureString.cs" />

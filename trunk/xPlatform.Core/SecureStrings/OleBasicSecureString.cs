@@ -4,9 +4,9 @@ using System.Runtime.InteropServices;
 
 namespace xPlatform.SecureStrings
 {
-    public sealed class BasicSecureString : IDisposable
+    public sealed class OleBasicSecureString : IDisposable
     {
-        public BasicSecureString(SecureString originalSecureString)
+        public OleBasicSecureString(SecureString originalSecureString)
             : base()
         {
             if (originalSecureString == null)
@@ -18,13 +18,13 @@ namespace xPlatform.SecureStrings
                 throw new Exception("Cannot allocate memory.");
         }
 
-        public BasicSecureString(BasicSecureString previous)
+        public OleBasicSecureString(OleBasicSecureString previous)
             : base()
         {
             this.internalPointer = previous.internalPointer;
         }
 
-        ~BasicSecureString()
+        ~OleBasicSecureString()
         {
             this.Dispose(false);
         }
@@ -40,7 +40,7 @@ namespace xPlatform.SecureStrings
             this.disposed = true;
         }
 
-        void IDisposable.Dispose()
+        public void Dispose()
         {
             this.Dispose(true);
             GC.SuppressFinalize(this);
@@ -65,17 +65,17 @@ namespace xPlatform.SecureStrings
                 return Marshal.PtrToStringBSTR(this.Address);
         }
 
-        public static implicit operator IntPtr(BasicSecureString target)
+        public static implicit operator IntPtr(OleBasicSecureString target)
         {
             return target.Address;
         }
 
-        public static implicit operator BasicSecureString(SecureString source)
+        public static implicit operator OleBasicSecureString(SecureString source)
         {
-            return new BasicSecureString(source);
+            return new OleBasicSecureString(source);
         }
 
-        public static implicit operator string (BasicSecureString source)
+        public static implicit operator string (OleBasicSecureString source)
         {
             return source.ToString();
         }

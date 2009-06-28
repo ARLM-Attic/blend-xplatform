@@ -40,7 +40,7 @@ namespace xPlatform.SecureStrings
             this.disposed = true;
         }
 
-        void IDisposable.Dispose()
+        public void Dispose()
         {
             this.Dispose(true);
             GC.SuppressFinalize(this);

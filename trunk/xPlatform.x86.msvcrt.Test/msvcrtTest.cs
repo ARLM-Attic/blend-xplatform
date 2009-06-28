@@ -27,6 +27,10 @@ namespace xPlatform.x86.msvcrt.Test
             *(sbyte*)pdest = 0;
             msvcrt.printf("Result: %s\n", __arglist(buffer.Address));
             msvcrt.printf("Length: %d characters\n", __arglist((uint)msvcrt.strlen(buffer.Address)));
+
+            string1.Dispose();
+            buffer.Dispose();
+            pdest = null;
         }
     }
 }

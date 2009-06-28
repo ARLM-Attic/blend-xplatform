@@ -61,7 +61,7 @@ namespace xPlatform.Strings
             this.disposed = true;
         }
 
-        void IDisposable.Dispose()
+        public void Dispose()
         {
             this.Dispose(true);
             GC.SuppressFinalize(this);

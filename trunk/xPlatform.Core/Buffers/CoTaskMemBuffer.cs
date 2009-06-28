@@ -31,7 +31,7 @@ namespace xPlatform.Buffers
         private readonly IntPtr internalPointer = IntPtr.Zero;
         private bool disposed = false;
 
-        private void Dispose(bool disposing)
+        protected virtual void Dispose(bool disposing)
         {
             if (!this.disposed)
                 Marshal.FreeCoTaskMem(this.internalPointer);
@@ -39,7 +39,7 @@ namespace xPlatform.Buffers
             this.disposed = true;
         }
 
-        void IDisposable.Dispose()
+        public void Dispose()
         {
             this.Dispose(true);
             GC.SuppressFinalize(this);
