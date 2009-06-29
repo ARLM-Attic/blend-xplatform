@@ -8,7 +8,7 @@ namespace xPlatform.Buffers
         public GlobalHeapBuffer(int size)
             : base()
         {
-            if (size < 1)
+            if ((this.size = size) < 1)
                 throw new ArgumentException("Size is invalid.", "size");
 
             this.internalPointer = Marshal.AllocHGlobal(size);
@@ -29,6 +29,7 @@ namespace xPlatform.Buffers
         }
 
         private readonly IntPtr internalPointer = IntPtr.Zero;
+        private readonly int size = 0;
         private bool disposed = false;
 
         protected virtual void Dispose(bool disposing)
@@ -54,6 +55,11 @@ namespace xPlatform.Buffers
                 else
                     return this.internalPointer;
             }
+        }
+
+        public int Size
+        {
+            get { return this.size; }
         }
 
         public override string ToString()

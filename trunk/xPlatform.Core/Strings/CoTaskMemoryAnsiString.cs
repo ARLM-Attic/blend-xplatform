@@ -92,6 +92,13 @@ namespace xPlatform.Strings
             }
         }
 
+        [CLSCompliant(false)]
+        public unsafe sbyte this[int index]
+        {
+            get { return *(((sbyte*)this.Address.ToPointer()) + index); }
+            set { *(((sbyte*)this.Address.ToPointer()) + index) = value; }
+        }
+
         public override string ToString()
         {
             if (this.disposed)

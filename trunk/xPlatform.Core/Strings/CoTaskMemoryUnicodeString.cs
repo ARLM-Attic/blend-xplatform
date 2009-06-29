@@ -92,6 +92,12 @@ namespace xPlatform.Strings
             }
         }
 
+        public unsafe char this[int index]
+        {
+            get { return *(((char*)this.Address.ToPointer()) + index); }
+            set { *(((char*)this.Address.ToPointer()) + index) = value; }
+        }
+
         public override string ToString()
         {
             if (this.disposed)

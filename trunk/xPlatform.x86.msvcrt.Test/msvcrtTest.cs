@@ -1,5 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
+using xPlatform.Buffers;
 using xPlatform.Strings;
 using System.Runtime.InteropServices;
 
@@ -15,14 +16,14 @@ namespace xPlatform.x86.msvcrt.Test
             GlobalHeapAnsiString buffer = new GlobalHeapAnsiString(61);
             SBytePointer pdest = new SBytePointer();
 
-            Console.WriteLine("Function: _memccpy 60 characters or to character 's'\n");
-            Console.WriteLine("Source: {0}\n", string1.ToString());
+            Console.Write("Function: _memccpy 60 characters or to character 's'\n");
+            Console.Write("Source: {0}\n", string1.ToString());
 
             pdest = msvcrt._memccpy(buffer, string1, 's', 60u);
             pdest.SetData(0);
 
-            Console.WriteLine("Result: {0}\n", buffer.ToString());
-            Console.WriteLine("Length: {0} characters\n", msvcrt.strlen(buffer.Address));
+            Console.Write("Result: {0}\n", buffer.ToString());
+            Console.Write("Length: {0} characters\n", msvcrt.strlen(buffer.Address));
 
             Assert.AreEqual("The quick brown dog jumps over the lazy fox", string1.ToString());
             Assert.AreEqual("The quick brown dog jumps", buffer.ToString());
@@ -45,22 +46,65 @@ namespace xPlatform.x86.msvcrt.Test
             SBytePointer pdest;
             int result;
 
-            Console.WriteLine("String to be searched:\n             {0}\n", @string.ToString());
-            Console.WriteLine("             {0}\n             {1}\n\n", fmt1.ToString(), fmt2.ToString());
+            Console.Write("String to be searched:\n             {0}\n", @string.ToString());
+            Console.Write("             {0}\n             {1}\n\n", fmt1.ToString(), fmt2.ToString());
 
-            Console.WriteLine("Search char: {0}\n", (char)ch);
+            Console.Write("Search char: {0}\n", (char)ch);
             pdest = msvcrt.memchr(@string, ch, (size_t)@string.Length);
             result = (int)(pdest - @string + 1);
 
             if (pdest != null)
-                Console.WriteLine("Result:      {0} found at position {1}\n", (char)ch, result);
+                Console.Write("Result:      {0} found at position {1}\n", (char)ch, result);
             else
-                Console.WriteLine("Result:      {0} not found\n", (char)ch);
+                Console.Write("Result:      {0} not found\n", (char)ch);
+
+            Assert.AreEqual(12, result);
 
             str.Dispose();
             @string.Dispose();
             fmt1.Dispose();
             fmt2.Dispose();
+        }
+
+        [Test]
+        public void memcmpTest()
+        {
+            GlobalHeapAnsiString first = new GlobalHeapAnsiString("12345678901234567890");
+            GlobalHeapAnsiString second = new GlobalHeapAnsiString("12345678901234567891");
+            GlobalHeapBuffer<int> int_arr1 = new GlobalHeapBuffer<int>(1, 2, 3, 4);
+            GlobalHeapBuffer<int> int_arr2 = new GlobalHeapBuffer<int>(1, 2, 3, 4);
+            int result;
+
+            Console.Write("Compare '{0}' to '{0}':\n", first.ToString(), second.ToString());
+            result = msvcrt.memcmp(first, second, (size_t)19);
+
+            if (result < 0)
+                Console.Write("First is less than second.\n");
+            else if (result == 0)
+                Console.Write("First is equal to second.\n");
+            else
+                Console.Write("First is greater than second.\n");
+
+            Assert.AreEqual(0, result);
+
+            Console.Write("Compare '{0},{1}' to '{2},{3}':\n",
+                int_arr1[0], int_arr1[1], int_arr2[0], int_arr2[1]);
+            result = msvcrt.memcmp(int_arr1, int_arr2,
+                (size_t)(Utilities.NativeSizeOf(typeof(int)) * 2));
+
+            if (result < 0)
+                Console.Write("int_arr1 is less than int_arr2.\n");
+            else if (result == 0)
+                Console.Write("int_arr1 is equal to int_arr2.\n");
+            else
+                Console.Write("int_arr1 is greater than int_arr2.\n");
+
+            Assert.AreEqual(0, result);
+
+            first.Dispose();
+            second.Dispose();
+            int_arr1.Dispose();
+            int_arr2.Dispose();
         }
     }
 }

@@ -103,6 +103,24 @@ namespace xPlatform.Strings
             }
         }
 
+        public unsafe int this[int index]
+        {
+            get
+            {
+                if (Marshal.SystemDefaultCharSize.Equals(1))
+                    return *(((sbyte*)this.Address.ToPointer()) + index);
+                else
+                    return *(((char*)this.Address.ToPointer()) + index);
+            }
+            set
+            {
+                if (Marshal.SystemDefaultCharSize.Equals(1))
+                    *(((sbyte*)this.Address.ToPointer()) + index) = (sbyte)value;
+                else
+                    *(((char*)this.Address.ToPointer()) + index) = (char)value;
+            }
+        }
+
         public override string ToString()
         {
             if (this.disposed)

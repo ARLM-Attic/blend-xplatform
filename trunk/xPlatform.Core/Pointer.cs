@@ -21,6 +21,8 @@ namespace xPlatform
             {
                 if (typeof(T).Equals(typeof(char)))
                     return Marshal.SizeOf(typeof(short));
+                else if (typeof(T).Equals(typeof(bool)))
+                    return Marshal.SizeOf(typeof(byte));
                 else
                     return Marshal.SizeOf(typeof(T));
             }
