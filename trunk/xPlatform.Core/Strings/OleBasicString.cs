@@ -86,6 +86,11 @@ namespace xPlatform.Strings
                 return Marshal.PtrToStringBSTR(this.Address);
         }
 
+        public static implicit operator int(OleBasicString target)
+        {
+            return target.Address.ToInt32();
+        }
+
         public static implicit operator IntPtr(OleBasicString target)
         {
             return target.Address;

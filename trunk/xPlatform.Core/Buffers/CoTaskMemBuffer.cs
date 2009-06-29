@@ -68,5 +68,10 @@ namespace xPlatform.Buffers
         {
             return target.Address;
         }
+
+        public static implicit operator int(CoTaskMemBuffer target)
+        {
+            return target.Address.ToInt32();
+        }
     }
 }

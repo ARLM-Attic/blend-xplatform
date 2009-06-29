@@ -19,5 +19,10 @@ namespace xPlatform.Buffers
         {
             return target.Address;
         }
+
+        public static implicit operator int(GlobalHeapBuffer<T> target)
+        {
+            return target.Address.ToInt32();
+        }
     }
 }

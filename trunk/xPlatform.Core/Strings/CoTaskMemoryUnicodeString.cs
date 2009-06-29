@@ -78,12 +78,31 @@ namespace xPlatform.Strings
             }
         }
 
+        public unsafe int Length
+        {
+            get
+            {
+                int length = 0;
+                char* pointer = (char*)this.internalPointer.ToPointer();
+
+                while (*(pointer++) != 0)
+                    length++;
+
+                return length;
+            }
+        }
+
         public override string ToString()
         {
             if (this.disposed)
                 return null;
             else
                 return Marshal.PtrToStringUni(this.Address);
+        }
+
+        public static implicit operator int(CoTaskMemoryUnicodeString target)
+        {
+            return target.Address.ToInt32();
         }
 
         public static implicit operator IntPtr(CoTaskMemoryUnicodeString target)

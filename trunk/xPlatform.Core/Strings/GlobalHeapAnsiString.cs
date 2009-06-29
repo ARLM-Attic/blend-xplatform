@@ -78,12 +78,31 @@ namespace xPlatform.Strings
             }
         }
 
+        public unsafe int Length
+        {
+            get
+            {
+                int length = 0;
+                sbyte* pointer = (sbyte*)this.internalPointer.ToPointer();
+
+                while (*(pointer++) != 0)
+                    length++;
+
+                return length;
+            }
+        }
+
         public override string ToString()
         {
             if (this.disposed)
                 return null;
             else
                 return Marshal.PtrToStringAnsi(this.Address);
+        }
+
+        public static implicit operator int(GlobalHeapAnsiString target)
+        {
+            return target.Address.ToInt32();
         }
 
         public static implicit operator IntPtr(GlobalHeapAnsiString target)

@@ -36,7 +36,6 @@ namespace xPlatform.x86.msvcrt.Test
         [Test]
         public void memchrTest()
         {
-            // TODO: String length property needed.
             int ch = 'r';
             GlobalHeapAnsiString str = new GlobalHeapAnsiString("lazy");
             GlobalHeapAnsiString @string = new GlobalHeapAnsiString("The quick brown dog jumps over the lazy fox");
@@ -50,8 +49,8 @@ namespace xPlatform.x86.msvcrt.Test
             Console.WriteLine("             {0}\n             {1}\n\n", fmt1.ToString(), fmt2.ToString());
 
             Console.WriteLine("Search char: {0}\n", (char)ch);
-            pdest = msvcrt.memchr(@string, ch, msvcrt.strlen(@string.Address));
-            result = (int)(pdest - @string.Address.ToInt32() + 1);
+            pdest = msvcrt.memchr(@string, ch, (size_t)@string.Length);
+            result = (int)(pdest - @string + 1);
 
             if (pdest != null)
                 Console.WriteLine("Result:      {0} found at position {1}\n", (char)ch, result);
