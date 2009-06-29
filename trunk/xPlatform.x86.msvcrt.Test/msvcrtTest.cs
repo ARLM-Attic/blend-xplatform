@@ -75,7 +75,7 @@ namespace xPlatform.x86.msvcrt.Test
             GlobalHeapBuffer<int> int_arr2 = new GlobalHeapBuffer<int>(1, 2, 3, 4);
             int result;
 
-            Console.Write("Compare '{0}' to '{0}':\n", first.ToString(), second.ToString());
+            Console.Write("Compare '{0}' to '{1}':\n", first.ToString().Substring(0, 19), second.ToString().Substring(0, 19));
             result = msvcrt.memcmp(first, second, (size_t)19);
 
             if (result < 0)
@@ -105,6 +105,88 @@ namespace xPlatform.x86.msvcrt.Test
             second.Dispose();
             int_arr1.Dispose();
             int_arr2.Dispose();
+        }
+
+        [Test]
+        public void memmoveTest()
+        {
+            GlobalHeapAnsiString str1 = new GlobalHeapAnsiString("aabbcc");
+            GlobalHeapAnsiString str2 = new GlobalHeapAnsiString("aabbcc");
+
+            Console.Write("The string: {0}\n", str1);
+            Assert.AreEqual("aabbcc", str1.ToString());
+
+            msvcrt.memcpy(str1 + 2, str1, (size_t)4);
+
+            Console.Write("New string: {0}\n", str1);
+            Assert.AreEqual("aaaabb", str1.ToString());
+
+            msvcrt.strcpy(str1, str2); // reset string
+
+            Console.Write("The string: {0}\n", str1);
+            Assert.AreEqual("aabbcc", str1.ToString());
+
+            msvcrt.memmove(str1 + 2, str1, (size_t)4);
+            
+            Console.Write("New string: {0}\n", str1);
+            Assert.AreEqual("aaaabb", str1.ToString());
+
+            str1.Dispose();
+            str2.Dispose();
+        }
+
+        [Test]
+        public void _memicmpTest()
+        {
+            int result;
+            GlobalHeapAnsiString first = new GlobalHeapAnsiString("Those Who Will Not Learn from History");
+            GlobalHeapAnsiString second = new GlobalHeapAnsiString("THOSE WHO WILL NOT LEARN FROM their mistakes");
+
+            Console.Write("Compare '{0}' to '{1}'\n", first.ToString().Substring(0, 29), second.ToString().Substring(0, 29));
+            result = msvcrt._memicmp(first, second, 29u);
+
+            if (result < 0)
+                Console.Write("First is less than second.\n");
+            else if (result == 0)
+                Console.Write("First is equal to second.\n");
+            else if (result > 0)
+                Console.Write("First is greater than second.\n");
+
+            Assert.AreEqual(0, result);
+
+            first.Dispose();
+            second.Dispose();
+        }
+
+        [Test]
+        public void memsetTest()
+        {
+            GlobalHeapAnsiString buffer = new GlobalHeapAnsiString("This is a test of the memset function");
+            Console.Write("Before: {0}\n", buffer);
+            Assert.AreEqual("This is a test of the memset function", buffer.ToString());
+
+            msvcrt.memset(buffer, '*', (size_t)4);
+            Console.Write("After:  {0}\n", buffer);
+            Assert.AreEqual("**** is a test of the memset function", buffer.ToString());
+
+            buffer.Dispose();
+        }
+
+        [Test]
+        public void _swabTest()
+        {
+            GlobalHeapAnsiString from = new GlobalHeapAnsiString("BADCFEHGJILKNMPORQTSVUXWZY");
+            GlobalHeapAnsiString to = new GlobalHeapAnsiString("..........................");
+
+            Console.Write("Before: {0}\n        {1}\n\n", from, to);
+            msvcrt._swab(from, to, from.Length);
+            Console.Write("After:  {0}\n        {1}\n\n", from, to);
+
+            Assert.AreEqual("BADCFEHGJILKNMPORQTSVUXWZY", from.ToString());
+            Assert.AreEqual("ABCDEFGHIJKLMNOPQRSTUVWXYZ", to.ToString());
+
+            from.Dispose();
+            to.Dispose();
         }
     }
 }

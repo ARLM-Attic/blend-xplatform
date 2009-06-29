@@ -148,5 +148,21 @@ namespace xPlatform.Strings
         {
             return source.ToString();
         }
+
+        public static unsafe IntPtr operator +(CoTaskMemoryAutoString target, int offset)
+        {
+            if (Marshal.SystemDefaultCharSize.Equals(1))
+                return offset.Equals(0) ? target.Address : new IntPtr(((sbyte*)target.Address.ToPointer()) + offset);
+            else
+                return offset.Equals(0) ? target.Address : new IntPtr(((char*)target.Address.ToPointer()) + offset);
+        }
+
+        public static unsafe IntPtr operator -(CoTaskMemoryAutoString target, int offset)
+        {
+            if (Marshal.SystemDefaultCharSize.Equals(1))
+                return offset.Equals(0) ? target.Address : new IntPtr(((sbyte*)target.Address.ToPointer()) - offset);
+            else
+                return offset.Equals(0) ? target.Address : new IntPtr(((char*)target.Address.ToPointer()) - offset);
+        }
     }
 }

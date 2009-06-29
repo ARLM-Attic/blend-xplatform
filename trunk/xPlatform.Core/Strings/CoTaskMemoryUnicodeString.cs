@@ -125,5 +125,15 @@ namespace xPlatform.Strings
         {
             return source.ToString();
         }
+
+        public static unsafe IntPtr operator +(CoTaskMemoryUnicodeString target, int offset)
+        {
+            return offset.Equals(0) ? target.Address : new IntPtr(((char*)target.Address.ToPointer()) + offset);
+        }
+
+        public static unsafe IntPtr operator -(CoTaskMemoryUnicodeString target, int offset)
+        {
+            return offset.Equals(0) ? target.Address : new IntPtr(((char*)target.Address.ToPointer()) - offset);
+        }
     }
 }
