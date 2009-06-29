@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 namespace xPlatform.x86.msvcrt.Test
 {
     [TestFixture]
-    public unsafe class msvcrtTest : AssertionHelper
+    public class msvcrtTest : AssertionHelper
     {
         [Test]
         public void _memccpyTest()
