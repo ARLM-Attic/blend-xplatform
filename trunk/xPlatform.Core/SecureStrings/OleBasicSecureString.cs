@@ -35,7 +35,7 @@ namespace xPlatform.SecureStrings
         private void Dispose(bool disposing)
         {
             if (!this.disposed)
-                Marshal.FreeBSTR(this.internalPointer);
+                Marshal.ZeroFreeBSTR(this.internalPointer);
 
             this.disposed = true;
         }

@@ -99,6 +99,18 @@ namespace xPlatform.Strings
             set { *(((sbyte*)this.Address.ToPointer()) + index) = value; }
         }
 
+        public unsafe int SetBufferText(string text)
+        {
+            int i = 0;
+            sbyte* pointer = (sbyte*)this.Address.ToPointer();
+            int length = (text.Length < this.Length ? text.Length : this.Length);
+
+            for (i = 0; i < length; i++)
+                *(pointer + i) = (sbyte)text[i];
+
+            return i;
+        }
+
         public override string ToString()
         {
             if (this.disposed)

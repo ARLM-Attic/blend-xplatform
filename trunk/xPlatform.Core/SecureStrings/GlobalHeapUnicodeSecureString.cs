@@ -35,7 +35,7 @@ namespace xPlatform.SecureStrings
         private void Dispose(bool disposing)
         {
             if (!this.disposed)
-                Marshal.FreeHGlobal(this.internalPointer);
+                Marshal.ZeroFreeGlobalAllocUnicode(this.internalPointer);
 
             this.disposed = true;
         }

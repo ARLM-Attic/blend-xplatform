@@ -121,6 +121,29 @@ namespace xPlatform.Strings
             }
         }
 
+        public unsafe int SetBufferText(string text)
+        {
+            int i = 0;
+            int length = (text.Length < this.Length ? text.Length : this.Length);
+
+            if (Marshal.SystemDefaultCharSize.Equals(1))
+            {
+                sbyte* pointer = (sbyte*)this.Address.ToPointer();
+
+                for (i = 0; i < length; i++)
+                    *(pointer + i) = (sbyte)text[i];
+            }
+            else
+            {
+                char* pointer = (char*)this.Address.ToPointer();
+
+                for (i = 0; i < length; i++)
+                    *(pointer + i) = text[i];
+            }
+
+            return i;
+        }
+
         public override string ToString()
         {
             if (this.disposed)

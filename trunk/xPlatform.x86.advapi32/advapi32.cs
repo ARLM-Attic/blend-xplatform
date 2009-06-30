@@ -639,12 +639,6 @@ namespace xPlatform.x86.advapi32
         public static extern int RevertToSelf();
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int AccessCheck(IntPtr pSecurityDescriptor, IntPtr ClientToken, uint DesiredAccess, IntPtr GenericMapping, IntPtr PrivilegeSet, IntPtr PrivilegeSetLength, IntPtr GrantedAccess, IntPtr AccessStatus);
-
-        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int AccessCheck(ref SECURITY_DESCRIPTOR pSecurityDescriptor, IntPtr ClientToken, uint DesiredAccess, ref GENERIC_MAPPING GenericMapping, ref PRIVILEGE_SET PrivilegeSet, ref uint PrivilegeSetLength, ref uint GrantedAccess, ref int AccessStatus);
-
-        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern int AccessCheckAndAuditAlarmA([Const] IntPtr SubsystemName, IntPtr HandleId, IntPtr ObjectTypeName, IntPtr ObjectName, IntPtr SecurityDescriptor, uint DesiredAccess, IntPtr GenericMapping, int ObjectCreation, IntPtr GrantedAccess, IntPtr AccessStatus, IntPtr pfGenerateOnClose);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
@@ -891,7 +885,168 @@ namespace xPlatform.x86.advapi32
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern uint GetSecurityDescriptorLength(ref SECURITY_DESCRIPTOR pSecurityDescriptor);
 
-        // GetSecurityDescriptorOwner
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetSecurityDescriptorOwner(
+            [In] IntPtr pSecurityDescriptor,
+            [Out] IntPtr pOwner,
+            [Out] IntPtr lpbOwnerDefaulted);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetSecurityDescriptorOwner(
+            [In] ref SECURITY_DESCRIPTOR pSecurityDescriptor,
+            [Out] out IntPtr pOwner,
+            [Out] out int lpbOwnerDefaulted);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern uint GetSecurityDescriptorRMControl(
+            [In] ref SECURITY_DESCRIPTOR SecurityDescriptor,
+            [Out] StringBuilder RMControl);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetSecurityDescriptorSacl(
+            [In] IntPtr pSecurityDescriptor,
+            [Out] IntPtr lpbSaclPresent,
+            [Out] IntPtr pSacl,
+            [Out] IntPtr lpbSaclDefaulted);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetSecurityDescriptorSacl(
+            [In] ref SECURITY_DESCRIPTOR pSecurityDescriptor,
+            [Out] out int lpbSaclPresent,
+            [Out] out IntPtr pSacl,
+            [Out] out int lpbSaclDefaulted);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr GetSidIdentifierAuthority(
+            [In] ref SID pSid);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint GetSidLengthRequired(
+            [In] ushort nSubAuthorityCount);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr GetSidSubAuthority(
+            [In] IntPtr pSid,
+            [In] uint nSubAuthority);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr GetSidSubAuthority(
+            [In] ref SID pSid,
+            [In] uint nSubAuthority);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr GetSidSubAuthorityCount(
+            [In] ref SID pSid);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern TRUSTEE_FORM GetTrusteeForm(
+            [In] IntPtr pTrustee);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern TRUSTEE_FORM GetTrusteeForm(
+            [In] ref TRUSTEE pTrustee);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern TRUSTEE_TYPE GetTrusteeType(
+            [In] IntPtr pTrustee);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern TRUSTEE_TYPE GetTrusteeType(
+            [In] ref TRUSTEE pTrustee);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetUserObjectSecurity(
+            [In] IntPtr hObj,
+            [In] IntPtr pSIRequested,
+            [In, Out] IntPtr pSD,
+            [In] uint nLength,
+            [Out] IntPtr lpnLengthNeeded);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetUserObjectSecurity(
+            [In] IntPtr hObj,
+            [In] ref SECURITY_INFORMATION pSIRequested,
+            [In, Out] ref SECURITY_DESCRIPTOR pSD,
+            [In] uint nLength,
+            [Out] out uint lpnLengthNeeded);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int GetWindowsAccountDomainSid(
+            [In] IntPtr pSid,
+            [Out] IntPtr ppDomainSid,
+            [In, Out] IntPtr cbSid);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetWindowsAccountDomainSid(
+            [In] ref SID pSid,
+            [Out] out SID ppDomainSid,
+            [In, Out] ref uint cbSid);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ImpersonateAnonymousToken(
+            [In] IntPtr ThreadHandle);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int InitializeAcl(
+            [Out] IntPtr pAcl,
+            [In] uint nAclLength,
+            [In] uint dwAclRevision);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int InitializeAcl(
+            [Out] out ACL pAcl,
+            [In] uint nAclLength,
+            [In] uint dwAclRevision);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int InitializeSecurityDescriptor(
+            [Out] IntPtr pSecurityDescriptor,
+            [In] uint dwRevision);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int InitializeSecurityDescriptor(
+            [Out] out SECURITY_DESCRIPTOR pSecurityDescriptor,
+            [In] uint dwRevision);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int InitializeSid(
+            [Out] out SID Sid,
+            [In] ref SID_IDENTIFIER_AUTHORITY pIdentifierAuthority,
+            [In] byte nSubAuthorityCount);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int IsTokenRestricted(
+            [In] IntPtr TokenHandle);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int IsValidAcl(
+            [In] IntPtr pAcl);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int IsValidAcl(
+            [In] ref ACL pAcl);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int IsValidSecurityDescriptor(
+            [In] IntPtr pSecurityDescriptor);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int IsValidSecurityDescriptor(
+            [In] ref SECURITY_DESCRIPTOR pSecurityDescriptor);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int IsValidSid(
+            [In] ref SID pSid);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int IsWellKnownSid(
+            [In] IntPtr pSid,
+            [In] WELL_KNOWN_SID_TYPE WellKnownSidType);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int IsWellKnownSid(
+            [In] ref SID pSid,
+            [In] WELL_KNOWN_SID_TYPE WellKnownSidType);
     }
 
     #endregion // Low level access control functions
