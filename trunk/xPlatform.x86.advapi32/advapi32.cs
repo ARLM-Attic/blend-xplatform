@@ -1047,6 +1047,120 @@ namespace xPlatform.x86.advapi32
         public static extern int IsWellKnownSid(
             [In] ref SID pSid,
             [In] WELL_KNOWN_SID_TYPE WellKnownSidType);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int LookupAccountNameA(
+            [In, Const] IntPtr lpSystemName,
+            [In, Const] IntPtr lpAccountName,
+            [Out] IntPtr Sid,
+            [In, Out] IntPtr cbSid,
+            [Out] IntPtr ReferencedDomainName,
+            [In, Out] IntPtr cchReferencedDomainName,
+            [Out] IntPtr peUse);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int LookupAccountNameA(
+            [In] string lpSystemName,
+            [In] string lpAccountName,
+            [Out] out SID Sid,
+            [In, Out] ref uint cbSid,
+            [Out] StringBuilder ReferencedDomainName,
+            [In, Out] ref uint cchReferencedDomainName,
+            [Out] out SID_NAME_USE peUse);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int LookupAccountNameW(
+            [In, Const] IntPtr lpSystemName,
+            [In, Const] IntPtr lpAccountName,
+            [Out] IntPtr Sid,
+            [In, Out] IntPtr cbSid,
+            [Out] IntPtr ReferencedDomainName,
+            [In, Out] IntPtr cchReferencedDomainName,
+            [Out] IntPtr peUse);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int LookupAccountNameW(
+            [In] string lpSystemName,
+            [In] string lpAccountName,
+            [Out] out SID Sid,
+            [In, Out] ref uint cbSid,
+            [Out] StringBuilder ReferencedDomainName,
+            [In, Out] ref uint cchReferencedDomainName,
+            [Out] out SID_NAME_USE peUse);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int LookupAccountSidA(
+            [In, Const] IntPtr lpSystemName,
+            [In] IntPtr lpSid,
+            [Out] IntPtr lpName,
+            [In, Out] IntPtr cchName,
+            [Out] IntPtr lpReferencedDomainName,
+            [In, Out] IntPtr cchReferencedDomainName,
+            [Out] IntPtr peUse);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int LookupAccountSidA(
+            [In] string lpSystemName,
+            [In] ref SID lpSid,
+            [Out] StringBuilder lpName,
+            [In, Out] ref uint cchName,
+            [Out] StringBuilder lpReferencedDomainName,
+            [In, Out] ref uint cchReferencedDomainName,
+            [Out] out SID_NAME_USE peUse);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int LookupAccountSidW(
+            [In, Const] IntPtr lpSystemName,
+            [In] IntPtr lpSid,
+            [Out] IntPtr lpName,
+            [In, Out] IntPtr cchName,
+            [Out] IntPtr lpReferencedDomainName,
+            [In, Out] IntPtr cchReferencedDomainName,
+            [Out] IntPtr peUse);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int LookupAccountSidW(
+            [In] string lpSystemName,
+            [In] ref SID lpSid,
+            [Out] StringBuilder lpName,
+            [In, Out] ref uint cchName,
+            [Out] StringBuilder lpReferencedDomainName,
+            [In, Out] ref uint cchReferencedDomainName,
+            [Out] out SID_NAME_USE peUse);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int LookupPrivilegeDisplayNameA(
+            [In, Const] IntPtr lpSystemName,
+            [In, Const] IntPtr lpName,
+            [Out] IntPtr lpDisplayName,
+            [In, Out] IntPtr cchDisplayName,
+            [Out] IntPtr lpLanguageId);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int LookupPrivilegeDisplayNameA(
+            [In] string lpSystemName,
+            [In] string lpName,
+            [Out] StringBuilder lpDisplayName,
+            [In, Out] ref uint cchDisplayName,
+            [Out] out uint lpLanguageId);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int LookupPrivilegeDisplayNameW(
+            [In, Const] IntPtr lpSystemName,
+            [In, Const] IntPtr lpName,
+            [Out] IntPtr lpDisplayName,
+            [In, Out] IntPtr cchDisplayName,
+            [Out] IntPtr lpLanguageId);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int LookupPrivilegeDisplayNameW(
+            [In] string lpSystemName,
+            [In] string lpName,
+            [Out] StringBuilder lpDisplayName,
+            [In, Out] ref uint cchDisplayName,
+            [Out] out uint lpLanguageId);
+
+        // LookupPrivilegeName
     }
 
     #endregion // Low level access control functions
