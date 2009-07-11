@@ -68,5 +68,35 @@ namespace xPlatform
                     return Marshal.SizeOf(targetType);
             }
         }
+
+        public static byte GetHighByte(int word)
+        {
+            return (byte)((uint)word >> 8);
+        }
+
+        public static byte GetLowByte(int word)
+        {
+            return (byte)((uint)word & 0xff);
+        }
+
+        public static int GetHighWord(long doubleWord)
+        {
+            return (ushort)((uint)doubleWord >> 16);
+        }
+
+        public static int GetLowWord(long doubleWord)
+        {
+            return (ushort)((uint)doubleWord & 0xffff);
+        }
+
+        public static int MakeWord(byte lowByte, byte highByte)
+        {
+            return (ushort)((byte)lowByte | (ushort)((byte)highByte) << 8);
+        }
+
+        public static long MakeLong(int lowWord, int highWord)
+        {
+            return (long)((ushort)lowWord | (uint)(ushort)highWord << 16);
+        }
     }
 }
