@@ -98,5 +98,13 @@ namespace xPlatform
         {
             return (long)((ushort)lowWord | (uint)(ushort)highWord << 16);
         }
+
+        public static long SwapEndian(long doubleWord)
+        {
+            long num = (((((doubleWord & -16777216L) / 16777216L) & 255L) | ((doubleWord & 16711680L) / 256L)) | ((doubleWord & 65280L) * 256L)) | ((doubleWord & 127L) * 16777216L);
+            if ((doubleWord & 128L) > 0L)
+                num |= -2147483648L;
+            return num;
+        }
     }
 }

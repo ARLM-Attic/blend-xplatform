@@ -87,5 +87,16 @@ namespace xPlatform.Test.UtilityTest
                 Utilities.GetLowWord(test),
                 Utilities.GetHighWord(test)));
         }
+
+        [Test]
+        public void SwapEndianTest1()
+        {
+            Assert.AreEqual(0x0, Utilities.SwapEndian(0x0));
+            Assert.AreEqual(-1, Utilities.SwapEndian(-1));
+            Assert.AreEqual(0x78563412, Utilities.SwapEndian(0x12345678));
+            Assert.AreEqual(0x80, Utilities.SwapEndian(0x80000000));
+            Assert.AreEqual(-2147483648, Utilities.SwapEndian(0x80));
+            Assert.AreEqual(-129, Utilities.SwapEndian(0x7fffffff));
+        }
     }
 }
