@@ -873,7 +873,25 @@ namespace xPlatform.x86.advapi32
             [In] AUDIT_POLICY_INFORMATION[] pAuditPolicy,
             [In] uint PolicyCount);
 
-        // AuditSetSecurity
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AuditSetSecurity(
+            [In] SECURITY_INFORMATION SecurityInformation,
+            [In] IntPtr pSecurityDescriptor);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AuditSetSecurity(
+            [In] SECURITY_INFORMATION SecurityInformation,
+            [In] ref SECURITY_DESCRIPTOR pSecurityDescriptor);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AuditSetSystemPolicy(
+            [In] IntPtr pAuditPolicy,
+            [In] uint PolicyCount);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AuditSetSystemPolicy(
+            [In] ref AUDIT_POLICY_INFORMATION pAuditPolicy,
+            [In] uint PolicyCount);
     }
 
     #endregion // Authorization functions
