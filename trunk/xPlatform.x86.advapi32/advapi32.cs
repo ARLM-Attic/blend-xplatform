@@ -825,7 +825,55 @@ namespace xPlatform.x86.advapi32
             [In] IntPtr pAuditSubCategoryGuid,
             [Out] out IntPtr ppszSubCategoryName);
 
-        // AuditQueryPerUserPolicy
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AuditQueryPerUserPolicy(
+            [In] IntPtr pSid,
+            [In] IntPtr pSubCategoryGuids,
+            [In] uint PolicyCount,
+            [Out] IntPtr ppAuditPolicy);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AuditQueryPerUserPolicy(
+            [In] ref SID pSid,
+            [In] ref GUID pSubCategoryGuids,
+            [In] uint PolicyCount,
+            [Out] out IntPtr ppAuditPolicy);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AuditQuerySecurity(
+            [In] SECURITY_INFORMATION SecurityInformation,
+            [Out] IntPtr ppSecurityDescriptor);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AuditQuerySecurity(
+            [In] SECURITY_INFORMATION SecurityInformation,
+            [Out] out SECURITY_DESCRIPTOR ppSecurityDescriptor);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AuditQuerySystemPolicy(
+            [In] IntPtr pSubCategoryGuids,
+            [In] uint PolicyCount,
+            [Out] IntPtr ppAuditPolicy);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AuditQuerySystemPolicy(
+            [In] GUID[] pSubCategoryGuids,
+            [In] uint PolicyCount,
+            [Out] out IntPtr ppAuditPolicy);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AuditSetPerUserPolicy(
+            [In] IntPtr pSid,
+            [In] IntPtr pAuditPolicy,
+            [In] uint PolicyCount);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AuditSetPerUserPolicy(
+            [In] ref SID pSid,
+            [In] AUDIT_POLICY_INFORMATION[] pAuditPolicy,
+            [In] uint PolicyCount);
+
+        // AuditSetSecurity
     }
 
     #endregion // Authorization functions

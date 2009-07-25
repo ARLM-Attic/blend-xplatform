@@ -467,4 +467,12 @@ namespace xPlatform.x86.advapi32
         public ushort Sbz;
         public IntPtr ObjectType;
     }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct AUDIT_POLICY_INFORMATION
+    {
+        public GUID AuditSubCategoryGuid;
+        public uint AuditingInformation;
+        public GUID AuditCategoryGuid;
+    }
 }
