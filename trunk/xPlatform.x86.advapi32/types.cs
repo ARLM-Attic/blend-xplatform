@@ -196,6 +196,20 @@ namespace xPlatform.x86.advapi32
         AuditEventObjectAccess,
         AuditEventDirectoryServiceAccess
     }
+
+    [Serializable]
+    public enum POLICY_AUDIT_EVENT_TYPE : int
+    {
+        AuditCategorySystem,
+        AuditCategoryLogon,
+        AuditCategoryObjectAccess,
+        AuditCategoryPrivilegeUse,
+        AuditCategoryDetailedTracking,
+        AuditCategoryPolicyChange,
+        AuditCategoryAccountManagement,
+        AuditCategoryDirectoryServiceAccess,
+        AuditCategoryAccountLogon
+    }
 }
 
 namespace xPlatform.x86.advapi32

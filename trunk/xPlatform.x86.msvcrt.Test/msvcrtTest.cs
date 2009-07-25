@@ -188,18 +188,5 @@ namespace xPlatform.x86.msvcrt.Test
             from.Dispose();
             to.Dispose();
         }
-
-        public void mbsinitTest()
-        {
-            const int BUF_SIZE = 0x40;
-
-            GlobalHeapUnicodeString g_wcBuf = new GlobalHeapUnicodeString(BUF_SIZE);
-            g_wcBuf.SetBufferText("This is a wc buffer that will be over written...");
-
-            GlobalHeapAnsiString g_mbBuf = new GlobalHeapAnsiString(BUF_SIZE);
-            g_mbBuf.SetBufferText("AaBbCc\x9A\x8B\xE0\xEF\xF0xXyYzZ");
-
-            int g_nInit = (int)msvcrt.strlen(g_mbBuf.Address);
-        }
     }
 }
