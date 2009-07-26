@@ -892,6 +892,260 @@ namespace xPlatform.x86.advapi32
         public static extern int AuditSetSystemPolicy(
             [In] ref AUDIT_POLICY_INFORMATION pAuditPolicy,
             [In] uint PolicyCount);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern void BuildExplicitAccessWithNameA(
+            [In, Out] IntPtr pExplicitAccess,
+            [In] IntPtr pTrusteeName,
+            [In] uint AccessPermissions,
+            [In] ACCESS_MODE AccessMode,
+            [In] uint Inheritance);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern void BuildExplicitAccessWithNameA(
+            [In, Out] ref EXPLICIT_ACCESS pExplicitAccess,
+            [In] string pTrusteeName,
+            [In] uint AccessPermissions,
+            [In] ACCESS_MODE AccessMode,
+            [In] uint Inheritance);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern void BuildExplicitAccessWithNameW(
+            [In, Out] IntPtr pExplicitAccess,
+            [In] IntPtr pTrusteeName,
+            [In] uint AccessPermissions,
+            [In] ACCESS_MODE AccessMode,
+            [In] uint Inheritance);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern void BuildExplicitAccessWithNameW(
+            [In, Out] ref EXPLICIT_ACCESS pExplicitAccess,
+            [In] string pTrusteeName,
+            [In] uint AccessPermissions,
+            [In] ACCESS_MODE AccessMode,
+            [In] uint Inheritance);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint BuildSecurityDescriptorA(
+            [In] IntPtr pOwner,
+            [In] IntPtr pGroup,
+            [In] uint cCountOfAccessEntries,
+            [In] IntPtr pListOfAccessEntries,
+            [In] uint cCountOfAuditEntries,
+            [In] IntPtr pListOfAuditEntries,
+            [In] IntPtr pOldSD,
+            [In] IntPtr pSizeNewSD,
+            [In] IntPtr pNewSD);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern uint BuildSecurityDescriptorA(
+            [In] ref TRUSTEE pOwner,
+            [In] ref TRUSTEE pGroup,
+            [In] uint cCountOfAccessEntries,
+            [In] EXPLICIT_ACCESS[] pListOfAccessEntries,
+            [In] uint cCountOfAuditEntries,
+            [In] EXPLICIT_ACCESS[] pListOfAuditEntries,
+            [In] ref SECURITY_DESCRIPTOR pOldSD,
+            [In] ref uint pSizeNewSD,
+            [In] ref SECURITY_DESCRIPTOR pNewSD);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint BuildSecurityDescriptorW(
+            [In] IntPtr pOwner,
+            [In] IntPtr pGroup,
+            [In] uint cCountOfAccessEntries,
+            [In] IntPtr pListOfAccessEntries,
+            [In] uint cCountOfAuditEntries,
+            [In] IntPtr pListOfAuditEntries,
+            [In] IntPtr pOldSD,
+            [In] IntPtr pSizeNewSD,
+            [In] IntPtr pNewSD);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern uint BuildSecurityDescriptorW(
+            [In] ref TRUSTEE pOwner,
+            [In] ref TRUSTEE pGroup,
+            [In] uint cCountOfAccessEntries,
+            [In] EXPLICIT_ACCESS[] pListOfAccessEntries,
+            [In] uint cCountOfAuditEntries,
+            [In] EXPLICIT_ACCESS[] pListOfAuditEntries,
+            [In] ref SECURITY_DESCRIPTOR pOldSD,
+            [In] ref uint pSizeNewSD,
+            [In] ref SECURITY_DESCRIPTOR pNewSD);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern void BuildTrusteeWithNameA(
+            [In, Out] IntPtr pTrustee,
+            [In] IntPtr pName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
+        public static extern void BuildTrusteeWithNameA(
+            [In, Out] ref TRUSTEE pTrustee,
+            [In] string pName);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern void BuildTrusteeWithNameW(
+            [In, Out] IntPtr pTrustee,
+            [In] IntPtr pName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
+        public static extern void BuildTrusteeWithNameW(
+            [In, Out] ref TRUSTEE pTrustee,
+            [In] string pName);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern void BuildTrusteeWithObjectsAndNameA(
+            [In, Out] IntPtr pTrustee,
+            [In] IntPtr pObjName,
+            [In] SE_OBJECT_TYPE ObjectType,
+            [In] IntPtr ObjectTypeName,
+            [In] IntPtr InheritedObjectTypeName,
+            [In] IntPtr Name);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern void BuildTrusteeWithObjectsAndNameA(
+            [In, Out] ref TRUSTEE pTrustee,
+            [In] ref OBJECTS_AND_NAME pObjName,
+            [In] SE_OBJECT_TYPE ObjectType,
+            [In] string ObjectTypeName,
+            [In] string InheritedObjectTypeName,
+            [In] string Name);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern void BuildTrusteeWithObjectsAndNameW(
+            [In, Out] IntPtr pTrustee,
+            [In] IntPtr pObjName,
+            [In] SE_OBJECT_TYPE ObjectType,
+            [In] IntPtr ObjectTypeName,
+            [In] IntPtr InheritedObjectTypeName,
+            [In] IntPtr Name);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern void BuildTrusteeWithObjectsAndNameW(
+            [In, Out] ref TRUSTEE pTrustee,
+            [In] ref OBJECTS_AND_NAME pObjName,
+            [In] SE_OBJECT_TYPE ObjectType,
+            [In] string ObjectTypeName,
+            [In] string InheritedObjectTypeName,
+            [In] string Name);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern void BuildTrusteeWithObjectsAndSidA(
+            [In, Out] IntPtr pTrustee,
+            [In] IntPtr pObjSid,
+            [In] IntPtr pObjectGuid,
+            [In] IntPtr pInheritedObjectGuid,
+            [In] IntPtr pSid);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern void BuildTrusteeWithObjectsAndSidA(
+            [In, Out] ref TRUSTEE pTrustee,
+            [In] ref OBJECTS_AND_SID pObjSid,
+            [In] ref GUID pObjectGuid,
+            [In] ref GUID pInheritedObjectGuid,
+            [In] ref SID pSid);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern void BuildTrusteeWithObjectsAndSidW(
+            [In, Out] IntPtr pTrustee,
+            [In] IntPtr pObjSid,
+            [In] IntPtr pObjectGuid,
+            [In] IntPtr pInheritedObjectGuid,
+            [In] IntPtr pSid);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern void BuildTrusteeWithObjectsAndSidW(
+            [In, Out] ref TRUSTEE pTrustee,
+            [In] ref OBJECTS_AND_SID pObjSid,
+            [In] ref GUID pObjectGuid,
+            [In] ref GUID pInheritedObjectGuid,
+            [In] ref SID pSid);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern void BuildTrusteeWithSidA(
+            [In, Out] IntPtr pTrustee,
+            [In] IntPtr pSid);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern void BuildTrusteeWithSidA(
+            [In, Out] ref TRUSTEE pTrustee,
+            [In] ref SID pSid);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern void BuildTrusteeWithSidW(
+            [In, Out] IntPtr pTrustee,
+            [In] IntPtr pSid);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern void BuildTrusteeWithSidW(
+            [In, Out] ref TRUSTEE pTrustee,
+            [In] ref SID pSid);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int CheckTokenMembership(
+            [In] IntPtr TokenHandle,
+            [In] IntPtr SidToCheck,
+            [Out] IntPtr IsMember);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CheckTokenMembership(
+            [In] IntPtr TokenHandle,
+            [In] ref SID SidToCheck,
+            [Out] out int IsMember);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int ConverSecurityDescriptorToStringSecurityDescriptorA(
+            [In] IntPtr SecurityDescriptor,
+            [In] uint RequestedStringSDRevision,
+            [In] IntPtr SecurityInformation,
+            [Out] IntPtr StringSecurityDescriptor,
+            [Out] IntPtr StringSecurityDescriptorLen);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int ConverSecurityDescriptorToStringSecurityDescriptorA(
+            [In] ref SECURITY_DESCRIPTOR SecurityDescriptor,
+            [In] uint RequestedStringSDRevision,
+            [In] SECURITY_INFORMATION SecurityInformation,
+            [Out] out IntPtr StringSecurityDescriptor,
+            [Out] out uint StringSecurityDescriptorLen);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int ConverSecurityDescriptorToStringSecurityDescriptorW(
+            [In] IntPtr SecurityDescriptor,
+            [In] uint RequestedStringSDRevision,
+            [In] IntPtr SecurityInformation,
+            [Out] IntPtr StringSecurityDescriptor,
+            [Out] IntPtr StringSecurityDescriptorLen);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int ConverSecurityDescriptorToStringSecurityDescriptorW(
+            [In] ref SECURITY_DESCRIPTOR SecurityDescriptor,
+            [In] uint RequestedStringSDRevision,
+            [In] SECURITY_INFORMATION SecurityInformation,
+            [Out] out IntPtr StringSecurityDescriptor,
+            [Out] out uint StringSecurityDescriptorLen);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ConverSidToStringSidA(
+            [In] IntPtr Sid,
+            [Out] IntPtr StringSid);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int ConverSidToStringSidA(
+            [In] ref SID Sid,
+            [Out] out IntPtr StringSid);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ConverSidToStringSidW(
+            [In] IntPtr Sid,
+            [Out] IntPtr StringSid);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int ConverSidToStringSidW(
+            [In] ref SID Sid,
+            [Out] out IntPtr StringSid);
+
+        // ConvertStringSDToSDDomain
     }
 
     #endregion // Authorization functions

@@ -31,16 +31,6 @@ namespace xPlatform.x86.authz
         public uint dwOffset;
     }
 
-    [Serializable, StructLayout(LayoutKind.Explicit)]
-    public struct AnonymousUnion1
-    {
-        [FieldOffset(0)]
-        public IntPtr pReserved;
-
-        [FieldOffset(0)]
-        public IntPtr pProviderGuid;
-    }
-
     [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
     public struct AUTHZ_SOURCE_SCHEMA_REGISTRATION
     {
@@ -55,6 +45,25 @@ namespace xPlatform.x86.authz
 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
         public AUTHZ_REGISTRATION_OBJECT_TYPE_NAME_OFFSET[] ObjectTypeNames;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct AUDIT_PARAM
+    {
+        public AUDIT_PARAM_TYPE Type;
+        public uint Length;
+        public uint Flags;
+        public AnonymousUnion2 union1;
+        public AnonymousUnion3 union2;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential), CLSCompliant(false)]
+    public struct AUDIT_PARAMS
+    {
+        public uint Length;
+        public uint Flags;
+        public ushort Count;
+        public IntPtr Parameters;
     }
 }
 
@@ -96,5 +105,74 @@ namespace xPlatform.x86.authz
         AuthzContextInfoSource,
         AuthzContextInfoAll,
         AuthzContextInfoAuthenticationId
+    }
+
+    [Serializable]
+    public enum AUDIT_PARAM_TYPE : int
+    {
+        APT_None = 1,
+        APT_String,
+        APT_Ulong,
+        APT_Pointer,
+        APT_Sid,
+        APT_LogonId,
+        APT_ObjectTypeList,
+        APT_Luid,
+        APT_Guid,
+        APT_Time,
+        APT_Int64,
+        APT_IpAddress,
+        APT_LogonIdWithSid
+    }
+}
+
+namespace xPlatform.x86.authz
+{
+    [Serializable, StructLayout(LayoutKind.Explicit)]
+    public struct AnonymousUnion1
+    {
+        [FieldOffset(0)]
+        public IntPtr pReserved;
+
+        [FieldOffset(0)]
+        public IntPtr pProviderGuid;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Explicit), CLSCompliant(false)]
+    public struct AnonymousUnion2
+    {
+        [FieldOffset(0)]
+        public uint Data0;
+
+        [FieldOffset(0)]
+        public IntPtr String;
+
+        [FieldOffset(0)]
+        public uint u;
+
+        [FieldOffset(0)]
+        public IntPtr psid;
+
+        [FieldOffset(0)]
+        public IntPtr pguid;
+
+        [FieldOffset(0)]
+        public uint LogonId_LowPart;
+
+        [FieldOffset(0)]
+        public IntPtr pObjectTypes;
+
+        [FieldOffset(0)]
+        public IntPtr pIpAddress;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Explicit), CLSCompliant(false)]
+    public struct AnonymousUnion3
+    {
+        [FieldOffset(0)]
+        public uint Data1;
+
+        [FieldOffset(0)]
+        public int LogonId_HighPart;
     }
 }

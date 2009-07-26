@@ -254,7 +254,93 @@ namespace xPlatform.x86.authz
             [In] uint dwFlags,
             [In] ref AUTHZ_SOURCE_SCHEMA_REGISTRATION pRegistration);
 
-        // AuthzOpenObjectAudit
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AuthzOpenObjectAudit(
+            [In] uint Flags,
+            [In] IntPtr hAuthzClientContext,
+            [In] IntPtr pRequest,
+            [In] IntPtr hAuditEvent,
+            [In] IntPtr pSecurityDescriptor,
+            [In] IntPtr SecurityDescriptorArray,
+            [In] uint SecurityDescriptorCount,
+            [In] IntPtr pReply);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AuthzOpenObjectAudit(
+            [In] uint Flags,
+            [In] IntPtr hAuthzClientContext,
+            [In] ref AUTHZ_ACCESS_REQUEST pRequest,
+            [In] IntPtr hAuditEvent,
+            [In] IntPtr pSecurityDescriptor,
+            [In] IntPtr[] SecurityDescriptorArray,
+            [In] uint SecurityDescriptorCount,
+            [In] ref AUTHZ_ACCESS_REPLY pReply);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AuthzRegisterSecurityEventSource(
+            [In] uint dwFlags,
+            [In] IntPtr szEventSourceName,
+            [Out] IntPtr phEventProvider);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int AuthzRegisterSecurityEventSource(
+            [In] uint dwFlags,
+            [In] string szEventSourceName,
+            [Out] out IntPtr phEventProvider);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AuthzReportSecurityEvent(
+            [In] uint dwFlags,
+            [In, Out] IntPtr hEventProvider,
+            [In] uint dwAuditId,
+            [In] IntPtr pUserSid,
+            [In] uint dwCount,
+            [In] __arglist);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int AuthzReportSecurityEvent(
+            [In] uint dwFlags,
+            [In, Out] IntPtr hEventProvider,
+            [In] uint dwAuditId,
+            [In] ref SID pUserSid,
+            [In] uint dwCount,
+            [In] __arglist);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AuthzReportSecurityEventFromParams(
+            [In] uint dwFlags,
+            [In] IntPtr hEventProvider,
+            [In] uint dwAuditId,
+            [In] IntPtr pUserSid,
+            [In] IntPtr pParams);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AuthzReportSecurityEventFromParams(
+            [In] uint dwFlags,
+            [In] IntPtr hEventProvider,
+            [In] uint dwAuditId,
+            [In] ref SID pUserSid,
+            [In] AUDIT_PARAMS[] pParams);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AuthzUninstallSecurityEventSource(
+            [In] uint dwFlags,
+            [In] IntPtr szEventSourceName);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int AuthzUninstallSecurityEventSource(
+            [In] uint dwFlags,
+            [In] string szEventSourceName);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AuthzUnregisterSecurityEventSource(
+            [In] uint dwFlags,
+            [In, Out] IntPtr phEventProvider);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int AuthzUnregisterSecurityEventSource(
+            [In] uint dwFlags,
+            [In, Out] ref IntPtr phEventProvider);
     }
 
     #endregion // Authorization functions
