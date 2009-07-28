@@ -1145,7 +1145,307 @@ namespace xPlatform.x86.advapi32
             [In] ref SID Sid,
             [Out] out IntPtr StringSid);
 
-        // ConvertStringSDToSDDomain
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int ConvertStringSDToSDDomainA(
+            [In] IntPtr DomainSid,
+            [In] IntPtr RootDomainSid,
+            [In] IntPtr StringSecurityDescriptor,
+            [In] uint StringSDRevision,
+            [Out] IntPtr SecurityDescriptor,
+            [Out] IntPtr SecurityDescriptorSize);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int ConvertStringSDToSDDomainA(
+            [In] ref SID DomainSid,
+            [In] ref SID RootDomainSid,
+            [In] string StringSecurityDescriptor,
+            [In] uint StringSDRevision,
+            [Out] out IntPtr SecurityDescriptor,
+            [Out] out uint SecurityDescriptorSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int ConvertStringSDToSDDomainW(
+            [In] IntPtr DomainSid,
+            [In] IntPtr RootDomainSid,
+            [In] IntPtr StringSecurityDescriptor,
+            [In] uint StringSDRevision,
+            [Out] IntPtr SecurityDescriptor,
+            [Out] IntPtr SecurityDescriptorSize);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int ConvertStringSDToSDDomainW(
+            [In] ref SID DomainSid,
+            [In] ref SID RootDomainSid,
+            [In] string StringSecurityDescriptor,
+            [In] uint StringSDRevision,
+            [Out] out IntPtr SecurityDescriptor,
+            [Out] out uint SecurityDescriptorSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int ConvertStringSecurityDescriptorToSecurityDescriptorA(
+            [In] IntPtr StringSecurityDescriptor,
+            [In] uint StringSDRevision,
+            [Out] IntPtr SecurityDescriptor,
+            [Out] IntPtr SecurityDescriptorSize);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int ConvertStringSecurityDescriptorToSecurityDescriptorA(
+            [In] string StringSecurityDescriptor,
+            [In] uint StringSDRevision,
+            [Out] out IntPtr SecurityDescriptor,
+            [Out] out uint SecurityDescriptorSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int ConvertStringSecurityDescriptorToSecurityDescriptorW(
+            [In] IntPtr StringSecurityDescriptor,
+            [In] uint StringSDRevision,
+            [Out] IntPtr SecurityDescriptor,
+            [Out] IntPtr SecurityDescriptorSize);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int ConvertStringSecurityDescriptorToSecurityDescriptorW(
+            [In] string StringSecurityDescriptor,
+            [In] uint StringSDRevision,
+            [Out] out IntPtr SecurityDescriptor,
+            [Out] out uint SecurityDescriptorSize);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int ConvertStringSidToSidA(
+            [In] IntPtr StringSid,
+            [Out] IntPtr Sid);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
+        public static extern int ConvertStringSidToSidA(
+            [In] string StringSid,
+            [Out] out IntPtr Sid);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int ConvertStringSidToSidW(
+            [In] IntPtr StringSid,
+            [Out] IntPtr Sid);
+
+        [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
+        public static extern int ConvertStringSidToSidW(
+            [In] string StringSid,
+            [Out] out IntPtr Sid);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int ConvertToAutoInheritPrivateObjectSecurity(
+            [In] IntPtr ParentDescriptor,
+            [In] IntPtr CurrentSecurityDescriptor,
+            [Out] IntPtr NewSecurityDescriptor,
+            [In] IntPtr ObjectType,
+            [In] int IsDirectoryObject,
+            [In] IntPtr GenericMapping);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int ConvertToAutoInheritPrivateObjectSecurity(
+            [In] ref SECURITY_DESCRIPTOR ParentDescriptor,
+            [In] ref SECURITY_DESCRIPTOR CurrentSecurityDescriptor,
+            [Out] out IntPtr NewSecurityDescriptor,
+            [In] ref GUID ObjectType,
+            [In] int IsDirectoryObject,
+            [In] ref GENERIC_MAPPING GenericMapping);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CopySid(
+            [In] uint nDestinationSidLength,
+            [Out] IntPtr pDestinationSid,
+            [In] IntPtr pSourceSid);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CopySid(
+            [In] uint nDestinationSidLength,
+            [Out] out SID pDestinationSid,
+            [In] ref SID pSourceSid);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CreatePrivateObjectSecurity(
+            [In] IntPtr ParentDescriptor,
+            [In] IntPtr CreatorDescriptor,
+            [Out] IntPtr NewDescriptor,
+            [In] int IsDirectoryObject,
+            [In] IntPtr Token,
+            [In] IntPtr GenericMapping);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CreatePrivateObjectSecurity(
+            [In] ref SECURITY_DESCRIPTOR ParentDescriptor,
+            [In] ref SECURITY_DESCRIPTOR CreatorDescriptor,
+            [Out] out IntPtr NewDescriptor,
+            [In] int IsDirectoryObject,
+            [In] IntPtr Token,
+            [In] ref GENERIC_MAPPING GenericMapping);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CreatePrivateObjectSecurityEx(
+            [In] IntPtr ParentDescriptor,
+            [In] IntPtr CreatorDescriptor,
+            [Out] IntPtr NewDescriptor,
+            [In] IntPtr ObjectType,
+            [In] int IsContainerObject,
+            [In] uint AutoInheritFlags,
+            [In] IntPtr Token,
+            [In] IntPtr GenericMapping);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CreatePrivateObjectSecurityEx(
+            [In] ref SECURITY_DESCRIPTOR ParentDescriptor,
+            [In] ref SECURITY_DESCRIPTOR CreatorDescriptor,
+            [Out] out IntPtr NewDescriptor,
+            [In] ref GUID ObjectType,
+            [In] int IsContainerObject,
+            [In] uint AutoInheritFlags,
+            [In] IntPtr Token,
+            [In] ref GENERIC_MAPPING GenericMapping);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CreatePrivateObjectSecurityWithMultipleInheritance(
+            [In] IntPtr ParentDescriptor,
+            [In] IntPtr CreatorDescriptor,
+            [Out] IntPtr NewDescriptor,
+            [In] IntPtr ObjectTypes,
+            [In] uint GuidCount,
+            [In] int IsContainerObject,
+            [In] uint AutoInheritFlags,
+            [In] IntPtr Token,
+            [In] IntPtr GenericMapping);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CreatePrivateObjectSecurityWithMultipleInheritance(
+            [In] ref SECURITY_DESCRIPTOR ParentDescriptor,
+            [In] ref SECURITY_DESCRIPTOR CreatorDescriptor,
+            [Out] out IntPtr NewDescriptor,
+            [In] IntPtr[] ObjectTypes,
+            [In] uint GuidCount,
+            [In] int IsContainerObject,
+            [In] uint AutoInheritFlags,
+            [In] IntPtr Token,
+            [In] ref GENERIC_MAPPING GenericMapping);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CreateRestrictedToken(
+            [In] IntPtr ExistingTokenHandle,
+            [In] uint Flags,
+            [In] uint DisableSidCount,
+            [In] IntPtr SidsToDisable,
+            [In] uint DeletePrivilegeCount,
+            [In] IntPtr PrivilegesToDelete,
+            [In] uint RestrictedSidCount,
+            [In] IntPtr SidsToRestrict,
+            [Out] IntPtr NewTokenHandle);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int CreateRestrictedToken(
+            [In] IntPtr ExistingTokenHandle,
+            [In] uint Flags,
+            [In] uint DisableSidCount,
+            [In] SID_AND_ATTRIBUTES[] SidsToDisable,
+            [In] uint DeletePrivilegeCount,
+            [In] LUID_AND_ATTRIBUTES[] PrivilegesToDelete,
+            [In] uint RestrictedSidCount,
+            [In] SID_AND_ATTRIBUTES[] SidsToRestrict,
+            [Out] out IntPtr NewTokenHandle);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreateSecurityPage(
+            [In] IntPtr psi);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern IntPtr CreateWellKnownSid(
+            [In] WELL_KNOWN_SID_TYPE WellKnownSidType,
+            [In] IntPtr DomainSid,
+            [Out] IntPtr pSid,
+            [In, Out] IntPtr cbSid);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern IntPtr CreateWellKnownSid(
+            [In] WELL_KNOWN_SID_TYPE WellKnownSidType,
+            [In] ref SID DomainSid,
+            [Out] out SID pSid,
+            [In, Out] ref uint cbSid);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DeleteAce(
+            [In, Out] IntPtr pAcl,
+            [In] uint dwAceIndex);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DeleteAce(
+            [In, Out] ref ACL pAcl,
+            [In] uint dwAceIndex);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DestroyPrivateObjectSecurity(
+            [In, Out] IntPtr ObjectDescriptor);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DestroyPrivateObjectSecurity(
+            [In, Out] ref SECURITY_DESCRIPTOR ObjectDescriptor);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int DuplicateToken(
+            [In] IntPtr ExistingTokenHandle,
+            [In] SECURITY_IMPERSONATION_LEVEL ImpersonationLevel,
+            [Out] IntPtr DuplicateTokenHandle);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DuplicateToken(
+            [In] IntPtr ExistingTokenHandle,
+            [In] SECURITY_IMPERSONATION_LEVEL ImpersonationLevel,
+            [Out] out IntPtr DuplicateTokenHandle);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DuplicateTokenEx(
+            [In] IntPtr hExistingToken,
+            [In] uint dwDesiredAccess,
+            [In] IntPtr lpTokenAttributes,
+            [In] SECURITY_IMPERSONATION_LEVEL ImpersonationLevel,
+            [In] TOKEN_TYPE TokenType,
+            [Out] IntPtr phNewToken);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int DuplicateTokenEx(
+            [In] IntPtr hExistingToken,
+            [In] uint dwDesiredAccess,
+            [In] ref SECURITY_ATTRIBUTES lpTokenAttributes,
+            [In] SECURITY_IMPERSONATION_LEVEL ImpersonationLevel,
+            [In] TOKEN_TYPE TokenType,
+            [Out] out IntPtr phNewToken);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int EqualDomainSid(
+            [In] IntPtr pSid1,
+            [In] IntPtr pSid2,
+            [Out] IntPtr pfEqual);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int EqualDomainSid(
+            [In] ref SID pSid1,
+            [In] ref SID pSid2,
+            [Out] out int pfEqual);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int EqualPrefixSid(
+            [In] IntPtr pSid1,
+            [In] IntPtr pSid2);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int EqualPrefixSid(
+            [In] ref SID pSid1,
+            [In] ref SID pSid2);
+
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int EqualSid(
+            [In] IntPtr pSid1,
+            [In] IntPtr pSid2);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int EqualSid(
+            [In] ref SID pSid1,
+            [In] ref SID pSid2);
+
+        // FindFirstFreeAce
     }
 
     #endregion // Authorization functions
