@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 namespace xPlatform.x86.winspool
 {
     [Serializable]
-    public partial class winspool : ModuleBase<winspool>
+    public partial class winspool : ModuleBase
     {
         [NonSerialized]
         public const string ModuleName = "winspool.drv";

@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 namespace xPlatform.x86.secur32
 {
     [Serializable]
-    public partial class secur32 : ModuleBase<secur32>
+    public partial class secur32 : ModuleBase
     {
         [NonSerialized]
         public const string ModuleName = "secur32.dll";

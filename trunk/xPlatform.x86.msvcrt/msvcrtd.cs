@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 namespace xPlatform.x86.msvcrt
 {
     [Serializable]
-    public partial class msvcrtd : ModuleBase<msvcrtd>
+    public partial class msvcrtd : ModuleBase
     {
         [NonSerialized]
         public const string ModuleName = "msvcrtd.dll";

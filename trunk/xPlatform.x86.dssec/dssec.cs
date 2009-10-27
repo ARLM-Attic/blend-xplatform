@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 namespace xPlatform.x86.dssec
 {
     [Serializable]
-    public partial class dssec : ModuleBase<dssec>
+    public partial class dssec : ModuleBase
     {
         [NonSerialized]
         public const string ModuleName = "dssec.dll";

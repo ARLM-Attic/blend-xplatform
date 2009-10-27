@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 namespace xPlatform.x86.kernel32
 {
     [Serializable]
-    public partial class kernel32 : ModuleBase<kernel32>
+    public partial class kernel32 : ModuleBase
     {
         [NonSerialized]
         public const string ModuleName = "kernel32.dll";
@@ -17,13 +17,13 @@ namespace xPlatform.x86.kernel32
     partial class kernel32
     {
         [DllImport(ModuleName), CLSCompliant(false)]
-        public static extern ATOM AddAtomA([Const] IntPtr lpString);
+        public static extern ATOM AddAtomA(IntPtr lpString);
 
         [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern ATOM AddAtomA(string lpString);
 
         [DllImport(ModuleName), CLSCompliant(false)]
-        public static extern ATOM AddAtomW([Const] IntPtr lpString);
+        public static extern ATOM AddAtomW(IntPtr lpString);
 
         [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern ATOM AddAtomW(string lpString);
@@ -32,13 +32,13 @@ namespace xPlatform.x86.kernel32
         public static extern ATOM DeleteAtom(ATOM nAtom);
 
         [DllImport(ModuleName), CLSCompliant(false)]
-        public static extern ATOM FindAtomA([Const] IntPtr lpString);
+        public static extern ATOM FindAtomA(IntPtr lpString);
 
         [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern ATOM FindAtomA(string lpString);
 
         [DllImport(ModuleName), CLSCompliant(false)]
-        public static extern ATOM FindAtomW([Const] IntPtr lpString);
+        public static extern ATOM FindAtomW(IntPtr lpString);
 
         [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern ATOM FindAtomW(string lpString);
@@ -56,13 +56,13 @@ namespace xPlatform.x86.kernel32
         public static extern uint GetAtomNameW(ATOM nAtom, StringBuilder lpBuffer, int nSize);
 
         [DllImport(ModuleName), CLSCompliant(false)]
-        public static extern ATOM GlobalAddAtomA([Const] IntPtr lpString);
+        public static extern ATOM GlobalAddAtomA(IntPtr lpString);
 
         [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern ATOM GlobalAddAtomA(string lpString);
 
         [DllImport(ModuleName), CLSCompliant(false)]
-        public static extern ATOM GlobalAddAtomW([Const] IntPtr lpString);
+        public static extern ATOM GlobalAddAtomW(IntPtr lpString);
 
         [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern ATOM GlobalAddAtomW(string lpString);
@@ -71,13 +71,13 @@ namespace xPlatform.x86.kernel32
         public static extern ATOM GlobalDeleteAtom(ATOM nAtom);
 
         [DllImport(ModuleName), CLSCompliant(false)]
-        public static extern ATOM GlobalFindAtomA([Const] IntPtr lpString);
+        public static extern ATOM GlobalFindAtomA(IntPtr lpString);
 
         [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern ATOM GlobalFindAtomA(string lpString);
 
         [DllImport(ModuleName), CLSCompliant(false)]
-        public static extern ATOM GlobalFindAtomW([Const] IntPtr lpString);
+        public static extern ATOM GlobalFindAtomW(IntPtr lpString);
 
         [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern ATOM GlobalFindAtomW(string lpString);
@@ -150,28 +150,28 @@ namespace xPlatform.x86.kernel32
         public static extern int IsDebuggerPresent();
 
         [DllImport(ModuleName)]
-        public static extern void OutputDebugStringA([Const] IntPtr lpOutputString);
+        public static extern void OutputDebugStringA(IntPtr lpOutputString);
 
         [DllImport(ModuleName, CharSet = CharSet.Ansi)]
         public static extern void OutputDebugStringA(string lpOutputString);
 
         [DllImport(ModuleName)]
-        public static extern void OutputDebugStringW([Const] IntPtr lpOutputString);
+        public static extern void OutputDebugStringW(IntPtr lpOutputString);
 
         [DllImport(ModuleName, CharSet = CharSet.Unicode)]
         public static extern void OutputDebugStringW(string lpOutputString);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int ReadProcessMemory(IntPtr hProcess, [Const] IntPtr lpBaseAddress, IntPtr lpBuffer, uint nSize, IntPtr lpNumberOfBytesRead);
+        public static extern int ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, IntPtr lpBuffer, uint nSize, IntPtr lpNumberOfBytesRead);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int ReadProcessMemory(IntPtr hProcess, [Const] IntPtr lpBaseAddress, IntPtr lpBuffer, uint nSize, ref uint lpNumberOfBytesRead);
+        public static extern int ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, IntPtr lpBuffer, uint nSize, ref uint lpNumberOfBytesRead);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern void SetDebugErrorLevel(uint dwLevel);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int SetThreadContext(IntPtr hThread, [Const] IntPtr lpContext);
+        public static extern int SetThreadContext(IntPtr hThread, IntPtr lpContext);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern int SetThreadContext(IntPtr hThread, ref CONTEXT lpContext);
@@ -211,16 +211,16 @@ namespace xPlatform.x86.kernel32
         public static extern void FatalAppExitW(uint uAction, string lpMessageText);
 
         [DllImport(ModuleName, CharSet = CharSet.Ansi, SetLastError = true), CLSCompliant(false)]
-        public static extern uint FormatMessageA(uint dwFlags, [Const] IntPtr lpSource, uint dwMessageId, uint dwLanguageId, IntPtr lpBuffer, uint nSize, IntPtr Arguments);
+        public static extern uint FormatMessageA(uint dwFlags, IntPtr lpSource, uint dwMessageId, uint dwLanguageId, IntPtr lpBuffer, uint nSize, IntPtr Arguments);
 
         [DllImport(ModuleName, CharSet = CharSet.Ansi, SetLastError = true), CLSCompliant(false)]
-        public static extern uint FormatMessageA(uint dwFlags, [Const] IntPtr lpSource, uint dwMessageId, uint dwLanguageId, StringBuilder lpBuffer, uint nSize, IntPtr Arguments);
+        public static extern uint FormatMessageA(uint dwFlags, IntPtr lpSource, uint dwMessageId, uint dwLanguageId, StringBuilder lpBuffer, uint nSize, IntPtr Arguments);
 
         [DllImport(ModuleName, CharSet = CharSet.Unicode, SetLastError = true), CLSCompliant(false)]
-        public static extern uint FormatMessageW(uint dwFlags, [Const] IntPtr lpSource, uint dwMessageId, uint dwLanguageId, IntPtr lpBuffer, uint nSize, IntPtr Arguments);
+        public static extern uint FormatMessageW(uint dwFlags, IntPtr lpSource, uint dwMessageId, uint dwLanguageId, IntPtr lpBuffer, uint nSize, IntPtr Arguments);
 
         [DllImport(ModuleName, CharSet = CharSet.Unicode, SetLastError = true), CLSCompliant(false)]
-        public static extern uint FormatMessageW(uint dwFlags, [Const] IntPtr lpSource, uint dwMessageId, uint dwLanguageId, StringBuilder lpBuffer, uint nSize, IntPtr Arguments);
+        public static extern uint FormatMessageW(uint dwFlags, IntPtr lpSource, uint dwMessageId, uint dwLanguageId, StringBuilder lpBuffer, uint nSize, IntPtr Arguments);
 
         public static int GetLastError()
         {
@@ -245,9 +245,9 @@ namespace xPlatform.x86.kernel32
     {
         [DllImport(ModuleName, CallingConvention = CallingConvention.Winapi)]
         public static extern int AddConsoleAliasA(
-            [In, Const] IntPtr Source,
-            [In, Const] IntPtr Target,
-            [In, Const] IntPtr ExeName);
+            [In] IntPtr Source,
+            [In] IntPtr Target,
+            [In] IntPtr ExeName);
 
         [DllImport(ModuleName, CallingConvention = CallingConvention.Winapi, CharSet = CharSet.Ansi)]
         public static extern int AddConsoleAliasA(
@@ -257,9 +257,9 @@ namespace xPlatform.x86.kernel32
 
         [DllImport(ModuleName, CallingConvention = CallingConvention.Winapi)]
         public static extern int AddConsoleAliasW(
-            [In, Const] IntPtr Source,
-            [In, Const] IntPtr Target,
-            [In, Const] IntPtr ExeName);
+            [In] IntPtr Source,
+            [In] IntPtr Target,
+            [In] IntPtr ExeName);
 
         [DllImport(ModuleName, CallingConvention = CallingConvention.Winapi, CharSet = CharSet.Unicode)]
         public static extern int AddConsoleAliasW(
@@ -278,7 +278,7 @@ namespace xPlatform.x86.kernel32
         public static extern IntPtr CreateConsoleScreenBuffer(
             [In] uint dwDesiredAccess, 
             [In] uint dwShareMode, 
-            [In, Const] IntPtr lpSecurityAttributes, 
+            [In] IntPtr lpSecurityAttributes, 
             [In] uint dwFlags, 
             [In] IntPtr lpScreenBufferData);
 
@@ -822,15 +822,15 @@ namespace xPlatform.x86.kernel32
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
         public static extern int ScrollConsoleScreenBufferA(
             [In] IntPtr hConsoleOutput,
-            [In, Const] IntPtr lpScrollRectangle,
-            [In, Const] IntPtr lpClipRectangle,
+            [In] IntPtr lpScrollRectangle,
+            [In] IntPtr lpClipRectangle,
             [In] COORD dwDestinationOrigin,
-            [In, Const] IntPtr lpFill);
+            [In] IntPtr lpFill);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int ScrollConsoleScreenBufferA(
             [In] IntPtr hConsoleOutput,
-            [In, Const] ref SMALL_RECT lpScrollRectangle,
+            [In] ref SMALL_RECT lpScrollRectangle,
             [In] ref SMALL_RECT lpClipRectangle,
             [In] COORD dwDestinationOrigin,
             [In] ref CHAR_INFO lpFill);
@@ -838,15 +838,15 @@ namespace xPlatform.x86.kernel32
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
         public static extern int ScrollConsoleScreenBufferW(
             [In] IntPtr hConsoleOutput,
-            [In, Const] IntPtr lpScrollRectangle,
-            [In, Const] IntPtr lpClipRectangle,
+            [In] IntPtr lpScrollRectangle,
+            [In] IntPtr lpClipRectangle,
             [In] COORD dwDestinationOrigin,
-            [In, Const] IntPtr lpFill);
+            [In] IntPtr lpFill);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int ScrollConsoleScreenBufferW(
             [In] IntPtr hConsoleOutput,
-            [In, Const] ref SMALL_RECT lpScrollRectangle,
+            [In] ref SMALL_RECT lpScrollRectangle,
             [In] ref SMALL_RECT lpClipRectangle,
             [In] COORD dwDestinationOrigin,
             [In] ref CHAR_INFO lpFill);
@@ -872,7 +872,7 @@ namespace xPlatform.x86.kernel32
         [DllImport(ModuleName, SetLastError = true)]
         public static extern int SetConsoleCursorInfo(
             [In] IntPtr hConsoleOutput,
-            [In, Const] IntPtr lpConsoleCursorInfo);
+            [In] IntPtr lpConsoleCursorInfo);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern int SetConsoleCursorInfo(
@@ -935,7 +935,7 @@ namespace xPlatform.x86.kernel32
 
         [DllImport(ModuleName, SetLastError = true)]
         public static extern int SetConsoleTitleA(
-            [In, Const] IntPtr lpConsoleTitle);
+            [In] IntPtr lpConsoleTitle);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
         public static extern int SetConsoleTitleA(
@@ -943,7 +943,7 @@ namespace xPlatform.x86.kernel32
 
         [DllImport(ModuleName, SetLastError = true)]
         public static extern int SetConsoleTitleW(
-            [In, Const] IntPtr lpConsoleTitle);
+            [In] IntPtr lpConsoleTitle);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
         public static extern int SetConsoleTitleW(
@@ -953,7 +953,7 @@ namespace xPlatform.x86.kernel32
         public static extern int SetConsoleWindowInfo(
             [In] IntPtr hConsoleOutput,
             [In] int bAbsolute,
-            [In, Const] IntPtr lpConsoleWindow);
+            [In] IntPtr lpConsoleWindow);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern int SetConsoleWindowInfo(
@@ -981,7 +981,7 @@ namespace xPlatform.x86.kernel32
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int WriteConsoleA(
             [In] IntPtr hConsoleOutput,
-            [In, Const] IntPtr lpBuffer,
+            [In] IntPtr lpBuffer,
             [In] uint nNumberOfCharsToWrite,
             [Out] IntPtr lpNumberOfCharsWritten,
             IntPtr lpReserved);
@@ -989,7 +989,7 @@ namespace xPlatform.x86.kernel32
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int WriteConsoleA(
             [In] IntPtr hConsoleOutput,
-            [In, Const] IntPtr lpBuffer,
+            [In] IntPtr lpBuffer,
             [In] uint nNumberOfCharsToWrite,
             [Out] out uint lpNumberOfCharsWritten,
             IntPtr lpReserved);
@@ -997,7 +997,7 @@ namespace xPlatform.x86.kernel32
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int WriteConsoleW(
             [In] IntPtr hConsoleOutput,
-            [In, Const] IntPtr lpBuffer,
+            [In] IntPtr lpBuffer,
             [In] uint nNumberOfCharsToWrite,
             [Out] IntPtr lpNumberOfCharsWritten,
             IntPtr lpReserved);
@@ -1005,7 +1005,7 @@ namespace xPlatform.x86.kernel32
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int WriteConsoleW(
             [In] IntPtr hConsoleOutput,
-            [In, Const] IntPtr lpBuffer,
+            [In] IntPtr lpBuffer,
             [In] uint nNumberOfCharsToWrite,
             [Out] out uint lpNumberOfCharsWritten,
             IntPtr lpReserved);
@@ -1013,35 +1013,35 @@ namespace xPlatform.x86.kernel32
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int WriteConsoleInputA(
             [In] IntPtr hConsoleInput,
-            [In, Const] IntPtr lpBuffer,
+            [In] IntPtr lpBuffer,
             [In] uint nLength,
             [Out] IntPtr lpNumberOfEvnetsWritten);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int WriteConsoleInputA(
             [In] IntPtr hConsoleInput,
-            [In, Const] IntPtr lpBuffer,
+            [In] IntPtr lpBuffer,
             [In] uint nLength,
             [Out] out uint lpNumberOfEvnetsWritten);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int WriteConsoleInputW(
             [In] IntPtr hConsoleInput,
-            [In, Const] IntPtr lpBuffer,
+            [In] IntPtr lpBuffer,
             [In] uint nLength,
             [Out] IntPtr lpNumberOfEvnetsWritten);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int WriteConsoleInputW(
             [In] IntPtr hConsoleInput,
-            [In, Const] IntPtr lpBuffer,
+            [In] IntPtr lpBuffer,
             [In] uint nLength,
             [Out] out uint lpNumberOfEvnetsWritten);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
         public static extern int WriteConsoleOutputA(
             [In] IntPtr hConsoleOutput,
-            [In, Const] IntPtr lpBuffer,
+            [In] IntPtr lpBuffer,
             [In] COORD dwBufferSize,
             [In] COORD dwBufferCoord,
             [In, Out] IntPtr lpWriteRegion);
@@ -1057,7 +1057,7 @@ namespace xPlatform.x86.kernel32
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
         public static extern int WriteConsoleOutputW(
             [In] IntPtr hConsoleOutput,
-            [In, Const] IntPtr lpBuffer,
+            [In] IntPtr lpBuffer,
             [In] COORD dwBufferSize,
             [In] COORD dwBufferCoord,
             [In, Out] IntPtr lpWriteRegion);
@@ -1073,7 +1073,7 @@ namespace xPlatform.x86.kernel32
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern int WriteConsoleOutputAttribute(
             [In] IntPtr hConsoleOutput,
-            [In, Const] IntPtr lpAttribute,
+            [In] IntPtr lpAttribute,
             [In] uint nLength,
             [In] COORD dwWriteCoord,
             [Out] IntPtr lpNumberOfAttrsWritten);
@@ -1089,7 +1089,7 @@ namespace xPlatform.x86.kernel32
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int WriteConsoleOutputCharacterA(
             [In] IntPtr hConsoleOutput,
-            [In, Const] IntPtr lpCharacter,
+            [In] IntPtr lpCharacter,
             [In] uint nLength,
             [In] COORD dwWriteCoord,
             [Out] IntPtr lpNumberOfCharsWritten);
@@ -1105,7 +1105,7 @@ namespace xPlatform.x86.kernel32
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int WriteConsoleOutputCharacterW(
             [In] IntPtr hConsoleOutput,
-            [In, Const] IntPtr lpCharacter,
+            [In] IntPtr lpCharacter,
             [In] uint nLength,
             [In] COORD dwWriteCoord,
             [Out] IntPtr lpNumberOfCharsWritten);
@@ -1184,7 +1184,7 @@ namespace xPlatform.x86.kernel32
 
         [DllImport(ModuleName, SetLastError = true)]
         public static extern IntPtr GetModuleHandleA(
-            [In, Const] IntPtr lpModuleName);
+            [In] IntPtr lpModuleName);
 
         [DllImport(ModuleName, CharSet = CharSet.Ansi, SetLastError = true)]
         public static extern IntPtr GetModuleHandleA(
@@ -1192,7 +1192,7 @@ namespace xPlatform.x86.kernel32
 
         [DllImport(ModuleName, SetLastError = true)]
         public static extern IntPtr GetModuleHandleW(
-            [In, Const] IntPtr lpModuleName);
+            [In] IntPtr lpModuleName);
 
         [DllImport(ModuleName, CharSet = CharSet.Unicode, SetLastError = true)]
         public static extern IntPtr GetModuleHandleW(
@@ -1201,7 +1201,7 @@ namespace xPlatform.x86.kernel32
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern IntPtr GetModuleHandleExA(
             [In] uint dwFlags,
-            [In, Const] IntPtr lpModuleName,
+            [In] IntPtr lpModuleName,
             [Out] IntPtr phModule);
 
         [DllImport(ModuleName, CharSet = CharSet.Ansi, SetLastError = true), CLSCompliant(false)]
@@ -1213,7 +1213,7 @@ namespace xPlatform.x86.kernel32
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern IntPtr GetModuleHandleExW(
             [In] uint dwFlags,
-            [In, Const] IntPtr lpModuleName,
+            [In] IntPtr lpModuleName,
             [Out] IntPtr phModule);
 
         [DllImport(ModuleName, CharSet = CharSet.Unicode, SetLastError = true), CLSCompliant(false)]
@@ -1225,7 +1225,7 @@ namespace xPlatform.x86.kernel32
         [DllImport(ModuleName, SetLastError = true)]
         public static extern IntPtr GetProcAddressA(
             [In] IntPtr hModule,
-            [In, Const] IntPtr lpProcName);
+            [In] IntPtr lpProcName);
 
         [DllImport(ModuleName, CharSet = CharSet.Ansi, SetLastError = true)]
         public static extern IntPtr GetProcAddressA(
@@ -1235,7 +1235,7 @@ namespace xPlatform.x86.kernel32
         [DllImport(ModuleName, SetLastError = true)]
         public static extern IntPtr GetProcAddressW(
             [In] IntPtr hModule,
-            [In, Const] IntPtr lpProcName);
+            [In] IntPtr lpProcName);
 
         [DllImport(ModuleName, CharSet = CharSet.Unicode, SetLastError = true)]
         public static extern IntPtr GetProcAddressW(
@@ -1244,7 +1244,7 @@ namespace xPlatform.x86.kernel32
 
         [DllImport(ModuleName, SetLastError = true)]
         public static extern IntPtr LoadLibraryA(
-            [In, Const] IntPtr lpFileName);
+            [In] IntPtr lpFileName);
 
         [DllImport(ModuleName, CharSet = CharSet.Ansi, SetLastError = true)]
         public static extern IntPtr LoadLibraryA(
@@ -1252,7 +1252,7 @@ namespace xPlatform.x86.kernel32
 
         [DllImport(ModuleName, SetLastError = true)]
         public static extern IntPtr LoadLibraryW(
-            [In, Const] IntPtr lpFileName);
+            [In] IntPtr lpFileName);
 
         [DllImport(ModuleName, CharSet = CharSet.Unicode, SetLastError = true)]
         public static extern IntPtr LoadLibraryW(
@@ -1260,7 +1260,7 @@ namespace xPlatform.x86.kernel32
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern IntPtr LoadLibraryExA(
-            [In, Const] IntPtr lpFileName,
+            [In] IntPtr lpFileName,
             IntPtr hFile,
             [In] uint dwFlags);
 
@@ -1272,7 +1272,7 @@ namespace xPlatform.x86.kernel32
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern IntPtr LoadLibraryExW(
-            [In, Const] IntPtr lpFileName,
+            [In] IntPtr lpFileName,
             IntPtr hFile,
             [In] uint dwFlags);
 
@@ -1358,25 +1358,25 @@ namespace xPlatform.x86.kernel32
     partial class kernel32
     {
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern IntPtr CreateEventA(IntPtr lpEventAttributes, int bManualReset, int bInitialState, [Const] IntPtr lpName);
+        public static extern IntPtr CreateEventA(IntPtr lpEventAttributes, int bManualReset, int bInitialState, IntPtr lpName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern IntPtr CreateEventA(ref SECURITY_ATTRIBUTES lpEventAttributes, int bManualReset, int bInitialState, string lpName);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern IntPtr CreateEventW(IntPtr lpEventAttributes, int bManualReset, int bInitialState, [Const] IntPtr lpName);
+        public static extern IntPtr CreateEventW(IntPtr lpEventAttributes, int bManualReset, int bInitialState, IntPtr lpName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern IntPtr CreateEventW(ref SECURITY_ATTRIBUTES lpEventAttributes, int bManualReset, int bInitialState, string lpName);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern IntPtr OpenEventA(uint dwDesiredAccess, int bInheritHandle, [Const] IntPtr lpName);
+        public static extern IntPtr OpenEventA(uint dwDesiredAccess, int bInheritHandle, IntPtr lpName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern IntPtr OpenEventA(uint dwDesiredAccess, int bInheritHandle, string lpName);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern IntPtr OpenEventW(uint dwDesiredAccess, int bInheritHandle, [Const] IntPtr lpName);
+        public static extern IntPtr OpenEventW(uint dwDesiredAccess, int bInheritHandle, IntPtr lpName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern IntPtr OpenEventW(uint dwDesiredAccess, int bInheritHandle, string lpName);
@@ -1447,25 +1447,25 @@ namespace xPlatform.x86.kernel32
     partial class kernel32
     {
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern IntPtr CreateMutexA(IntPtr lpMutexAttributes, int bInitialOwner, [Const] IntPtr lpName);
+        public static extern IntPtr CreateMutexA(IntPtr lpMutexAttributes, int bInitialOwner, IntPtr lpName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern IntPtr CreateMutexA(ref SECURITY_ATTRIBUTES lpMutexAttributes, int bInitialOwner, string lpName);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern IntPtr CreateMutexW(IntPtr lpMutexAttributes, int bInitialOwner, [Const] IntPtr lpName);
+        public static extern IntPtr CreateMutexW(IntPtr lpMutexAttributes, int bInitialOwner, IntPtr lpName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern IntPtr CreateMutexW(ref SECURITY_ATTRIBUTES lpMutexAttributes, int bInitialOwner, string lpName);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern IntPtr OpenMutexA(uint dwDesiredAccess, int bInheritHandle, [Const] IntPtr lpName);
+        public static extern IntPtr OpenMutexA(uint dwDesiredAccess, int bInheritHandle, IntPtr lpName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern IntPtr OpenMutexA(uint dwDesiredAccess, int bInheritHandle, string lpName);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern IntPtr OpenMutexW(uint dwDesiredAccess, int bInheritHandle, [Const] IntPtr lpName);
+        public static extern IntPtr OpenMutexW(uint dwDesiredAccess, int bInheritHandle, IntPtr lpName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern IntPtr OpenMutexW(uint dwDesiredAccess, int bInheritHandle, string lpName);
@@ -1481,25 +1481,25 @@ namespace xPlatform.x86.kernel32
     partial class kernel32
     {
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern IntPtr CreateSemaphoreA(IntPtr lpSemaphoreAttributes, int lInitialCount, int lMaximumCount, [Const] IntPtr lpName);
+        public static extern IntPtr CreateSemaphoreA(IntPtr lpSemaphoreAttributes, int lInitialCount, int lMaximumCount, IntPtr lpName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern IntPtr CreateSemaphoreA(ref SECURITY_ATTRIBUTES lpSemaphoreAttributes, int lInitialCount, int lMaximumCount, string lpName);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern IntPtr CreateSemaphoreW(IntPtr lpSemaphoreAttributes, int lInitialCount, int lMaximumCount, [Const] IntPtr lpName);
+        public static extern IntPtr CreateSemaphoreW(IntPtr lpSemaphoreAttributes, int lInitialCount, int lMaximumCount, IntPtr lpName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern IntPtr CreateSemaphoreW(ref SECURITY_ATTRIBUTES lpSemaphoreAttributes, int lInitialCount, int lMaximumCount, string lpName);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern IntPtr OpenSemaphoreA(uint dwDesiredAccess, int bInheritHandle, [Const] IntPtr lpName);
+        public static extern IntPtr OpenSemaphoreA(uint dwDesiredAccess, int bInheritHandle, IntPtr lpName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern IntPtr OpenSemaphoreA(uint dwDesiredAccess, int bInheritHandle, string lpName);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern IntPtr OpenSemaphoreW(uint dwDesiredAccess, int bInheritHandle, [Const] IntPtr lpName);
+        public static extern IntPtr OpenSemaphoreW(uint dwDesiredAccess, int bInheritHandle, IntPtr lpName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern IntPtr OpenSemaphoreW(uint dwDesiredAccess, int bInheritHandle, string lpName);
@@ -1546,13 +1546,13 @@ namespace xPlatform.x86.kernel32
     partial class kernel32
     {
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint MsgWaitForMultipleObjects(uint nCount, [Const] IntPtr pHandles, int bWaitAll, uint dwMilliseconds, uint dwWakeMask);
+        public static extern uint MsgWaitForMultipleObjects(uint nCount, IntPtr pHandles, int bWaitAll, uint dwMilliseconds, uint dwWakeMask);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern uint MsgWaitForMultipleObjects(uint nCount, IntPtr[] pHandles, int bWaitAll, uint dwMilliseconds, uint dwWakeMask);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint MsgWaitForMultipleObjectsEx(uint nCount, [Const] IntPtr pHandles, uint dwMilliseconds, uint dwWakeMask, uint dwFlags);
+        public static extern uint MsgWaitForMultipleObjectsEx(uint nCount, IntPtr pHandles, uint dwMilliseconds, uint dwWakeMask, uint dwFlags);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern uint MsgWaitForMultipleObjectsEx(uint nCount, IntPtr[] pHandles, uint dwMilliseconds, uint dwWakeMask, uint dwFlags);
@@ -1573,13 +1573,13 @@ namespace xPlatform.x86.kernel32
         public static extern int UnregisterWaitEx(IntPtr WaitHandle, IntPtr CompletionEvent);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint WaitForMultipleObjects(uint nCount, [Const] IntPtr lpHandles, int bWaitAll, uint dwMilliseconds);
+        public static extern uint WaitForMultipleObjects(uint nCount, IntPtr lpHandles, int bWaitAll, uint dwMilliseconds);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern uint WaitForMultipleObjects(uint nCount, IntPtr[] lpHandles, int bWaitAll, uint dwMilliseconds);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint WaitForMultipleObjectsEx(uint nCount, [Const] IntPtr lpHandles, int bWaitAll, uint dwMilliseconds, int bAlertable);
+        public static extern uint WaitForMultipleObjectsEx(uint nCount, IntPtr lpHandles, int bWaitAll, uint dwMilliseconds, int bAlertable);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern uint WaitForMultipleObjectsEx(uint nCount, IntPtr[] lpHandles, int bWaitAll, uint dwMilliseconds, int bAlertable);
@@ -1601,31 +1601,31 @@ namespace xPlatform.x86.kernel32
         public static extern int CancelWaitableTimer(IntPtr hTimer);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern IntPtr CreateWaitableTimerA(IntPtr lpTimerAttributes, int bManualReset, [Const] IntPtr lpTimerName);
+        public static extern IntPtr CreateWaitableTimerA(IntPtr lpTimerAttributes, int bManualReset, IntPtr lpTimerName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern IntPtr CreateWaitableTimerA(ref SECURITY_ATTRIBUTES lpTimerAttributes, int bManualReset, string lpTimerName);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern IntPtr CreateWaitableTimerW(IntPtr lpTimerAttributes, int bManualReset, [Const] IntPtr lpTimerName);
+        public static extern IntPtr CreateWaitableTimerW(IntPtr lpTimerAttributes, int bManualReset, IntPtr lpTimerName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern IntPtr CreateWaitableTimerW(ref SECURITY_ATTRIBUTES lpTimerAttributes, int bManualReset, string lpTimerName);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern IntPtr OpenWaitableTimerA(uint dwDesiredAccess, int bInheritHandle, [Const] IntPtr lpTimerName);
+        public static extern IntPtr OpenWaitableTimerA(uint dwDesiredAccess, int bInheritHandle, IntPtr lpTimerName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern IntPtr OpenWaitableTimerA(uint dwDesiredAccess, int bInheritHandle, string lpTimerName);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern IntPtr OpenWaitableTimerW(uint dwDesiredAccess, int bInheritHandle, [Const] IntPtr lpTimerName);
+        public static extern IntPtr OpenWaitableTimerW(uint dwDesiredAccess, int bInheritHandle, IntPtr lpTimerName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern IntPtr OpenWaitableTimerW(uint dwDesiredAccess, int bInheritHandle, string lpTimerName);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int SetWaitableTimer(IntPtr hTimer, [Const] IntPtr pDueTime, int lPeriod, IntPtr pfnCompletionRoutine, IntPtr lpArgToCompletionRoutine, int fResume);
+        public static extern int SetWaitableTimer(IntPtr hTimer, IntPtr pDueTime, int lPeriod, IntPtr pfnCompletionRoutine, IntPtr lpArgToCompletionRoutine, int fResume);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern int SetWaitableTimer(IntPtr hTimer, ref LARGE_INTEGER pDueTime, int lPeriod, TimerAPCProc pfnCompletionRoutine, IntPtr lpArgToCompletionRoutine, int fResume);
@@ -1643,7 +1643,7 @@ namespace xPlatform.x86.kernel32
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         [Obsolete("This function is provided only for compatibility with 16-bit versions of Windows. Use 'WriteFile' function instead.", false)]
-        public static extern int _hwrite(IntPtr hFile, [Const] IntPtr lpBuffer, int lBytes);
+        public static extern int _hwrite(IntPtr hFile, IntPtr lpBuffer, int lBytes);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         [Obsolete("This function is provided only for compatibility with 16-bit versions of Windows. Use 'WriteFile' function instead.", false)]
@@ -1655,7 +1655,7 @@ namespace xPlatform.x86.kernel32
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         [Obsolete("This function is provided only for compatibility with 16-bit versions of Windows. Use 'CreateFile' function instead.", false)]
-        public static extern IntPtr _lcreat([Const] IntPtr lpPathName, int iAttribute);
+        public static extern IntPtr _lcreat(IntPtr lpPathName, int iAttribute);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         [Obsolete("This function is provided only for compatibility with 16-bit versions of Windows. Use 'CreateFile' function instead.", false)]
@@ -1667,7 +1667,7 @@ namespace xPlatform.x86.kernel32
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         [Obsolete("This function is provided only for compatibility with 16-bit versions of Windows. Use 'CreateFile' function instead.", false)]
-        public static extern IntPtr _lopen([Const] IntPtr lpPathName, int iReadWrite);
+        public static extern IntPtr _lopen(IntPtr lpPathName, int iReadWrite);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         [Obsolete("This function is provided only for compatibility with 16-bit versions of Windows. Use 'CreateFile' function instead.", false)]
@@ -1679,7 +1679,7 @@ namespace xPlatform.x86.kernel32
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         [Obsolete("This function is provided only for compatibility with 16-bit versions of Windows. Use 'WriteFile' function instead.", false)]
-        public static extern int _lwrite(IntPtr hFile, [Const] IntPtr lpBuffer, uint uBytes);
+        public static extern int _lwrite(IntPtr hFile, IntPtr lpBuffer, uint uBytes);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         [Obsolete("This function is provided only for compatibility with 16-bit versions of Windows. Use 'WriteFile' function instead.", false)]
@@ -1692,61 +1692,61 @@ namespace xPlatform.x86.kernel32
         public static extern int CancelIo(IntPtr hFile);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int CopyFileA([Const] IntPtr lpExistingFileName, [Const] IntPtr lpNewFileName, int bFailIfExists);
+        public static extern int CopyFileA(IntPtr lpExistingFileName, IntPtr lpNewFileName, int bFailIfExists);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
         public static extern int CopyFileA(string lpExistingFileName, string lpNewFileName, int bFailIfExists);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int CopyFileW([Const] IntPtr lpExistingFileName, [Const] IntPtr lpNewFileName, int bFailIfExists);
+        public static extern int CopyFileW(IntPtr lpExistingFileName, IntPtr lpNewFileName, int bFailIfExists);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
         public static extern int CopyFileW(string lpExistingFileName, string lpNewFileName, int bFailIfExists);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int CopyFileExA([Const] IntPtr lpExistingFileName, [Const] IntPtr lpNewFileName, IntPtr lpProgressRoutine, IntPtr lpData, IntPtr pbCancel, uint dwCopyFlags);
+        public static extern int CopyFileExA(IntPtr lpExistingFileName, IntPtr lpNewFileName, IntPtr lpProgressRoutine, IntPtr lpData, IntPtr pbCancel, uint dwCopyFlags);
 
         [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int CopyFileExA(string lpExistingFileName, string lpNewFileName, CopyProgressRoutine lpProgressRoutine, IntPtr lpData, ref int pbCancel, uint dwCopyFlags);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int CopyFileExW([Const] IntPtr lpExistingFileName, [Const] IntPtr lpNewFileName, IntPtr lpProgressRoutine, IntPtr lpData, IntPtr pbCancel, uint dwCopyFlags);
+        public static extern int CopyFileExW(IntPtr lpExistingFileName, IntPtr lpNewFileName, IntPtr lpProgressRoutine, IntPtr lpData, IntPtr pbCancel, uint dwCopyFlags);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int CopyFileExW(string lpExistingFileName, string lpNewFileName, CopyProgressRoutine lpProgressRoutine, IntPtr lpData, ref int pbCancel, uint dwCopyFlags);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int CreateDirectoryA([Const] IntPtr lpPathName, IntPtr lpSecurityAttributes);
+        public static extern int CreateDirectoryA(IntPtr lpPathName, IntPtr lpSecurityAttributes);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int CreateDirectoryA(string lpPathName, ref SECURITY_ATTRIBUTES lpSecurityAttributes);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int CreateDirectoryW([Const] IntPtr lpPathName, IntPtr lpSecurityAttributes);
+        public static extern int CreateDirectoryW(IntPtr lpPathName, IntPtr lpSecurityAttributes);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int CreateDirectoryW(string lpPathName, ref SECURITY_ATTRIBUTES lpSecurityAttributes);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int CreateDirectoryExA([Const] IntPtr lpTemplateDirectory, [Const] IntPtr lpNewDirectory, IntPtr lpSecurityAttributes);
+        public static extern int CreateDirectoryExA(IntPtr lpTemplateDirectory, IntPtr lpNewDirectory, IntPtr lpSecurityAttributes);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int CreateDirectoryExA(string lpTemplateDirectory, string lpNewDirectory, ref SECURITY_ATTRIBUTES lpSecurityAttributes);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int CreateDirectoryExW([Const] IntPtr lpTemplateDirectory, [Const] IntPtr lpNewDirectory, IntPtr lpSecurityAttributes);
+        public static extern int CreateDirectoryExW(IntPtr lpTemplateDirectory, IntPtr lpNewDirectory, IntPtr lpSecurityAttributes);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int CreateDirectoryExW(string lpTemplateDirectory, string lpNewDirectory, ref SECURITY_ATTRIBUTES lpSecurityAttributes);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern IntPtr CreateFileA([Const] IntPtr lpFileName, uint dwDesiredAccess, uint dwShareMode, IntPtr lpSecurityAttributes, uint dwCreationDisposition, uint dwFlagsAndAttributes, IntPtr hTemplateFile);
+        public static extern IntPtr CreateFileA(IntPtr lpFileName, uint dwDesiredAccess, uint dwShareMode, IntPtr lpSecurityAttributes, uint dwCreationDisposition, uint dwFlagsAndAttributes, IntPtr hTemplateFile);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern IntPtr CreateFileA(string lpFileName, uint dwDesiredAccess, uint dwShareMode, ref SECURITY_ATTRIBUTES lpSecurityAttributes, uint dwCreationDisposition, uint dwFlagsAndAttributes, IntPtr hTemplateFile);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern IntPtr CreateFileW([Const] IntPtr lpFileName, uint dwDesiredAccess, uint dwShareMode, IntPtr lpSecurityAttributes, uint dwCreationDisposition, uint dwFlagsAndAttributes, IntPtr hTemplateFile);
+        public static extern IntPtr CreateFileW(IntPtr lpFileName, uint dwDesiredAccess, uint dwShareMode, IntPtr lpSecurityAttributes, uint dwCreationDisposition, uint dwFlagsAndAttributes, IntPtr hTemplateFile);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern IntPtr CreateFileW(string lpFileName, uint dwDesiredAccess, uint dwShareMode, ref SECURITY_ATTRIBUTES lpSecurityAttributes, uint dwCreationDisposition, uint dwFlagsAndAttributes, IntPtr hTemplateFile);
@@ -1755,25 +1755,25 @@ namespace xPlatform.x86.kernel32
         public static extern IntPtr CreateIoCompletionPort(IntPtr FileHandle, IntPtr ExistingCompletionPort, uint CompletionKey, uint NumberOfConcurrentThreads);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int DefineDosDeviceA(uint dwFlags, [Const] IntPtr lpDeviceName, [Const] IntPtr lpTargetPath);
+        public static extern int DefineDosDeviceA(uint dwFlags, IntPtr lpDeviceName, IntPtr lpTargetPath);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int DefineDosDeviceA(uint dwFlags, string lpDeviceName, string lpTargetPath);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int DefineDosDeviceW(uint dwFlags, [Const] IntPtr lpDeviceName, [Const] IntPtr lpTargetPath);
+        public static extern int DefineDosDeviceW(uint dwFlags, IntPtr lpDeviceName, IntPtr lpTargetPath);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int DefineDosDeviceW(uint dwFlags, string lpDeviceName, string lpTargetPath);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int DeleteFileA([Const] IntPtr lpFileName);
+        public static extern int DeleteFileA(IntPtr lpFileName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
         public static extern int DeleteFileA(string lpFileName);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int DeleteFileW([Const] IntPtr lpFileName);
+        public static extern int DeleteFileW(IntPtr lpFileName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
         public static extern int DeleteFileW(string lpFileName);
@@ -1785,37 +1785,37 @@ namespace xPlatform.x86.kernel32
         public static extern int FindCloseChangeNotification(IntPtr hChangeHandle);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern IntPtr FindFirstChangeNotificationA([Const] IntPtr lpPathName, int bWatchSubtree, uint dwNotifyFilter);
+        public static extern IntPtr FindFirstChangeNotificationA(IntPtr lpPathName, int bWatchSubtree, uint dwNotifyFilter);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern IntPtr FindFirstChangeNotificationA(string lpPathName, int bWatchSubtree, uint dwNotifyFilter);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern IntPtr FindFirstChangeNotificationW([Const] IntPtr lpPathName, int bWatchSubtree, uint dwNotifyFilter);
+        public static extern IntPtr FindFirstChangeNotificationW(IntPtr lpPathName, int bWatchSubtree, uint dwNotifyFilter);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern IntPtr FindFirstChangeNotificationW(string lpPathName, int bWatchSubtree, uint dwNotifyFilter);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern IntPtr FindFirstFileA([Const] IntPtr lpFileName, IntPtr lpFindFileData);
+        public static extern IntPtr FindFirstFileA(IntPtr lpFileName, IntPtr lpFindFileData);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern IntPtr FindFirstFileA(string lpFileName, ref WIN32_FIND_DATA lpFindFileData);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern IntPtr FindFirstFileW([Const] IntPtr lpFileName, IntPtr lpFindFileData);
+        public static extern IntPtr FindFirstFileW(IntPtr lpFileName, IntPtr lpFindFileData);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern IntPtr FindFirstFileW(string lpFileName, ref WIN32_FIND_DATA lpFindFileData);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern IntPtr FindFirstFileExA([Const] IntPtr lpFileName, FINDEX_INFO_LEVELS fInfoLevelId, IntPtr lpFindFileData, FINDEX_SEARCH_OPS fSearchOp, IntPtr lpSearchFilter, uint dwAdditionalFlag);
+        public static extern IntPtr FindFirstFileExA(IntPtr lpFileName, FINDEX_INFO_LEVELS fInfoLevelId, IntPtr lpFindFileData, FINDEX_SEARCH_OPS fSearchOp, IntPtr lpSearchFilter, uint dwAdditionalFlag);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern IntPtr FindFirstFileExA(string lpFileName, FINDEX_INFO_LEVELS fInfoLevelId, IntPtr lpFindFileData, FINDEX_SEARCH_OPS fSearchOp, IntPtr lpSearchFilter, uint dwAdditionalFlag);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern IntPtr FindFirstFileExW([Const] IntPtr lpFileName, FINDEX_INFO_LEVELS fInfoLevelId, IntPtr lpFindFileData, FINDEX_SEARCH_OPS fSearchOp, IntPtr lpSearchFilter, uint dwAdditionalFlag);
+        public static extern IntPtr FindFirstFileExW(IntPtr lpFileName, FINDEX_INFO_LEVELS fInfoLevelId, IntPtr lpFindFileData, FINDEX_SEARCH_OPS fSearchOp, IntPtr lpSearchFilter, uint dwAdditionalFlag);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern IntPtr FindFirstFileExW(string lpFileName, FINDEX_INFO_LEVELS fInfoLevelId, IntPtr lpFindFileData, FINDEX_SEARCH_OPS fSearchOp, IntPtr lpSearchFilter, uint dwAdditionalFlag);
@@ -1839,13 +1839,13 @@ namespace xPlatform.x86.kernel32
         public static extern int FlushFileBuffers(IntPtr hFile);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int GetBinaryTypeA([Const] IntPtr lpApplicationName, IntPtr lpBinaryType);
+        public static extern int GetBinaryTypeA(IntPtr lpApplicationName, IntPtr lpBinaryType);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int GetBinaryTypeA(string lpApplicationName, ref uint lpBinaryType);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int GetBinaryTypeW([Const] IntPtr lpApplicationName, IntPtr lpBinaryType);
+        public static extern int GetBinaryTypeW(IntPtr lpApplicationName, IntPtr lpBinaryType);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int GetBinaryTypeW(string lpApplicationName, ref uint lpBinaryType);
@@ -1863,37 +1863,37 @@ namespace xPlatform.x86.kernel32
         public static extern uint GetCurrentDirectoryW(uint nBufferLength, StringBuilder lpBuffer);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint GetDriveTypeA([Const] IntPtr lpRootPathName);
+        public static extern uint GetDriveTypeA(IntPtr lpRootPathName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern uint GetDriveTypeA(string lpRootPathName);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint GetDriveTypeW([Const] IntPtr lpRootPathName);
+        public static extern uint GetDriveTypeW(IntPtr lpRootPathName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern uint GetDriveTypeW(string lpRootPathName);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint GetFileAttributesA([Const] IntPtr lpFileName);
+        public static extern uint GetFileAttributesA(IntPtr lpFileName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern uint GetFileAttributesA(string lpFileName);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint GetFileAttributesW([Const] IntPtr lpFileName);
+        public static extern uint GetFileAttributesW(IntPtr lpFileName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern uint GetFileAttributesW(string lpFileName);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int GetFileAttributesExA([Const] IntPtr lpFileName, FINDEX_INFO_LEVELS fInfoLevelId, IntPtr lpFileInformation);
+        public static extern int GetFileAttributesExA(IntPtr lpFileName, FINDEX_INFO_LEVELS fInfoLevelId, IntPtr lpFileInformation);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
         public static extern int GetFileAttributesExA(string lpFileName, FINDEX_INFO_LEVELS fInfoLevelId, IntPtr lpFileInformation);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int GetFileAttributesExW([Const] IntPtr lpFileName, FINDEX_INFO_LEVELS fInfoLevelId, IntPtr lpFileInformation);
+        public static extern int GetFileAttributesExW(IntPtr lpFileName, FINDEX_INFO_LEVELS fInfoLevelId, IntPtr lpFileInformation);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
         public static extern int GetFileAttributesExW(string lpFileName, FINDEX_INFO_LEVELS fInfoLevelId, IntPtr lpFileInformation);
@@ -1908,31 +1908,31 @@ namespace xPlatform.x86.kernel32
         public static extern uint GetFileType(IntPtr hFile);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint GetFullPathNameA([Const] IntPtr lpFileName, uint nBufferLength, IntPtr lpBuffer, IntPtr lpFilePart);
+        public static extern uint GetFullPathNameA(IntPtr lpFileName, uint nBufferLength, IntPtr lpBuffer, IntPtr lpFilePart);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint GetFullPathNameA([Const] IntPtr lpFileName, uint nBufferLength, IntPtr lpBuffer, ref IntPtr lpFilePart);
+        public static extern uint GetFullPathNameA(IntPtr lpFileName, uint nBufferLength, IntPtr lpBuffer, ref IntPtr lpFilePart);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern uint GetFullPathNameA(string lpFileName, uint nBufferLength, StringBuilder lpBuffer, ref IntPtr lpFilePart);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint GetFullPathNameW([Const] IntPtr lpFileName, uint nBufferLength, IntPtr lpBuffer, IntPtr lpFilePart);
+        public static extern uint GetFullPathNameW(IntPtr lpFileName, uint nBufferLength, IntPtr lpBuffer, IntPtr lpFilePart);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint GetFullPathNameW([Const] IntPtr lpFileName, uint nBufferLength, IntPtr lpBuffer, ref IntPtr lpFilePart);
+        public static extern uint GetFullPathNameW(IntPtr lpFileName, uint nBufferLength, IntPtr lpBuffer, ref IntPtr lpFilePart);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern uint GetFullPathNameW(string lpFileName, uint nBufferLength, StringBuilder lpBuffer, ref IntPtr lpFilePart);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint GetLongPathNameA([Const] IntPtr lpszShortPath, IntPtr lpszLongPath, uint cchBuffer);
+        public static extern uint GetLongPathNameA(IntPtr lpszShortPath, IntPtr lpszLongPath, uint cchBuffer);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern uint GetLongPathNameA(string lpszShortPath, StringBuilder lpszLongPath, uint cchBuffer);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint GetLongPathNameW([Const] IntPtr lpszShortPath, IntPtr lpszLongPath, uint cchBuffer);
+        public static extern uint GetLongPathNameW(IntPtr lpszShortPath, IntPtr lpszLongPath, uint cchBuffer);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern uint GetLongPathNameW(string lpszShortPath, StringBuilder lpszLongPath, uint cchBuffer);
@@ -1944,25 +1944,25 @@ namespace xPlatform.x86.kernel32
         public static extern int GetQueuedCompletionStatus(IntPtr CompletionPort, ref uint lpNumberOfBytes, ref uint lpCompletionKey, ref OVERLAPPED lpOverlapped, uint dwMilliseconds);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint GetShortPathNameA([Const] IntPtr lpszLongPath, IntPtr lpszShortPath, uint cchBuffer);
+        public static extern uint GetShortPathNameA(IntPtr lpszLongPath, IntPtr lpszShortPath, uint cchBuffer);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern uint GetShortPathNameA(string lpszLongPath, StringBuilder lpszShortPath, uint cchBuffer);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint GetShortPathNameW([Const] IntPtr lpszLongPath, IntPtr lpszShortPath, uint cchBuffer);
+        public static extern uint GetShortPathNameW(IntPtr lpszLongPath, IntPtr lpszShortPath, uint cchBuffer);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern uint GetShortPathNameW(string lpszLongPath, StringBuilder lpszShortPath, uint cchBuffer);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint GetTempFileNameA([Const] IntPtr lpPathName, [Const] IntPtr lpPrefixString, uint uUnique, IntPtr lpTempFileName);
+        public static extern uint GetTempFileNameA(IntPtr lpPathName, IntPtr lpPrefixString, uint uUnique, IntPtr lpTempFileName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern uint GetTempFileNameA(string lpPathName, string lpPrefixString, uint uUnique, StringBuilder lpTempFileName);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint GetTempFileNameW([Const] IntPtr lpPathName, [Const] IntPtr lpPrefixString, uint uUnique, IntPtr lpTempFileName);
+        public static extern uint GetTempFileNameW(IntPtr lpPathName, IntPtr lpPrefixString, uint uUnique, IntPtr lpTempFileName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern uint GetTempFileNameW(string lpPathName, string lpPrefixString, uint uUnique, StringBuilder lpTempFileName);
@@ -1989,44 +1989,44 @@ namespace xPlatform.x86.kernel32
         public static extern int LockFileEx(IntPtr hFile, uint dwFileOffsetLow, uint dwFileOffsetHigh, uint nNumberOfBytesToLockLow, uint nNumberOfBytesToLockHigh, ref OVERLAPPED lpOverlapped);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int MoveFileA([Const] IntPtr lpExistingFileName, [Const] IntPtr lpNewFileName);
+        public static extern int MoveFileA(IntPtr lpExistingFileName, IntPtr lpNewFileName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
         public static extern int MoveFileA(string lpExistingFileName, string lpNewFileName);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int MoveFileW([Const] IntPtr lpExistingFileName, [Const] IntPtr lpNewFileName);
+        public static extern int MoveFileW(IntPtr lpExistingFileName, IntPtr lpNewFileName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
         public static extern int MoveFileW(string lpExistingFileName, string lpNewFileName);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int MoveFileExA([Const] IntPtr lpExistingFileName, [Const] IntPtr lpNewFileName, uint dwFlags);
+        public static extern int MoveFileExA(IntPtr lpExistingFileName, IntPtr lpNewFileName, uint dwFlags);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int MoveFileExA(string lpExistingFileName, string lpNewFileName, uint dwFlags);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int MoveFileExW([Const] IntPtr lpExistingFileName, [Const] IntPtr lpNewFileName, uint dwFlags);
+        public static extern int MoveFileExW(IntPtr lpExistingFileName, IntPtr lpNewFileName, uint dwFlags);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int MoveFileExW(string lpExistingFileName, string lpNewFileName, uint dwFlags);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int MoveFileWithProgressA([Const] IntPtr lpExistingFileName, [Const] IntPtr lpNewFileName, IntPtr lpProgressRoutine, IntPtr lpData, uint dwFlags);
+        public static extern int MoveFileWithProgressA(IntPtr lpExistingFileName, IntPtr lpNewFileName, IntPtr lpProgressRoutine, IntPtr lpData, uint dwFlags);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int MoveFileWithProgressA(string lpExistingFileName, string lpNewFileName, CopyProgressRoutine lpProgressRoutine, IntPtr lpData, uint dwFlags);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int MoveFileWithProgressW([Const] IntPtr lpExistingFileName, [Const] IntPtr lpNewFileName, IntPtr lpProgressRoutine, IntPtr lpData, uint dwFlags);
+        public static extern int MoveFileWithProgressW(IntPtr lpExistingFileName, IntPtr lpNewFileName, IntPtr lpProgressRoutine, IntPtr lpData, uint dwFlags);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int MoveFileWithProgressW(string lpExistingFileName, string lpNewFileName, CopyProgressRoutine lpProgressRoutine, IntPtr lpData, uint dwFlags);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         [Obsolete("This function is provided only for compatibility with 16-bit versions of Windows. Use 'CreateFile' function instead.", false)]
-        public static extern IntPtr OpenFile([Const] IntPtr lpFileName, IntPtr lpReOpenBuff, uint uStyle);
+        public static extern IntPtr OpenFile(IntPtr lpFileName, IntPtr lpReOpenBuff, uint uStyle);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         [Obsolete("This function is provided only for compatibility with 16-bit versions of Windows. Use 'CreateFile' function instead.", false)]
@@ -2039,13 +2039,13 @@ namespace xPlatform.x86.kernel32
         public static extern int PostQueuedCompletionStatus(IntPtr CompletionPort, uint dwNumberOfBytesTransferred, uint dwCompletionKey, ref OVERLAPPED lpOverlapped);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint QueryDosDeviceA([Const] IntPtr lpDeviceName, IntPtr lpTargetPath, uint ucchMax);
+        public static extern uint QueryDosDeviceA(IntPtr lpDeviceName, IntPtr lpTargetPath, uint ucchMax);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern uint QueryDosDeviceA(string lpDeviceName, StringBuilder lpTargetPath, uint ucchMax);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint QueryDosDeviceW([Const] IntPtr lpDeviceName, IntPtr lpTargetPath, uint ucchMax);
+        public static extern uint QueryDosDeviceW(IntPtr lpDeviceName, IntPtr lpTargetPath, uint ucchMax);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern uint QueryDosDeviceW(string lpDeviceName, StringBuilder lpTargetPath, uint ucchMax);
@@ -2075,55 +2075,55 @@ namespace xPlatform.x86.kernel32
         public static extern int ReadFileScatter(IntPtr hFile, FILE_SEGMENT_ELEMENT[] aSegmentArray, uint nNumberOfBytesToRead, IntPtr lpReserved, ref OVERLAPPED lpOverlapped);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int RemoveDirectoryA([Const] IntPtr lpPathName);
+        public static extern int RemoveDirectoryA(IntPtr lpPathName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
         public static extern int RemoveDirectoryA(string lpPathName);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int RemoveDirectoryW([Const] IntPtr lpPathName);
+        public static extern int RemoveDirectoryW(IntPtr lpPathName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
         public static extern int RemoveDirectoryW(string lpPathName);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int ReplaceFileA([Const] IntPtr lpReplacedFileName, [Const] IntPtr lpReplacementFileName, [Const] IntPtr lpBackupFileName, uint dwReplaceFlags, IntPtr lpExclude, IntPtr lpReserved);
+        public static extern int ReplaceFileA(IntPtr lpReplacedFileName, IntPtr lpReplacementFileName, IntPtr lpBackupFileName, uint dwReplaceFlags, IntPtr lpExclude, IntPtr lpReserved);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int ReplaceFileA(string lpReplacedFileName, string lpReplacementFileName, string lpBackupFileName, uint dwReplaceFlags, IntPtr lpExclude, IntPtr lpReserved);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int ReplaceFileW([Const] IntPtr lpReplacedFileName, [Const] IntPtr lpReplacementFileName, [Const] IntPtr lpBackupFileName, uint dwReplaceFlags, IntPtr lpExclude, IntPtr lpReserved);
+        public static extern int ReplaceFileW(IntPtr lpReplacedFileName, IntPtr lpReplacementFileName, IntPtr lpBackupFileName, uint dwReplaceFlags, IntPtr lpExclude, IntPtr lpReserved);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int ReplaceFileW(string lpReplacedFileName, string lpReplacementFileName, string lpBackupFileName, uint dwReplaceFlags, IntPtr lpExclude, IntPtr lpReserved);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint SearchPathA([Const] IntPtr lpPath, [Const] IntPtr lpFileName, [Const] IntPtr lpExtension, uint nBufferLength, IntPtr lpBuffer, IntPtr lpFilePart);
+        public static extern uint SearchPathA(IntPtr lpPath, IntPtr lpFileName, IntPtr lpExtension, uint nBufferLength, IntPtr lpBuffer, IntPtr lpFilePart);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint SearchPathA([Const] IntPtr lpPath, [Const] IntPtr lpFileName, [Const] IntPtr lpExtension, uint nBufferLength, IntPtr lpBuffer, ref IntPtr lpFilePart);
+        public static extern uint SearchPathA(IntPtr lpPath, IntPtr lpFileName, IntPtr lpExtension, uint nBufferLength, IntPtr lpBuffer, ref IntPtr lpFilePart);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern uint SearchPathA(string lpPath, string lpFileName, string lpExtension, uint nBufferLength, StringBuilder lpBuffer, ref IntPtr lpFilePart);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint SearchPathW([Const] IntPtr lpPath, [Const] IntPtr lpFileName, [Const] IntPtr lpExtension, uint nBufferLength, IntPtr lpBuffer, IntPtr lpFilePart);
+        public static extern uint SearchPathW(IntPtr lpPath, IntPtr lpFileName, IntPtr lpExtension, uint nBufferLength, IntPtr lpBuffer, IntPtr lpFilePart);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint SearchPathW([Const] IntPtr lpPath, [Const] IntPtr lpFileName, [Const] IntPtr lpExtension, uint nBufferLength, IntPtr lpBuffer, ref IntPtr lpFilePart);
+        public static extern uint SearchPathW(IntPtr lpPath, IntPtr lpFileName, IntPtr lpExtension, uint nBufferLength, IntPtr lpBuffer, ref IntPtr lpFilePart);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern uint SearchPathW(string lpPath, string lpFileName, string lpExtension, uint nBufferLength, StringBuilder lpBuffer, ref IntPtr lpFilePart);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int SetCurrentDirectoryA([Const] IntPtr lpPathName);
+        public static extern int SetCurrentDirectoryA(IntPtr lpPathName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
         public static extern int SetCurrentDirectoryA(string lpPathName);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int SetCurrentDirectoryW([Const] IntPtr lpPathName);
+        public static extern int SetCurrentDirectoryW(IntPtr lpPathName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
         public static extern int SetCurrentDirectoryW(string lpPathName);
@@ -2138,13 +2138,13 @@ namespace xPlatform.x86.kernel32
         public static extern void SetFileApisToOEM();
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int SetFileAttributesA([Const] IntPtr lpFileName, uint dwFileAttributes);
+        public static extern int SetFileAttributesA(IntPtr lpFileName, uint dwFileAttributes);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int SetFileAttributesA(string lpFileName, uint dwFileAttributes);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int SetFileAttributesW([Const] IntPtr lpFileName, uint dwFileAttributes);
+        public static extern int SetFileAttributesW(IntPtr lpFileName, uint dwFileAttributes);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int SetFileAttributesW(string lpFileName, uint dwFileAttributes);
@@ -2162,25 +2162,25 @@ namespace xPlatform.x86.kernel32
         public static extern int SetFilePointerEx(IntPtr hFile, LARGE_INTEGER liDistanceToMove, ref LARGE_INTEGER lpNewFilePointer, uint dwMoveMethod);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int SetFileSecurityA([Const] IntPtr lpFileName, SECURITY_INFORMATION SecurityInformation, IntPtr pSecurityDescriptor);
+        public static extern int SetFileSecurityA(IntPtr lpFileName, SECURITY_INFORMATION SecurityInformation, IntPtr pSecurityDescriptor);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int SetFileSecurityA(string lpFileName, SECURITY_INFORMATION SecurityInformation, ref SECURITY_DESCRIPTOR pSecurityDescriptor);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int SetFileSecurityW([Const] IntPtr lpFileName, SECURITY_INFORMATION SecurityInformation, IntPtr pSecurityDescriptor);
+        public static extern int SetFileSecurityW(IntPtr lpFileName, SECURITY_INFORMATION SecurityInformation, IntPtr pSecurityDescriptor);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int SetFileSecurityW(string lpFileName, SECURITY_INFORMATION SecurityInformation, ref SECURITY_DESCRIPTOR pSecurityDescriptor);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int SetFileShortNameA(IntPtr hFile, [Const] IntPtr lpShortName);
+        public static extern int SetFileShortNameA(IntPtr hFile, IntPtr lpShortName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
         public static extern int SetFileShortNameA(IntPtr hFile, string lpShortName);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int SetFileShortNameW(IntPtr hFile, [Const] IntPtr lpShortName);
+        public static extern int SetFileShortNameW(IntPtr hFile, IntPtr lpShortName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
         public static extern int SetFileShortNameW(IntPtr hFile, string lpShortName);
@@ -2198,16 +2198,16 @@ namespace xPlatform.x86.kernel32
         public static extern int UnlockFileEx(IntPtr hFile, uint dwReserved, uint nNumberOfBytesToUnlockLow, uint nNumberOfBytesToUnlockHigh, ref OVERLAPPED lpOverlapped);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int WriteFile(IntPtr hFile, [Const] IntPtr lpBuffer, uint nNumberOfBytesToWrite, IntPtr lpNumberOfBytesWritten, IntPtr lpOverlapped);
+        public static extern int WriteFile(IntPtr hFile, IntPtr lpBuffer, uint nNumberOfBytesToWrite, IntPtr lpNumberOfBytesWritten, IntPtr lpOverlapped);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int WriteFile(IntPtr hFile, [Const] IntPtr lpBuffer, uint nNumberOfBytesToWrite, ref uint lpNumberOfBytesWritten, ref OVERLAPPED lpOverlapped);
+        public static extern int WriteFile(IntPtr hFile, IntPtr lpBuffer, uint nNumberOfBytesToWrite, ref uint lpNumberOfBytesWritten, ref OVERLAPPED lpOverlapped);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int WriteFileEx(IntPtr hFile, [Const] IntPtr lpBuffer, uint nNumberOfBytesToWrite, IntPtr lpOverlapped, IntPtr lpCompletionRoutine);
+        public static extern int WriteFileEx(IntPtr hFile, IntPtr lpBuffer, uint nNumberOfBytesToWrite, IntPtr lpOverlapped, IntPtr lpCompletionRoutine);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int WriteFileEx(IntPtr hFile, [Const] IntPtr lpBuffer, uint nNumberOfBytesToWrite, ref OVERLAPPED lpOverlapped, FileIOCompletionRoutine lpCompletionRoutine);
+        public static extern int WriteFileEx(IntPtr hFile, IntPtr lpBuffer, uint nNumberOfBytesToWrite, ref OVERLAPPED lpOverlapped, FileIOCompletionRoutine lpCompletionRoutine);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern int WriteFileGather(IntPtr hFile, FILE_SEGMENT_ELEMENT[] aSegmentArray, uint nNumberOfBytesToWrite, IntPtr lpReserved, IntPtr lpOverlapped);
@@ -2223,19 +2223,19 @@ namespace xPlatform.x86.kernel32
     partial class kernel32
     {
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern IntPtr CreateFileMappingA(IntPtr hFile, IntPtr lpAttributes, uint flProtect, uint dwMaximumSizeHigh, uint dwMaximumSizeLow, [Const] IntPtr lpName);
+        public static extern IntPtr CreateFileMappingA(IntPtr hFile, IntPtr lpAttributes, uint flProtect, uint dwMaximumSizeHigh, uint dwMaximumSizeLow, IntPtr lpName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern IntPtr CreateFileMappingA(IntPtr hFile, ref SECURITY_ATTRIBUTES lpAttributes, uint flProtect, uint dwMaximumSizeHigh, uint dwMaximumSizeLow, string lpName);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern IntPtr CreateFileMappingW(IntPtr hFile, IntPtr lpAttributes, uint flProtect, uint dwMaximumSizeHigh, uint dwMaximumSizeLow, [Const] IntPtr lpName);
+        public static extern IntPtr CreateFileMappingW(IntPtr hFile, IntPtr lpAttributes, uint flProtect, uint dwMaximumSizeHigh, uint dwMaximumSizeLow, IntPtr lpName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern IntPtr CreateFileMappingW(IntPtr hFile, ref SECURITY_ATTRIBUTES lpAttributes, uint flProtect, uint dwMaximumSizeHigh, uint dwMaximumSizeLow, string lpName);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int FlushViewOfFile([Const] IntPtr lpBaseAddress, uint dwNumberOfBytesToFlush);
+        public static extern int FlushViewOfFile(IntPtr lpBaseAddress, uint dwNumberOfBytesToFlush);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern IntPtr MapViewOfFile(IntPtr hFileMappingObject, uint dwDesiredAccess, uint dwFileOffsetHigh, uint dwFileOffsetLow, uint dwNumberOfBytesToMap);
@@ -2244,19 +2244,19 @@ namespace xPlatform.x86.kernel32
         public static extern IntPtr MapViewOfFileEx(IntPtr hFileMappingObject, uint dwDesiredAccess, uint dwFileOffsetHigh, uint dwFileOffsetLow, uint dwNumberOfBytesToMap, IntPtr lpBaseAddress);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern IntPtr OpenFileMappingA(uint dwDesiredAccess, int bInheritHandle, [Const] IntPtr lpName);
+        public static extern IntPtr OpenFileMappingA(uint dwDesiredAccess, int bInheritHandle, IntPtr lpName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern IntPtr OpenFileMappingA(uint dwDesiredAccess, int bInheritHandle, string lpName);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern IntPtr OpenFileMappingW(uint dwDesiredAccess, int bInheritHandle, [Const] IntPtr lpName);
+        public static extern IntPtr OpenFileMappingW(uint dwDesiredAccess, int bInheritHandle, IntPtr lpName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern IntPtr OpenFileMappingW(uint dwDesiredAccess, int bInheritHandle, string lpName);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int UnmapViewOfFile([Const] IntPtr lpBaseAddress);
+        public static extern int UnmapViewOfFile(IntPtr lpBaseAddress);
     }
 
     #endregion // File mapping functions
@@ -2266,49 +2266,49 @@ namespace xPlatform.x86.kernel32
     partial class kernel32
     {
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int CreateHardLinkA([Const] IntPtr lpFileName, [Const] IntPtr lpExistingFileName, IntPtr lpSecurityAttributes);
+        public static extern int CreateHardLinkA(IntPtr lpFileName, IntPtr lpExistingFileName, IntPtr lpSecurityAttributes);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int CreateHardLinkA(string lpFileName, string lpExistingFileName, ref SECURITY_ATTRIBUTES lpSecurityAttributes);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int CreateHardLinkW([Const] IntPtr lpFileName, [Const] IntPtr lpExistingFileName, IntPtr lpSecurityAttributes);
+        public static extern int CreateHardLinkW(IntPtr lpFileName, IntPtr lpExistingFileName, IntPtr lpSecurityAttributes);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int CreateHardLinkW(string lpFileName, string lpExistingFileName, ref SECURITY_ATTRIBUTES lpSecurityAttributes);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint GetCompressedFileSizeA([Const] IntPtr lpFileName, IntPtr lpFileSizeHigh);
+        public static extern uint GetCompressedFileSizeA(IntPtr lpFileName, IntPtr lpFileSizeHigh);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern uint GetCompressedFileSizeA(string lpFileName, ref uint lpFileSizeHigh);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint GetCompressedFileSizeW([Const] IntPtr lpFileName, IntPtr lpFileSizeHigh);
+        public static extern uint GetCompressedFileSizeW(IntPtr lpFileName, IntPtr lpFileSizeHigh);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern uint GetCompressedFileSizeW(string lpFileName, ref uint lpFileSizeHigh);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int GetDiskFreeSpaceA([Const] IntPtr lpRootPathName, IntPtr lpSectorsPerCluster, IntPtr lpBytesPerSector, IntPtr lpNumberOfFreeClusters, IntPtr lpTotalNumberOfClusters);
+        public static extern int GetDiskFreeSpaceA(IntPtr lpRootPathName, IntPtr lpSectorsPerCluster, IntPtr lpBytesPerSector, IntPtr lpNumberOfFreeClusters, IntPtr lpTotalNumberOfClusters);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int GetDiskFreeSpaceA(string lpRootPathName, ref uint lpSectorsPerCluster, ref uint lpBytesPerSector, ref uint lpNumberOfFreeClusters, ref uint lpTotalNumberOfClusters);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int GetDiskFreeSpaceW([Const] IntPtr lpRootPathName, IntPtr lpSectorsPerCluster, IntPtr lpBytesPerSector, IntPtr lpNumberOfFreeClusters, IntPtr lpTotalNumberOfClusters);
+        public static extern int GetDiskFreeSpaceW(IntPtr lpRootPathName, IntPtr lpSectorsPerCluster, IntPtr lpBytesPerSector, IntPtr lpNumberOfFreeClusters, IntPtr lpTotalNumberOfClusters);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int GetDiskFreeSpaceW(string lpRootPathName, ref uint lpSectorsPerCluster, ref uint lpBytesPerSector, ref uint lpNumberOfFreeClusters, ref uint lpTotalNumberOfClusters);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int GetDiskFreeSpaceExA([Const] IntPtr lpDirectoryName, IntPtr lpFreeBytesAvailable, IntPtr lpTotalNumberOfBytes, IntPtr lpTotalNumberOfFreeBytes);
+        public static extern int GetDiskFreeSpaceExA(IntPtr lpDirectoryName, IntPtr lpFreeBytesAvailable, IntPtr lpTotalNumberOfBytes, IntPtr lpTotalNumberOfFreeBytes);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int GetDiskFreeSpaceExA(string lpDirectoryName, ref ULARGE_INTEGER lpFreeBytesAvailable, ref ULARGE_INTEGER lpTotalNumberOfBytes, ref ULARGE_INTEGER lpTotalNumberOfFreeBytes);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int GetDiskFreeSpaceExW([Const] IntPtr lpDirectoryName, IntPtr lpFreeBytesAvailable, IntPtr lpTotalNumberOfBytes, IntPtr lpTotalNumberOfFreeBytes);
+        public static extern int GetDiskFreeSpaceExW(IntPtr lpDirectoryName, IntPtr lpFreeBytesAvailable, IntPtr lpTotalNumberOfBytes, IntPtr lpTotalNumberOfFreeBytes);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int GetDiskFreeSpaceExW(string lpDirectoryName, ref ULARGE_INTEGER lpFreeBytesAvailable, ref ULARGE_INTEGER lpTotalNumberOfBytes, ref ULARGE_INTEGER lpTotalNumberOfFreeBytes);
@@ -2335,25 +2335,25 @@ namespace xPlatform.x86.kernel32
         public static extern uint GetLogicalDriveStringsW(uint nBufferLength, IntPtr lpBuffer);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int GetVolumeInformationA([Const] IntPtr lpRootPathName, IntPtr lpVolumeNameBuffer, uint nVolumeNameSize, IntPtr lpVolumeSerialNumber, IntPtr lpMaximumComponentLength, IntPtr lpFileSystemFlags, IntPtr lpFileSystemNameBuffer, uint nFileSystemNameSize);
+        public static extern int GetVolumeInformationA(IntPtr lpRootPathName, IntPtr lpVolumeNameBuffer, uint nVolumeNameSize, IntPtr lpVolumeSerialNumber, IntPtr lpMaximumComponentLength, IntPtr lpFileSystemFlags, IntPtr lpFileSystemNameBuffer, uint nFileSystemNameSize);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int GetVolumeInformationA(string lpRootPathName, StringBuilder lpVolumeNameBuffer, uint nVolumeNameSize, ref uint lpVolumeSerialNumber, ref uint lpMaximumComponentLength, ref uint lpFileSystemFlags, StringBuilder lpFileSystemNameBuffer, uint nFileSystemNameSize);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int GetVolumeInformationW([Const] IntPtr lpRootPathName, IntPtr lpVolumeNameBuffer, uint nVolumeNameSize, IntPtr lpVolumeSerialNumber, IntPtr lpMaximumComponentLength, IntPtr lpFileSystemFlags, IntPtr lpFileSystemNameBuffer, uint nFileSystemNameSize);
+        public static extern int GetVolumeInformationW(IntPtr lpRootPathName, IntPtr lpVolumeNameBuffer, uint nVolumeNameSize, IntPtr lpVolumeSerialNumber, IntPtr lpMaximumComponentLength, IntPtr lpFileSystemFlags, IntPtr lpFileSystemNameBuffer, uint nFileSystemNameSize);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int GetVolumeInformationW(string lpRootPathName, StringBuilder lpVolumeNameBuffer, uint nVolumeNameSize, ref uint lpVolumeSerialNumber, ref uint lpMaximumComponentLength, ref uint lpFileSystemFlags, StringBuilder lpFileSystemNameBuffer, uint nFileSystemNameSize);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int SetVolumeLabelA([Const] IntPtr lpRootPathName, [Const] IntPtr lpVolumeName);
+        public static extern int SetVolumeLabelA(IntPtr lpRootPathName, IntPtr lpVolumeName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
         public static extern int SetVolumeLabelA(string lpRootPathName, string lpVolumeName);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int SetVolumeLabelW([Const] IntPtr lpRootPathName, [Const] IntPtr lpVolumeName);
+        public static extern int SetVolumeLabelW(IntPtr lpRootPathName, IntPtr lpVolumeName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
         public static extern int SetVolumeLabelW(string lpRootPathName, string lpVolumeName);
@@ -2366,13 +2366,13 @@ namespace xPlatform.x86.kernel32
     partial class kernel32
     {
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int DeleteVolumeMountPointA([Const] IntPtr lpszVolumeMountPoint);
+        public static extern int DeleteVolumeMountPointA(IntPtr lpszVolumeMountPoint);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
         public static extern int DeleteVolumeMountPointA(string lpszVolumeMountPoint);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int DeleteVolumeMountPointW([Const] IntPtr lpszVolumeMountPoint);
+        public static extern int DeleteVolumeMountPointW(IntPtr lpszVolumeMountPoint);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
         public static extern int DeleteVolumeMountPointW(string lpszVolumeMountPoint);
@@ -2432,49 +2432,49 @@ namespace xPlatform.x86.kernel32
         public static extern int FindVolumeMountPointClose(IntPtr hFindVolume);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int GetVolumeNameForVolumeMountPointA([Const] IntPtr lpszVolumeMountPoint, IntPtr lpszVolumeName, uint cchBufferLength);
+        public static extern int GetVolumeNameForVolumeMountPointA(IntPtr lpszVolumeMountPoint, IntPtr lpszVolumeName, uint cchBufferLength);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int GetVolumeNameForVolumeMountPointA(string lpszVolumeMountPoint, StringBuilder lpszVolumeName, uint cchBufferLength);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int GetVolumeNameForVolumeMountPointW([Const] IntPtr lpszVolumeMountPoint, IntPtr lpszVolumeName, uint cchBufferLength);
+        public static extern int GetVolumeNameForVolumeMountPointW(IntPtr lpszVolumeMountPoint, IntPtr lpszVolumeName, uint cchBufferLength);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int GetVolumeNameForVolumeMountPointW(string lpszVolumeMountPoint, StringBuilder lpszVolumeName, uint cchBufferLength);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int GetVolumePathNameA([Const] IntPtr lpszFileName, IntPtr lpszVolumePathName, uint cchBufferLength);
+        public static extern int GetVolumePathNameA(IntPtr lpszFileName, IntPtr lpszVolumePathName, uint cchBufferLength);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int GetVolumePathNameA(string lpszFileName, StringBuilder lpszVolumePathName, uint cchBufferLength);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int GetVolumePathNameW([Const] IntPtr lpszFileName, IntPtr lpszVolumePathName, uint cchBufferLength);
+        public static extern int GetVolumePathNameW(IntPtr lpszFileName, IntPtr lpszVolumePathName, uint cchBufferLength);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int GetVolumePathNameW(string lpszFileName, StringBuilder lpszVolumePathName, uint cchBufferLength);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int GetVolumePathNamesForVolumeNameA([Const] IntPtr lpszVolumeName, IntPtr lpszVolumePathNames, uint cchBufferLength, IntPtr lpcchReturnLength);
+        public static extern int GetVolumePathNamesForVolumeNameA(IntPtr lpszVolumeName, IntPtr lpszVolumePathNames, uint cchBufferLength, IntPtr lpcchReturnLength);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int GetVolumePathNamesForVolumeNameA(string lpszVolumeName, StringBuilder lpszVolumePathNames, uint cchBufferLength, ref uint lpcchReturnLength);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int GetVolumePathNamesForVolumeNameW([Const] IntPtr lpszVolumeName, IntPtr lpszVolumePathNames, uint cchBufferLength, IntPtr lpcchReturnLength);
+        public static extern int GetVolumePathNamesForVolumeNameW(IntPtr lpszVolumeName, IntPtr lpszVolumePathNames, uint cchBufferLength, IntPtr lpcchReturnLength);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int GetVolumePathNamesForVolumeNameW(string lpszVolumeName, StringBuilder lpszVolumePathNames, uint cchBufferLength, ref uint lpcchReturnLength);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int SetVolumeMountPointA([Const] IntPtr lpszVolumeMountPoint, [Const] IntPtr lpszVolumeName);
+        public static extern int SetVolumeMountPointA(IntPtr lpszVolumeMountPoint, IntPtr lpszVolumeName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
         public static extern int SetVolumeMountPointA(string lpszVolumeMountPoint, string lpszVolumeName);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int SetVolumeMountPointW([Const] IntPtr lpszVolumeMountPoint, [Const] IntPtr lpszVolumeName);
+        public static extern int SetVolumeMountPointW(IntPtr lpszVolumeMountPoint, IntPtr lpszVolumeName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
         public static extern int SetVolumeMountPointW(string lpszVolumeMountPoint, string lpszVolumeName);
@@ -2676,7 +2676,7 @@ namespace xPlatform.x86.kernel32
     partial class kernel32
     {
         [DllImport(ModuleName), CLSCompliant(false)]
-        public static extern void CopyMemory(IntPtr Destination, [Const] IntPtr Source, uint Length);
+        public static extern void CopyMemory(IntPtr Destination, IntPtr Source, uint Length);
 
         [DllImport(ModuleName), CLSCompliant(false)]
         public static extern void FillMemory(IntPtr Destination, uint Length, byte Fill);
@@ -2718,13 +2718,13 @@ namespace xPlatform.x86.kernel32
         public static extern IntPtr HeapReAlloc(IntPtr hHeap, uint dwFlags, IntPtr lpMem, uint dwBytes);
 
         [DllImport(ModuleName), CLSCompliant(false)]
-        public static extern uint HeapSize(IntPtr hHeap, uint dwFlags, [Const] IntPtr lpMem);
+        public static extern uint HeapSize(IntPtr hHeap, uint dwFlags, IntPtr lpMem);
 
         [DllImport(ModuleName, SetLastError = true)]
         public static extern int HeapUnlock(IntPtr hHeap);
 
         [DllImport(ModuleName), CLSCompliant(false)]
-        public static extern int HeapValidate(IntPtr hHeap, uint dwFlags, [Const] IntPtr lpMem);
+        public static extern int HeapValidate(IntPtr hHeap, uint dwFlags, IntPtr lpMem);
 
         [DllImport(ModuleName, SetLastError = true)]
         public static extern int HeapWalk(IntPtr hHeap, IntPtr lpEntry);
@@ -2736,16 +2736,16 @@ namespace xPlatform.x86.kernel32
         public static extern int IsBadCodePtr(IntPtr lpfn);
 
         [DllImport(ModuleName), CLSCompliant(false)]
-        public static extern int IsBadReadPtr([Const] IntPtr lp, uint ucb);
+        public static extern int IsBadReadPtr(IntPtr lp, uint ucb);
 
         [DllImport(ModuleName), CLSCompliant(false)]
-        public static extern int IsBadStringPtrA([Const] IntPtr lpsz, uint ucchMax);
+        public static extern int IsBadStringPtrA(IntPtr lpsz, uint ucchMax);
 
         [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int IsBadStringPtrA(string lpsz, uint ucchMax);
 
         [DllImport(ModuleName), CLSCompliant(false)]
-        public static extern int IsBadStringPtrW([Const] IntPtr lpsz, uint ucchMax);
+        public static extern int IsBadStringPtrW(IntPtr lpsz, uint ucchMax);
 
         [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int IsBadStringPtrW(string lpsz, uint ucchMax);
@@ -2754,7 +2754,7 @@ namespace xPlatform.x86.kernel32
         public static extern int IsBadWritePtr(IntPtr lp, uint ucb);
 
         [DllImport(ModuleName), CLSCompliant(false)]
-        public static extern void MoveMemory(IntPtr Destination, [Const] IntPtr Source, uint Length);
+        public static extern void MoveMemory(IntPtr Destination, IntPtr Source, uint Length);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern IntPtr VirtualAlloc(IntPtr lpAddress, uint dwSize, uint flAllocationType, uint flProtect);
@@ -2784,16 +2784,16 @@ namespace xPlatform.x86.kernel32
         public static extern int VirtualProtectEx(IntPtr hProcess, IntPtr lpAddress, uint dwSize, uint flNewProtect, ref uint lpflOldProtect);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint VirtualQuery([Const] IntPtr lpAddress, IntPtr lpBuffer, uint dwLength);
+        public static extern uint VirtualQuery(IntPtr lpAddress, IntPtr lpBuffer, uint dwLength);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint VirtualQuery([Const] IntPtr lpAddress, ref MEMORY_BASIC_INFORMATION lpBuffer, uint dwLength);
+        public static extern uint VirtualQuery(IntPtr lpAddress, ref MEMORY_BASIC_INFORMATION lpBuffer, uint dwLength);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint VirtualQueryEx(IntPtr hProcess, [Const] IntPtr lpAddress, IntPtr lpBuffer, uint dwLength);
+        public static extern uint VirtualQueryEx(IntPtr hProcess, IntPtr lpAddress, IntPtr lpBuffer, uint dwLength);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint VirtualQueryEx(IntPtr hProcess, [Const] IntPtr lpAddress, ref MEMORY_BASIC_INFORMATION lpBuffer, uint dwLength);
+        public static extern uint VirtualQueryEx(IntPtr hProcess, IntPtr lpAddress, ref MEMORY_BASIC_INFORMATION lpBuffer, uint dwLength);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern int VirtualUnlock(IntPtr lpAddress, uint dwSize);
@@ -2821,7 +2821,7 @@ namespace xPlatform.x86.kernel32
         public static extern IntPtr GlobalFree(IntPtr hMem);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern IntPtr GlobalHandle([Const] IntPtr pMem);
+        public static extern IntPtr GlobalHandle(IntPtr pMem);
 
         [DllImport(ModuleName, SetLastError = true)]
         public static extern IntPtr GlobalLock(IntPtr hMem);
@@ -2848,7 +2848,7 @@ namespace xPlatform.x86.kernel32
         public static extern IntPtr LocalFree(IntPtr hMem);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern IntPtr LocalHandle([Const] IntPtr pMem);
+        public static extern IntPtr LocalHandle(IntPtr pMem);
 
         [DllImport(ModuleName, SetLastError = true)]
         public static extern IntPtr LocalLock(IntPtr hMem);
@@ -2873,169 +2873,169 @@ namespace xPlatform.x86.kernel32
     partial class kernel32
     {
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int CompareStringA(LCID Locale, uint dwCmpFlags, [Const] IntPtr lpString1, int cchCount1, [Const] IntPtr lpString2, int cchCount2);
+        public static extern int CompareStringA(LCID Locale, uint dwCmpFlags, IntPtr lpString1, int cchCount1, IntPtr lpString2, int cchCount2);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int CompareStringA(LCID Locale, uint dwCmpFlags, string lpString1, int cchCount1, string lpString2, int cchCount2);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int CompareStringW(LCID Locale, uint dwCmpFlags, [Const] IntPtr lpString1, int cchCount1, [Const] IntPtr lpString2, int cchCount2);
+        public static extern int CompareStringW(LCID Locale, uint dwCmpFlags, IntPtr lpString1, int cchCount1, IntPtr lpString2, int cchCount2);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int CompareStringW(LCID Locale, uint dwCmpFlags, string lpString1, int cchCount1, string lpString2, int cchCount2);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int FoldStringA(uint dwMapFlags, [Const] IntPtr lpSrcStr, int cchSrc, IntPtr lpDestStr, int cchDest);
+        public static extern int FoldStringA(uint dwMapFlags, IntPtr lpSrcStr, int cchSrc, IntPtr lpDestStr, int cchDest);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int FoldStringA(uint dwMapFlags, string lpSrcStr, int cchSrc, StringBuilder lpDestStr, int cchDest);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int FoldStringW(uint dwMapFlags, [Const] IntPtr lpSrcStr, int cchSrc, IntPtr lpDestStr, int cchDest);
+        public static extern int FoldStringW(uint dwMapFlags, IntPtr lpSrcStr, int cchSrc, IntPtr lpDestStr, int cchDest);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int FoldStringW(uint dwMapFlags, string lpSrcStr, int cchSrc, StringBuilder lpDestStr, int cchDest);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int GetStringTypeA(LCID Locale, uint dwInfoType, [Const] IntPtr lpSrcStr, int cchSrc, IntPtr lpCharType);
+        public static extern int GetStringTypeA(LCID Locale, uint dwInfoType, IntPtr lpSrcStr, int cchSrc, IntPtr lpCharType);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int GetStringTypeA(LCID Locale, uint dwInfoType, string lpSrcStr, int cchSrc, ref uint lpCharType);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int GetStringTypeW(LCID Locale, uint dwInfoType, [Const] IntPtr lpSrcStr, int cchSrc, IntPtr lpCharType);
+        public static extern int GetStringTypeW(LCID Locale, uint dwInfoType, IntPtr lpSrcStr, int cchSrc, IntPtr lpCharType);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int GetStringTypeW(LCID Locale, uint dwInfoType, string lpSrcStr, int cchSrc, ref uint lpCharType);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int GetStringTypeExA(LCID Locale, uint dwInfoType, [Const] IntPtr lpSrcStr, int cchSrc, IntPtr lpCharType);
+        public static extern int GetStringTypeExA(LCID Locale, uint dwInfoType, IntPtr lpSrcStr, int cchSrc, IntPtr lpCharType);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int GetStringTypeExA(LCID Locale, uint dwInfoType, string lpSrcStr, int cchSrc, ref uint lpCharType);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int GetStringTypeExW(LCID Locale, uint dwInfoType, [Const] IntPtr lpSrcStr, int cchSrc, IntPtr lpCharType);
+        public static extern int GetStringTypeExW(LCID Locale, uint dwInfoType, IntPtr lpSrcStr, int cchSrc, IntPtr lpCharType);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int GetStringTypeExW(LCID Locale, uint dwInfoType, string lpSrcStr, int cchSrc, ref uint lpCharType);
 
         [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
-        public static extern IntPtr lstrcat(IntPtr lpString1, [Const] IntPtr lpString2);
+        public static extern IntPtr lstrcat(IntPtr lpString1, IntPtr lpString2);
 
         [DllImport(ModuleName, CharSet = CharSet.Auto, ExactSpelling = true, SetLastError = true)]
         public static extern string lstrcat(StringBuilder lpString1, string lpString2);
 
         [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
-        public static extern IntPtr lstrcatA(IntPtr lpString1, [Const] IntPtr lpString2);
+        public static extern IntPtr lstrcatA(IntPtr lpString1, IntPtr lpString2);
 
         [DllImport(ModuleName, CharSet = CharSet.Ansi, ExactSpelling = true, SetLastError = true)]
         public static extern string lstrcatA(StringBuilder lpString1, string lpString2);
 
         [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
-        public static extern IntPtr lstrcatW(IntPtr lpString1, [Const] IntPtr lpString2);
+        public static extern IntPtr lstrcatW(IntPtr lpString1, IntPtr lpString2);
 
         [DllImport(ModuleName, CharSet = CharSet.Unicode, ExactSpelling = true, SetLastError = true)]
         public static extern string lstrcatW(StringBuilder lpString1, string lpString2);
 
         [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
-        public static extern int lstrcmp([Const] IntPtr lpString1, [Const] IntPtr lpString2);
+        public static extern int lstrcmp(IntPtr lpString1, IntPtr lpString2);
 
         [DllImport(ModuleName, CharSet = CharSet.Auto, ExactSpelling = true, SetLastError = true)]
         public static extern int lstrcmp(string lpString1, string lpString2);
 
         [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
-        public static extern int lstrcmpA([Const] IntPtr lpString1, [Const] IntPtr lpString2);
+        public static extern int lstrcmpA(IntPtr lpString1, IntPtr lpString2);
 
         [DllImport(ModuleName, CharSet = CharSet.Ansi, ExactSpelling = true, SetLastError = true)]
         public static extern int lstrcmpA(string lpString1, string lpString2);
 
         [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
-        public static extern int lstrcmpW([Const] IntPtr lpString1, [Const] IntPtr lpString2);
+        public static extern int lstrcmpW(IntPtr lpString1, IntPtr lpString2);
 
         [DllImport(ModuleName, CharSet = CharSet.Unicode, ExactSpelling = true, SetLastError = true)]
         public static extern int lstrcmpW(string lpString1, string lpString2);
 
         [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
-        public static extern int lstrcmpi([Const] IntPtr lpString1, [Const] IntPtr lpString2);
+        public static extern int lstrcmpi(IntPtr lpString1, IntPtr lpString2);
 
         [DllImport(ModuleName, CharSet = CharSet.Auto, ExactSpelling = true, SetLastError = true)]
         public static extern int lstrcmpi(string lpString1, string lpString2);
 
         [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
-        public static extern int lstrcmpiA([Const] IntPtr lpString1, [Const] IntPtr lpString2);
+        public static extern int lstrcmpiA(IntPtr lpString1, IntPtr lpString2);
 
         [DllImport(ModuleName, CharSet = CharSet.Ansi, ExactSpelling = true, SetLastError = true)]
         public static extern int lstrcmpiA(string lpString1, string lpString2);
 
         [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
-        public static extern int lstrcmpiW([Const] IntPtr lpString1, [Const] IntPtr lpString2);
+        public static extern int lstrcmpiW(IntPtr lpString1, IntPtr lpString2);
 
         [DllImport(ModuleName, CharSet = CharSet.Unicode, ExactSpelling = true, SetLastError = true)]
         public static extern int lstrcmpiW(string lpString1, string lpString2);
 
         [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
-        public static extern IntPtr lstrcpy(IntPtr lpString1, [Const] IntPtr lpString2);
+        public static extern IntPtr lstrcpy(IntPtr lpString1, IntPtr lpString2);
 
         [DllImport(ModuleName, CharSet = CharSet.Auto, ExactSpelling = true, SetLastError = true)]
         public static extern string lstrcpy(StringBuilder lpString1, string lpString2);
 
         [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
-        public static extern IntPtr lstrcpyA(IntPtr lpString1, [Const] IntPtr lpString2);
+        public static extern IntPtr lstrcpyA(IntPtr lpString1, IntPtr lpString2);
 
         [DllImport(ModuleName, CharSet = CharSet.Ansi, ExactSpelling = true, SetLastError = true)]
         public static extern string lstrcpyA(StringBuilder lpString1, string lpString2);
 
         [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
-        public static extern IntPtr lstrcpyW(IntPtr lpString1, [Const] IntPtr lpString2);
+        public static extern IntPtr lstrcpyW(IntPtr lpString1, IntPtr lpString2);
 
         [DllImport(ModuleName, CharSet = CharSet.Unicode, ExactSpelling = true, SetLastError = true)]
         public static extern string lstrcpyW(StringBuilder lpString1, string lpString2);
 
         [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
-        public static extern IntPtr lstrcpyn(IntPtr lpString1, [Const] IntPtr lpString2, int iMaxLength);
+        public static extern IntPtr lstrcpyn(IntPtr lpString1, IntPtr lpString2, int iMaxLength);
 
         [DllImport(ModuleName, CharSet = CharSet.Auto, ExactSpelling = true, SetLastError = true)]
         public static extern string lstrcpyn(StringBuilder lpString1, string lpString2, int iMaxLength);
 
         [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
-        public static extern IntPtr lstrcpynA(IntPtr lpString1, [Const] IntPtr lpString2, int iMaxLength);
+        public static extern IntPtr lstrcpynA(IntPtr lpString1, IntPtr lpString2, int iMaxLength);
 
         [DllImport(ModuleName, CharSet = CharSet.Ansi, ExactSpelling = true, SetLastError = true)]
         public static extern string lstrcpynA(StringBuilder lpString1, string lpString2, int iMaxLength);
 
         [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
-        public static extern IntPtr lstrcpynW(IntPtr lpString1, [Const] IntPtr lpString2, int iMaxLength);
+        public static extern IntPtr lstrcpynW(IntPtr lpString1, IntPtr lpString2, int iMaxLength);
 
         [DllImport(ModuleName, CharSet = CharSet.Unicode, ExactSpelling = true, SetLastError = true)]
         public static extern string lstrcpynW(StringBuilder lpString1, string lpString2, int iMaxLength);
 
         [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
-        public static extern int lstrlen([Const] IntPtr lpString);
+        public static extern int lstrlen(IntPtr lpString);
 
         [DllImport(ModuleName, CharSet = CharSet.Auto, ExactSpelling = true, SetLastError = true)]
         public static extern int lstrlen(string lpString);
 
         [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
-        public static extern int lstrlenA([Const] IntPtr lpString);
+        public static extern int lstrlenA(IntPtr lpString);
 
         [DllImport(ModuleName, CharSet = CharSet.Ansi, ExactSpelling = true, SetLastError = true)]
         public static extern int lstrlenA(string lpString);
 
         [DllImport(ModuleName, ExactSpelling = true, SetLastError = true)]
-        public static extern int lstrlenW([Const] IntPtr lpString);
+        public static extern int lstrlenW(IntPtr lpString);
 
         [DllImport(ModuleName, CharSet = CharSet.Unicode, ExactSpelling = true, SetLastError = true)]
         public static extern int lstrlenW(string lpString);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int MultiByteToWideChar(uint CodePage, uint dwFlags, [Const] IntPtr lpMultiByteStr, int cchMultiByte, IntPtr lpWideCharStr, int cchWideChar);
+        public static extern int MultiByteToWideChar(uint CodePage, uint dwFlags, IntPtr lpMultiByteStr, int cchMultiByte, IntPtr lpWideCharStr, int cchWideChar);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int MultiByteToWideChar(uint CodePage, uint dwFlags, string lpMultiByteStr, int cchMultiByte, IntPtr lpWideCharStr, int cchWideChar);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int WideCharToMultiByte(uint CodePage, uint dwFlags, [Const] IntPtr lpWideCharStr, int cchWideChar, IntPtr lpMultiByteStr, int cchMultiByte, [Const] IntPtr lpDefaultChar, IntPtr lpUsedDefaultChar);
+        public static extern int WideCharToMultiByte(uint CodePage, uint dwFlags, IntPtr lpWideCharStr, int cchWideChar, IntPtr lpMultiByteStr, int cchMultiByte, IntPtr lpDefaultChar, IntPtr lpUsedDefaultChar);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int WideCharToMultiByte(uint CodePage, uint dwFlags, string lpWideCharStr, int cchWideChar, IntPtr lpMultiByteStr, int cchMultiByte, [MarshalAs(UnmanagedType.LPStr)] string lpDefaultChar, ref int lpUsedDefaultChar);
@@ -3048,7 +3048,7 @@ namespace xPlatform.x86.kernel32
     partial class kernel32
     {
         [DllImport(ModuleName)]
-        public static extern int CompareFileTime([Const] IntPtr lpFileTime1, [Const] IntPtr lpFileTime2);
+        public static extern int CompareFileTime(IntPtr lpFileTime1, IntPtr lpFileTime2);
 
         [DllImport(ModuleName), CLSCompliant(false)]
         public static extern int CompareFileTime(ref FILETIME lpFileTime1, ref FILETIME lpFileTime2);
@@ -3060,19 +3060,19 @@ namespace xPlatform.x86.kernel32
         public static extern int DosDateTimeToFileTime(ushort wFatDate, ushort sFatTime, ref FILETIME lpFileTime);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int FileTimeToDosDateTime([Const] IntPtr lpFileTime, IntPtr lpFatDate, IntPtr lpFatTime);
+        public static extern int FileTimeToDosDateTime(IntPtr lpFileTime, IntPtr lpFatDate, IntPtr lpFatTime);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern int FileTimeToDosDateTime(ref FILETIME lpFileTime, ref ushort lpFatDate, ref ushort lpFatTime);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int FileTimeToLocalFileTime([Const] IntPtr lpFileTime, IntPtr lpLocalFileTime);
+        public static extern int FileTimeToLocalFileTime(IntPtr lpFileTime, IntPtr lpLocalFileTime);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern int FileTimeToLocalFileTime(ref FILETIME lpFileTime, ref FILETIME lpLocalFileTime);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int FileTimeToSystemTime([Const] IntPtr lpFileTime, IntPtr lpSystemTime);
+        public static extern int FileTimeToSystemTime(IntPtr lpFileTime, IntPtr lpSystemTime);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern int FileTimeToSystemTime(ref FILETIME lpFileTime, ref SYSTEMTIME lpSystemTime);
@@ -3111,25 +3111,25 @@ namespace xPlatform.x86.kernel32
         public static extern uint GetTimeZoneInformation(ref TIME_ZONE_INFORMATION lpTimeZoneInformation);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int LocalFileTimeToFileTime([Const] IntPtr lpLocalFileTime, IntPtr lpFileTime);
+        public static extern int LocalFileTimeToFileTime(IntPtr lpLocalFileTime, IntPtr lpFileTime);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern int LocalFileTimeToFileTime(ref FILETIME lpLocalFileTime, ref FILETIME lpFileTime);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int SetFileTime(IntPtr hFile, [Const] IntPtr lpCreationTime, [Const] IntPtr lpLastAccessTime, [Const] IntPtr lpLastWriteTime);
+        public static extern int SetFileTime(IntPtr hFile, IntPtr lpCreationTime, IntPtr lpLastAccessTime, IntPtr lpLastWriteTime);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern int SetFileTime(IntPtr hFile, ref FILETIME lpCreationTime, ref FILETIME lpLastAccessTime, ref FILETIME lpLastWriteTime);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int SetLocalTime([Const] IntPtr lpSystemTime);
+        public static extern int SetLocalTime(IntPtr lpSystemTime);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern int SetLocalTime(ref SYSTEMTIME lpSystemTime);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int SetSystemTime([Const] IntPtr lpSystemTime);
+        public static extern int SetSystemTime(IntPtr lpSystemTime);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern int SetSystemTime(ref SYSTEMTIME lpSystemTime);
@@ -3138,13 +3138,13 @@ namespace xPlatform.x86.kernel32
         public static extern int SetSystemTimeAdjustment(uint dwTimeAdjustment, int bTimeAdjustmentDisabled);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int SetTimeZoneInformation([Const] IntPtr lpTimeZoneInformation);
+        public static extern int SetTimeZoneInformation(IntPtr lpTimeZoneInformation);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern int SetTimeZoneInformation(ref TIME_ZONE_INFORMATION lpTimeZoneInformation);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int SystemTimeToFileTime([Const] IntPtr lpSystemTime, IntPtr lpFileTime);
+        public static extern int SystemTimeToFileTime(IntPtr lpSystemTime, IntPtr lpFileTime);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
         public static extern int SystemTimeToFileTime(ref SYSTEMTIME lpSystemTime, ref FILETIME lpFileTime);
@@ -3164,7 +3164,7 @@ namespace xPlatform.x86.kernel32
     {
         [DllImport(ModuleName, SetLastError = true)]
         public static extern int BuildCommDCBA(
-            [In, Const] IntPtr lpDef, 
+            [In] IntPtr lpDef, 
             [Out] IntPtr lpDCB);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
@@ -3174,7 +3174,7 @@ namespace xPlatform.x86.kernel32
 
         [DllImport(ModuleName, SetLastError = true)]
         public static extern int BuildCommDCBW(
-            [In, Const] IntPtr lpDef,
+            [In] IntPtr lpDef,
             [Out] IntPtr lpDCB);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
@@ -3184,7 +3184,7 @@ namespace xPlatform.x86.kernel32
 
         [DllImport(ModuleName, SetLastError = true)]
         public static extern int BuildCommDCBAndTimeoutsA(
-            [In, Const] IntPtr lpDef, 
+            [In] IntPtr lpDef, 
             [Out] IntPtr lpDCB, 
             [Out] IntPtr lpCommTimeouts);
 
@@ -3196,7 +3196,7 @@ namespace xPlatform.x86.kernel32
 
         [DllImport(ModuleName, SetLastError = true)]
         public static extern int BuildCommDCBAndTimeoutsW(
-            [In, Const] IntPtr lpDef, 
+            [In] IntPtr lpDef, 
             [Out] IntPtr lpDCB, 
             [Out] IntPtr lpCommTimeouts);
 
@@ -3530,25 +3530,25 @@ namespace xPlatform.x86.kernel32
         public static extern int GetCPInfo(uint CodePage, ref CPINFO lpCPInfo);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int GetCurrencyFormatA(LCID Locale, uint dwFlags, [Const] IntPtr lpValue, [Const] IntPtr lpFormat, IntPtr lpCurrencyStr, int cchCurrency);
+        public static extern int GetCurrencyFormatA(LCID Locale, uint dwFlags, IntPtr lpValue, IntPtr lpFormat, IntPtr lpCurrencyStr, int cchCurrency);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int GetCurrencyFormatA(LCID Locale, uint dwFlags, string lpValue, ref CURRENCYFMT lpFormat, StringBuilder lpCurrencyStr, int cchCurrency);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int GetCurrencyFormatW(LCID Locale, uint dwFlags, [Const] IntPtr lpValue, [Const] IntPtr lpFormat, IntPtr lpCurrencyStr, int cchCurrency);
+        public static extern int GetCurrencyFormatW(LCID Locale, uint dwFlags, IntPtr lpValue, IntPtr lpFormat, IntPtr lpCurrencyStr, int cchCurrency);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int GetCurrencyFormatW(LCID Locale, uint dwFlags, string lpValue, ref CURRENCYFMT lpFormat, StringBuilder lpCurrencyStr, int cchCurrency);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int GetDateFormatA(LCID Locale, uint dwFlags, [Const] IntPtr lpDate, [Const] IntPtr lpFormat, IntPtr lpDateStr, int cchDate);
+        public static extern int GetDateFormatA(LCID Locale, uint dwFlags, IntPtr lpDate, IntPtr lpFormat, IntPtr lpDateStr, int cchDate);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int GetDateFormatA(LCID Locale, uint dwFlags, ref SYSTEMTIME lpDate, string lpFormat, StringBuilder lpDateStr, int cchDate);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int GetDateFormatW(LCID Locale, uint dwFlags, [Const] IntPtr lpDate, [Const] IntPtr lpFormat, IntPtr lpDateStr, int cchDate);
+        public static extern int GetDateFormatW(LCID Locale, uint dwFlags, IntPtr lpDate, IntPtr lpFormat, IntPtr lpDateStr, int cchDate);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int GetDateFormatW(LCID Locale, uint dwFlags, ref SYSTEMTIME lpDate, string lpFormat, StringBuilder lpDateStr, int cchDate);
@@ -3566,13 +3566,13 @@ namespace xPlatform.x86.kernel32
         public static extern int GetLocaleInfoW(LCID Locale, LCTYPE LCType, StringBuilder lpLCData, int cchData);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int GetNumberFormatA(LCID Locale, uint dwFlags, [Const] IntPtr lpValue, [Const] IntPtr lpFormat, IntPtr lpNumberStr, int cchNumber);
+        public static extern int GetNumberFormatA(LCID Locale, uint dwFlags, IntPtr lpValue, IntPtr lpFormat, IntPtr lpNumberStr, int cchNumber);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int GetNumberFormatA(LCID Locale, uint dwFlags, string lpValue, ref NUMBERFMT lpFormat, StringBuilder lpNumberStr, int cchNumber);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int GetNumberFormatW(LCID Locale, uint dwFlags, [Const] IntPtr lpValue, [Const] IntPtr lpFormat, IntPtr lpNumberStr, int cchNumber);
+        public static extern int GetNumberFormatW(LCID Locale, uint dwFlags, IntPtr lpValue, IntPtr lpFormat, IntPtr lpNumberStr, int cchNumber);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int GetNumberFormatW(LCID Locale, uint dwFlags, string lpValue, ref NUMBERFMT lpFormat, StringBuilder lpNumberStr, int cchNumber);
@@ -3590,13 +3590,13 @@ namespace xPlatform.x86.kernel32
         public static extern LCID GetThreadLocale();
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int GetTimeFormatA(LCID Locale, uint dwFlags, [Const] IntPtr lpTime, [Const] IntPtr lpFormat, IntPtr lpTimeStr, int cchTime);
+        public static extern int GetTimeFormatA(LCID Locale, uint dwFlags, IntPtr lpTime, IntPtr lpFormat, IntPtr lpTimeStr, int cchTime);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int GetTimeFormatA(LCID Locale, uint dwFlags, ref SYSTEMTIME lpTime, string lpFormat, StringBuilder lpTimeStr, int cchTime);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int GetTimeFormatW(LCID Locale, uint dwFlags, [Const] IntPtr lpTime, [Const] IntPtr lpFormat, IntPtr lpTimeStr, int cchTime);
+        public static extern int GetTimeFormatW(LCID Locale, uint dwFlags, IntPtr lpTime, IntPtr lpFormat, IntPtr lpTimeStr, int cchTime);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int GetTimeFormatW(LCID Locale, uint dwFlags, ref SYSTEMTIME lpTime, string lpFormat, StringBuilder lpTimeStr, int cchTime);
@@ -3614,25 +3614,25 @@ namespace xPlatform.x86.kernel32
         public static extern int IsValidLocale(LCID Locale, uint dwFlags);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int LCMapStringA(LCID Locale, uint dwMapFlags, [Const] IntPtr lpSrcStr, int cchSrc, IntPtr lpDestStr, int cchDest);
+        public static extern int LCMapStringA(LCID Locale, uint dwMapFlags, IntPtr lpSrcStr, int cchSrc, IntPtr lpDestStr, int cchDest);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int LCMapStringA(LCID Locale, uint dwMapFlags, string lpSrcStr, int cchSrc, StringBuilder lpDestStr, int cchDest);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int LCMapStringW(LCID Locale, uint dwMapFlags, [Const] IntPtr lpSrcStr, int cchSrc, IntPtr lpDestStr, int cchDest);
+        public static extern int LCMapStringW(LCID Locale, uint dwMapFlags, IntPtr lpSrcStr, int cchSrc, IntPtr lpDestStr, int cchDest);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int LCMapStringW(LCID Locale, uint dwMapFlags, string lpSrcStr, int cchSrc, StringBuilder lpDestStr, int cchDest);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int SetLocaleInfoA(LCID Locale, LCTYPE LCType, [Const] IntPtr lpLCData);
+        public static extern int SetLocaleInfoA(LCID Locale, LCTYPE LCType, IntPtr lpLCData);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int SetLocaleInfoA(LCID Locale, LCTYPE LCType, string lpLCData);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int SetLocaleInfoW(LCID Locale, LCTYPE LCType, [Const] IntPtr lpLCData);
+        public static extern int SetLocaleInfoW(LCID Locale, LCTYPE LCType, IntPtr lpLCData);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int SetLocaleInfoW(LCID Locale, LCTYPE LCType, string lpLCData);
@@ -3648,13 +3648,13 @@ namespace xPlatform.x86.kernel32
     partial class kernel32
     {
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern IntPtr CreateMailslotA([Const] IntPtr lpName, uint nMaxMessageSize, uint lReadTimeOut, IntPtr lpSecurityAttributes);
+        public static extern IntPtr CreateMailslotA(IntPtr lpName, uint nMaxMessageSize, uint lReadTimeOut, IntPtr lpSecurityAttributes);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern IntPtr CreateMailslotA(string lpName, uint nMaxMessageSize, uint lReadTimeOut, ref SECURITY_ATTRIBUTES lpSecurityAttributes);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern IntPtr CreateMailslotW([Const] IntPtr lpName, uint nMaxMessageSize, uint lReadTimeOut, IntPtr lpSecurityAttributes);
+        public static extern IntPtr CreateMailslotW(IntPtr lpName, uint nMaxMessageSize, uint lReadTimeOut, IntPtr lpSecurityAttributes);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern IntPtr CreateMailslotW(string lpName, uint nMaxMessageSize, uint lReadTimeOut, ref SECURITY_ATTRIBUTES lpSecurityAttributes);
@@ -3676,13 +3676,13 @@ namespace xPlatform.x86.kernel32
     partial class kernel32
     {
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int CallNamedPipeA([Const] IntPtr lpNamedPipeName, IntPtr lpInBuffer, uint nInBufferSize, IntPtr lpOutBuffer, uint nOutBufferSize, IntPtr lpBytesRead, uint nTimeOut);
+        public static extern int CallNamedPipeA(IntPtr lpNamedPipeName, IntPtr lpInBuffer, uint nInBufferSize, IntPtr lpOutBuffer, uint nOutBufferSize, IntPtr lpBytesRead, uint nTimeOut);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int CallNamedPipeA(string lpNamedPipeName, IntPtr lpInBuffer, uint nInBufferSize, IntPtr lpOutBuffer, uint nOutBufferSize, ref uint lpBytesRead, uint nTimeOut);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int CallNamedPipeW([Const] IntPtr lpNamedPipeName, IntPtr lpInBuffer, uint nInBufferSize, IntPtr lpOutBuffer, uint nOutBufferSize, IntPtr lpBytesRead, uint nTimeOut);
+        public static extern int CallNamedPipeW(IntPtr lpNamedPipeName, IntPtr lpInBuffer, uint nInBufferSize, IntPtr lpOutBuffer, uint nOutBufferSize, IntPtr lpBytesRead, uint nTimeOut);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int CallNamedPipeW(string lpNamedPipeName, IntPtr lpInBuffer, uint nInBufferSize, IntPtr lpOutBuffer, uint nOutBufferSize, ref uint lpBytesRead, uint nTimeOut);
@@ -3694,13 +3694,13 @@ namespace xPlatform.x86.kernel32
         public static extern int ConnectNamedPipe(IntPtr hNamedPipe, ref OVERLAPPED lpOverlapped);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern IntPtr CreateNamedPipeA([Const] IntPtr lpName, uint dwOpenMode, uint dwPipeMode, uint nMaxInstances, uint nOutBufferSize, uint nInBufferSize, uint nDefaultTimeOut, IntPtr lpSecurityAttributes);
+        public static extern IntPtr CreateNamedPipeA(IntPtr lpName, uint dwOpenMode, uint dwPipeMode, uint nMaxInstances, uint nOutBufferSize, uint nInBufferSize, uint nDefaultTimeOut, IntPtr lpSecurityAttributes);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern IntPtr CreateNamedPipeA(string lpName, uint dwOpenMode, uint dwPipeMode, uint nMaxInstances, uint nOutBufferSize, uint nInBufferSize, uint nDefaultTimeOut, IntPtr lpSecurityAttributes);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern IntPtr CreateNamedPipeW([Const] IntPtr lpName, uint dwOpenMode, uint dwPipeMode, uint nMaxInstances, uint nOutBufferSize, uint nInBufferSize, uint nDefaultTimeOut, IntPtr lpSecurityAttributes);
+        public static extern IntPtr CreateNamedPipeW(IntPtr lpName, uint dwOpenMode, uint dwPipeMode, uint nMaxInstances, uint nOutBufferSize, uint nInBufferSize, uint nDefaultTimeOut, IntPtr lpSecurityAttributes);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern IntPtr CreateNamedPipeW(string lpName, uint dwOpenMode, uint dwPipeMode, uint nMaxInstances, uint nOutBufferSize, uint nInBufferSize, uint nDefaultTimeOut, IntPtr lpSecurityAttributes);
@@ -3751,13 +3751,13 @@ namespace xPlatform.x86.kernel32
         public static extern int TransactNamedPipe(IntPtr hNamedPipe, IntPtr lpInBuffer, uint nInBufferSize, IntPtr lpOutBuffer, uint nOutBufferSize, ref uint lpBytesRead, ref OVERLAPPED lpOverlapped);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int WaitNamedPipeA([Const] IntPtr lpNamedPipe, uint nTimeOut);
+        public static extern int WaitNamedPipeA(IntPtr lpNamedPipe, uint nTimeOut);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int WaitNamedPipeA(string lpNamedPipe, uint nTimeOut);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int WaitNamedPipeW([Const] IntPtr lpNamedPipe, uint nTimeOut);
+        public static extern int WaitNamedPipeW(IntPtr lpNamedPipe, uint nTimeOut);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int WaitNamedPipeW(string lpNamedPipe, uint nTimeOut);
@@ -3779,7 +3779,7 @@ namespace xPlatform.x86.kernel32
         public static extern IntPtr CommandLineToArgvW(string lpCmdLine, ref int pNumArgs);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int CreateProcessA([Const] IntPtr lpApplicationName, IntPtr lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, [Const] IntPtr lpCurrentDirectory, IntPtr lpStartupInfo, IntPtr lpProcessInformation);
+        public static extern int CreateProcessA(IntPtr lpApplicationName, IntPtr lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, IntPtr lpCurrentDirectory, IntPtr lpStartupInfo, IntPtr lpProcessInformation);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int CreateProcessA(string lpApplicationName, string lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, IntPtr lpStartupInfo, IntPtr lpProcessInformation);
@@ -3791,7 +3791,7 @@ namespace xPlatform.x86.kernel32
         public static extern int CreateProcessA(string lpApplicationName, string lpCommandLine, ref SECURITY_ATTRIBUTES lpProcessAttributes, ref SECURITY_ATTRIBUTES lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, ref STARTUPINFO lpStartupInfo, ref PROCESS_INFORMATION lpProcessInformation);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int CreateProcessW([Const] IntPtr lpApplicationName, IntPtr lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, [Const] IntPtr lpCurrentDirectory, IntPtr lpStartupInfo, IntPtr lpProcessInformation);
+        public static extern int CreateProcessW(IntPtr lpApplicationName, IntPtr lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, IntPtr lpCurrentDirectory, IntPtr lpStartupInfo, IntPtr lpProcessInformation);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int CreateProcessW(string lpApplicationName, string lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, IntPtr lpStartupInfo, IntPtr lpProcessInformation);
@@ -3804,7 +3804,7 @@ namespace xPlatform.x86.kernel32
 
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int CreateProcessAsUserA(IntPtr hToken, [Const] IntPtr lpApplicationName, IntPtr lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, [Const] IntPtr lpCurrentDirectory, IntPtr lpStartupInfo, IntPtr lpProcessInformation);
+        public static extern int CreateProcessAsUserA(IntPtr hToken, IntPtr lpApplicationName, IntPtr lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, IntPtr lpCurrentDirectory, IntPtr lpStartupInfo, IntPtr lpProcessInformation);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int CreateProcessAsUserA(IntPtr hToken, string lpApplicationName, string lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, IntPtr lpStartupInfo, IntPtr lpProcessInformation);
@@ -3816,7 +3816,7 @@ namespace xPlatform.x86.kernel32
         public static extern int CreateProcessAsUserA(IntPtr hToken, string lpApplicationName, string lpCommandLine, ref SECURITY_ATTRIBUTES lpProcessAttributes, ref SECURITY_ATTRIBUTES lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, ref STARTUPINFO lpStartupInfo, ref PROCESS_INFORMATION lpProcessInformation);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern int CreateProcessAsUserW(IntPtr hToken, [Const] IntPtr lpApplicationName, IntPtr lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, [Const] IntPtr lpCurrentDirectory, IntPtr lpStartupInfo, IntPtr lpProcessInformation);
+        public static extern int CreateProcessAsUserW(IntPtr hToken, IntPtr lpApplicationName, IntPtr lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, IntPtr lpCurrentDirectory, IntPtr lpStartupInfo, IntPtr lpProcessInformation);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int CreateProcessAsUserW(IntPtr hToken, string lpApplicationName, string lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, IntPtr lpStartupInfo, IntPtr lpProcessInformation);
@@ -3882,13 +3882,13 @@ namespace xPlatform.x86.kernel32
         public static extern IntPtr GetEnvironmentStringsW();
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint GetEnvironmentVariableA([Const] IntPtr lpName, IntPtr lpBuffer, uint nSize);
+        public static extern uint GetEnvironmentVariableA(IntPtr lpName, IntPtr lpBuffer, uint nSize);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern uint GetEnvironmentVariableA(string lpName, StringBuilder lpBuffer, uint nSize);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint GetEnvironmentVariableW([Const] IntPtr lpName, IntPtr lpBuffer, uint nSize);
+        public static extern uint GetEnvironmentVariableW(IntPtr lpName, IntPtr lpBuffer, uint nSize);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern uint GetEnvironmentVariableW(string lpName, StringBuilder lpBuffer, uint nSize);
@@ -3969,13 +3969,13 @@ namespace xPlatform.x86.kernel32
         public static extern uint ResumeThread(IntPtr hThread);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int SetEnvironmentVariableA([Const] IntPtr lpName, [Const] IntPtr lpValue);
+        public static extern int SetEnvironmentVariableA(IntPtr lpName, IntPtr lpValue);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
         public static extern int SetEnvironmentVariableA(string lpName, string lpValue);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int SetEnvironmentVariableW([Const] IntPtr lpName, [Const] IntPtr lpValue);
+        public static extern int SetEnvironmentVariableW(IntPtr lpName, IntPtr lpValue);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
         public static extern int SetEnvironmentVariableW(string lpName, string lpValue);
@@ -4041,7 +4041,7 @@ namespace xPlatform.x86.kernel32
         public static extern uint WaitForInputIdle(IntPtr hProcess, uint dwMilliseconds);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint WinExec([Const] IntPtr lpCmdLine, uint nCmdShow);
+        public static extern uint WinExec(IntPtr lpCmdLine, uint nCmdShow);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern uint WinExec(string lpCmdLine, uint nCmdShow);
@@ -4100,19 +4100,19 @@ namespace xPlatform.x86.kernel32
         public static extern int DeactivateActCtx(uint dwFlags, uint ulCookie);
 
         [DllImport(ModuleName), CLSCompliant(false)]
-        public static extern int FindActCtxSectionGuid(uint dwFlags, [Const] IntPtr lpExtensionGuid, uint ulSectionId, [Const] IntPtr lpGuidToFind, IntPtr ReturnedData);
+        public static extern int FindActCtxSectionGuid(uint dwFlags, IntPtr lpExtensionGuid, uint ulSectionId, IntPtr lpGuidToFind, IntPtr ReturnedData);
 
         [DllImport(ModuleName), CLSCompliant(false)]
         public static extern int FindActCtxSectionGuid(uint dwFlags, ref GUID lpExtensionGuid, uint ulSelectionId, ref GUID lpGuidToFind, ref ACTCTX_SECTION_KEYED_DATA ReturnedData);
 
         [DllImport(ModuleName), CLSCompliant(false)]
-        public static extern int FindActCtxSectionStringA(uint dwFlags, [Const] IntPtr lpExtensionGuid, uint ulSelectionId, [Const] IntPtr lpStringToFind, IntPtr ReturnedData);
+        public static extern int FindActCtxSectionStringA(uint dwFlags, IntPtr lpExtensionGuid, uint ulSelectionId, IntPtr lpStringToFind, IntPtr ReturnedData);
 
         [DllImport(ModuleName, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int FindActCtxSectionStringA(uint dwFlags, ref GUID lpExtensionGuid, uint ulSelectionId, string lpStringToFind, ref ACTCTX_SECTION_KEYED_DATA ReturnedData);
 
         [DllImport(ModuleName), CLSCompliant(false)]
-        public static extern int FindActCtxSectionStringW(uint dwFlags, [Const] IntPtr lpExtensionGuid, uint ulSelectionId, [Const] IntPtr lpStringToFind, IntPtr ReturnedData);
+        public static extern int FindActCtxSectionStringW(uint dwFlags, IntPtr lpExtensionGuid, uint ulSelectionId, IntPtr lpStringToFind, IntPtr ReturnedData);
 
         [DllImport(ModuleName, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int FindActCtxSectionStringW(uint dwFlags, ref GUID lpExtensionGuid, uint ulSelectionId, string lpStringToFind, ref ACTCTX_SECTION_KEYED_DATA ReturnedData);
@@ -4177,7 +4177,7 @@ namespace xPlatform.x86.kernel32
         public static extern int AssignProcessToJobObject(IntPtr hJob, IntPtr hProcess);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern IntPtr CreateJobObjectA(IntPtr lpJobAttributes, [Const] IntPtr lpName);
+        public static extern IntPtr CreateJobObjectA(IntPtr lpJobAttributes, IntPtr lpName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
         public static extern IntPtr CreateJobObjectA(IntPtr lpJobAttributes, string lpName);
@@ -4186,7 +4186,7 @@ namespace xPlatform.x86.kernel32
         public static extern IntPtr CreateJobObjectA(ref SECURITY_ATTRIBUTES lpJobAttributes, string lpName);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern IntPtr CreateJobObjectW(IntPtr lpJobAttributes, [Const] IntPtr lpName);
+        public static extern IntPtr CreateJobObjectW(IntPtr lpJobAttributes, IntPtr lpName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
         public static extern IntPtr CreateJobObjectW(IntPtr lpJobAttributes, string lpName);
@@ -4201,13 +4201,13 @@ namespace xPlatform.x86.kernel32
         public static extern int IsProcessInJob(IntPtr ProcessHandle, IntPtr JobHandle, ref int Result);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern IntPtr OpenJobObjectA(uint dwDesiredAccess, int bInheritHandles, [Const] IntPtr lpName);
+        public static extern IntPtr OpenJobObjectA(uint dwDesiredAccess, int bInheritHandles, IntPtr lpName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern IntPtr OpenJobObjectA(uint dwDesiredAccess, int bInheritHandles, string lpName);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern IntPtr OpenJobObjectW(uint dwDesiredAccess, int bInheritHandles, [Const] IntPtr lpName);
+        public static extern IntPtr OpenJobObjectW(uint dwDesiredAccess, int bInheritHandles, IntPtr lpName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern IntPtr OpenJobObjectW(uint dwDesiredAccess, int bInheritHandles, string lpName);
@@ -4291,25 +4291,25 @@ namespace xPlatform.x86.kernel32
     partial class kernel32
     {
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int DnsHostnameToComputerNameA([Const] IntPtr Hostname, IntPtr ComputerName, IntPtr nSize);
+        public static extern int DnsHostnameToComputerNameA(IntPtr Hostname, IntPtr ComputerName, IntPtr nSize);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern int DnsHostnameToComputerNameA(string Hostname, StringBuilder ComputerName, ref uint nSize);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int DnsHostnameToComputerNameW([Const] IntPtr Hostname, IntPtr ComputerName, IntPtr nSize);
+        public static extern int DnsHostnameToComputerNameW(IntPtr Hostname, IntPtr ComputerName, IntPtr nSize);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern int DnsHostnameToComputerNameW(string Hostname, StringBuilder ComputerName, ref uint nSize);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint ExpandEnvironmentStringsA([Const] IntPtr lpSrc, IntPtr lpDst, uint nSize);
+        public static extern uint ExpandEnvironmentStringsA(IntPtr lpSrc, IntPtr lpDst, uint nSize);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi), CLSCompliant(false)]
         public static extern uint ExpandEnvironmentStringsA(string lpSrc, StringBuilder lpDst, uint nSize);
 
         [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
-        public static extern uint ExpandEnvironmentStringsW([Const] IntPtr lpSrc, IntPtr lpDst, uint nSize);
+        public static extern uint ExpandEnvironmentStringsW(IntPtr lpSrc, IntPtr lpDst, uint nSize);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode), CLSCompliant(false)]
         public static extern uint ExpandEnvironmentStringsW(string lpSrc, StringBuilder lpDst, uint nSize);
@@ -4423,25 +4423,25 @@ namespace xPlatform.x86.kernel32
         public static extern int IsWow64Process(IntPtr hProcess, ref int Wow64Process);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int SetComputerNameA([Const] IntPtr lpComputerName);
+        public static extern int SetComputerNameA(IntPtr lpComputerName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
         public static extern int SetComputerNameA(string lpComputerName);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int SetComputerNameW([Const] IntPtr lpComputerName);
+        public static extern int SetComputerNameW(IntPtr lpComputerName);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
         public static extern int SetComputerNameW(string lpComputerName);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int SetComputerNameExA(COMPUTER_NAME_FORMAT NameType, [Const] IntPtr lpBuffer);
+        public static extern int SetComputerNameExA(COMPUTER_NAME_FORMAT NameType, IntPtr lpBuffer);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Ansi)]
         public static extern int SetComputerNameExA(COMPUTER_NAME_FORMAT NameType, string lpBuffer);
 
         [DllImport(ModuleName, SetLastError = true)]
-        public static extern int SetComputerNameExW(COMPUTER_NAME_FORMAT NameType, [Const] IntPtr lpBuffer);
+        public static extern int SetComputerNameExW(COMPUTER_NAME_FORMAT NameType, IntPtr lpBuffer);
 
         [DllImport(ModuleName, SetLastError = true, CharSet = CharSet.Unicode)]
         public static extern int SetComputerNameExW(COMPUTER_NAME_FORMAT NameType, string lpBuffer);

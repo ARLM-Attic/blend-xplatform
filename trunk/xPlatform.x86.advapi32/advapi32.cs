@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 namespace xPlatform.x86.advapi32
 {
     [Serializable]
-    public partial class advapi32 : ModuleBase<advapi32>
+    public partial class advapi32 : ModuleBase
     {
         [NonSerialized]
         public const string ModuleName = "advapi32.dll";

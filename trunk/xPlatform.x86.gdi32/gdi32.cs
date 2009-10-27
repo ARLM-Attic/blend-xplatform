@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 namespace xPlatform.x86.gdi32
 {
     [Serializable]
-    public partial class gdi32 : ModuleBase<gdi32>
+    public partial class gdi32 : ModuleBase
     {
         [NonSerialized]
         public const string ModuleName = "gdi32.dll";

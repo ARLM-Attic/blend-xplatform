@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 namespace xPlatform.x86.authz
 {
     [Serializable]
-    public partial class authz : ModuleBase<authz>
+    public partial class authz : ModuleBase
     {
         [NonSerialized]
         public const string ModuleName = "authz.dll";

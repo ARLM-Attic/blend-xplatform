@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 namespace xPlatform.x86.user32
 {
     [Serializable]
-    public partial class user32 : ModuleBase<user32>
+    public partial class user32 : ModuleBase
     {
         [NonSerialized]
         public const string ModuleName = "user32.dll";

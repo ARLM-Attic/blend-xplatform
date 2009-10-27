@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 namespace xPlatform.x86.psapi
 {
     [Serializable]
-    public partial class psapi : ModuleBase<psapi>
+    public partial class psapi : ModuleBase
     {
         [NonSerialized]
         public const string ModuleName = "psapi.dll";

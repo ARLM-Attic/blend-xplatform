@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 namespace xPlatform.x86.comctl32
 {
     [Serializable]
-    public partial class comctl32 : ModuleBase<comctl32>
+    public partial class comctl32 : ModuleBase
     {
         [NonSerialized]
         public const string ModuleName = "comctl32.dll";
