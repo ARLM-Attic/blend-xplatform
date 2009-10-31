@@ -15,14 +15,74 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_7701D85431F14AB283520C8531272D3E"
+        "MsmKey" = "8:_1D0E31E17AB84EA19FE147F196456FD7"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_375AC554391C4B339BBD83A782E54882"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_433C3F98D10F47D11837E29101D61CBE"
+        "OwnerKey" = "8:_7802DEAD27E24A09B2CCB8CA0A85CC12"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_433C3F98D10F47D11837E29101D61CBE"
+        "OwnerKey" = "8:_375AC554391C4B339BBD83A782E54882"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7802DEAD27E24A09B2CCB8CA0A85CC12"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_8774B962D0364CCAB9A2E41C5376271D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B2658D0F73644B4EAF826909E539B4BA"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7701D85431F14AB283520C8531272D3E"
+        "OwnerKey" = "8:_433C3F98D10F47D11837E29101D61CBE"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_8774B962D0364CCAB9A2E41C5376271D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_1D0E31E17AB84EA19FE147F196456FD7"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_375AC554391C4B339BBD83A782E54882"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_7802DEAD27E24A09B2CCB8CA0A85CC12"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -87,6 +147,19 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Net.Framework.3.5"
+                    {
+                    "Name" = "8:.NET Framework 3.5"
+                    "ProductCode" = "8:Microsoft.Net.Framework.3.5"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
+                }
             }
         }
     }
@@ -117,6 +190,57 @@
         }
         "File"
         {
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_433C3F98D10F47D11837E29101D61CBE"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:xPlatformCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=4843596998ca0638, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_433C3F98D10F47D11837E29101D61CBE"
+                    {
+                    "Name" = "8:xPlatformCore.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:xPlatformCore.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_49FBB602844942BF8B3C011541F62224"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B2658D0F73644B4EAF826909E539B4BA"
+            {
+            "SourcePath" = "8:..\\xPlatform.Core\\Gear.ico"
+            "TargetName" = "8:Gear.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_49FBB602844942BF8B3C011541F62224"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -174,7 +298,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Project Blend: xPlatform (Win32)"
         "ProductCode" = "8:{993A327E-174E-417D-B775-CEB5B3D17717}"
-        "PackageCode" = "8:{B9E461A1-A8D8-4F30-9FF9-BB0CF7104969}"
+        "PackageCode" = "8:{600C187B-1C3D-4CFE-8173-4CD2CCFE0877}"
         "UpgradeCode" = "8:{10FA459C-B933-4D81-BB04-E9202D9E2EA5}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
@@ -190,7 +314,7 @@
         "Keywords" = "8:xPlatform"
         "ARPCOMMENTS" = "8:Project Blend: xPlatform Runtime Setup"
         "ARPURLINFOABOUT" = "8:http://www.rkttu.com/"
-        "ARPPRODUCTICON" = "8:"
+        "ARPPRODUCTICON" = "8:_B2658D0F73644B4EAF826909E539B4BA"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -756,7 +880,91 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_7701D85431F14AB283520C8531272D3E"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_1D0E31E17AB84EA19FE147F196456FD7"
+            {
+            "SourcePath" = "8:..\\xPlatform.Math.MT\\obj\\Debug\\xPlatform.Math.MT.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_49FBB602844942BF8B3C011541F62224"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{465DB9C4-1B01-4F5A-934A-53420AFA962F}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_375AC554391C4B339BBD83A782E54882"
+            {
+            "SourcePath" = "8:..\\xPlatform.x86.msvcrt\\obj\\Debug\\xPlatform_x86_msvcrt.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_49FBB602844942BF8B3C011541F62224"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{7ED6B19A-9120-4C31-82AB-9BB9ADB56622}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_7802DEAD27E24A09B2CCB8CA0A85CC12"
+            {
+            "SourcePath" = "8:..\\xPlatform.x86.kernel32\\obj\\Debug\\xPlatform.x86.kernel32.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_49FBB602844942BF8B3C011541F62224"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{FD6C08CE-66E7-40C6-8A5F-F8B969609631}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_8774B962D0364CCAB9A2E41C5376271D"
             {
             "SourcePath" = "8:..\\xPlatform.Core\\obj\\Debug\\xPlatformCore.dll"
             "TargetName" = "8:"
