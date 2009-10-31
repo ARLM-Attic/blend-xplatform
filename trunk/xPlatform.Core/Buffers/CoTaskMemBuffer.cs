@@ -15,6 +15,8 @@ namespace xPlatform.Buffers
 
             if (this.internalPointer.Equals(IntPtr.Zero))
                 throw new Exception("Cannot allocate memory.");
+
+            this.Initialization();
         }
 
         public CoTaskMemBuffer(CoTaskMemBuffer previous)
@@ -27,6 +29,8 @@ namespace xPlatform.Buffers
         {
             this.Dispose(false);
         }
+
+        protected virtual void Initialization() { }
 
         private readonly IntPtr internalPointer = IntPtr.Zero;
         private readonly int size = 0;

@@ -9,10 +9,7 @@ namespace xPlatform.Buffers
         public GlobalHeapBuffer(params T[] elements)
             : this(elements.Length)
         {
-            this.typedPointer = new Pointer<T>(this.Address);
-
-            for (int i = 0; i < elements.Length; i++)
-                this.typedPointer[i] = elements[i];
+            this.elements = elements;
         }
 
         public GlobalHeapBuffer(int elementCount)
@@ -31,7 +28,20 @@ namespace xPlatform.Buffers
             base.Dispose(disposing);
         }
 
+        protected override void Initialization()
+        {
+            this.typedPointer = new Pointer<T>(this.Address);
+
+            if (this.elements != null &&
+                this.elements.Length > 0)
+            {
+                for (int i = 0; i < elements.Length; i++)
+                    this.typedPointer[i] = elements[i];
+            }
+        }
+
         private Pointer<T> typedPointer;
+        private T[] elements;
 
         public Pointer<T> TypedPointer
         {
