@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace xPlatform.x86.dssec
 {
+    [CLSCompliant(false)]
     [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi)]
     public delegate int PFNREADOBJECTSECURITY(
         [In] IntPtr adPathOfObj,
@@ -12,6 +13,7 @@ namespace xPlatform.x86.dssec
         [In] IntPtr lpReturnedSecurityDescriptor,
         [In] ushort contextParameter);
 
+    [CLSCompliant(false)]
     [Serializable, UnmanagedFunctionPointer(CallingConvention.Winapi)]
     public delegate int PFNWRITEOBJECTSECURITY(
         [In] IntPtr adPathOfObj,

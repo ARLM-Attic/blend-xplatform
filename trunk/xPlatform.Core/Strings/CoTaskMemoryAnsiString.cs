@@ -23,7 +23,7 @@ namespace xPlatform.Strings
         }
 
         public CoTaskMemoryAnsiString(int length)
-            : this(Utilities.CreateWhitespaceString(length))
+            : this(new String(Constants.NullCharacter, length))
         {
         }
 

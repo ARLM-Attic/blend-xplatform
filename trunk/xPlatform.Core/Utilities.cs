@@ -6,19 +6,6 @@ namespace xPlatform
 {
     public static class Utilities
     {
-        public static string CreateWhitespaceString(int length)
-        {
-            if (length < 1)
-                return String.Empty;
-
-            StringBuilder buffer = new StringBuilder(length);
-
-            for (int i = 0; i < length; i++)
-                buffer.Append(' ');
-
-            return buffer.ToString();
-        }
-
         public static unsafe int NativeSizeOf(Type targetType)
         {
             if (targetType == null)
@@ -103,7 +90,7 @@ namespace xPlatform
         {
             long num = (((((doubleWord & -16777216L) / 16777216L) & 255L) | ((doubleWord & 16711680L) / 256L)) | ((doubleWord & 65280L) * 256L)) | ((doubleWord & 127L) * 16777216L);
             if ((doubleWord & 128L) > 0L)
-                num |= -2147483648L;
+                num |= Constants.X86LowerBound;
             return num;
         }
     }

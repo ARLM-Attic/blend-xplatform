@@ -18,7 +18,8 @@ namespace xPlatform
         {
             long num = info.GetInt64("value");
 
-            if ((Size == 4) && ((num > 0x7fffffffL) || (num < -2147483648L)))
+            if ((Size == Constants.X86PlatformPtrSize) &&
+                ((num > Constants.X86UpperBound) || (num < Constants.X86LowerBound)))
                 throw new Exception("Invalid pointer value.");
 
             this.internalPointer = (Guid*)num;

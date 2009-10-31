@@ -14,6 +14,8 @@
     <FileAlignment>512</FileAlignment>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>xPlatformCore.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
+    <ApplicationIcon>Gear.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,10 +45,10 @@
     <Compile Include="AutoCharPointer.cs" />
     <Compile Include="Buffers\CoTaskMemBufferGeneric.cs" />
     <Compile Include="Buffers\GlobalHeapBufferGeneric.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Flags\ConstAttribute.cs" />
     <Compile Include="Flags\ReadonlyAttribute.cs" />
     <Compile Include="Flags\TodoAttribute.cs" />
-    <Compile Include="IModuleBase.cs" />
     <Compile Include="ITypedPointer.cs" />
     <Compile Include="ModuleBase.cs" />
     <Compile Include="NonStandard\IUnsafePointer.cs" />
@@ -91,6 +93,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="xPlatformCore.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Gear.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
