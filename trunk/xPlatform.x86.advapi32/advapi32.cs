@@ -1445,7 +1445,100 @@ namespace xPlatform.x86.advapi32
             [In] ref SID pSid1,
             [In] ref SID pSid2);
 
-        // FindFirstFreeAce
+        [DllImport(ModuleName, SetLastError = true)]
+        public static extern int FindFirstFreeAce(
+            [In] IntPtr pAcl,
+            [Out] IntPtr pAce);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int FindFirstFreeAce(
+            [In] ref ACL pAcl,
+            [Out] out IntPtr pAce);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint FreeInheritedFromArray(
+            [In] IntPtr pInheritedArray,
+            [In] ushort AceCnt,
+            [In] IntPtr pfnArray);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern uint FreeInheritedFromArray(
+            [In] INHERITED_FROM[] pInheritedArray,
+            [In] ushort AceCnt,
+            [In] IntPtr pfnArray);
+
+        [DllImport(ModuleName)]
+        public static extern void FreeSid(
+            [In] IntPtr pSid);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern void FreeSid(
+            [In] ref SID pSid);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetAce(
+            [In] IntPtr pAcl,
+            [In] uint dwAceIndex,
+            [Out] IntPtr pAce);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetAce(
+            [In] ref ACL pAcl,
+            [In] uint dwAceIndex,
+            [Out] out IntPtr pAce);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetAclInformation(
+            [In] IntPtr pAcl,
+            [Out] IntPtr pAclInformation,
+            [In] uint nAclInformationLength,
+            [In] ACL_INFORMATION_CLASS dwAclInformationClass);
+
+        [DllImport(ModuleName, SetLastError = true), CLSCompliant(false)]
+        public static extern int GetAclInformation(
+            [In] ref ACL pAcl,
+            [Out] out IntPtr pAclInformation,
+            [In] uint nAclInformationLength,
+            [In] ACL_INFORMATION_CLASS dwAclInformationClass);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint GetAuditedPermissionsFromAcl(
+            [In] IntPtr pAcl,
+            [In] IntPtr pTrustee,
+            [Out] IntPtr pSuccessfulAuditedRights,
+            [Out] IntPtr pFailedAuditedRights);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint GetAuditedPermissionsFromAcl(
+            [In] IntPtr pAcl,
+            [In] IntPtr pTrustee,
+            [Out] out ACCESS_MASK pSuccessfulAuditedRights,
+            [Out] out ACCESS_MASK pFailedAuditedRights);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint GetAuditedPermissionsFromAcl(
+            [In] ref ACL pAcl,
+            [In] ref TRUSTEE pTrustee,
+            [Out] out ACCESS_MASK pSuccessfulAuditedRights,
+            [Out] out ACCESS_MASK pFailedAuditedRights);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint GetEffectiveRightsFromAcl(
+            [In] IntPtr pacl,
+            [In] IntPtr pTrustee,
+            [Out] IntPtr pAccessRights);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint GetEffectiveRightsFromAcl(
+            [In] IntPtr pacl,
+            [In] IntPtr pTrustee,
+            [Out] out ACCESS_MASK pAccessRights);
+
+        [DllImport(ModuleName), CLSCompliant(false)]
+        public static extern uint GetEffectiveRightsFromAcl(
+            [In] ref ACL pacl,
+            [In] ref TRUSTEE pTrustee,
+            [Out] out ACCESS_MASK pAccessRights);
     }
 
     #endregion // Authorization functions

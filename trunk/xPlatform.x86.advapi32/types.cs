@@ -210,6 +210,13 @@ namespace xPlatform.x86.advapi32
         AuditCategoryDirectoryServiceAccess,
         AuditCategoryAccountLogon
     }
+
+    [Serializable]
+    public enum ACL_INFORMATION_CLASS : int
+    {
+        AclRevisionInformation = 1,
+        AclSizeInformation,
+    }
 }
 
 namespace xPlatform.x86.advapi32
@@ -474,5 +481,12 @@ namespace xPlatform.x86.advapi32
         public GUID AuditSubCategoryGuid;
         public uint AuditingInformation;
         public GUID AuditCategoryGuid;
+    }
+
+    [Serializable, StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
+    public struct INHERITED_FROM
+    {
+        public int GenerationGap;
+        public string AncestorName;
     }
 }
